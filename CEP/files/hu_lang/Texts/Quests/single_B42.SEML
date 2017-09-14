@@ -1,0 +1,61 @@
+﻿\{comment $File: //UrsRel/Work/BoosterPack1/Data/BoosterPack1/Locale/hu/Texts/Quests/single_B42.SEML $}
+\{comment $DateTime: 2006/01/05 18:18:54 $}
+\{comment $Author: benjamin.heidl $}
+\{comment $Translation: zoiddani $}
+\{comment $Revision: #5 $}
+
+\{chapter single_B42}
+
+	\{section -name LB42MQ01}
+Kleemann elment egy régészeti feltárásra a Jégsorvadásba. Leighton-t küldték, hogy megtalálja.
+\{p} \{p}
+Feladat:
+\{p}
+1) Találd meg Heinrich Kleemann-t.
+	\{/section}
+
+	\{section -name LB42MQ02}
+A Jégsorvadás egy veszélyes hely, egy bázis felépítése nem lenne jó ötlett ebben az időpontban. Leightonnak vigyáznia kell, ha túl akarja élni ezt a küldetést.
+\{p} \{p}
+Feladat:
+\{p}
+1) David Leightonnak nem szabad meghalnia.
+	\{/section}
+
+
+	\{section -name LB42MQ03}
+A Jégsorvadás egy veszélyes hely, egy bázis felépítése nem lenne jó ötlett ebben az időpontban. Leightonnak vigyáznia kell, ha túl akarja élni ezt a küldetést.
+\{p} \{p}
+Feladat:
+\{p}
+1) David Leightonnak nem szabad meghalnia.
+	\{/section}
+
+
+	\{section -name LB42MQ04}
+Kleeman eelutasítja, hogy elhagyja a Jégsorvadást egy tárgy nélkül, ami szerinte a Kulcs a Walhalla-hoz. Leighton nagyon boldogtalan ez a szituáció miatt, de nem tudja meggyőzni Kleemann-t, hogy változtassa meg akaratát. Ki tudja, lehet, hogy még hasznos lesz a jövőben.
+\{p} \{p}
+Feladat:
+\{p}
+1) Próbáld meg megkeresni a Kulcsot a Walhalla-hoz.
+	\{/section}
+
+
+	\{section -name LB42MQ05}
+Egy legenda természetfeletti erőkről szól, ami a Kulcsot a Walhalla-hoz védi, bármilyen lénnyel szemben. Mindig van egy kevés igazság a legendákban.Ebben az esetben az igazság 10 tonnát nyom, több mint 20 méter a magassága, és egy Harci Pöröly van nála, mely akkora, mint egy családa ház. 
+\{p} \{p}
+Feladat:
+\{p}
+1) Pusztítsd el a Megtestesült Isten-t.
+	\{/section}
+
+
+	\{section -name LB42SQ01}
+Kleemann egy feltáró csoportja dolgozik ebben a körzetben. A jelentések nemrég nem érkeztek meg, így Kleemann egyre nyugtalanabb lesz a drága felszerelések miat.
+\{p} \{p}
+Feladat:
+\{p}
+1) Találd meg a feltáró csoportot.
+	\{/section}
+
+\{/chapter}

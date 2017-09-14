@@ -1,0 +1,53 @@
+Root {
+	SoundPath = '07_speech_acks/'
+	voice_seas_medic_selected {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+	voice_seas_medic_gag {
+		global = '1'
+		sequential = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+	voice_seas_medic_delivered {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+	voice_seas_medic_task_goto {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+	voice_seas_medic_task_walk_aggro {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+	voice_seas_medic_task_attack {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+	voice_seas_medic_task_attack_walk {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Medic/medic_placeholder_mario.wav'
+			volume = '90'
+		}
+	}
+}

@@ -1,0 +1,11 @@
+/Data/Locale/es/Texts/main_es.ltf
+/Data/Locale/es/Texts/dialogscenes_es.ltf
+/Data/Locale/es/Texts/questlog_es.ltf
+/Data/Locale/es/Texts/newsticker_es.ltf
+/Data/Locale/es/Texts/questions_es.ltf
+/Data/Locale/es/Texts/sequences_es.ltf
+/Data/Locale/es/Texts/gameoverreasons_es.ltf
+/Data/Locale/es/Texts/playernames_es.ltf
+/Data/Locale/es/Texts/mapnames_es.ltf
+/Data/BoosterPack1/Locale/es/Texts/boosterpack1.ltf
+/Data/CEP/Texts/cep.ltf

@@ -1,0 +1,9 @@
+added seas medic to excludes (if he is healing) for the healing query of healers
+Ranged infantry units on walls receive +10 range
+added seas medic animation for reveal ability
+Bug fix: Brachiosaurus mobile camps produced in the large animal farm didn't get their Set Rally Site button in command bar, only when upgraded from another form: this has been fixed
+The search-radius of resources for workers is increased, and the search-radius to buildup buildings as well
+Units which the player can't control receives kill command, so they can be deleted (see Wardens nest animals)
+enabled anim looping for seas workers (if they hunt wild animals with slingshot)
+Penalty values are shown with red color in Info panel (bonus still green)
+Smoke bomber effect doesn't work on zeppelin, preventing the use of invisible and undetectable attacks

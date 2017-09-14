@@ -1,0 +1,136 @@
+// USL Class file for CEP (formerly SEASMOD), scripted by AyCe
+// Version 2.2 - 22.9.2012
+// Useless for localization since 8th March 2012
+//
+// Usage:
+// use CCEPMgr.Get().GetData([string]) and get the variable from Scripts/Game/misc/cepdata.txt
+// Nice, eh? :P
+
+class CCEPMgr
+
+	static var ^CCEPMgr ms_pxInstance;
+	var ^CPropDB.CNode m_pxSMData;
+	var bool m_bGameTimeChecked;
+	var int m_iGameTime;
+
+	export static proc ref CCEPMgr Get()
+		if(ms_pxInstance==null)then
+			ms_pxInstance=new CCEPMgr();
+		endif;
+		return ms_pxInstance^;
+	endproc;
+	
+	export static proc void ShutStatic()
+		delete ms_pxInstance;
+	endproc;
+	
+	constructor()
+		// Load CEP-Data (SM-Data)
+		var ^CPropDB pxSMData = new CPropDB;
+		pxSMData^.Load(CClientWrap.GetUrsRelPath() + "/Data/CEP/Scripts/Game/misc/cepdata.txt");
+		m_pxSMData = ^((pxSMData^).GetRoot());
+		m_bGameTimeChecked = false;
+	endconstructor;
+	
+	destructor()
+		m_bGameTimeChecked = false;
+	enddestructor;
+
+	export static proc void Kill()
+		if(ms_pxInstance!=null)then
+			delete ms_pxInstance;
+			ms_pxInstance=null;
+		endif;
+	endproc;
+
+	export proc bool Purify()
+		m_bGameTimeChecked = false;
+		m_iGameTime = 0;
+		return true;
+	endproc;
+	
+	export proc string GetData(string p_sCode)
+		var string sData = m_pxSMData^.GetValueS(p_sCode);
+		if(sData.IsEmpty())then
+			sData = p_sCode;
+		endif;
+		return sData;
+	endproc;
+	
+	export proc bool IsSEKMap(^CLevelInfo p_pxLevelInfo, int p_iPlayer)
+		var string sName = "";
+		var ^CPropDB.CNode pxBaseNode=^((p_pxLevelInfo^.GetGenericData())["Base"]);
+		if(pxBaseNode!=null)then
+			sName=pxBaseNode^.GetValueS("LevelName");
+		endif;
+		if(sName == "_MN_MP_2_BOOMERANG"||sName == "_MN_MP_2_PIRATES"||sName == "_MN_MP_2_THE_ROCK"||sName == "_MN_MP_4_MALICE"||sName == "_MN_MP_4_SHAMROCK"||sName == "_MN_MP_4_TREASURE"||sName == "_MN_MP_4_RESERVOIR"
+		||sName == "_MN_MP_6_FROZEN"||sName == "_MN_MP_6_GREAT"||sName == "_MN_MP_6_TANGLED"||sName == "_MN_MP_6_MARAUDER"||sName == "_MN_MP_6_PINORECK"||sName == "_MN_MP_2_MONKEY"||sName == "_MN_MP_4_FALLEN"
+		||sName == "_MN_MP_8_AJUBA"||sName == "_MN_MP_8_ELEMENT"||sName == "_MN_MP_8_ELEMENTS"||sName == "_MN_MP_X_SACRED"||sName == "_MN_MP_2_AUTUMN"||sName == "_MN_MP_2_CATACLYSM"||sName == "_MN_MP_2_SUNNY"
+		||sName == "_MN_MP_2_SANDSTORM"||sName == "_MN_MP_3_MELTDOWN"||sName == "_MN_MP_4_ASHES"||sName == "_MN_MP_4_COLDBLOOD"||sName == "_MN_MP_4_SHAMROCK_T"||sName == "_MN_MP_2_ARENA"||sName == "_MN_MP_2_CRYSTALLAKE"
+		||sName == "_MN_MP_2_GAUNTLET"||sName == "_MN_MP_4_CAMPBLOOD"||sName == "_MN_MP_4_CARCASS"||sName == "_MN_MP_3_SNAKEHEADS")then
+			return true;
+		elseif(p_iPlayer != 0 && (sName == "_MN_MP_3_PINCER"||sName == "_MN_MP_3_SAVANNAH"||sName == "_MN_MP_3_TRIPLE"||sName == "_MN_MP_4_ANCIENT"||sName == "_MN_MP_5_BLOOD"))then
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	export proc string GetAuthor(^CLevelInfo p_pxLevelInfo)
+		var string sAuthor = "";
+		var ^CPropDB.CNode pxBaseNode=^((p_pxLevelInfo^.GetGenericData())["Base"]);
+		if(pxBaseNode==null || pxBaseNode^.NumSubs()==0)then //old version
+			var ^CGameAttribs pxAttribs=^(p_pxLevelInfo^.GetAttribs());
+			sAuthor=pxAttribs^.GetValue("Author");
+		else
+			sAuthor=pxBaseNode^.GetValueS("Author","");
+		endif;
+		return sAuthor;
+	endproc;
+
+	export proc string GetVersion(^CLevelInfo p_pxLevelInfo)
+		var string sVersion = "";
+		var ^CPropDB.CNode pxBaseNode=^((p_pxLevelInfo^.GetGenericData())["Base"]);
+		if(pxBaseNode==null || pxBaseNode^.NumSubs()==0)then //old version
+			var ^CGameAttribs pxAttribs=^(p_pxLevelInfo^.GetAttribs());
+			sVersion=pxAttribs^.GetValue("Edit_Version");
+		else
+			sVersion=pxBaseNode^.GetValueS("Edit_Version","");
+		endif;
+		return sVersion;
+	endproc;
+
+	export proc bool IsSpecialGAOVMap(^CLevelInfo p_pxLevelInfo)
+		var string sName = "";
+		var ^CPropDB.CNode pxBaseNode=^((p_pxLevelInfo^.GetGenericData())["Base"]);
+		if(pxBaseNode!=null)then
+			sName=pxBaseNode^.GetValueS("LevelName");
+		endif;
+		if(sName.Find("BfPW - Highland")!=-1 || sName.Find("BfPW - HL")!=-1 || sName.Find("BfPW - Holy City")!=-1)then
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	export proc int GetSpan()
+		if(!m_bGameTimeChecked)then
+			var ^CLevelInfoClient pxLevelInfo = ^(CGameWrap.GetClient().GetLevelInfo());
+			if(pxLevelInfo != null)then
+				var ^CPropDB pxGenericDB=^(pxLevelInfo^.GetGenericData());
+				var ^CPropDB.CNode pxBaseNode=^((pxGenericDB^)["Base"]);
+				var ^CPropDB.CNode pxTime=^(pxBaseNode^.Get("PlayedTime"));
+				if(pxTime==null)then
+					return 0;
+				else
+					m_iGameTime = pxBaseNode^.GetValueR("PlayedTime",0.0).ToInt();
+					m_bGameTimeChecked = true;
+					return m_iGameTime;
+				endif;
+			else
+				return 0;
+			endif;
+		else
+			return m_iGameTime;
+		endif;
+	endproc;
+	
+endclass;

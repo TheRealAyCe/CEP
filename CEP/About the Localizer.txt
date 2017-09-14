@@ -1,0 +1,119 @@
+_____________________________________
+
+17/3/2012 by AyCe
+_____________________________________
+
+The PW Localizer is an awesome tool written by AyCe, which enables you
+to translate text easily and build it all as LMF & the language-
+dependent LTFs. Okay, so here's how you use it:
+
+First of all, start the EXE. Note you will need Java in order to work
+with it.
+After some seconds you will see a window, which you should maximize.
+The table still is empty. You have two ways to fill it: Loading an
+existing Loc-file, or creating a new one.
+I will explain all functions now:
+
+File/New
+Basically deletes everything and resets the filepath, which means you
+can now create a new Loc-file. The old content is not saved though!
+
+File/Open...
+Open an existing Loc-file. The standard file for CEP is
+"CEP_standard.loc" and is located in the same directory as the program.
+
+File/Save
+Quicksave your file. CTRL+S also works.
+
+File/Save As...
+Save your file under a name you choose. Will be forced when file hasn't
+been saved yet and quicksave is used.
+
+File/Import OLD Loc
+Import an old localization file like Localizations.txt with a PropDB-
+like structure. This CAN'T read PropDBs though! Open it and a menu will
+pop up:
+	Reset - Resets all values in the window. Pretty much useless.
+	Import file - Choose the file you want to import.
+	Insert - Insert the data in the table.
+The two text input fields are for the language name and the two language
+entity characters (Like "German" and "de"). Imported files or an error
+message will be shown in the text field beneath.
+
+File/Import Localized
+Does not do anything right now.
+
+File/Exit
+Explanation needed?
+
+Edit/New Loc
+Inserts a new row which can be used to localize text.
+
+Edit/New Language
+Inserts a new column for a new language.
+
+Edit/Edit Language
+Brings up a menu which enables you to edit language settings.
+Cycle through the languages with the buttons at the top.
+The two text inputs beneath are for the language name and code
+(eg. "Spanish" and "es"). Change the path for the generated LTF-file
+in the text field at the bottom. Click Update to save the values,
+although pressing any other of the buttons does the same thing.
+With the two other buttons you can change the order of the languages.
+
+Edit/Remove Language
+Opens a menu for language deletion. For safety reasons, tick the
+checkbox first, and click on the button with the language you want to
+delete.
+
+Edit/Move Loc Up
+Move the selected Locs one row up. CTRL+O does the same thing.
+
+Edit/Move Loc Down
+Move the selected Locs one row down. CTRL+L does the same thing.
+
+Edit/Edit Text
+Opens a window with a big text area, useful for editing large texts.
+You can also use CTRL+E.
+
+Edit/Settings
+Opens the settings window. The checkbox at the top controls if empty
+texts will get localized or not (translation will be empty). Main
+language overrides the text at Default when building the files.
+Insert the code of the language you want to use, otherwise the texts
+at Default are used. File Info is just a text field you can write in
+whatever you want. Path for the LMF is important when building,
+because as with the languages, you have to set a path here.
+Press Update when you are done.
+
+Build/Build Localizations
+Builds all files and prints the debug output in a text field.
+
+Delete Loc/Remove Loc
+Put in an extra tab for safety reasons. Use this to delete a loc-code
+and all its translations.
+
+
+Now to the table itself:
+Loc-Code: The loc-code which is used to identify a text ingame.
+Default: The default value for unlocalized texts. Can be overriden by
+the main language you can set in Edit/Settings. Its default value
+is "!DUMMY!".
+Number: Unknown number, it most likely resembles how many characters
+you should use for a text. Default value for this is 50. Don't insert
+high values please!
+Description: A note for translators about this loc.
+
+To edit a cell just double-click.
+You can also resize the columns as you like them, they will get
+reset though if any change in the table structure occurs.
+Use CTRL held down to select multiple cells, or SHIFT to select an
+end point for a range. Multiple selected cells always have to be next
+to each other.
+
+Please note _lmflist.txt and _ltflist.txt have to be set by yourself.
+Note also that you will have to maually save when closing the program!
+
+
+Have fun translating :D
+- AyCe

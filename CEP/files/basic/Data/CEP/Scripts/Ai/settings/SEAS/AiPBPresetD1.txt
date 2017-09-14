@@ -1,0 +1,142 @@
+Root { 
+	500 {
+		Chars {
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'worker'
+		}
+		Resources {
+			food	= '100'
+			wood	= '0'
+			stone	= '0'
+			iron	= '0'
+		}
+	}
+	1000 {
+		Chars {
+			1 = 'worker'
+			2 = 'worker'
+			3 = 'livingstone_s0'
+		}
+		Resources {
+			food	= '325'
+			wood	= '150'
+			stone	= '125'
+			iron	= '0'
+		}
+	}
+	2000 {
+		Chars {
+			1 = 'livingstone_s0'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'seas_gunner'
+			5 = 'seas_marksman'
+			6 = 'seas_warrior'
+		}
+		Resources {
+			food	= '250'
+			wood	= '250'
+			stone	= '250'
+			iron	= '0'
+		}
+	}
+	3000 {
+		Chars {
+			1 = 'special_baryonyx'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'worker'
+			5 = 'worker'
+			6 = 'worker'
+			7 = 'seas_gunner'
+			8 = 'seas_gunner'
+			9 = 'seas_marksman'
+			10 = 'seas_marksman'
+			11 = 'seas_warrior'
+			12 = 'seas_warrior'
+			25 = 'seas_mobile_suit'
+			26 = 'seas_mobile_suit'
+			27 = 'seas_mobile_suit'
+			28 = 'seas_mobile_suit_flamethrower'
+			29 = 'seas_mobile_suit_flamethrower'
+		}
+		Resources {
+			food	= '301'
+			wood	= '350'
+			stone	= '262'
+			iron	= '0'
+		}
+	}
+	10000 {
+		Chars {
+			1 = 'special_baryonyx'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'worker'
+			5 = 'worker'
+			6 = 'worker'
+			7 = 'worker'
+			8 = 'worker'
+			9 = 'worker'
+			10 = 'worker'
+			11 = 'worker'
+			12 = 'seas_gunner'
+			13 = 'seas_gunner'
+			14 = 'seas_gunner'
+			15 = 'seas_marksman'
+			16 = 'seas_marksman'
+			17 = 'seas_marksman'			
+			18 = 'seas_warrior'
+			19 = 'seas_warrior'
+			20 = 'seas_warrior'
+			50 = 'seas_lumberjack'
+		}
+		Resources {
+			food	= '1000'
+			wood	= '1000'
+			stone	= '1700'
+			iron	= '0'
+		}
+	}
+	1000000 {
+		Chars {
+			1 = 'special_baryonyx'
+			2 = 'worker'
+			3 = 'worker'
+			4 = 'worker'
+			5 = 'worker'
+			6 = 'worker'
+			7 = 'worker'
+			8 = 'worker'
+			9 = 'worker'
+			10 = 'worker'
+			11 = 'worker'
+			12 = 'seas_gunner'
+			13 = 'seas_gunner'
+			14 = 'seas_gunner'
+			15 = 'seas_marksman'
+			16 = 'seas_marksman'
+			17 = 'seas_marksman'			
+			18 = 'seas_warrior'
+			19 = 'seas_warrior'
+			20 = 'seas_warrior'
+			40 = 'seas_triceratops'
+			41 = 'seas_triceratops'
+			42 = 'seas_triceratops'
+			43 = 'seas_triceratops_transporter'
+			44 = 'seas_triceratops_transporter'
+			48 = 'seas_lumberjack'
+			49 = 'seas_lumberjack'
+			50 = 'seas_lumberjack'
+			51 = 'babbage_mobile_suit'
+		}
+		Resources {
+			food	= '100000'
+			wood	= '100000'
+			stone	= '100000'
+			iron	= '4000'
+		}
+	}
+}

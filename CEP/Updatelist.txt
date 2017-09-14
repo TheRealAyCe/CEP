@@ -1,0 +1,18 @@
+If you want to make an update, change this:
+
+- Just for next version: Remove PWCleaner, it should not be needed anymore
+- Remove CEP.bat, CEPSDK.bat, PW SDK CEP.lnk from uninstaller
+
+- CEP x.y.z.nsi: Title, logo & modversion
+- make a logo (ceplogoxyz.bmp)
+- Data/Info/CEP.info -> Version
+- Data/CEP/ReadMe.txt: Date (2x!), Version, etc.
+- Data/CEP/Check for Updates.url
+- Data/CEP/Scripts/Game/misc/cepdata.txt
+- CEP Launcher (in Code and in Project Settings)
+- CEP site on para-welt.com
+- para-welt.com/cep/version.txt <--- for automated update check!
+- Thread in forum
+- Moddb
+- Strategy Informer <--- no more
+- Splash Image on Para-Welt.com

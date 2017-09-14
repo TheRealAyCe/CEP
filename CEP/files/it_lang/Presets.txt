@@ -1,0 +1,1207 @@
+Root {
+	version = '1'
+	Hu {
+		Predefinito {
+			Cost = '-1'
+			base = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '200'
+				wood = '150'
+				stone = '100'
+			}
+		}
+		Boomer {
+			Cost = '10000'
+			base = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+				3 = 'hu_worker'
+				4 = 'hu_worker'
+				5 = 'hu_worker'
+				6 = 'hu_worker'
+				7 = 'hu_worker'
+				8 = 'hu_worker'
+				9 = 'hu_worker'
+				10 = 'hu_worker'
+				11 = 'hu_worker'
+				12 = 'hu_worker'
+				13 = 'hu_worker'
+				14 = 'hu_worker'
+				15 = 'hu_worker'
+				16 = 'hu_worker'
+				17 = 'hu_worker'
+				18 = 'hu_worker'
+				19 = 'hu_worker'
+				20 = 'hu_scout'
+				21 = 'hu_scout'
+				22 = 'hu_scout'
+				40 = 'hu_mammoth_lumber_upgrade'
+				25 = 'hu_archer'
+				26 = 'hu_archer'
+				23 = 'tesla_s0'
+			}
+			Resources {
+				iron = '0'
+				food = '1120'
+				wood = '1200'
+				stone = '1200'
+			}
+			standard = '0'
+		}
+		Boomer {
+			Cost = '1000'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+				3 = 'hu_worker'
+				4 = 'hu_worker'
+				5 = 'hu_worker'
+			}
+			Resources {
+				food = '70'
+				wood = '200'
+				stone = '150'
+				iron = '0'
+			}
+		}
+		Boomer {
+			Cost = '3000'
+			base = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+				3 = 'hu_worker'
+				4 = 'hu_worker'
+				5 = 'hu_worker'
+				6 = 'hu_worker'
+				7 = 'hu_worker'
+				8 = 'hu_worker'
+				9 = 'hu_worker'
+				10 = 'hu_worker'
+				11 = 'hu_worker'
+				12 = 'hu_worker'
+				13 = 'hu_worker'
+				14 = 'hu_worker'
+				15 = 'hu_worker'
+				16 = 'hu_worker'
+				17 = 'hu_worker'
+				18 = 'hu_worker'
+				19 = 'hu_worker'
+				20 = 'tesla_s0'
+				21 = 'hu_scout'
+				25 = 'hu_pikeman'
+				26 = 'hu_pikeman'
+			}
+			Resources {
+				iron = '0'
+				food = '480'
+				wood = '100'
+				stone = '60'
+			}
+			standard = '0'
+		}
+		Rusher {
+			Cost = '10000'
+			Units {
+				0 = 'hermit_s0'
+				1 = 'hu_scout'
+				2 = 'hu_worker'
+				3 = 'hu_worker'
+				25 = 'hu_jetpack_warrior'
+				40 = 'hu_mammoth_lumber_upgrade'
+				48 = 'hu_triceratops'
+			}
+			Resources {
+				food = '290'
+				wood = '0'
+				stone = '200'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Rusher {
+			Cost = '1000'
+			base = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_warrior'
+				2 = 'hu_warrior'
+				25 = 'hu_chariot'
+				28 = 'hu_chariot'
+				26 = 'hu_archer'
+				29 = 'hu_archer'
+			}
+			Resources {
+				iron = '0'
+				food = '40'
+				wood = '20'
+				stone = '20'
+			}
+			standard = '0'
+		}
+		Rusher {
+			Cost = '3000'
+			base = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+				3 = 'hu_worker'
+				4 = 'hu_worker'
+				5 = 'hu_warrior'
+				10 = 'hu_warrior'
+				15 = 'hu_warrior'
+				20 = 'hu_scout'
+				25 = 'hu_warrior'
+				26 = 'hu_warrior'
+				27 = 'hu_warrior'
+				28 = 'hu_chariot'
+				31 = 'hu_chariot'
+				29 = 'hu_archer'
+				32 = 'hu_archer'
+				37 = 'mayor_s0'
+			}
+			Resources {
+				iron = '0'
+				food = '85'
+				wood = '50'
+				stone = '30'
+			}
+			standard = '0'
+		}
+		Standard {
+			Cost = '100000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '10000'
+				wood = '10000'
+				stone = '10000'
+			}
+		}
+		Standard {
+			Cost = '10000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+				3 = 'hu_worker'
+				4 = 'hu_worker'
+				5 = 'hu_worker'
+				6 = 'hu_worker'
+				7 = 'hu_worker'
+				8 = 'hu_worker'
+				9 = 'hu_worker'
+				10 = 'hu_worker'
+				11 = 'hu_worker'
+				12 = 'hu_worker'
+				13 = 'hu_worker'
+				14 = 'hu_worker'
+				20 = 'hu_scout'
+				21 = 'hu_scout'
+				22 = 'hu_scout'
+				25 = 'hu_warrior'
+				26 = 'hu_warrior'
+				27 = 'hu_warrior'
+				28 = 'hu_warrior'
+				29 = 'hu_warrior'
+				30 = 'hu_warrior'
+				31 = 'hu_chariot'
+				32 = 'hu_kentrosaurus'
+				33 = 'hu_wild_boar'
+				34 = 'hu_pikeman'
+				35 = 'hu_pikeman'
+				36 = 'hu_pikeman'
+				37 = 'hu_archer'
+				38 = 'hu_archer'
+				39 = 'hu_archer'
+				40 = 'Cole_s0'
+				41 = 'hu_rhino_transporter'
+				43 = 'hu_rhino_ballista'
+			}
+			Resources {
+				iron = '0'
+				food = '421'
+				wood = '266'
+				stone = '225'
+			}
+		}
+		Standard {
+			Cost = '1000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'hu_worker'
+				5 = 'hu_worker'
+				10 = 'hu_worker'
+				15 = 'hu_worker'
+				20 = 'hu_scout'
+			}
+			Resources {
+				iron = '0'
+				food = '232'
+				wood = '125'
+				stone = '125'
+			}
+		}
+		Standard {
+			Cost = '3000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'hu_worker'
+				1 = 'hu_worker'
+				2 = 'hu_worker'
+				5 = 'hu_worker'
+				6 = 'hu_worker'
+				7 = 'hu_worker'
+				10 = 'hu_worker'
+				11 = 'hu_worker'
+				12 = 'hu_worker'
+				15 = 'hu_scout'
+				16 = 'hu_scout'
+				20 = 'Cole_s0'
+				25 = 'hu_warrior'
+				26 = 'hu_warrior'
+				28 = 'hu_spearman'
+				29 = 'hu_spearman'
+				31 = 'hu_archer'
+				32 = 'hu_archer'
+			}
+			Resources {
+				iron = '0'
+				food = '480'
+				wood = '100'
+				stone = '60'
+			}
+		}
+	}
+	Aje {
+		Predefinito {
+			Cost = '-1'
+			base = '1'
+			Units {
+				0 = 'aje_worker'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '200'
+				wood = '150'
+				stone = '100'
+			}
+		}
+		Boomer {
+			Cost = '10000'
+			base = '1'
+			Units {
+				5 = 'aje_resource_collector'
+				10 = 'aje_resource_collector'
+				15 = 'aje_resource_collector'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				3 = 'aje_worker'
+				4 = 'aje_worker'
+				6 = 'aje_worker'
+				7 = 'aje_worker'
+				8 = 'aje_worker'
+				9 = 'aje_worker'
+				11 = 'aje_worker'
+				12 = 'aje_worker'
+				13 = 'aje_worker'
+				14 = 'aje_worker'
+				16 = 'aje_worker'
+				17 = 'aje_worker'
+				18 = 'aje_worker'
+				19 = 'aje_worker'
+				20 = 'Stina_s0'
+				21 = 'aje_dilophosaurus'
+				22 = 'aje_dilophosaurus'
+				23 = 'aje_dilophosaurus'
+				25 = 'aje_spearman'
+				26 = 'aje_spearman'
+				27 = 'aje_spearman'
+				28 = 'aje_spearman'
+				29 = 'aje_spearman'
+				30 = 'aje_spearman'
+				31 = 'aje_archer'
+				32 = 'aje_archer'
+				33 = 'aje_archer'
+				34 = 'aje_archer'
+				35 = 'aje_archer'
+				36 = 'aje_archer'
+				41 = 'aje_shaman'
+			}
+			Resources {
+				iron = '0'
+				food = '1570'
+				wood = '1000'
+				stone = '1000'
+			}
+			standard = '0'
+		}
+		Boomer {
+			Cost = '1000'
+			Units {
+				0 = 'aje_resource_collector'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				5 = 'aje_resource_collector'
+				6 = 'aje_worker'
+				7 = 'aje_worker'
+				11 = 'aje_worker'
+				12 = 'aje_worker'
+				24 = 'aje_resource_collector'
+			}
+			Resources {
+				food = '70'
+				wood = '40'
+				stone = '20'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Boomer {
+			Cost = '3000'
+			base = '1'
+			Units {
+				5 = 'aje_resource_collector'
+				10 = 'aje_resource_collector'
+				15 = 'aje_resource_collector'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				3 = 'aje_worker'
+				4 = 'aje_worker'
+				6 = 'aje_worker'
+				7 = 'aje_worker'
+				8 = 'aje_worker'
+				9 = 'aje_worker'
+				11 = 'aje_worker'
+				12 = 'aje_worker'
+				13 = 'aje_worker'
+				14 = 'aje_worker'
+				16 = 'aje_worker'
+				17 = 'aje_worker'
+				18 = 'aje_worker'
+				19 = 'aje_worker'
+				20 = 'aje_dilophosaurus'
+				21 = 'aje_spearman'
+				22 = 'aje_spearman'
+				26 = 'aje_spearman'
+				27 = 'aje_spearman'
+			}
+			Resources {
+				iron = '0'
+				food = '310'
+				wood = '140'
+				stone = '100'
+			}
+		}
+		Rusher {
+			Cost = '10000'
+			Units {
+				0 = 'tesla_s0'
+				1 = 'mayor_s0'
+				24 = 'aje_resource_collector'
+				40 = 'aje_shaman'
+				48 = 'aje_atroxosaurus'
+			}
+			Resources {
+				food = '900'
+				wood = '1000'
+				stone = '0'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Rusher {
+			Cost = '1000'
+			base = '1'
+			Units {
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				20 = 'Stina_s0'
+				21 = 'aje_spearman'
+				15 = 'aje_velociraptor_handler'
+				16 = 'aje_velociraptor_handler'
+			}
+			Resources {
+				iron = '0'
+				food = '70'
+				wood = '0'
+				stone = '0'
+			}
+			standard = '0'
+		}
+		Rusher {
+			Cost = '3000'
+			base = '1'
+			Units {
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				3 = 'aje_worker'
+				4 = 'aje_worker'
+				5 = 'aje_spearman'
+				6 = 'aje_spearman'
+				7 = 'aje_spearman'
+				8 = 'aje_spearman'
+				9 = 'aje_spearman'
+				10 = 'aje_velociraptor_handler'
+				11 = 'aje_velociraptor_handler'
+				12 = 'aje_velociraptor_handler'
+				13 = 'aje_velociraptor_handler'
+				14 = 'aje_velociraptor_handler'
+				15 = 'aje_dilophosaurus'
+				16 = 'aje_dilophosaurus'
+				25 = 'Stina_s0'
+				26 = 'aje_ankylosaurus'
+				27 = 'aje_ankylosaurus'
+			}
+			Resources {
+				iron = '0'
+				food = '60'
+				wood = '40'
+				stone = '25'
+			}
+		}
+		Standard {
+			Cost = '100000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'aje_worker'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '10000'
+				wood = '10000'
+				stone = '10000'
+			}
+		}
+		Standard {
+			Cost = '10000'
+			base = '1'
+			standard = '1'
+			Units {
+				5 = 'aje_resource_collector'
+				10 = 'aje_resource_collector'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				3 = 'aje_worker'
+				4 = 'aje_worker'
+				6 = 'aje_worker'
+				7 = 'aje_worker'
+				8 = 'aje_worker'
+				9 = 'aje_worker'
+				11 = 'aje_worker'
+				12 = 'aje_worker'
+				13 = 'aje_worker'
+				14 = 'aje_worker'
+				15 = 'aje_spearman'
+				16 = 'aje_spearman'
+				17 = 'aje_spearman'
+				18 = 'aje_spearman'
+				19 = 'aje_spearman'
+				20 = 'aje_dilophosaurus'
+				21 = 'aje_dilophosaurus'
+				22 = 'aje_velociraptor_handler'
+				23 = 'aje_velociraptor_handler'
+				25 = 'aje_stegosaurus'
+				26 = 'aje_stegosaurus'
+				27 = 'aje_ankylosaurus'
+				28 = 'aje_spearman'
+				29 = 'aje_spearman'
+				30 = 'aje_spearman'
+				40 = 'Stina_s0'
+				41 = 'aje_allosaurus'
+				43 = 'aje_shaman'
+			}
+			Resources {
+				iron = '0'
+				food = '640'
+				wood = '400'
+				stone = '400'
+			}
+		}
+		Standard {
+			Cost = '1000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'aje_worker'
+				5 = 'aje_worker'
+				10 = 'aje_worker'
+				15 = 'aje_worker'
+				20 = 'aje_dilophosaurus'
+			}
+			Resources {
+				iron = '0'
+				food = '212'
+				wood = '125'
+				stone = '125'
+			}
+		}
+		Standard {
+			Cost = '3000'
+			base = '1'
+			standard = '1'
+			Units {
+				5 = 'aje_resource_collector'
+				10 = 'aje_resource_collector'
+				1 = 'aje_worker'
+				2 = 'aje_worker'
+				3 = 'aje_worker'
+				4 = 'aje_worker'
+				6 = 'aje_worker'
+				7 = 'aje_worker'
+				8 = 'aje_worker'
+				9 = 'aje_worker'
+				11 = 'aje_worker'
+				12 = 'aje_worker'
+				13 = 'aje_worker'
+				14 = 'aje_worker'
+				15 = 'aje_spearman'
+				16 = 'aje_spearman'
+				17 = 'aje_spearman'
+				18 = 'aje_spearman'
+				19 = 'aje_spearman'
+				20 = 'Stina_s0'
+				21 = 'aje_dilophosaurus'
+				22 = 'aje_dilophosaurus'
+			}
+			Resources {
+				iron = '0'
+				food = '310'
+				wood = '80'
+				stone = '50'
+			}
+		}
+	}
+	Ninigi {
+		Predefinito {
+			Cost = '-1'
+			base = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '200'
+				wood = '150'
+				stone = '100'
+			}
+		}
+		Boomer {
+			Cost = '10000'
+			base = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+				3 = 'ninigi_worker'
+				4 = 'ninigi_worker'
+				5 = 'ninigi_worker'
+				6 = 'ninigi_worker'
+				7 = 'ninigi_worker'
+				8 = 'ninigi_worker'
+				9 = 'ninigi_worker'
+				10 = 'ninigi_worker'
+				11 = 'ninigi_worker'
+				12 = 'ninigi_worker'
+				13 = 'ninigi_worker'
+				14 = 'ninigi_worker'
+				15 = 'ninigi_worker'
+				16 = 'ninigi_worker'
+				17 = 'ninigi_worker'
+				18 = 'ninigi_worker'
+				19 = 'ninigi_worker'
+				20 = 'ninigi_scout'
+				21 = 'ninigi_scout'
+				22 = 'ninigi_archer'
+				23 = 'ninigi_archer'
+				24 = 'ninigi_archer'
+				25 = 'tesla_s0'
+				40 = 'ninigi_harvester'
+				41 = 'ninigi_harvester'
+			}
+			Resources {
+				iron = '0'
+				food = '850'
+				wood = '800'
+				stone = '400'
+			}
+			standard = '0'
+		}
+		Boomer {
+			Cost = '1000'
+			base = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				5 = 'ninigi_worker'
+				6 = 'ninigi_worker'
+				10 = 'ninigi_worker'
+				11 = 'ninigi_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '232'
+				wood = '125'
+				stone = '125'
+			}
+		}
+		Boomer {
+			Cost = '3000'
+			base = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+				3 = 'ninigi_worker'
+				4 = 'ninigi_worker'
+				5 = 'ninigi_worker'
+				6 = 'ninigi_worker'
+				7 = 'ninigi_worker'
+				8 = 'ninigi_worker'
+				9 = 'ninigi_worker'
+				10 = 'ninigi_worker'
+				11 = 'ninigi_worker'
+				12 = 'ninigi_worker'
+				13 = 'ninigi_worker'
+				14 = 'ninigi_worker'
+				15 = 'ninigi_worker'
+				16 = 'ninigi_worker'
+				17 = 'ninigi_worker'
+				18 = 'ninigi_worker'
+				19 = 'ninigi_worker'
+				20 = 'ninigi_archer'
+				21 = 'ninigi_archer'
+				22 = 'ninigi_archer'
+				23 = 'ninigi_archer'
+				24 = 'ninigi_archer'
+			}
+			Resources {
+				iron = '0'
+				food = '380'
+				wood = '300'
+				stone = '300'
+			}
+		}
+		Rusher {
+			Cost = '10000'
+			Units {
+				0 = 'ninigi_smokebomb_thrower'
+				1 = 'ninigi_scout'
+				25 = 'ninigi_parasaurolophus_drums'
+				26 = 'ninigi_baryonyx'
+				27 = 'ninigi_parasaurolophus_gatling'
+				28 = 'ninigi_mortar'
+				29 = 'ninigi_mortar'
+				30 = 'ninigi_mortar'
+				31 = 'ninigi_warrior'
+				40 = 'ninigi_ninja'
+				41 = 'ninigi_monk'
+				42 = 'ninigi_sumo'
+				43 = 'ninigi_icespearman'
+				48 = 'ninigi_seismosaurus'
+			}
+			Resources {
+				food = '30'
+				wood = '0'
+				stone = '0'
+				iron = '0'
+			}
+		}
+		Rusher {
+			Cost = '1000'
+			base = '1'
+			Units {
+				20 = 'Bela_s0'
+				0 = 'ninigi_worker'
+				21 = 'ninigi_archer'
+				22 = 'ninigi_archer'
+				23 = 'ninigi_archer'
+				24 = 'ninigi_archer'
+			}
+			Resources {
+				iron = '0'
+				food = '50'
+				wood = '0'
+				stone = '0'
+			}
+		}
+		Rusher {
+			Cost = '3000'
+			base = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+				3 = 'ninigi_worker'
+				4 = 'ninigi_worker'
+				5 = 'ninigi_smokebomb_thrower'
+				6 = 'ninigi_scout'
+				25 = 'Bela_s0'
+				26 = 'ninigi_parasaurolophus_gatling'
+				27 = 'ninigi_flamethrower_trike'
+				28 = 'ninigi_archer'
+				29 = 'ninigi_archer'
+				31 = 'ninigi_archer'
+				32 = 'ninigi_archer'
+			}
+			Resources {
+				iron = '0'
+				food = '30'
+				wood = '20'
+				stone = '20'
+			}
+		}
+		Standard {
+			Cost = '100000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '10000'
+				wood = '10000'
+				stone = '10000'
+			}
+		}
+		Standard {
+			Cost = '10000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+				3 = 'ninigi_worker'
+				4 = 'ninigi_worker'
+				5 = 'ninigi_worker'
+				6 = 'ninigi_worker'
+				7 = 'ninigi_worker'
+				8 = 'ninigi_worker'
+				9 = 'ninigi_worker'
+				10 = 'ninigi_worker'
+				11 = 'ninigi_worker'
+				12 = 'ninigi_worker'
+				13 = 'ninigi_worker'
+				14 = 'ninigi_worker'
+				15 = 'ninigi_smokebomb_thrower'
+				16 = 'ninigi_smokebomb_thrower'
+				17 = 'ninigi_smokebomb_thrower'
+				20 = 'ninigi_scout'
+				21 = 'ninigi_scout'
+				22 = 'ninigi_scout'
+				25 = 'Bela_s0'
+				26 = 'ninigi_archer'
+				27 = 'ninigi_archer'
+				28 = 'ninigi_archer'
+				29 = 'ninigi_archer'
+				30 = 'ninigi_archer'
+				31 = 'ninigi_archer'
+				32 = 'ninigi_archer'
+				33 = 'ninigi_archer'
+				34 = 'ninigi_baryonyx'
+				35 = 'ninigi_baryonyx'
+				36 = 'ninigi_baryonyx'
+				37 = 'ninigi_parasaurolophus_drums'
+				38 = 'ninigi_parasaurolophus_gatling'
+				39 = 'ninigi_parasaurolophus_gatling'
+				40 = 'ninigi_harvester'
+			}
+			Resources {
+				iron = '0'
+				food = '760'
+				wood = '400'
+				stone = '200'
+			}
+		}
+		Standard {
+			Cost = '1000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'ninigi_worker'
+				5 = 'ninigi_worker'
+				10 = 'ninigi_worker'
+				15 = 'ninigi_worker'
+				20 = 'ninigi_scout'
+			}
+			Resources {
+				iron = '0'
+				food = '232'
+				wood = '125'
+				stone = '125'
+			}
+		}
+		Standard {
+			Cost = '3000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'ninigi_worker'
+				1 = 'ninigi_worker'
+				2 = 'ninigi_worker'
+				3 = 'ninigi_worker'
+				4 = 'ninigi_worker'
+				5 = 'ninigi_worker'
+				6 = 'ninigi_worker'
+				7 = 'ninigi_worker'
+				8 = 'ninigi_worker'
+				9 = 'ninigi_worker'
+				10 = 'ninigi_archer'
+				11 = 'ninigi_archer'
+				12 = 'ninigi_archer'
+				13 = 'ninigi_archer'
+				14 = 'ninigi_archer'
+				15 = 'ninigi_archer'
+				16 = 'ninigi_archer'
+				17 = 'ninigi_archer'
+				18 = 'ninigi_archer'
+				19 = 'ninigi_archer'
+				20 = 'Bela_s0'
+				21 = 'ninigi_scout'
+				22 = 'ninigi_scout'
+			}
+			Resources {
+				iron = '0'
+				food = '215'
+				wood = '250'
+				stone = '100'
+			}
+		}
+	}
+	SEAS {
+		Predefinito {
+			Cost = '-1'
+			base = '1'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '200'
+				wood = '150'
+				stone = '100'
+			}
+                }
+		Standard {
+			Cost = '100000'
+			base = '1'
+			standard = '1'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+			}
+			Resources {
+				iron = '0'
+				food = '10000'
+				wood = '10000'
+				stone = '10000'
+			}
+		}
+		Boomer {
+			Cost = '10000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'seas_worker'
+				5 = 'seas_worker'
+				6 = 'seas_worker'
+				7 = 'seas_worker'
+				8 = 'seas_worker'
+				9 = 'seas_worker'
+				10 = 'seas_worker'
+				11 = 'seas_worker'
+				12 = 'seas_worker'
+				13 = 'seas_worker'
+				14 = 'seas_worker'
+				15 = 'seas_worker'
+				16 = 'seas_worker'
+				17 = 'seas_worker'
+				18 = 'seas_worker'
+				19 = 'seas_worker'
+				20 = 'seas_mechanical_walker'
+				21 = 'seas_mechanical_walker'
+				22 = 'seas_mechanical_walker'
+				23 = 'seas_warrior'
+				25 = 'seas_marksman'
+				26 = 'seas_marksman'
+				40 = 'babbage_s0'
+				41 = 'seas_medic'
+			}
+			Resources {
+				food = '1330'
+				wood = '1300'
+				stone = '1100'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Rusher {
+			Cost = '10000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'seas_worker'
+				5 = 'seas_worker'
+				6 = 'seas_worker'
+				7 = 'seas_worker'
+				8 = 'seas_worker'
+				9 = 'seas_worker'
+				10 = 'seas_mechanical_walker'
+				11 = 'seas_mechanical_walker'
+				12 = 'seas_mechanical_walker'
+				13 = 'seas_mechanical_walker'
+				14 = 'seas_mechanical_walker'
+				15 = 'seas_warrior'
+				16 = 'seas_warrior'
+				17 = 'seas_warrior'
+				18 = 'seas_warrior'
+				19 = 'seas_warrior'
+				20 = 'seas_warrior'
+				21 = 'seas_warrior'
+				22 = 'seas_warrior'
+				23 = 'seas_warrior'
+				24 = 'seas_warrior'
+				25 = 'seas_mobile_suit'
+				26 = 'seas_mobile_suit'
+				27 = 'seas_mobile_suit_flamethrower'
+				28 = 'seas_marksman'
+				29 = 'seas_marksman'
+				30 = 'seas_marksman'
+				31 = 'seas_marksman'
+				32 = 'seas_marksman'
+				33 = 'seas_marksman'
+				40 = 'livingstone_s0'
+				41 = 'seas_helicopter'
+				42 = 'seas_helicopter'
+				43 = 'seas_medic'
+			}
+			Resources {
+				food = '250'
+				wood = '200'
+				stone = '215'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Standard {
+			Cost = '10000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'seas_worker'
+				5 = 'seas_worker'
+				6 = 'seas_worker'
+				7 = 'seas_worker'
+				8 = 'seas_worker'
+				9 = 'seas_worker'
+				10 = 'seas_worker'
+				11 = 'seas_worker'
+				12 = 'seas_worker'
+				13 = 'seas_worker'
+				14 = 'seas_worker'
+				15 = 'seas_mechanical_walker'
+				16 = 'seas_mechanical_walker'
+				17 = 'seas_mechanical_walker'
+				18 = 'seas_worker'
+				19 = 'seas_worker'
+				25 = 'seas_marksman'
+				26 = 'seas_marksman'
+				27 = 'seas_marksman'
+				40 = 'seas_medic'
+				41 = 'lovelace_s0'
+				42 = 'seas_helicopter'
+				43 = 'seas_triceratops'
+			}
+			Resources {
+				food = '550'
+				wood = '500'
+				stone = '500'
+				iron = '0'
+			}
+		}
+		Boomer {
+			Cost = '3000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'seas_worker'
+				5 = 'seas_worker'
+				6 = 'seas_worker'
+				7 = 'seas_worker'
+				8 = 'seas_worker'
+				9 = 'seas_worker'
+				10 = 'seas_mechanical_walker'
+				11 = 'seas_mechanical_walker'
+				25 = 'babbage_s0'
+			}
+			Resources {
+				food = '285'
+				wood = '250'
+				stone = '250'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Rusher {
+			Cost = '3000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'seas_worker'
+				5 = 'seas_warrior'
+				6 = 'seas_warrior'
+				7 = 'seas_warrior'
+				8 = 'seas_warrior'
+				9 = 'seas_warrior'
+				10 = 'seas_mechanical_walker'
+				25 = 'livingstone_s0'
+				26 = 'seas_marksman'
+				27 = 'seas_marksman'
+				28 = 'seas_marksman'
+				29 = 'seas_mobile_suit_flamethrower'
+			}
+			Resources {
+				food = '75'
+				wood = '50'
+				stone = '50'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Standard {
+			Cost = '3000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'seas_worker'
+				5 = 'seas_worker'
+				6 = 'seas_worker'
+				7 = 'seas_worker'
+				8 = 'seas_mechanical_walker'
+				9 = 'seas_mechanical_walker'
+				10 = 'seas_mechanical_walker'
+				11 = 'seas_warrior'
+				12 = 'seas_warrior'
+				13 = 'seas_warrior'
+				14 = 'seas_warrior'
+				25 = 'lovelace_s0'
+				26 = 'seas_mobile_suit'
+				27 = 'seas_mobile_suit'
+			}
+			Resources {
+				food = '100'
+				wood = '80'
+				stone = '55'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Boomer {
+			Cost = '1000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'seas_worker'
+				4 = 'babbage_s0'
+			}
+			Resources {
+				food = '80'
+				wood = '20'
+				stone = '25'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Rusher {
+			Cost = '1000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_warrior'
+				3 = 'seas_mechanical_walker'
+				4 = 'livingstone_s0'
+			}
+			Resources {
+				food = '30'
+				wood = '20'
+				stone = '10'
+				iron = '0'
+			}
+			standard = '0'
+			base = '0'
+		}
+		Standard {
+			Cost = '1000'
+			Units {
+				0 = 'seas_worker'
+				1 = 'seas_worker'
+				2 = 'seas_worker'
+				3 = 'lovelace_s0'
+				4 = 'seas_warrior'
+			}
+			Resources {
+				food = '40'
+				wood = '40'
+				stone = '20'
+				iron = '0'
+			}
+		}
+	}
+}

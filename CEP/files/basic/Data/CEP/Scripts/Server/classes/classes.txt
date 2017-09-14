@@ -1,0 +1,34 @@
+Root {
+	seas_sandbag_mg {
+		classattribs {
+			classname = 'CSeasSandbagMG'
+			gfx = 'StartLocation'
+		}
+		objectattribs {
+			tribe = 'SEAS'
+		}
+	}
+	ayce_test {
+		classattribs {
+			classname = 'CAyCeTest'
+			gfx = 'StartLocation'
+		}
+	}
+	All = 'all.txt'
+	Ashvalley = 'ashvalley.txt'
+	Icewaste = 'icewaste.txt'
+	Jungle = 'jungle.txt'
+	Northland = 'northland.txt'
+	Savanna = 'savanna.txt'
+	Cave1 = 'cave1.txt'
+	Cave2 = 'cave2.txt'
+	Cave3 = 'cave3.txt'
+	Aje = 'aje.txt'
+	Hu = 'hu.txt'
+	Ninigi = 'ninigi.txt'
+	SpecialLocations = 'speciallocations.txt'
+	Seas = 'seas.txt'
+	SequenceObjects = 'sequence.txt'
+	Test_Objects = 'misc/test_objects.txt'
+	BoosterPack1 = 'BoosterPack1/boosterpack1.txt'
+}

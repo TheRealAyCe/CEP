@@ -1,0 +1,226 @@
+Root {
+	Age_1 {
+		Level_1 {
+			Group0 = '2.0' {
+				seas_warrior = ''
+			}
+			Group1 = '2.0' {
+				seas_mechanical_walker {
+					nonchar = ''
+				}
+			}
+			Group3 = '2.0' {
+				seas_hovercraft {
+					nonchar = ''
+				}
+			}
+		}
+	}
+	Age_2 {
+		Level_1 {
+			Group0 = '2.0' {
+				seas_hovercraft {
+					nonchar = ''
+				}
+			}
+		}
+		Level_2 {
+			Group0 = '2.0' {
+				seas_marksman = ''
+			}
+			Group1 = '2.0' {
+				seas_gunner = 'Bela_s0'
+			}
+			Group2 = '2.0' {
+				seas_rocketman = ''
+			}
+			Group3 = '2.0' {
+				seas_shotgunner = 'Cole_s0'
+			}
+		}
+	}
+	Age_3 {
+		Level_1 {
+			Group0 = '2.0' {
+				seas_hovercraft {
+					nonchar = ''
+				}
+			}
+		}
+		Level_2 {
+			Group0 = '2.0' {
+				seas_marksman = ''
+			}
+			Group1 = '2.0' {
+				seas_gunner = 'Bela_s0'
+			}
+			Group2 = '2.0' {
+				seas_rocketman = ''
+			}
+			Group3 = '2.0' {
+				seas_shotgunner = 'Cole_s0'
+			}
+		}
+		Level_3 {
+			Group0 = '1.0' {
+				seas_flamethrower = 'livingstone_s0'
+			}
+			Group1 = '1.0' {
+				seas_medic = ''
+			}
+			Group2 = '1.0' {
+				seas_triceratops {
+					nonchar = ''
+				}
+			}
+			Group3 = '1.0' {
+				seas_triceratops_transporter {
+					nonchar = ''
+				}
+			}
+			Group4 = '1.0' {
+				seas_wehrspinne {
+					nonchar = ''
+				}
+			}
+			Group5 = '1.0' {
+				seas_helicopter {
+					nonchar = ''
+				}
+			}
+		}
+	}
+	Age_4 {
+		Level_1 {
+			Group0 = '2.0' {
+				seas_hovercraft {
+					nonchar = ''
+				}
+			}
+		}
+		Level_2 {
+			Group0 = '1.0' {
+				seas_marksman = ''
+			}
+			Group1 = '1.0' {
+				seas_gunner = 'Bela_s0'
+			}
+			Group2 = '1.0' {
+				seas_rocketman = ''
+			}
+			Group3 = '1.0' {
+				seas_shotgunner = 'Cole_s0'
+			}
+		}
+		Level_3 {
+			Group0 = '1.0' {
+				seas_flamethrower = 'livingstone_s0'
+			}
+			Group1 = '1.0' {
+				seas_medic = ''
+			}
+			Group2 = '1.0' {
+				seas_triceratops {
+					nonchar = ''
+				}
+			}
+			Group3 = '1.0' {
+				seas_triceratops_transporter {
+					nonchar = ''
+				}
+			}
+			Group4 = '1.0' {
+				seas_wehrspinne {
+					nonchar = ''
+				}
+			}
+			Group5 = '1.0' {
+				seas_helicopter {
+					nonchar = ''
+				}
+			}
+		}
+		Level_4 {
+			Group0 = '1.0' {
+				seas_lumberjack {
+					nonchar = ''
+				}
+			}
+			Group1 = '1.0' {
+				seas_lumberjack_minigun {
+					nonchar = ''
+				}
+			}
+		}
+	}
+	Age_5 {
+		Level_1 {
+			Group0 = '2.0' {
+				seas_hovercraft {
+					nonchar = ''
+				}
+			}
+		}
+		Level_2 {
+			Group0 = '2.0' {
+				seas_marksman = ''
+			}
+			Group1 = '2.0' {
+				seas_gunner = 'Bela_s0'
+			}
+			Group2 = '2.0' {
+				seas_rocketman = ''
+			}
+			Group3 = '2.0' {
+				seas_shotgunner = 'Cole_s0'
+			}
+		}
+		Level_3 {
+			Group0 = '1.0' {
+				seas_flamethrower = 'livingstone_s0'
+			}
+			Group1 = '1.0' {
+				seas_medic = ''
+			}
+			Group2 = '1.0' {
+				seas_triceratops {
+					nonchar = ''
+				}
+			}
+			Group3 = '1.0' {
+				seas_triceratops_transporter {
+					nonchar = ''
+				}
+			}
+			Group4 = '1.0' {
+				seas_wehrspinne {
+					nonchar = ''
+				}
+			}
+			Group5 = '1.0' {
+				seas_helicopter {
+					nonchar = ''
+				}
+			}
+		}
+		Level_4 {
+			Group0 = '1.0' {
+				seas_lumberjack {
+					nonchar = ''
+				}
+			}
+			Group1 = '1.0' {
+				seas_lumberjack_minigun {
+					nonchar = ''
+				}
+			}
+		}
+                Level_5 {
+                        Group0 = '1.0' {
+				babbage_mobile_suit {
+					nonchar = ''
+				}
+			}
+		}
+	}
+}

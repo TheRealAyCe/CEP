@@ -1,0 +1,38 @@
+Root {
+	special_eusmilus {
+		classattribs {
+			classname = 'CEusmilus'
+			gfx = 'stina_eusmilus_s1'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	special_eusmilus_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'stina_eusmilus_s1'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	special_baryonyx {
+		classattribs {
+			classname = 'CSBaryonyx'
+			gfx = 'Baryonyx'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	special_baryonyx_food {
+		classattribs {
+			classname = 'CDino_Food'
+			gfx = 'Baryonyx'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+}

@@ -1,0 +1,468 @@
+﻿\{document helpfile seas units}
+\{comment $File: //UrsRel/Main/Data/Locale/de/Texts/Help/H_SEAS_Produkte.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _infantry Infanterie}
+\{helpitem -name _seas_worker Arbeiter}
+\{img /bunit:seas_worker -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Kann Gebäude errichten
+\\{br}• Sammelt Ressourcen
+\\{br}• Schlechter Kämpfer
+   \{/tooltipmedium}
+   \{tooltiplong}
+Arbeiter werden im \{ref H_seas_gebaeude.seml#_seas_headquarters}Hauptquartier\{/ref} produziert und verrichten sämtliche nichtmilitärischen Dienste. \\{br}
+Sie sammeln \{ref H_general.seml#_resources}Ressourcen\{/ref} und errichten \{ref H_general.seml#_building}Gebäude\{/ref}. Sie können sich verteidigen, wenn sie angegriffen werden, sind aber normalen Kampfeinheiten nicht gewachsen. Sie sind jedoch nicht, wie die Arbeiter der anderen Völker mit einer Schleuder ausgestattet, sondern einem Messer, welches zum \{ref H_world.seml#_food}Jagen\{/ref} und zur Verteidigung dient.
+\{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warrior Gardist}
+\{img /bunit:seas_warrior -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Nahkämpfer
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wie alle Infanterieeinheiten werden auch die Gardisten in der \{ref H_seas_gebaeude.seml#_seas_barracks}Kaserne\{/ref} produziert. Gardisten sind Nahkampfspezialisten und stellen die Grundkampfeinheit der \{ref H_story.seml#_story_seas}SEAS\{/ref} dar.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marksman Scharfschütze}
+\{img /bunit:seas_marksman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Fernkampfeinheit
+\\{br}• Unwirksam im Nahkampf
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wie alle Infanterie\{ref H_general.seml#_units}einheiten\{/ref} , werden Scharfschützen in der \{ref H_seas_gebaeude.seml#_seas_barracks}Kaserne\{/ref} ausgebildet. Sie sind die Fernkampfeinheit der \{ref H_story.seml#_story_seas}SEAS\{/ref} . Leider sind sie schwach im Nahkampf, da sie lediglich über ein Bajonett verfügen, aber der Name "Scharfschütze" sollte den Verwendungszweck eigentlich voll und ganz erläutern.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gunner MG-Schütze}
+\{img /bunit:seas_gunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Fernkampfeinheit
+\\{br}• Rüstungsdurchdringender Schaden
+\\{br}• Kann nur produziert werden, wenn Béla Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+MG-Schützen sind wie die \{ref H_seas_produkte.seml#_seas_marksmen}Scharfschützen\{/ref} Fernkampfeinheiten, aber wesentlich stärker. \\{br}
+Sie werden in der \{ref H_seas_gebaeude.seml#_seas_barracks}Kaserne\{/ref} produziert und übertreffen die Leistungen der Bogenschützen anderer Stämme bei Weitem. Im Nahkampf verteidigen sie sich mit einem Dolch, der wesentlich geringeren Schaden anrichtet.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_shotgunner Flintenweib}
+\{img /bunit:seas_shotgunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:+/vsvhcl:--/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Gute Nah- und Fernkämpferin
+\\{br}• Flächenschaden
+\\{br}• Kann nur produziert werden, wenn Cole Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Flintenweiber sind Amazonen, welche die Kunst des Schießens erlernt haben. Verstoßen von den Amazonen, sind sie den SEAS beigetreten, in der Hoffnung Rache nehmen zu können. Sie werden im \{ref H_seas_gebaeude.seml#_seas_laboratory}Laboratorium\{/ref} ausgebildet und benutzen eine Schrotflinte, als auch im Nahkampf einen Säbel, was sie zu furcheinflössenden Kämpferinnen macht. Gegen Fahrzeuge bringen ihre Waffen jedoch nichts.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_rocketman Raketenwerfer}
+\{img /bunit:seas_rocketman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Fernkampfeinheit
+\\{br}• Verwendet Raketen
+   \{/tooltipmedium}
+   \{tooltiplong}
+Raketenwerfer werden in der \{ref H_seas_gebaeude.seml#_seas_barracks}Kaserne\{/ref} produziert. Diese Fernkampfeinheiten sind, wie der Name schon sagt, mit Raketen ausgerüstet. \\{br}
+Ihre Sichtweite übertrifft die Reichweite ihrer Raketen geringfügig. Im Nahkampf verteidigen sie sich mit einem Dolch, der wesentlich geringeren Schaden anrichtet.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_flamethrower Flammenwerfer}
+\{img /bunit:seas_flamethrower -ralign}
+   \{tooltipshort}
+ %/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Beschädigt alle gegnerischen und neutralen Einheiten in der Schusslinie
+\\{br}• Kann nur produziert werden, wenn Leighton Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Flammenwerfer besitzt eine gute Reichweite und ist am besten zum Einsatz gegen Infanterieeinheiten geeignet. \\{br}
+Bei \{ref H_general.seml#_units}Einheiten\{/ref} mit Flammenwerfern übertrifft die Sichtweite die Reichweite. Da es sich bei den Flammenwerfern um Spezialgeräte handelt, werden sie im \{ref H_seas_gebaeude.seml#_seas_laboratory}Laboratorium\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_medic Sanitäter}
+\{img /bunit:seas_medic -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterie
+\\{br}• Heilt die eigenen Einheiten in der unmittelbaren Umgebung
+\\{br}• Spürt Fallen und versteckte Einheiten auf
+   \{/tooltipmedium}
+   \{tooltiplong}
+Als Feldarzt wird der Sanitäter natürlich im \{ref H_seas_gebaeude.seml#_seas_laboratory}Forschungslabor\{/ref} ausgebildet. Sanitäter können nicht kämpfen, allerdings heilen sie ihre Verbündeten und können versteckte Fallen und \{ref H_general.seml#_units}Einheiten\{/ref} aufdecken.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_killer Steinkiller}
+\{img /bunit:seas_killer -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infanterieeinheit
+\\{br}• Nahmkämpfer mit hartem Körper
+\\{br}• Verursacht rüstungsbrechenden Nahkampfschaden
+\\{br}• Kann nur produziert werden, wenn Ada Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wie alle Infanterie \{ref H_general.seml#_units}Einheiten\{/ref}, werden Steinsoldaten in der \{ref H_seas_gebaeude.seml#_seas_barracks}Kaserne\{/ref} ausgebildet. Steinsoldaten sind verfluchte Statuen der schrecklichen \{ref H_hu_produkte.seml#_hu_killer}Nordvolk-Killer\{/ref}, welche von einer Gorgone zu Stein verwandelt wurden und nun zurück zur Oberfäche kommen um alles Leben zu zerstören.\{br}
+Sie sind sehr stark und können fast alle Einheiten schnell töten. Dass sie aus Stein sind macht sie noch gefährlicher, denn sie widerstehen fast allen Angriffen.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_funtitan Steingolem}
+\{img /bunit:seas_funtitan -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Großer Golem
+\\{br}• Verfügt über viele Trefferpunkte
+\\{br}• Verursacht Flächenschaden
+\\{br}• Wird im Amazonentempel gebaut
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wird im \{ref H_seas_gebaeude.seml#_seas_amazon_temple}Amazonentempel\{/ref} produziert. Der Steingolem ist eine der größten und stärksten \{ref H_.seml#_units}Einheiten\{/ref} die die \{ref H_story.seml#_story_seas}SEAS\{/ref} haben. \\{br}
+Er ist unglaublich robust und stark da er eine Menge \{ref H_ui.seml#_iw_hitpoints}Trefferpunkte\{/ref} besitzt. \\{br}
+Ursprünglich vom \{ref H_story.seml#_story_hu}Nordvolk\{/ref} zum Schutz des heiligen \{ref H_special_location.seml#_walhalla}Walhalla\{/ref} erschaffen, um ewige Wache zu halten und geweiht von den alten Göttern. Die meisten schätzen ihn langsamer ein als er ist.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _robots Fahrzeuge und Roboter}
+\{helpitem -name _seas_mechanical_walker Sentinel}
+\{img /bunit:seas_mechanical_walker -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:-/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nahkampf-Roboter
+\\{br}• Sammelt Ressourcen
+\\{br}• Kann Holz, mit einem Upgrade auch Stein sammeln
+   \{/tooltipmedium}
+   \{tooltiplong}
+Das Sentinel ist eine zweibeinige Robotereinheit für Nahkampfzwecke, die wie ein Saurier aussieht. Diese mechanische Einheit wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert.\\{br}
+Wegen seines nur schwachen Angriffs wird es oft zur Beschaffung von \{ref H_world.seml#_wood}Holz\{/ref} und wenn man das \{ref H_ui.seml#_seas_harvester_stone_upgrade}Steinabbau-Upgrade\{/ref} hat, auch \{ref H_world.seml#_stone}Stein\{/ref} benutzt.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit Exo-Vollstrecker}
+\{img /bunit:seas_mobile_suit -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Mächtiger Nahkampf-Roboter
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Exo-Vollstrecker ist eine zweibeinige Robotereinheit für Nahkampfzwecke, die ihre Gegner mithilfe ihrer starken Roboterextremitäten mit gewaltigen Tritten und Stößen traktiert. Diese mechanische Einheit wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit_flamethrower Exo-Flammenwerfer}
+\{img /bunit:seas_mobile_suit_flamethrower -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Mit Flammenwerfer bewaffnete Robotereinheit
+\\{br}• Beschädigt alle gegnerische und neutrale Einheiten in der Schusslinie
+   \{/tooltipmedium}
+   \{tooltiplong}
+Diese Abwandlung des normalen mobilen Kampfanzuges ist mit einem Flammenwerfer mittlerer Reichweite ausgestattet, der sowohl für den Fernkampf als auch für den Nahkampf verwendet werden kann. \\{br}
+Diese mechanische \{ref H_general.seml#_units}Einheit\{/ref} wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_eusmilus Eusmilus-Reiter}
+\{img /bunit:seas_eusmilus -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Schnelle Kavallerieeinheit
+\\{br}• Kann nur produziert werden, wenn Stina Stufe 4 erreicht hat 
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Eusmilus wird in \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabriken\{/ref} produziert und ist schnell, billig und effektiv. \\{br}
+Er kann sich zwar nur unwesentlich besser verteidigen als Infanteristen, teilt dafür aber gewaltig aus.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops CBT-500}
+\{img /bunit:seas_triceratops -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Sehr starke Einheit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Diese Einheit wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert.\\{br}
+Starke Nahkampfeinheit, ist schon durch seine pure Masse eine Bedrohung.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops_archer CBT-T1000}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Sehr starke Kavallerieeinheit
+\\{br}• Kann bis zu 3 Einheiten transportieren
+   \{/tooltipmedium}
+   \{tooltiplong}
+Auch wenn die Dinosaurier groß sind, wenn sie wie der CBT-1000 Schützen transportieren, sind sie viel stärker. Der CBT-1000 wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} gezüchtet.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops_resource_collector CBT-T1500}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Beschafft Ressourcen, indem er zwischen eigenen oder verbündeten Märkten hin und her fährt
+\\{br}• Nicht kämpfende Einheit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Diese Handelssaurier transportieren wichtige Güter für die SEAS zwischen ihren Lagerhäusern. Diese Transportrouten zu schützen obliegt den Soldaten der SEAS.
+Sie werden direkt im \{ref H_seas_gebaeude.seml#_seas_marketplace}Lagerhaus\{/ref} produziert, siehe auch dort für mehr Informationen.\\{br}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_stygimoloch Stygimoloch-Spähdino}
+\{img /bunit:seas_stygimoloch -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:--/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Kleiner Dinosaurier
+\\{br}• Spürt aus eigenen Stücken Gegner auf und greift sie an
+\\{br}• Kann nur produziert werden, wenn Warden Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Stygimoloch ist eine kleine \{ref H_general.seml#_units}Einheit\{/ref} welche nach ihrer Produktion in eine zufällige Richtung läuft und nach feindlichen Einheten sucht die sie angreifen kann.
+Sie erscheint nicht im \{ref H_general.seml#_pyramid}Army Controller\{/ref} da sie nach einiger Zeit stirbt und nicht lenkbar ist. Der Stygimoloch wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} gezüchtet.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_monkey Ninja-Monkey-Späher}
+\{img /bunit:seas_monkey -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:--/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Billiger, kleiner Späher der nur für die SEAS arbeitet
+\\{br}• Bewahrer der Geheimnisse
+\\{br}• Sehr mysteriös!
+\\{br}• Verbrüdert mit den dubiosen Samurai-Eichhörnchen
+   \{/tooltipmedium}
+   \{tooltiplong}
+Über diese kleinen Gesellen ist nicht sehr viel bekannt. Jedoch weiß man, dass sie für die SEAS arbeiten und mit Bananen bezahlt werden. Warum sie sich ausgerechnet mit den SEAS zusammengetan haben, weiß kein Mensch, außer dem SEAS selbst, welche jedoch nicht daran interessiert sind, dass ihre geheimsten Geheimnisse bekannt werden.
+\\{br}Sie geben sehr gute Späher ab, doch sollte man nicht zu viel von ihrem Angriff erwarten.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carnotaurus_rider Carnotaurus-Reiter}
+\{img /bunit:seas_carnotaurus_rider -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Extrem schnelle Tiereinheit
+\\{br}• Kann nur produziert werden wenn Tarna Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Carnotaurusreiter wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} gebaut.\\{br}.
+Als schnelle Kavallerieeinheit, eignet es sich sowohl um größere Feindgruppen zu bekämpfen, als auch für schnelle Angriffe aus dem Hinterhalt. Als \{ref H_heros#_tarna}Königin Tarna\{/ref} aus der heiligen Stadt floh, brauchte sie starke und schneller Leibwächter, sie griff auf dieses flinke Raubtier zurück. Wenn Tarna Stufe 4 erreicht, kann jeder Stamm eine Art ihrer Leibwächter produzieren.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wehrspinne Wehrspinne}
+\{img /bunit:seas_wehrspinne -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Roboter
+\\{br}• Fernkampfeinheit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Groß, mächtig und gefährlich wie ihr Namesvetter: Die Wehrspinne. \\{br}
+Sie ist die einzige schwere Belagerungswaffe, dessen Sichtweite ihrer Schussweite entspricht. Die Wehrspinne wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack Executor}
+\{img /bunit:seas_lumberjack -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robotereinheit
+\\{br}• Mächtige Nahkampfeinheit
+\\{br}• Sammelt Holz
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Executor ist langsam und etwas schwerfällig. Er kann sogar Bäume fällen, was er jedoch nicht tut, da diese Aufgabe bereits vom Senitel übernommen wird.\\{br}
+Seine schiere Gewalt macht den Executor zum furchteinflößenden Nahkampfgegner. Diese mechanische Einheit wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack_minigun Executor-MKII}
+\{img /bunit:seas_lumberjack_minigun -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robotereinheit
+\\{br}• Mächtige Fernkampfeinheit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Diese Version des Executor wird in der \{ref H_seas_gebaeude.seml#_seas_garage}Maschinenfabrik\{/ref} produziert und ist mit einer Minigun bewaffnet, die durch ihre hohe Schußfrequenz sehr viel Schaden anrichtet, was ihm den Suffix MKII gegeben hat.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _ships Schiffe und Hubschrauber}
+
+\{helpitem -name _seas_hovercraft Luftkissenboot}
+\{img /bunit:seas_hovercraft -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Transporteinheit
+\\{br}• Bewegt sich über Land und Wasser
+   \{/tooltipmedium}
+   \{tooltiplong}
+So vielfältig das Luftkissenboot auch für Transporte eingesetzt werden kann, so hat es doch eine Schwachstelle – es besitzt keinerlei Verteidigungskapazität. Diese mechanische Einheit wird auf dem \{ref H_seas_gebaeude.seml#_seas_carrier}Trägerschiff\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_submarine U-Boot}
+\{img /bunit:seas_submarine -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:++/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Starkes Schiff
+   \{/tooltipmedium}
+   \{tooltiplong}
+Das U-Boot ist zwar nicht besonders gewaltig, aber doch eine sehr wirksame \{ref H_general.seml#_units}Einheit.\{/ref} \\{br}
+Es ist mit einer hervorragenden Tarnvorrichtung ausgestattet und kann daher nur gesehen werden, wenn es feuert. Diese mechanische \{ref H_general.seml#_units}Einheit\{/ref} wird auf dem \{ref H_seas_gebaeude.seml#_seas_carrier}Trägerschiff\{/ref} produziert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_helicopter Stinger}
+\{img /bunit:seas_helicopter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Schnelle Lufteinheit\\{br}
+• Schnelle Feuerrate
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Stinger ist eine mächtige \{ref H_general.seml#_units}Einheit\{/ref}, dessen hohe Feuerrate sehr viel Schaden anrichtet.\\{br}
+Durch seine Flugfähigkeit kann er jedes Gewässer problemos überqueren. Für Berge ist die erreichte Flughöhe jedoch zu gering. Er übernimmt in der Armee der SEAS die schnellen Überraschungsangriffe. Gebaut wird er auf dem \{ref H_seas_gebaeude.seml#_seas_carrier}Trägerschiff\{/ref}.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_zeppelin Zeppelin}
+\{img /bunit:seas_zeppelin -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Mobile Ressourcensammelstelle
+\\{br}• Bewegt sich über Land und Wasser
+\\{br}• Kann bis zu 10 Infanterieeinheiten transportieren
+\\{br}• Hervorragende Sichtweite
+\\{br}• Kann nur gebaut werden, wenn der Händler Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der fliegende Zeppelin der \{ref H_heros.seml#_larry}Händler\{/ref} ist ihr hauptsächliches Fortbewegungsmittel, weswegen er von immenser Wichtigkeit ist!\{p}
+Mit ihm transportieren sie ihre Waren von A nach B. Er besitzt keine Verteidigung weswegen man ihn nach Möglichkeit schützen sollte. Der Spieler kann mit ihm bis zu 10 Einheiten transportieren.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_boss_ship Miyagi's Schiff}
+\{img /bunit:seas_pirate_boss_ship -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Großes Piratenschiff
+\\{br}• Kann nur gebaut werden, wenn der Piratenkapitän Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Gebaut im \{ref H_seas_gebaeude.seml#_seas_pirate_outpost}Piratenaußenposten\{/ref}, ist das große Piratenschiff das stärkste Schiff der Paraworld. \\{br}
+Dieses Schiff verursacht viel Schaden, es ist so stark wie ein Titan, deswegen schwimmen sogar die Schiffe der \{ref H_story.seml#_story_hu}Nordmänner\{/ref} feige vor ihm davon.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_cargo_lifter Warentransporter}
+\{img /bunit:seas_cargo_lifter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Kann nicht kämpfen
+\\{br}• Sammelt sehr effektiv Fisch
+   \{/tooltipmedium}
+   \{tooltiplong}
+Warentransporter können \{ref H_world.seml#_fish}Fisch\{/ref} fangen und ihn zum nächsten Hafen bringen. Sie werden im \{ref H_seas_gebaeude.seml#_seas_pirate_outpost}Piratenaußenposten\{/ref} gebaut und sind eine Weiterentwicklung normaler Fischerboote.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_dunkleo Dunkleosteus-Wächter}
+\{img /bunit:seas_pirate_dunkleo -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:+/vsvhcl:++/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Starke Nahkampf-Seeeinheit
+\\{br}• Nur im Piratenaußenposten baubar
+\\{br}• Gut als Geleit für Miyagi's Schiff
+   \{/tooltipmedium}
+   \{tooltiplong}
+Mit der Hilfe des großen Rates der Piratenkönige, fing \{ref H_heros.seml#_miyagi}Miyagi\{/ref} diese wilden und wendigen Kreaturen, um sein gefürchtetes \{ref H_Hu_Produkte.seml#_hu_pirate_boss_ship}Piratenschiff\{/ref} zu schützen. Dieser spezielle Dunkleosteus-Typ ist eine Nahkampf-Marine\{ref H_general.seml#_units}einheit\{/ref} , teuer aber vorteilhaft. Sehr gut als Begleitung für Fernkampfschiffe wie das große Piratenschiff geeignet.
+   \{/tooltiplong}
+\{/helpitem}

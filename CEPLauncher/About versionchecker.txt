@@ -1,0 +1,28 @@
+First of all: AutoIt3 is a very nice "programming language" for simple
+tools and stuff. That's nice. However, it cannot handle multithreading.
+
+What's that?
+When checking for updates, we need 2 things to happen at the same moment:
+1. Display the CEP-Launcher-Window, handle user input
+2. Check for an update version. Internet may be slow, so this could take a
+looong time!
+We cannot handle these things together, multithreading would be needed.
+However, we CAN fake it! That's where version_checker.exe starts:
+Whenever the CEP-Launcher is started, version_checker.exe is started as well.
+While the Launcher displays its userinterface, the versionchecker reads a
+file on our server which contains update information. It then saves them to
+a file (updateinfo.txt) so the Launcher can check if that file exists. If
+it does, the Launcher can check if that version differs from his own version.
+If it does, he can display a message, stating that the user should update.
+
+
+Format of the para-welt.com/cep/version.txt
+Values are seperated by tabulators:
+1. "versioncheck" so the launcher sees this file is valid
+2. Name of latest version
+3. Website version format number
+4. Currently unused, build number (each update, no matter what version number,
+increments this value by 1)
+
+
+- AyCe

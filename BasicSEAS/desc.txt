@@ -1,0 +1,8 @@
+This mod just contains some small changes to enable basic
+SEAS support ingame. SEAS are selectable in Skirmish/MP
+and can be selected on every standard-map.
+
+Use the CEP though, it fixes bugs and makes the SEAS a
+real tribe. They are VERY buggy by default.
+
+By AyCe

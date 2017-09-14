@@ -1,0 +1,13 @@
+class CSEAS inherit CCharacter
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+	endproc;
+
+endclass;

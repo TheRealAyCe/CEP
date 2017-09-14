@@ -1,0 +1,588 @@
+﻿\{document helpfile seas buildings}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_SEAS_Gebaeude.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _economy_buildings Economy buildings}
+\{helpitem -name seas_headquarters Headquarters}
+\{img /bunit:seas_headquarters -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces Workers
+\\{br}• Begins Epochs
+\\{br}• Resource collection point
+\\{br}• Increases storage
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS headquarters is the starting point to any SEAS base.  Workers are produced and new epochs develop from here. Once begun, these epochs cannot be rescinded. Inventions in progress are lost if the building is destroyed.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_1 -redirect seas_headquarters -nodisplay Headquarters Epoch 1}
+\{img /bunit:seas_headquarters_1 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces Workers
+\\{br}• Begins Epochs
+\\{br}• Resource collection point
+\\{br}• Increases storage
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS headquarters is the starting point to any SEAS base.  Workers are produced and new epochs develop from here. Once begun, these epochs cannot be rescinded. Inventions in progress are lost if the building is destroyed.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_2 -redirect seas_headquarters -nodisplay Headquarters Epoch 2}
+\{img /bunit:seas_headquarters_2 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces Workers
+\\{br}• Begins Epochs
+\\{br}• Resource collection point
+\\{br}• Increases storage
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS headquarters is the starting point to any SEAS base.  Workers are produced and new epochs develop from here. Once begun, these epochs cannot be rescinded. Inventions in progress are lost if the building is destroyed.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_3 -redirect seas_headquarters -nodisplay Headquarters Epoch 3}
+\{img /bunit:seas_headquarters_3 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces Workers
+\\{br}• Begins Epochs
+\\{br}• Resource collection point
+\\{br}• Increases storage
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS headquarters is the starting point to any SEAS base.  Workers are produced and new epochs develop from here. Once begun, these epochs cannot be rescinded. Inventions in progress are lost if the building is destroyed.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_4 -redirect seas_headquarters -nodisplay Headquarters Epoch 4}
+\{img /bunit:seas_headquarters_4 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces workers
+\\{br}• Begins Epochs
+\\{br}• Resource collection point
+\\{br}• Increases storage
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS headquarters is the starting point to any SEAS base.  Workers are produced and new epochs develop from here. Once begun, these epochs cannot be rescinded. Inventions in progress are lost if the building is destroyed.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_5 -redirect seas_headquarters -nodisplay Headquarters Epoch 5}
+\{img /bunit:seas_headquarters_5 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces Workers
+\\{br}• Begins Epochs
+\\{br}• Resource collection point
+\\{br}• Increases storage
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS headquarters is the starting point to any SEAS base.  Workers are produced and new epochs develop from here. Once begun, these epochs cannot be rescinded. Inventions in progress are lost if the building is destroyed.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_tent Small tent}
+\{img /bunit:seas_small_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Increases unit limit
+\\{br}• Increases resource storage
+   \{/tooltipmedium}
+   \{tooltiplong}
+The small tent has numerous uses, it can be used to store extra raw materials and a shelter for infantry to live in, expanding the unit limit. Although if destroyed those extra spaces for units, and resources will be taken away, so take care to keep the mass of them in a well protected place, not out in the open.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_tent Big tent}
+\{img /bunit:seas_big_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Increases unit limit
+\{/tooltipmedium}
+   \{tooltiplong}
+The big tent, unlike the small tent, has only one major purpose, living accommodation for all units in the SEAS armies. Although unlike the cramped small tent, the big tent has a lot of space and can expand the unit limit by much more than the small tent. Many more things may go in tents around SEAS encampments such as tactical decisions, the kitchens to cook the food brought in. But none of these things will be affected apart from the unit limit. If big tents are destroyed the amount of units you can accommodate might be majorly affected. So as with the small tents keep the majority of the tents in a well protected place.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_steelwork Steelwork}
+\{img /bunit:seas_steelwork -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Resource collection point
+\\{br}• Increases resource storage
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Steelwork acts a collection point for all resources, making the journey from the resource to the drop off point that much shorter for your workers. In the long run this will give a better efficiency to your resource income, and you will be getting a faster trickle rate. Also being a lot cheaper than the headquarters you can place many of these too far our resource points, that’d it otherwise take your workers along time to run up and down to.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_greenhouse Greenhouse}
+\{img /bunit:seas_greenhouse -ralign}
+   \{tooltipshort}
+   %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces food
+\\{br}• Must be farmed by at least 1 worker
+      \{/tooltipmedium}
+   \{tooltiplong}
+Greenhouses require no upkeep and continually produce food when farmed by at least 1 Worker. The Greenhouse by far is the most efficient means of producing food, although best placed around a collection point.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_outpost Subsidiary outpost}
+\{img /bunit:seas_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces infantry units
+\\{br}• Produces a number of vehicles
+\\{br}• Can only be built if Babbit reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Subsidiary outpost is a building that produces many SEAS units, both infantry and mechanical ones.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_loudspeaker Speaker}
+\{img /bunit:seas_loudspeaker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Boosts attack damage of nearby friendly units
+\\{br}• Can only be built if the Arch Druid reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Leighton's voice through a speaker brought to the SEAS from the headquarters itself, SEAS and their allied units know they have a lot of people to make proud
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marketplace Marketplace}
+\{img /bunit:seas_marketplace -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Resource collection point
+\\{br}• Increases resource storage
+\\{br}• Produces CBT-1500
+   \{/tooltipmedium}
+   \{tooltiplong}
+The SEAS Marketplace is the marketplace for all SEAS trades, both within the SEAS and with other tribes. The SEAS use triceratops with modified amour to compensate the mechanics and storage space needed to load, unload and transport goods from one marketplace to another. The trade dinosaur will travel only from one market place to another. Once it has established its route, it will continue to use the trade route unless ordered to move off somewhere else, or to another market place. With greater distant routes between the two market places, higher profits will be gained. If the trade dinosaur is killed on route, any resources it may be carrying are lost. Trade dinosaurs are not the only way to gain profit through the Depository though, SEAS look very kindly on seeing enemy units dead, or even wild animals. Even more so on high value targets such as titans, or bigger wild animals. In killing these units SEAS gain skulls, which in turn they can trade for raw materials such as food, wood or stone. Although this only works one way, you cannot trade any of the raw materials for skulls.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_coh The Container Of Heroes}
+\{img /bunit:seas_coh -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Container Created By Kharg For Remembering The Developers
+\\{br}• Kharg
+\\{br}• AyCe
+\\{br}• Scrat
+\\{br}• MrMorgana
+\\{br}• yclari
+\\{br}• -exo-
+\\{br}• Akkarin
+\\{br}• THEEVERGOD
+\\{br}• Tomeis
+\\{br}• Adder
+\\{br}• TheZoo
+\\{br}• Arvinder
+\\{br}• Mario
+\\{br}• Parker
+   \{/tooltipmedium}
+   \{tooltiplong}
+This Container Honored The Developers Of The SEASMOD. \\{br}
+Thanks To: Kharg, AyCe, Scrat, MrMorgana, yclari, -exo-, Akkarin, THEEVERGOD, Tomeis, Adder, TheZoo, Arvinder, Mario & Parker.
+\\{br}\\{br}\\{br}\\{br} - SEASMOD is magic! ;-)
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warpgate Warp gate}
+\{img /bunit:seas_warpgate -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Win the game by completing and holding the gate until it opens
+   \{/tooltipmedium}
+   \{tooltiplong}
+Once the Warp gate has been built it must first be held for a certain period of time before it opens. \\{br}
+The player who built the gate first wins when it does so.
+All players are notified both when a Warp gate has been placed and when the countdown starts after completion. This serves as a warning that they will lose if they don't do something to stop the player with the Warp gate.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{chapter -name _combat_buildings Combat buildings}
+\{helpitem -name _seas_barracks Barracks}
+\{img /bunit:seas_barracks -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces infantry units
+\\{br}• Epoch upgrades allow the production of advanced fighters
+\\{br}• Increases unit limit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Barracks is where all SEAS infantry are trained. SEAS infantry specialise in advanced weaponry, in comparison to the other tribe’s primitive weapons.  While effective against infantry, when coming across animals or vehicles they won’t fare so well. Although the rocket solider being the exception in being able to significantly damage even the toughest of beasts or machines. The SEAS also install sleeping quarters inside each of their barracks to accommodate more troops.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carrier Carrier}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces submarines and hover units
+\\{br}• Epoch upgrades allow the production of advanced ships and amphibian units
+\\{br}• Occupies a slot in the unit pyramid
+   \{/tooltipmedium}
+   \{tooltiplong}
+The carrier is essential for leaving islands or crossing open water as only transport ships may transport units over deep water. The carrier can move itself slowly through the water and is capable of producing all SEAS submarines and hover units on the open sea.  The SEAS carrier also is able to defend itself in the event of an attack to try to take out SEAS sea operations, using its turrets on deck. SEAS unlike other tribes utilise new hover technologies that allow the unit to manoeuvre both on land and water just as well. In this way the hover units can escape pursuers on land or on water, so the other tribes will have to utilise both to corner these tricky vehicles. The SEAS army also enlisting SEAS submarines into their sea bound army. Although the technology to fully submerge has not been perfected yet, the onboard computer guidance system for their torpedo weaponry is very dangerous to come up against. The carrier also spends its unoccupied time to fish, to feed the many SEAS troops in their vast armies. The crew simple must find a school of fish and set anchor over it to begin fishing.  Instead of setting the rallypoint, a right-click moves the carrier to a new location. A flat, sandy beach is required to start construction of the carrier before launching it. The carrier occupies a slot in the unit pyramid, so cannot be built if such a slot is not available. Damaged ships close to the carrier will be repaired automatically, without using resources.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carrier_fake Siege carrier}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Strong ship
+\\{br}• Powerful long-range weapon
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Siege carrier is the most powerful ship afloat, far outstripping the others when it comes to long range attacks. \\{br}
+In close combat, however, it doesn't stand that much of a chance.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_garage Garage}
+\{img /bunit:seas_garage -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produces mounted units and vehicles
+\\{br}• Epoch upgrades allow the production of advanced animal units and vehicles
+   \{/tooltipmedium}
+   \{tooltiplong}
+Garages produce all SEAS mounted units and vehicles. SEAS mainly focus on machinery to do the job, but do use special mounted triceratops in their war efforts against the other tribes. As SEAS advance in Epoch so does their machines, from the basic Exoskeleton and Sentinel to the advanced Executioner. The SEAS also developed the Black widow, as a means of long rang bombardment, but is only really effective against buildings.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_laboratory Laboratory}
+\{img /bunit:seas_laboratory -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Heals units in immediate vicinity
+\\{br}• Produces medics
+\\{br}• Develops special unit upgrades
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Laboratory is equipped with a pharmaceutical to produce all medication and treatment need for dispatch to all those in the immediate area. It also has an integrated repair shop internally, to repair a badly damage machines or vehicles that come to the laboratory include those with hover technology. Opposing units are not healed. The Laboratory also provides a place of research in the latest drug enhancements for specialised SEAS units. Medics are also trained here in full medical training to treat any injury on the field, although are not combat trained so must be protect by SEAS armed divisions. The Laboratory does not have parts for submarine repairs as all parts are kept on the carriers and so submarines cannot be repaired here.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_amazon_temple Amazon Temple}
+\{img /bunit:seas_amazon_temple -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Heals units in immediate vicinity
+\\{br}• Produces Special Combat Units
+\\{br}• Can only be built if Tarna has reached level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Temple heals all allied and own \{ref H_general.seml#_units} units\{/ref} in its immediate vicinity better than a normal temple does. \\{br}
+Enemy \{ref H_general.seml#_units} units\{/ref} are not healed. The Temple is also where dreadful creatures from all corners of the world are produced for battle. The Temple cannot heal ships. \\{br}
+This monumental structure can't be repaired by human workers. Its holy spirits restore the damage caused by enemies over time.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_khargclub Kharg Club}
+\{img /bunit:seas_khargclub -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Hires heroes
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Kharg club is the place to find and hire talented heroes to your cause. Death is no barrier - even if a hero dies they can once again be found and hired in the tavern. All heroes start off at level 1 and have to be raised from there using skulls. Heroes can only appear individually for each tribe; a given hero must first die before they can be re-hired.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_outpost Pirate Outpost}
+\{img /bunit:seas_pirate_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+\{tooltipmedium}
+• Produces advanced ships
+\\{br}• Repairs ships in immediate vicinity
+\\{br}• Collection point for fish
+\\{br}• Can only be built if Miyagi reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+This Harbor is the place, where you can produce advanced units, but it is only buildable, when Miyagi reaches level 4. For example you can produce here \{ref H_seas_produkte.seml#_seas_pirate_boss_ship}Miyagi's Ship\{/ref} to rule the Sea.
+It may only be built on flat, sandy beaches. \\{br}
+Damaged ships close to the Harbor will be repaired automatically, without using  \{ref H_general.seml#_resources} resources.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _defense_buildings Defense buildings}
+\{helpitem -name _seas_fence Fence}
+\{img /bunit:seas_fence -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Non-mountable wall
+\\{br}• Placed on a grid
+\\{br}• Towers may be integrated 
+   \{/tooltipmedium}
+   \{tooltiplong}
+The fences form a non-mountable fortification. This means units cannot man them during an attack. A straight, even stretch of fence three sections long is needed to insert a Gate. The metallic fence acts as a wall to keep even the strongest of enemies or wild animals at bay. Although the fence however strong it may be, will not hold out threats forever so need to be repaired regularly and threats need to be dealt with quickly before they are able to breach the fences. Towers can be integrated into the fences to help defend from breach into the main base. The towers and the fence will remain two separate buildings, however, which can be attacked and destroyed independently.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl2 Stone fence}
+\{img /bunit:seas_fence_lvl2 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Non-mountable wall
+\\{br}• Placed on a grid
+\\{br}• Towers may be integrated 
+   \{/tooltipmedium}
+   \{tooltiplong}
+The fences form a non-mountable fortification. This means units cannot man them during an attack. A straight, even stretch of fence three sections long is needed to insert a Gate. The metallic fence acts as a wall to keep even the strongest of enemies or wild animals at bay. Although the fence however strong it may be, will not hold out threats forever so need to be repaired regularly and threats need to be dealt with quickly before they are able to breach the fences. Towers can be integrated into the fences to help defend from breach into the main base. The towers and the fence will remain two separate buildings, however, which can be attacked and destroyed independently.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl3 Iron fence}
+\{img /bunit:seas_fence_lvl3 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Non-mountable wall
+\\{br}• Placed on a grid
+\\{br}• Towers may be integrated 
+   \{/tooltipmedium}
+   \{tooltiplong}
+The fences form a non-mountable fortification. This means units cannot man them during an attack. A straight, even stretch of fence three sections long is needed to insert a Gate. The metallic fence acts as a wall to keep even the strongest of enemies or wild animals at bay. Although the fence however strong it may be, will not hold out threats forever so need to be repaired regularly and threats need to be dealt with quickly before they are able to breach the fences. Towers can be integrated into the fences to help defend from breach into the main base. The towers and the fence will remain two separate buildings, however, which can be attacked and destroyed independently.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gate Gate}
+\{img /bunit:seas_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Will open for allied units
+\\{br}• Can be closed
+\\{br}• Can only be inserted into an existing wall
+   \{/tooltipmedium}
+   \{tooltiplong}
+Gates using their sensor technology will open for the SEAS and their allied units automatically while remaining closed to all others. Gates can only be placed along an even stretch of fence three sections long. A green blue print of the gate will appear when you are able to place down the gate successfully into the fence.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall SEAS wall}
+\{img /bunit:seas_wall -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Reinforced mountable wall
+\\{br}• Towers may be integrated
+\\{br}• Units stationed on it receive defense bonus
+\\{br}• Can only be built if the Governor reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The strongest wall the \{ref H_story.seml#_story_seas}SEAS \{/ref} can build. \\{br}
+Infantry \{ref H_general.seml#_units} units\{/ref} can be stationed on reinforced walls. \{ref H_general.seml#_units} Units\{/ref} manning walls receive a defense bonus. Towers and gates provide access to the walls. \\{br}
+Ranged \{ref H_general.seml#_units} units\{/ref} such as \{ref H_seas_produkte.seml#_seas_gunner} Gunners\{/ref} and \{ref H_seas_produkte.seml#_seas_marksman} Marksman\{/ref} can fire from the walls. Since stones with magical power were used during the construction of this wall, it restores the damage caused by enemy.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall_gate SEAS wall gate}
+\{img /bunit:seas_wall_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Opens for allied units
+\\{br}• Can be closed completely
+\\{br}• Can only be inserted into existing wall
+\\{br}• Can only be built if the Governor reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Gates open for both the player's own and allied \{ref H_general.seml#_units} units\{/ref} automatically while remaining closed to all others. \\{br}
+Gates can also be closed completely, even for own \{ref H_general.seml#_units} units.\{/ref} They can only be placed in an existing straight, even section of wall three fields in width. An icon will indicate possible gate locations during wall construction and whenever the "Gate" icon has been selected. Gates also function as stairways to the top of the walls. \\{br}
+Since stones with magical power were used during the construction of this gate, it restores the damage caused by enemy.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_turret_tower Tower}
+\{img /bunit:seas_turret_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Attacks enemies on sight
+\\{br}• Can be placed alone or integrated into a fence
+   \{/tooltipmedium}
+   \{tooltiplong}
+Towers fire automatically and do not need to be manned by infantry. They are placed on the fence grid, allowing them to be integrated into a fence at a later point in time. Unlike the other tribe’s tower, SEAS maintain their advanced weaponry, and use a minigun auto turret atop of their towers instead of infantry firing out primitive weapons.  The minigun will also track motion from a certain distance and will detect allies from enemies. It also has a threat detection indicator, it will ready if a threat such as wild animal approaches, although if it does not attack and moves off it will not engage.  Enemies on the other hand once detected and in range will be attacked on sight.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_bunker Bunker}
+\{img /bunit:seas_hq_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Spawns SEAS units (Story)
+\\{br}• Protects up to 4 units
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Bunker remains a threat for as long as it exists. \\{br}
+It continuously spawns new \{ref H_story.seml#_story_seas} SEAS\{/ref} \{ref H_general.seml#_units} units,\{/ref} ready to attack.\\{br}
+Apart from that, it can protect up to 4 infanterists.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_bunker Turret Bunker}
+\{img /bunit:seas_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Fires a turret when manned
+\\{br}• Protects up to 4 units
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Turret Bunker is an enhanced version of the normal \{ref H_SEAS_Gebaeude.seml#_seas_hq_bunker}Bunker\{/ref} .\\{br}
+It has a turret similar to the carriers and will open fire on enemies, when at least one person is in it.\\{br}
+It can contain up to 4 infanterists.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mg_nest MG nest}
+\{img /bunit:seas_mg_nest -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Attacks enemies on sight
+   \{/tooltipmedium}
+   \{tooltiplong}
+Machine gun or MG nests are automatically manned by a gunner when built, they are assigned 24 hour watch, and are spend the rest of their lives inside their nests, however short it may be. Although the machine gun is nowhere near the power of minigun on the SEAS towers, in great number MG nests can be a major threat to a group of enemies. They are a usefully early and cheap defence. Although when SEAS gain epoch, it is better to support these with a few towers and when able the longer ranged small cannons.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_cannon Small cannon}
+\{img /bunit:seas_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Attacks enemies on sight
+\\{br}• Does splash damage to units in an area
+\\{br}• Can only be built if Taslow reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Small cannons like the MG nests do less damage then the SEAS towers, although where they do less damage they have a greater range and splash damage from the explosions of the shells. Although also like the MG nests it greater number the small cannons will be extremely deadly. Combining MG nests, small cannons and towers will make an extremely effective defence against most threats. Although, artillery units such as black widow’s, log cannon’s, brachio catapult’s and dragon tank’s may outrange all these defences, so have a regiment ready to fend off such long ranged assaults.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_small_cannon Small cannon}
+\{img /bunit:seas_hq_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Attacks on sight
+   \{/tooltipmedium}
+   \{tooltiplong}
+Small cannons automatically attack enemy \{ref H_general.seml#_units} units.\{/ref} \\{br}
+Less powerful than the tower, a single Small cannon poses no big threat, although a number of them can prove to be dangerous.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_cannon Big cannon}
+\{img /bunit:seas_big_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Attacks on sight
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Big cannon causes immense damage.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_scorpion_station Scorpion control station}
+\{img /bunit:seas_scorpion_station -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Must be destroyed to weaken the Scorpion
+   \{/tooltipmedium}
+   \{tooltiplong}
+Energy and control consoles used to move and control the Scorpion. \\{br}
+Powered by steam from the crater, these consoles are protected by thick iron casings. \{ref H_heros.seml#_tesla}Taslow \{/ref} has to break through these casings before he can work on the consoles. Each console controls a different part of the Scorpion. This means they have to be shut down one after another in order to limit the Scorpions movement and finally shut it down completely.
+   \{/tooltiplong}
+\{/helpitem}

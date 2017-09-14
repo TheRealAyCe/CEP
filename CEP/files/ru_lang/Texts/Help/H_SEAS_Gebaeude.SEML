@@ -1,0 +1,573 @@
+﻿\{document helpfile seas buildings}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_SEAS_Gebaeude.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _economy_buildings Экономические строения}
+\{helpitem -name seas_headquarters Штаб}
+\{img /bunit:seas_headquarters -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит рабочих
+\\{br}• Вводит в новую эпоху
+\\{br}• Место для хранения ресурсов
+\\{br}• Увеличивает площадь хранения
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Это основное здание \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Оно необходимо для создания \{ref H_seas_produkte.seml#_seas_worker}рабочих\{/ref} и входа в новые \{ref H_general.seml#_techtree}эпохи.\{/ref} Начав свой отсчет, эпохи уже не повернут вспять. Неоконченные исследования будут аннулированы, если \{ref H_general.seml#_building}здание\{/ref} будет разрушено.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_1 -redirect seas_headquarters -nodisplay Штаб эпохи 1}
+\{img /bunit:seas_headquarters_1 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит рабочих
+\\{br}• Вводит в новую эпоху
+\\{br}• Место для хранения ресурсов
+\\{br}• Увеличивает площадь хранения
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Это основное здание \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Оно необходимо для создания \{ref H_seas_produkte.seml#_seas_worker}рабочих\{/ref} и входа в новые \{ref H_general.seml#_techtree}эпохи.\{/ref} Начав свой отсчет, эпохи уже не повернут вспять. Неоконченные исследования будут аннулированы, если \{ref H_general.seml#_building}здание\{/ref} будет разрушено.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_2 -redirect seas_headquarters -nodisplay Штаб эпохи 2}
+\{img /bunit:seas_headquarters_2 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит рабочих
+\\{br}• Вводит в новую эпоху
+\\{br}• Место для хранения ресурсов
+\\{br}• Увеличивает площадь хранения
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Это основное здание \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Оно необходимо для создания \{ref H_seas_produkte.seml#_seas_worker}рабочих\{/ref} и входа в новые \{ref H_general.seml#_techtree}эпохи.\{/ref} Начав свой отсчет, эпохи уже не повернут вспять. Неоконченные исследования будут аннулированы, если \{ref H_general.seml#_building}здание\{/ref} будет разрушено.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_3 -redirect seas_headquarters -nodisplay Штаб эпохи 3}
+\{img /bunit:seas_headquarters_3 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит рабочих
+\\{br}• Вводит в новую эпоху
+\\{br}• Место для хранения ресурсов
+\\{br}• Увеличивает площадь хранения
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Это основное здание \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Оно необходимо для создания \{ref H_seas_produkte.seml#_seas_worker}рабочих\{/ref} и входа в новые \{ref H_general.seml#_techtree}эпохи.\{/ref} Начав свой отсчет, эпохи уже не повернут вспять. Неоконченные исследования будут аннулированы, если \{ref H_general.seml#_building}здание\{/ref} будет разрушено.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_4 -redirect seas_headquarters -nodisplay Штаб эпохи 4}
+\{img /bunit:seas_headquarters_4 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит рабочих
+\\{br}• Вводит в новую эпоху
+\\{br}• Место для хранения ресурсов
+\\{br}• Увеличивает площадь хранения
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Это основное здание \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Оно необходимо для создания \{ref H_seas_produkte.seml#_seas_worker}рабочих\{/ref} и входа в новые \{ref H_general.seml#_techtree}эпохи.\{/ref} Начав свой отсчет, эпохи уже не повернут вспять. Неоконченные исследования будут аннулированы, если \{ref H_general.seml#_building}здание\{/ref} будет разрушено.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_5 -redirect seas_headquarters -nodisplay Штаб эпохи 5}
+\{img /bunit:seas_headquarters_5 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит рабочих
+\\{br}• Вводит в новую эпоху
+\\{br}• Место для хранения ресурсов
+\\{br}• Увеличивает площадь хранения
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Это основное здание \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Оно необходимо для создания \{ref H_seas_produkte.seml#_seas_worker}рабочих\{/ref} и входа в новые \{ref H_general.seml#_techtree}эпохи.\{/ref} Начав свой отсчет, эпохи уже не повернут вспять. Неоконченные исследования будут аннулированы, если \{ref H_general.seml#_building}здание\{/ref} будет разрушено.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_tent Палатка}
+\{img /bunit:seas_small_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Увеличивает максимальное количество юнитов
+\\{br}• Увеличивает количество ресурсов
+   \{/tooltipmedium}
+   \{tooltiplong}
+Палатка сочетает в себе функции небольшого склада для хранения ресурсов и жилища для бойцов.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_tent Тент}
+\{img /bunit:seas_big_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Increases unit limit
+\{/tooltipmedium}
+   \{tooltiplong}
+В отличие от палатки, тент несет только одну функцию - предоставление спальных мест для юнитов, существенно увеличивая допустимую численность населения. В случае уничтожения допустимое количество населения понизится, так что тент следует хорошо охранять. Занимает очень много места на карте.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_steelwork Промышленный склад}
+\{img /bunit:seas_steelwork -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Хранилище для дерева, пищи и камня
+\\{br}• Увеличивает площадь хранения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Промышленный склад является основным хранилищем ресурсов \{ref H_story.seml#_story_seas}ОТАН.\{/ref} В отличие от других народов ОТАН не торгует \{ref H_general.seml#_resources}ресурсами.\{/ref} Эти люди получают ресурсы только собственными силами и не могут покупать их у других.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_greenhouse Теплица}
+\{img /bunit:seas_greenhouse -ralign}
+   \{tooltipshort}
+   %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит пищу
+\\{br}• Может задействовать до четырех рабочих
+      \{/tooltipmedium}
+   \{tooltiplong}
+Теплицам не нужен особый уход, и они будут обеспечивать народ \{ref H_ui.seml#_tb_food}пищей\{/ref} до тех пор, пока там остается хотя бы один \{ref H_seas_produkte.seml#_seas_worker}рабочий.\{/ref} Являются основным местом сбора пищи.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_outpost База поддержки}
+\{img /bunit:seas_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит большинство пехотных и транспортных юнитов
+\\{br}• Можно создавать когда Бэббидж достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+База поддержки почти полностью сочетает в себе функции казарм и машинных мастерских, производя большинство пехотных и механизированных воиск, а также трицератопсов.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_loudspeaker Громкоговоритель}
+\{img /bunit:seas_loudspeaker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Увеличивает урон, наносимый дружественными подразделениями неподалеку
+\\{br}• Можно создавать когда Верховный Друид достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Позволяет Лейтону обращаться к войскам по дистанционной связи, напоминая им, за что они сражаются, что существенно повышает боевой дух войск.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marketplace Рынок}
+\{img /bunit:seas_marketplace -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Место сбора ресурсов
+\\{br}• Место хранения ресурсов
+\\{br}• Производит CBT-1500
+   \{/tooltipmedium}
+   \{tooltiplong}
+Рынок ОТАН сочетает в себе немало важных функций. Во-первых, рынок можно использовать как склад для сбора и хранения ресурсов, причем площадь складов можно увеличивать с помощью исследований. Во-вторых, рынок является главной торговой базой ОТАН, производит торговых трицератопсов. С помощью рынка также можно покупать ресурсы за черепа. Обратите внимание, что покупка черепов на рынке невозможна.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warpgate Warp gate}
+\{img /bunit:seas_warpgate -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Win the game by completing and holding the gate until it opens
+   \{/tooltipmedium}
+   \{tooltiplong}
+Once the Warp gate has been built it must first be held for a certain period of time before it opens. \\{br}
+The player who built the gate first wins when it does so.
+All players are notified both when a Warp gate has been placed and when the countdown starts after completion. This serves as a warning that they will lose if they don't do something to stop the player with the Warp gate.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{chapter -name _combat_buildings Военные строения}
+\{helpitem -name _seas_barracks Казармы}
+\{img /bunit:seas_barracks -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Создает наземных бойцов
+\\{br}• Увеличивает место для населения
+   \{/tooltipmedium}
+   \{tooltiplong}
+В казармах создаются все наземные бойцы \{ref H_story.seml#_story_seas}ОТАН.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carrier Плавучая база}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит корабли
+\\{br}• Ловит рыбу
+   \{/tooltipmedium}
+   \{tooltiplong}
+Плавучая база необходима в тех случаях, когда нужно пересечь море или глубокий водоем, так как переправлять войска по воде могут только транспортные корабли. Для постройки плавучей базы необходим ровный песчаный пляж. В море она движется очень медленно, может строить корабли и создавать водоплавающих существ, а при изучении рыболовства – ловить 
+\{ref H_world.seml#_fish}рыбу.\{/ref} Плавучая база занимает ячейку на \{ref H_general.seml#_pyramid}панели управления армией.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_carrier_fake Военное судно}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Сильный водный юнит
+\\{br}• Атакует врагов издалека
+   \{/tooltipmedium}
+   \{tooltiplong}
+Военное судно - сильный корабль, способный атаковать врагов с большого расстояния. \\{br}
+Слабо в ближнем бою.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_garage Машинная мастерская}
+\{img /bunit:seas_garage -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Создает животных и машины
+   \{/tooltipmedium}
+   \{tooltiplong}
+В машинной мастерской создаются транспортные единицы и управляемые машины. Все они очень опасны и отличаются большими размерами.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_laboratory Лаборатория}
+\{img /bunit:seas_laboratory -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Лечит юнитов неподалеку
+\\{br}• Создает медиков и особых существ
+\\{br}• Исследует особые улучшения
+   \{/tooltipmedium}
+   \{tooltiplong}
+Лаборатория служит медицинской базой, производит необходимые медикаменты для лечения юнитов неподалеку и снаряжения медиков. Кроме этого, лаборатория - центральный исследовательский центр, производящий множество важных улучшений, усиливающих оружие и броню.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_amazon_temple Храм Амазонок}
+\{img /bunit:seas_amazon_temple -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Быстро лечит всех жителей, находящихся поблизости
+\\{br}• Производит особых боевых юнитов
+\\{br}• Можно создавать когда Тарна достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Этот храм лечит всех дружественных юнитов, находящихся неподалеку, причем гораздо быстрее, чем обычный храм \\{br}
+В храме, кроме того, производятся наиболее сильные и опасные юниты. Храм не может ремонтировать корабли.  \\{br}
+Храм Амазонок нельзя ремонтировать. Храм использует собственную магическую силу чтобы восстанавливать урон, нанесенный ему, через некоторое время.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_khargclub Клуб Карга}
+\{img /bunit:seas_khargclub -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Нанимает героев
+   \{/tooltipmedium}
+   \{tooltiplong}
+Клуб Карга - место, где можно нанять самых великих героев в параллельном мире. Если герой погибает, его можно снова нанять в клубе за большое количество пищи и черепов. Все герои создаются на первом уровне, и должны развиваться за черепа.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_outpost Пиратский порт}
+\{img /bunit:seas_pirate_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+\{tooltipmedium}
+• Производит особые корабли
+\\{br}• Ремонтирует корабли вокруг себя
+\\{br}• Место для сбора рыбы
+\\{br}• Можно создавать когда Мияги достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+С помощью этого порта можно производить особо эффективные плавающие юниты, однако построить его можно только когда Мияги достигнет 4 уровня. Например, здесь вы можете построить  \{ref H_seas_produkte.seml#_seas_pirate_boss_ship}Корабль-титан\{/ref}, чтобы править в море. \\{br}
+Все близлежащие корабли ремонтируются без затраты \{ref H_general.seml#_resources} ресурсов.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _defense_buildings Защитные строения}
+\{helpitem -name _seas_fence Ограда}
+\{img /bunit:seas_fence -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• На нее нельзя взобраться
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ограды – это сооружения, на которые нельзя взобраться. Они охраняют ОТАН от нападений диких животных и врагов. 
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl2 Каменная ограда}
+\{img /bunit:seas_fence_lvl2 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• На нее нельзя взобраться
+\\{br}• Можно встраивать башни
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ограды – это сооружения, на которые нельзя взобраться. Они охраняют ОТАН от нападений диких животных и врагов. 
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl3 Металлический забор}
+\{img /bunit:seas_fence_lvl3 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• На нее нельзя взобраться
+\\{br}• Можно встраивать башни
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ограды – это сооружения, на которые нельзя взобраться. Они охраняют ОТАН от нападений диких животных и врагов. 
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gate Ворота}
+\{img /bunit:seas_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Ворота будут открываться только для воинов ОТАН
+\\{br}• Должны быть встроены в стену
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ворота открываются автоматически для воинов \{ref H_story.seml#_story_seas}ОТАН\{/ref} и их союзников, оставаясь закрытыми для всех остальных. Они могут быть встроены только в уже существующую ограду и занимать место трех ее секторов. Значок укажет возможность размещения ворот.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall Стена ОТАН}
+\{img /bunit:seas_wall -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Прочная стена, на которую можно взобраться
+\\{br}• Юниты на стене получают бонус к защите
+\\{br}• Можно создавать когда Вождь достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Мощнейшая стена которую может постороить \{ref H_story.seml#_story_seas}ОТАН \{/ref}. \\{br}
+Пехота может взобраться на стену. Башни и ворота служат лестницей для стены. \\{br}
+\{ref H_seas_produkte.seml#_seas_gunner} Пулеметчики\{/ref} и \{ref H_seas_produkte.seml#_seas_marksman} Стрелки\{/ref} могут стрелять по врагам. Поскольку стена сделана из магического камня, она сама сможет восстановить здоровье.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall_gate Ворота Валгаллы}
+\{img /bunit:seas_wall_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Ворота будут открываться только для воинов ОТАН
+\\{br}• Должны быть встроены в стену
+\\{br}• Могут быть полностью закрыты
+\\{br}• Можно создавать когда Вождь достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Особо прочные ворота, которые способны восстанавливать здоровье благодаря магическим материалам, использованным при постройке.
+Открываются только союзным юнитам. Также могут быть полностью открыты или закрыты.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_turret_tower Турель}
+\{img /bunit:seas_turret_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Атакует всех видимых врагов
+\\{br}• Может стоять отдельно или быть частью стены
+   \{/tooltipmedium}
+   \{tooltiplong}
+Турели – это башни, которые стреляют автоматически. В них нет наземных воинов. Турели размещаются на отсеках для стен и со временем могут быть встроены в стены.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_bunker Бункер}
+\{img /bunit:seas_hq_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Производит бойцов ОТАН 
+   \{/tooltipmedium}
+   \{tooltiplong}
+Бункер опасен, пока не уничтожен. Он постоянно производит новые войска \{ref H_story.seml#_story_seas}ОТАН,\{/ref} которые сразу готовы идти в бой.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_bunker Вооруженный бункер}
+\{img /bunit:seas_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Открывает огонь, когда за турелью сидит боец
+\\{br}• Защищает до 4 бойцов
+   \{/tooltipmedium}
+   \{tooltiplong}
+Вооруженный бункер - улучшенная версия обыкновенного \{ref H_SEAS_Gebaeude.seml#_seas_hq_bunker}бункера\{/ref} .\\{br}
+Вооружен турелью, аналогичной турели кораблей, которая открывает огонь если в бункере есть хотя бы 1 человек.\\{br}
+Вмещает до 4 человек.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_coh Контейнер героев}
+\{img /bunit:seas_coh -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Создан Каргом для почтения создателей
+\\{br}• Kharg
+\\{br}• AyCe
+\\{br}• Scrat
+\\{br}• MrMorgana
+\\{br}• yclari
+\\{br}• -exo-
+\\{br}• Akkarin
+\\{br}• THEEVERGOD
+\\{br}• Tomeis
+\\{br}• Adder
+\\{br}• TheZoo
+\\{br}• Arvinder
+\\{br}• Mario
+\\{br}• Parker
+   \{/tooltipmedium}
+   \{tooltiplong}
+Контейнер почтения создателей SEAS mod \\{br}
+Thanks To: Kharg, AyCe, Scrat, MrMorgana, yclari, -exo-, Akkarin, THEEVERGOD, Tomeis, Adder, TheZoo, Arvinder, Mario & Parker.
+\\{br}\\{br}\\{br}\\{br} - SEASMOD is magic! ;-)
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mg_nest Пулемет}
+\{img /bunit:seas_mg_nest -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Атакует вражеские войска в поле видимости
+   \{/tooltipmedium}
+   \{tooltiplong}
+Пулемет автоматически открывает огонь, как только вражеские \{ref H_general.seml#_units} войска\{/ref} приблизятся на расстояние выстрела. 
+Он не обладает такой огневой мощью, как турель, и один пулемет вряд ли изменит ход битвы, но несколько пулеметов представляют серьезную угрозу.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_cannon Малая пушка}
+\{img /bunit:seas_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Атакует вражеские войска в поле видимости
+   \{/tooltipmedium}
+   \{tooltiplong}
+Огневая мощь малой пушки меньше, чем у турели. Одна малая пушка не представляет угрозы, но если их несколько, находиться вблизи становится опасно.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_small_cannon Малая пушка}
+\{img /bunit:seas_hq_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Атакует вражеские войска в поле видимости
+   \{/tooltipmedium}
+   \{tooltiplong}
+Огневая мощь малой пушки меньше, чем у турели. Одна малая пушка не представляет угрозы, но если их несколько, находиться вблизи становится опасно.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_cannon Большая пушка}
+\{img /bunit:seas_big_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Атакует вражеские войска в поле видимости 
+   \{/tooltipmedium}
+   \{tooltiplong}
+Большая пушка наносит огромный урон противнику.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_scorpion_station Станция управления}
+\{img /bunit:seas_scorpion_station -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Должна быть уничтожена для ослабления скорпиона
+   \{/tooltipmedium}
+   \{tooltiplong}
+Пульты управления и подачи энергии используются для того, чтобы контролировать скорпиона. Они защищены толстыми стальными кожухами и приводятся в действие с помощью пара из жерла вулкана. Чтобы добраться до пультов, \{ref H_heros.seml#_tesla}Таслову\{/ref} нужно сломать кожухи. Каждая консоль отвечает за разные части скорпиона. Чтобы ограничить действия скорпиона, а затем выключить его, необходимо отключить все консоли по очереди.
+   \{/tooltiplong}
+\{/helpitem}

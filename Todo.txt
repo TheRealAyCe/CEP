@@ -1,0 +1,63 @@
+
+- More Maps especially Singleplayer!
+
+- Icon for seas_bunker
+  Description for ES, FR
+
+- Description for jumpjet (every lang)
+
+- various localizations missing for: ES, FR
+
+- single_seas_02 descriptions missing for: ES, FR
+
+- single_seas_02 Diary Entry missing for: ES, FR
+
+
+Very important (This release!):
+- Plz consider: Effects.usl merely removes Flash-Effects and used CBloodHit instead of CFlashHit for Hits (that turn PW into new year)
+  MAYBE we should remove it from CEP? Or at least change it, so that CResCharacterSpawnFX, CBigAnimalDeathPingFX etc do something again
+- Synkro: Fix Seq bugs
+- Turret Bunker: seas_bunker is like seas_hq_bunker, Upgrade -> Gets Turret & Changes the desc
+  -> Maybe not...
+- Localize jumpjet
+- Decide: Flamethrowers really ep 3 ?
+- AyCe: Fix BfPW HL Miyagi spawn (special_miyagi) and conditions...
+- AyCe: Fix some maps (henry put them in a file)
+- Remove the old changelog button in launcher.
+- Fix SEAS handicap bug (in maps where seas are forcely enabled by usl hacks the handicap doesn't work)
+ 
+Quite important (This or next release):
+- Fix place used for some SEAS Buildings (like steelwork)
+- Big tent smaller space needed?
+- Make Riders & Dunkleos useful (they're strong, at least)
+- Bunker is too big... heal? coastal?
+- Tent repair & carrier repair is difficult
+- Buildup-Animation for: seas_outpost, seas_bunker, seas_mg_nest, seas_defense_turret
+  -> Maybe different Babbit T4? However, keep the outpost, I need it for a mission
+  -> Would also be cool if it had a turret on top
+- Destruct-Animations for Non-Animated Buildings
+  - Khargclub, Outpost, Laboratory, Pirate harbour, etc.
+- CO-OP Menu
+- Add CZ Language to BP2.0 (see folder in Henry-PW Modding)
+- Add seas carrier in the bonus list of various treasures regarding ships
+
+
+Not important but nice:
+- AI should use carrier for fishing (if food is needed, otherwise it should guard base)
+- AI asks for large sums of resources.
+- No "New epoch available" when buildings are needed for it (also, maybe the AC-bar is not updating when such a building is built?)
+- SEAS Gunner: Description says armor piercing, but isn't (also, it's useless)
+- (SEAS) gate has "destruct" button looking pressed (only when attacked?) after some seconds
+- Aje infantry has build/repair speechacks. Use them?
+- Rally Point for certain buildings don't update properly on click on client (Laboratory). Shown position is 1 click before. Reclick BLDG to see real position.
+- Save replays and maybe savegames in a separate folder
+- Add CEP-items to localization
+- Add a merge function for the Localizer
+- Fix the namebug when a player leaves the game
+- Add a portal to para-welt.com
+- Add the SEAS Gatling Bunker (like in Zoos map) and Sandbag-Gatlings
+- Balancing: SEAS Building costs
+- Visibility is changed for some units, but the condition is NOT SET! -> AI can build units although they aren't visible for a human player yet
+- BuildUp & destruction "animations" for those new buildings
+- SEAS Sandbag MG
+- AdaptTerrain/ChatEvt is not secured against cheats (any modded client could call it during a game!)

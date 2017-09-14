@@ -1,0 +1,596 @@
+﻿\{document helpfile seas buildings}
+\{comment $File: //UrsRel/Main/Data/Locale/pl/Texts/Help/H_SEAS_Gebaeude.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _economy_buildings Budynki ekonomiczne}
+
+\{helpitem -name seas_headquarters Kwatera główna}
+\{img /bunit:seas_headquarters -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje robotników
+\\{br}• Umożliwia wejście w nową epokę
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to główny budynek \{ref H_story.seml#_story_seas} SEAS.\{/ref} Umożliwia on szkolenie \{ref H_seas_produkte.seml#_seas_worker} robotników\{/ref} i rozpoczęcie nowej \{ref H_general.seml#_techtree} epoki.\{/ref}
+Należy pamiętać, iż w przypadku zniszczenia budynku podczas opracowywania nowej epoki, wszelki osiągnięty postęp zostanie utracony.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_1 -redirect seas_headquarters -nodisplay Kwatera główna Epoka 1}
+\{img /bunit:seas_headquarters_1 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje robotników
+\\{br}• Umożliwia wejście w nową epokę
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to główny budynek \{ref H_story.seml#_story_seas} SEAS.\{/ref}  Umożliwia on szkolenie \{ref H_seas_produkte.seml#_seas_worker} robotników\{/ref} i rozpoczęcie nowej \{ref H_general.seml#_techtree} epoki.\{/ref}
+Należy pamiętać, iż w przypadku zniszczenia budynku podczas opracowywania nowej epoki, wszelki osiągnięty postęp zostanie utracony.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_2 -redirect seas_headquarters -nodisplay Kwatera główna Epoka 2}
+\{img /bunit:seas_headquarters_2 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje robotników
+\\{br}• Umożliwia wejście w nową epokę
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to główny budynek \{ref H_story.seml#_story_seas} SEAS.\{/ref}  Umożliwia on szkolenie \{ref H_seas_produkte.seml#_seas_worker} robotników\{/ref} i rozpoczęcie nowej \{ref H_general.seml#_techtree} epoki.\{/ref}
+Należy pamiętać, iż w przypadku zniszczenia budynku podczas opracowywania nowej epoki, wszelki osiągnięty postęp zostanie utracony.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_3 -redirect seas_headquarters -nodisplay Kwatera główna Epoka 3}
+\{img /bunit:seas_headquarters_3 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje robotników
+\\{br}• Umożliwia wejście w nową epokę
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to główny budynek \{ref H_story.seml#_story_seas} SEAS.\{/ref}  Umożliwia on szkolenie \{ref H_seas_produkte.seml#_seas_worker} robotników\{/ref} i rozpoczęcie nowej \{ref H_general.seml#_techtree} epoki.\{/ref}
+Należy pamiętać, iż w przypadku zniszczenia budynku podczas opracowywania nowej epoki, wszelki osiągnięty postęp zostanie utracony.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_4 -redirect seas_headquarters -nodisplay Kwatera główna Epoka 4}
+\{img /bunit:seas_headquarters_4 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje robotników
+\\{br}• Umożliwia wejście w nową epokę
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to główny budynek \{ref H_story.seml#_story_seas} SEAS.\{/ref}  Umożliwia on szkolenie \{ref H_seas_produkte.seml#_seas_worker} robotników\{/ref} i rozpoczęcie nowej \{ref H_general.seml#_techtree} epoki.\{/ref}
+Należy pamiętać, iż w przypadku zniszczenia budynku podczas opracowywania nowej epoki, wszelki osiągnięty postęp zostanie utracony.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_5 -redirect seas_headquarters -nodisplay Kwatera główna Epoka 5}
+\{img /bunit:seas_headquarters_5 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje robotników
+\\{br}• Umożliwia wejście w nową epokę
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to główny budynek \{ref H_story.seml#_story_seas} SEAS.\{/ref}  Umożliwia on szkolenie \{ref H_seas_produkte.seml#_seas_worker} robotników\{/ref} i rozpoczęcie nowej \{ref H_general.seml#_techtree} epoki.\{/ref}
+Należy pamiętać, iż w przypadku zniszczenia budynku podczas opracowywania nowej epoki, wszelki osiągnięty postęp zostanie utracony.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_tent Mały namiot}
+\{img /bunit:seas_small_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Zwiększa limit jednostek
+\\{br}• Zwiększa przestrzeń magazynową
+   \{/tooltipmedium}
+   \{tooltiplong}
+Mały namiot ma liczne zastosowanie, może być użyty jako magazyn dla surowców i jako miejsce dla piechoty zwiększając limit jednostek. Jeśli zostanie zniszczony to tracisz dodatkową przestrzeń dla jednostek i surowców, więc buduj je w dobrze chronionym miejscu, nie na otwartej przestrzeni.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_tent Duży namiot}
+\{img /bunit:seas_big_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Zwiększa limit jednostek
+\{/tooltipmedium}
+   \{tooltiplong}
+Duży namiot, w odróżnieniu od małego namiotu, ma tylko jeden ważny cel. Zakwaterowanie dla wszystkich jednostek w armi SEAS. Duży namiot ma wiele miejsca i może zwiększyć limit jednostek znacznie bardziej niż mały namiot. Znacznie więcej rzeczy może się odbywać w namiotach wokół obozowiska SEAS takich jak ustalanie taktycznych decyzji, gotowanie sprowadzonego jedzenia. Jeśli duży namiot zostanie zniszczony to znacznie wpłynie to na liczbę jednostek do zakwaterowania. A więc tak jak z małymi namiotem, zakładaj duży namiot w dobrze chronionym miejscu.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_steelwork Huta}
+\{img /bunit:seas_steelwork -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+   \{/tooltipmedium}
+   \{tooltiplong}
+Huta to centralny magazyn surowców \{ref H_story.seml#_story_seas} SEAS.\{/ref}  \\{br}
+W przeciwieństwie do innych plemion, SEAS nie musi kupować surowców. SEAS jest bowiem w pełni samowystarczalne.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_greenhouse Szklarnia}
+\{img /bunit:seas_greenhouse -ralign}
+   \{tooltipshort}
+   %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produkuje jedzenie
+\\{br}• Zatrudnia do 2 robotników
+      \{/tooltipmedium}
+   \{tooltiplong}
+Szklarnia umożliwia bezkosztową produkcję \{ref H_ui.seml#_tb_food} jedzenia.\{/ref}  Aby rozpocząć proces produkcji, wystarczy tylko jeden  \{ref H_seas_produkte.seml#_seas_worker} robotnik.\{/ref} W celu uzyskania możliwie największego plonu należy obsadzić szklarnię dwoma robotnikami.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_outpost Poboczna placówka}
+\{img /bunit:seas_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produkuje jednostki piechoty
+\\{br}• Produkuje pojazdy
+\\{br}• Może zostać wybudowana, gdy Babbit osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Poboczna placówka to budynek, który produkuje wiele jednostek SEAS , zarówno piechoty jak i mechanicznych.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_loudspeaker Megafon}
+\{img /bunit:seas_loudspeaker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Zwiększa atak pobliskich jednostek
+\\{br}• Może zostać wybudowany, gdy Arcydruid osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Głos Leightona wydobywający się z megafonu, który został poprowadzony z kwatery głównej, sprawia, że jednostki SEAS i sojuszników wiedzą, że dowództwo jest zadowolone z ich działań.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marketplace Bazar}
+\{img /bunit:seas_marketplace -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punkt zbiorczy surowców
+\\{br}• Zwiększa przestrzeń magazynową
+\\{br}• Produkuje CBT-1500
+   \{/tooltipmedium}
+   \{tooltiplong}
+Bazar SEAS jest placem targowym dla całego handlu SEAS, zarówno tego wewnątrz SEAS jak i z innymi plemionami. SEAS używa triceratopsy z zmodyfikowanym pancerzem by zrekompensować mechanizmy rynkowe i przestrzeń magazynową potrzebną do załadowania i rozładowania towarów z jednego bazaru do drugiego. Każdy kurs generuje dodatkowe surowce. Im większa odległość pomiędzy bazarami, tym większa premia. Po dotarciu do nowego bazaru wagon wraca do tego, z którego wyruszył i kursuje pomiędzy nimi aż do chwili zniszczenia lub odwołania. \{p}
+Gracze mogą też \{ref H_general.seml#_trading}wymieniać \{/ref} \{ref H_general.seml#_skulls} czaszki\{/ref} za surowce. 100 \{ref H_general.seml#_skulls} czaszek\{/ref} warte jest 100 jednostek \{ref H_ui.seml#_tb_food}jedzenia,\{/ref} \{ref H_world.seml#_wood} drewna\{/ref} lub \{ref H_world.seml#_stone} kamienia.\{/ref} Należy jednak pamiętać, iż gracze nie mogą otrzymać czaszek w zamian za surowce.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warpgate Warp gate}
+\{img /bunit:seas_warpgate -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Win the game by completing and holding the gate until it opens
+   \{/tooltipmedium}
+   \{tooltiplong}
+Once the Warp gate has been built it must first be held for a certain period of time before it opens. \\{br}
+The player who built the gate first wins when it does so.
+All players are notified both when a Warp gate has been placed and when the countdown starts after completion. This serves as a warning that they will lose if they don't do something to stop the player with the Warp gate.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{chapter -name _combat_buildings Budynki wojskowe}
+\{helpitem -name _seas_barracks Koszary}
+\{img /bunit:seas_barracks -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produkuje jednostki piechoty
+\\{br}• Zwiększa limit jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Zadaniem koszar jest produkcja jednostek piechoty.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carrier Transporter}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produkuje statki i jednostki wodne
+   \{/tooltipmedium}
+   \{tooltiplong}
+Transporter umożliwia opuszczenie własnej wyspy. Tylko \{ref H_general.seml#_transport} statki transportowe\{/ref} mogą bowiem przewozić \{ref H_general.seml#_units}jednostki \{/ref} przez akweny wodne. Transporter można wybudować tylko na prostym fragmencie plaży. \\{br}
+Jest on powolny, może jednak produkować jednostki nawodne nawet na otwartym morzu. Po wykupieniu odpowiedniego ulepszenia może również poławiać ryby.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carrier_fake Oblężniczy transporter}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Silny statek
+\\{br}• Potężna broń dalekiego zasięgu
+   \{/tooltipmedium}
+   \{tooltiplong}
+Oblężniczy transporter jest najpotężniejszym statkiem unoszącym się na wodzie, daleko przewyższa inne, jeśli chodzi o atak dalekiego zasięgu. \\{br}
+Jednak w zwarciu nie ma wielkich szans.
+  \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_garage Garaż}
+\{img /bunit:seas_garage -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produkuje pojazdy i jednostki zwierzęce
+   \{/tooltipmedium}
+   \{tooltiplong}
+Budynek ten produkuje wszystkie jednostki zwierzęce i pojazdy, jakimi dysponuje \{ref H_story.seml#_story_seas} SEAS.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_laboratory Laboratorium}
+\{img /bunit:seas_laboratory -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Leczy jednostki znajdujące się w pobliżu
+\\{br}• Produkuje sanitariuszy
+\\{br}• Opracowuje ulepszenia jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Laboratorium leczy wszystkie  \{ref H_general.seml#_units}jednostki \{/ref} gracza znajdujące się w pobliżu (z wyjątkiem statków). \\{br}
+Wrogie \{ref H_general.seml#_units}jednostki \{/ref} nie są leczone. W tym miejscu trenowani są \{ref H_seas_produkte.seml#_seas_medic} sanitariusze\{/ref}.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_amazon_temple Świątynia Amazonek}
+\{img /bunit:seas_amazon_temple -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Leczy jednostki znajdujące się w pobliżu
+\\{br}• Produkuje Specjalne Jednostki Bojowe
+\\{br}• Może zostać wybudowana, gdy Tarna osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Świątynia Amazonek leczy \{ref H_general.seml#_units}jednostki \{/ref} własne i sojusznicze (z wyjątkiem statków), które znajdują się w jej pobliżu lepiej niż zwykła świątynia. \\{br}
+Wrogie \{ref H_general.seml#_units}jednostki \{/ref} nie są leczone. Świątynia jest też miejscem gdzie straszne stworzenia z wszystkich zakątków świata są produkowane do bitwy. \\{br}
+Ta monumentalna konstrukcja nie może zostać naprawiona przez ludzkich robotników. Jej święte duchy cały czas naprawiają uszkodzenia spowodowane przez wrogów.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_khargclub Klub Kharg'a}
+\{img /bunit:seas_khargclub -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Umożliwia wynajęcie bohatera
+   \{/tooltipmedium}
+   \{tooltiplong}
+Klub Kharg'a jest miejscem, w którym można zwerbować \{ref H_general.seml#_heros} bohatera.\{/ref} \\{br}
+Jeśli \{ref H_general.seml#_heros} bohater\{/ref} polegnie, będzie można go zatrudnić ponownie w Klubie Kharg'a, ale jego poziom zostanie zredukowany do pierwszego. Wszyscy \{ref H_general.seml#_heros} bohaterowie\{/ref} zaczynają od poziomu pierwszego, który można podnieść za pomocą \{ref H_general.seml#_skulls} czaszek. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_outpost Piracka Placówka}
+\{img /bunit:seas_pirate_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+\{tooltipmedium}
+• Produkuje zaawansowane jednostki
+\\{br}• Punkt zbiorczy ryb
+\\{br}• Naprawia pobliskie statki
+\\{br}• Może zostać wybudowana, gdy Miyagi osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ten port jest miejscem, gdzie możesz wyprodukować zaawansowane jednostki, ale można go wybudować, dopiero gdy Miyagi osiągnie poziom 4. Tutaj możesz wyprodukować na przykład \{ref H_hu_produkte.seml#_hu_pirate_boss_ship}Statek Miyagi\{/ref} by rządzić morzami.
+Port można wybudować tylko na prostym i płaskim kawałku plaży. \\{br}
+Port automatycznie naprawia wszystkie statki w pobliżu i to bez wydatkowania \{ref H_general.seml#_resources} surowców.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _defense_buildings Budynki obronne}
+\{helpitem -name _seas_fence Ogrodzenie}
+\{img /bunit:seas_fence -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Umocnienie, którego nie można obsadzić
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ogrodzenie jest umocnieniem, którego nie można obsadzić jednostkami piechoty. \\{br}
+Bramę można wstawić tylko w prostą sekcję ogrodzenia o szerokości trzech jednostek.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl2 Kamienne ogrodzenie}
+\{img /bunit:seas_fence_lvl2 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Umocnienie, którego nie można obsadzić
+\\{br}• Możliwa integracja z wieżą 
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ogrodzenie jest umocnieniem, którego nie można obsadzić jednostkami piechoty. \\{br}
+Bramę można wstawić tylko w prostą sekcję ogrodzenia o szerokości trzech jednostek.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl3 Żelazne ogrodzenie}
+\{img /bunit:seas_fence_lvl3 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Umocnienie, którego nie można obsadzić
+\\{br}• Możliwa integracja z wieżą 
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ogrodzenie jest umocnieniem, którego nie można obsadzić jednostkami piechoty. \\{br}
+Bramę można wstawić tylko w prostą sekcję ogrodzenia o szerokości trzech jednostek.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gate Brama}
+\{img /bunit:seas_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Otwiera się tylko dla jednostek SEAS
+\\{br}• Musi być wstawiona w już istniejący mur
+   \{/tooltipmedium}
+   \{tooltiplong}
+Brama ta otwiera się tylko dla \{ref H_general.seml#_units}jednostek \{/ref} SEAS i sojuszniczych. \\{br}
+Bramę można wstawić tylko w prostą sekcję muru o szerokości trzech jednostek. Podczas budowy murów należy zwrócić uwagę na ikony bram. Pojawiają się one w miejscach, w których można wstawić bramę. 
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall Mur SEAS}
+\{img /bunit:seas_wall -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Silny mur, który można obsadzić
+\\{br}• Można go zintegrować z wieżami
+\\{br}• Obsadzające go jednostki otrzymują premię do obrony
+\\{br}• Może zostać wybudowany, gdy Rządca osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to najsilniejszy mur, jakim dysponuje \{ref H_story.seml#_story_seas}SEAS. \{/ref} \\{br}
+Piechota, obsadzająca ten mur, otrzymuje premię do obrony. Aby wprowadzić piechotę na mur, należy wstawić w niego wieżę lub bramę. \\{br}
+Dystansowe \{ref H_general.seml#_units} jednostki\{/ref} takie jak \{ref H_seas_produkte.seml#_seas_marksman} strzelcy\{/ref} lub \{ref H_seas_produkte.seml#_saes_gunner} szturmowcy \{/ref} mogą strzelać z murów. Ponieważ kamienie z magiczną mocą zostały użyte podczas budowy muru, mur sam naprawia uszkodzenia spowodowane przez wroga.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall_gate Brama SEAS}
+\{img /bunit:seas_wall_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Otwiera się dla jednostek sojuszniczych
+\\{br}• Może zostać całkowicie zamknięta
+\\{br}• Musi zostać wstawiona w już istniejący mur
+\\{br}• Może zostać wybudowany, gdy Rządca osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Bramy otwierają się tylko dla \{ref H_general.seml#_units}jednostek \{/ref} własnych i sojuszniczych. \\{br}
+Bramę można wstawić tylko w prostą sekcję muru o szerokości trzech jednostek. Podczas budowy murów należy zwrócić uwagę na ikony bram. Pojawiają się one w miejscach, w których można wstawić bramę. Po udoskonaleniu muru udoskonaleniu ulega też brama. Brama umożliwia też jednostkom piechoty wejście na mury. \\{br}
+Ponieważ kamienie z magiczną mocą zostały użyte podczas budowy bramy, brama sama naprawia uszkodzenia spowodowane przez wroga.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_turret_tower Wieża}
+\{img /bunit:seas_turret_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Atakuje wrogów w polu widzenia
+\\{br}• Może stać swobodnie lub stanowić część murów
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wieże prowadzą ostrzał automatycznie i nie muszą być obsadzane ludźmi. \\{br}
+Mogą być umieszczane na siatce murów, a następnie z nimi łączone. 
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_bunker Bunkier}
+\{img /bunit:seas_hq_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nieograniczona liczba jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Bunkier SEAS jest groźny aż do chwili zniszczenia. \\{br}
+Dysponuje on nieskończonymi zasobami jednostek \{ref H_story.seml#_story_seas} SEAS.\{/ref} 
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_bunker Bunkier z wieżyczką}
+\{img /bunit:seas_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Obsadzona wieżyczka strzela
+\\{br}• Chroni do 4 jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Bunkier z wieżyczką to ulepszona wersja zwykłego \{ref H_SEAS_Gebaeude.seml#_seas_hq_bunker}Bunkra\{/ref} .\\{br}
+Ma wieżyczkę podobną do tych na transporterach, która strzela, gdy jest chociaż jeden człowiek w bunkrze.\\{br}
+Może chronić do 4 jednostek piechoty.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_coh Kontener Bohaterów}
+\{img /bunit:seas_coh -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Kontener stworzony przez Kharga ku pamięci Twórców
+\\{br}• Kharg
+\\{br}• AyCe
+\\{br}• Scrat
+\\{br}• MrMorgana
+\\{br}• yclari
+\\{br}• -exo-
+\\{br}• Akkarin
+\\{br}• THEEVERGOD
+\\{br}• Tomeis
+\\{br}• Adder
+\\{br}• TheZoo
+\\{br}• Arvinder
+\\{br}• Mario
+\\{br}• Parker
+   \{/tooltipmedium}
+   \{tooltiplong}
+Kontener upamiętnia twórców SEASMOD. \\{br}
+Podziękowania dla: Kharg, AyCe, Scrat, MrMorgana, yclari, -exo-, Akkarin, THEEVERGOD, Tomeis, Adder, TheZoo, Arvinder, Mario & Parker.
+\\{br}\\{br}\\{br}\\{br} - SEASMOD is magic! ;-)
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mg_nest Gniazdo cekaemu}
+\{img /bunit:seas_mg_nest -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Atakuje wrogów w polu widzenia
+   \{/tooltipmedium}
+   \{tooltiplong}
+Cekaem automatycznie atakuje wszystkich wrogów, którzy znajdą się w jego polu widzenia. \\{br}
+O ile jedno gniazdo nie stwarza większego zagrożenia, o tyle sieć cekaemów jest już zagrożeniem poważnym.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_cannon Małe działo}
+\{img /bunit:seas_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Atakuje wrogów w polu widzenia
+\\{br}•  Może zostać wybudowane, gdy Taslow osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Małe działo automatycznie atakuje wszystkich wrogów, którzy znajdą się w jego polu widzenia. \\{br}
+O ile jedno działo nie stwarza większego zagrożenia, o tyle sieć dział jest już zagrożeniem poważnym.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_small_cannon Małe działo}
+\{img /bunit:seas_hq_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Atakuje wrogów w polu widzenia
+   \{/tooltipmedium}
+   \{tooltiplong}
+Małe działo automatycznie atakuje wszystkich wrogów, którzy znajdą się w jego polu widzenia. \\{br}
+O ile jedno działo nie stwarza większego zagrożenia, o tyle sieć dział jest już zagrożeniem poważnym.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_cannon Wielkie działo}
+\{img /bunit:seas_big_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Atakuje wrogów w polu widzenia
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wielkie działo dysponuje ogromną siłą rażenia.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_scorpion_station Sterownia skorpiona}
+\{img /bunit:seas_scorpion_station -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jej zniszczenie osłabia skorpiony
+   \{/tooltipmedium}
+   \{tooltiplong}
+Sterownia skorpiona zaopatruje te jednostki w energię. \\{br}
+Sterownia zasilana jest energią z krateru i chroniona cienkimi płytami pancernymi. \{ref H_heros.seml#_tesla} Taslow \{/ref} musi się przez nie przebić, aby móc rozpracować konsole. Każda z konsoli zarządza innym systemem skorpionów. Wyłączenie każdej z nich spowoduje całkowite unieruchomienie tych maszyn.
+   \{/tooltiplong}
+\{/helpitem}

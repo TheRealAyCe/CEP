@@ -1,0 +1,136 @@
+// Class to workaround MapPings vanishing when game is saved & loaded
+// Only for map-pings which stay until removed by trigger
+// By AyCe
+
+class CMapPingObj inherit CGameObj
+
+	var array int	m_aiOwner; // (-2) for send to all or a number for the player
+	var array vec3	m_avPos;
+	var string	m_sID;
+	var int		m_iTimeToLife;
+	var int		m_iNumRepeats;
+	var int		m_iMSBetween;
+	var string	m_sColorType;
+	var bool	m_bDeleted;
+
+	constructor()
+		m_aiOwner = 0;
+		m_avPos = 0;
+		m_bDeleted = false;
+	endconstructor;
+
+	destructor()
+	enddestructor;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad) then
+			SetType("MAPI");
+			SetVisible(false);
+			InitAttribs();
+		else
+			//
+    		endif;
+	endproc;
+
+	// This is called by the ActionFactory after creating the map-ping object
+	export proc void InitMapPing(array int p_aiOwner, array vec3 p_avPos, string p_sID, int p_iTimeToLife, int p_iNumRepeats, int p_iMSBetween, string p_sColorType)
+		m_aiOwner = p_aiOwner;
+		m_avPos = p_avPos;
+		m_sID = p_sID;
+		m_iTimeToLife = p_iTimeToLife;
+		m_iNumRepeats = p_iNumRepeats;
+		m_iMSBetween = p_iMSBetween;
+		m_sColorType = p_sColorType;
+		SendMapPing(true);
+	endproc;
+
+	// This is called by the ActionFactory when removing the map-ping
+	export proc void KillMapPing()
+		SendMapPing(false);
+		m_bDeleted = true;
+		Delete();
+	endproc;
+
+	proc string GetEventString(int p_iIndex, bool p_bAdd)
+		if(m_sColorType.IsEmpty())then
+			m_sColorType="Attack";
+		endif;
+		var string sMsg = "MiniMapEvent\t"+m_avPos[p_iIndex].ToString()+"\t"+m_sColorType;
+		sMsg+="\ttrue\t"+p_bAdd.ToString()+"\t"+m_sID;
+		sMsg+="\t"+m_iTimeToLife.ToString()+"\t"+m_iNumRepeats.ToString()+"\t"+m_iMSBetween.ToString();
+		return sMsg;
+	endproc;
+
+	// Sends a "start the MapPing" event(s) to clients
+	proc void SendMapPing(bool p_bAdd)
+		if(m_bDeleted)then
+			return;
+		endif;
+		var string sMsg;
+		var int i2, i,iC = m_avPos.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			sMsg = GetEventString(i, p_bAdd);
+			if(m_aiOwner[i] == -2)then
+				for(i2=0)cond(i2<8)iter(i2++)do
+					CSrvWrap.SendGenericEvtToPlayer(i2, sMsg);
+				endfor;
+			else
+				CSrvWrap.SendGenericEvtToPlayer(m_aiOwner[i], sMsg);
+			endif;
+		endfor;
+	endproc;
+
+	export proc string GetMapPingID()
+		if(m_bDeleted)then
+			return "";
+		endif;
+		return m_sID;
+	endproc;
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="MAPI")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			var int i,iC;
+			(pxArc^) << iC;
+			m_avPos = iC;
+			m_aiOwner = iC;
+			for(i=0) cond(i<iC) iter(++i) do
+				(pxArc^) << m_avPos[i];
+				(pxArc^) << m_aiOwner[i];
+			endfor;
+			(pxArc^) << m_sID;
+			(pxArc^) << m_iTimeToLife;
+			(pxArc^) << m_iNumRepeats;
+			(pxArc^) << m_iMSBetween;
+			(pxArc^) << m_sColorType;
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+	
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xBase="MAPI";
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xBase,1);
+		var ^CArc pxArc=^(pxWalk^.GetArc());
+		var int i,iC = m_avPos.NumEntries();
+		(pxArc^) << iC;
+		for(i=0) cond(i<iC) iter(++i) do
+			(pxArc^) << m_avPos[i];
+			(pxArc^) << m_aiOwner[i];
+		endfor;
+		(pxArc^) << m_sID;
+		(pxArc^) << m_iTimeToLife;
+		(pxArc^) << m_iNumRepeats;
+		(pxArc^) << m_iMSBetween;
+		(pxArc^) << m_sColorType;
+		pxWalk^.Close();
+	endproc;
+	
+	export proc void OnPostLoad()
+		super.OnPostLoad();
+		SendMapPing(true);
+	endproc;
+
+endclass;

@@ -1,0 +1,481 @@
+﻿\{document helpfile seas units}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_SEAS_Produkte.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _infantry Jednostki piechoty}
+
+\{helpitem -name _seas_worker Robotnik}
+\{img /bunit:seas_worker -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Wznosi budynki
+\\{br}• Pozyskuje surowce
+\\{br}• Niska wartość bojowa
+   \{/tooltipmedium}
+   \{tooltiplong}
+Robotnicy są produkowani w \{ref H_seas_gebaeude.seml#_seas_headquarters} kwaterze głównej.\{/ref} Ich podstawowym zadaniem jest pozyskiwanie \{ref H_general.seml#_resources}surowców \{/ref} i wznoszenie \{ref H_general.seml#_building} budynków.\{/ref} Robotnicy potrafią się bronić jedynie w razie ataku, ale są znacznie słabsi od \{ref H_general.seml#_units} jednostek bojowych.\{/ref} Na wyższych poziomach otrzymują więcej \{ref H_ui.seml#_iw_hitpoints} punktów życia\{/ref}, pracują szybciej i są w stanie przenosić większe ładunki. Mogą też używać procy, aby zwiększyć skuteczność \{ref H_world.seml#_food} polowania\{/ref} i obrony na dystans. 
+\{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warrior Wojownik}
+\{img /bunit:seas_warrior -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Skuteczny w zwarciu
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wojownicy powstają w \{ref H_seas_gebaeude.seml#_seas_barracks}koszarach. \{/ref} Są oni główną jednostką \{ref H_story.seml#_story_seas} SEAS\{/ref} .
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marksman Strzelec}
+\{img /bunit:seas_marksman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Jednostka dystansowa
+\\{br}• Nieskuteczny w zwarciu
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jednostki te powstają w \{ref H_seas_gebaeude.seml#_seas_barracks}koszarach. \{/ref} Dysponują one dużą siłą rażenia w dystansie i niewielką w zwarciu.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gunner Szturmowiec}
+\{img /bunit:seas_gunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Jednostka dystansowa
+\\{br}• Może zostać wyprodukowany, gdy Béla osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Szturmowcy powstają w \{ref H_seas_gebaeude.seml#_seas_barracks}koszarach. \{/ref} \\{br}
+Dysponują znacznie większą siłą rażenia niż chociażby łucznicy. Nie są jednak zbyt skuteczni w zwarciu.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_shotgunner Amazonka strzelec}
+\{img /bunit:seas_shotgunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:+/vsvhcl:--/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Skuteczna w walce w zwarciu i z dystansu
+\\{br}• Zniszczenia obszarowe
+\\{br}• Może zostać wyprodukowana, gdy Cole osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Amazońskie Strzelce nie są nowoczesnymi jednostkami pomimo posiadania śrutówek. Kiedy \{ref H_heros.seml#_mayor}Rządca\{/ref} przejął wysoką radę, królowa \{ref H_heros.seml#_tarna}Tarna\{/ref} i kilka innych obywatelek uciekło z Świętego Miasta, niezadowolonych z nowego prawa, porządku i króla.\\{br}Tarna odmówiła uznania mężczyzn w jej królestwie, poza robotnikami. Kobiety, które nie podążyły za Tarną, zostały wzięte w niewolę do jej fortecy na wyspie Amazonek. Kiedy Bohaterowie zaatakowali Świątynię Amazonek by uratować Barry'iego (jednego z trójki \{ref H_heros.seml#_larry}kupców\{/ref}), duża grupa więźniów uciekła.\\{br}\\{br}\{ref H_heros.seml#_lovelace}Ada Loven\{/ref} odnalazła tą grupę i zaoferowała pomoc SEAS, ale \{ref H_heros.seml#_babbage}Jarvis Babbit\{/ref} z drugiej strony odmówił im pomocy w zemście przeciwko Tarnie.\\{br}Jeśli te Amazonki pomogą SEAS w walce, Jarvis będzie zachwycony mogąc im pomóc. Zmuszone i szantażowane by zostać członkiniami SEAS, Amazońskie Strzelce zostały solidnymi, przydatnymi i niebezpiecznymi jednostkami.\\{br}\\{br}Amazonka strzelec jest produkowana w \{ref H_seas_gebaeude.seml#_seas_laboratory}laboratorium\{/ref} .\\{br}One są dobrze wytrenowane i mają wielką wprawę w walce przeciwko piechocie i zwierzętom, ale przeciwko maszynom nie mają szans.\\{br}Jednakże, w walce z budynkiem ich umiejętności są przeciętne.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_rocketman Żołnierz z wyrzutnią}
+\{img /bunit:seas_rocketman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Jednostka dystansowa
+\\{br}• Dysponuje rakietami
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jednostki te powstają w \{ref H_seas_gebaeude.seml#_seas_barracks}koszarach. \{/ref}\\{br}
+Ich pole widzenia jest nieco większe od pola rażenia. Ich siła rażenia drastycznie spada w zwarciu.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_flamethrower Miotacz ognia}
+\{img /bunit:seas_flamethrower -ralign}
+   \{tooltipshort}
+ %/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Zadaje obrażenia zarówno wrogom, jak i jednostkom neutralnym
+\\{br}• Może zostać wyprodukowany, gdy Leighton osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Miotacz ognia jest jedną z najbardziej skutecznych jednostek przeciwko piechocie. Jego atutem jest też stosunkowo duży zasięg. \\{br}
+Aby móc wytrenować tę jednostkę, należy wybudować \{ref H_seas_gebaeude.seml#_seas_barracks}koszary. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_medic Sanitariusz}
+\{img /bunit:seas_medic -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Leczy
+\\{br}• Wykrywa pułapki i ukryte jednostki
+   \{/tooltipmedium}
+   \{tooltiplong}
+Sanitariusze powstają w \{ref H_seas_gebaeude.seml#_seas_laboratory}laboratorium. \{/ref} Ich głównym zadaniem jest leczenie innych jednostek. Potrafią też jednak wykrywać pułapki i ukryte jednostki.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_killer Kamienny Zabijaka}
+\{img /bunit:seas_killer -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka piechoty
+\\{br}• Wytrzymały wojownik walczący wręcz
+\\{br}• Powoduje obszarowe zniszczenia, które przebiją pancerz
+\\{br}• Może zostać wyprodukowany, gdy Ada osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Trenowani w \{ref H_seas_gebaeude.seml#_seas_barracks} koszarach\{/ref}, Kamienni zabijacy to przeklęte statuy niesławnych \{ref H_hu_produkte.seml#_hu_killer}barbarzyńskich Zabijaków\{/ref}, którzy zostali zamienieni w kamień przez Gorgonę, lecz zostali przywróceni z zaświatów by przynieść zagładę żywym istotom.\{br}
+Są nadzwyczajnie silni i mogą szybko zabić prawie każde stworzenie. Fakt, że są z kamienia czyni z nich większe zagrożenie, ponieważ wytrzymują większość ataków, co sprawia, że ciężko jest ich wysłać z powrotem do otchłań Hadesu.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_funtitan Kamienny golem}
+\{img /bunit:seas_funtitan -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Duży golem
+\\{br}• Wiele punktów życia
+\\{br}• Powoduje obszarowe zniszczenia, które przebiją pancerz
+\\{br}• Może zostać wyprodukowany, gdy Tarna, Kupiec i Miyagi osiągną poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produkowany w \{ref H_seas_gebaeude.seml#_seas_amazon_temple} Świątyni Amazonek, \{/ref} Kamienny golem jest największą i najpotężniejszą \{ref H_general.seml#_units} jednostką\{/ref}, jaką dysponuje \{ref H_story.seml#_story_seas} SEAS\{/ref} \\{br}
+Bardzo silne i wytrzymałe Kamienne golemy mają dużo \{ref H_ui.seml#_iw_hitpoints}punktów życia. \{/ref} \\{br}
+Zostały stworzone przez \{ref H_story.seml#_story_hu} Nordów \{/ref} do ochrony \{ref H_special_location.seml#_walhalla} Walhalli.\{/ref} Wieczni strażnicy poświęceni starym bogom. Jak można oczekiwać po kamieniu są powolni.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _robots Roboty}
+\{helpitem -name _seas_mechanical_walker Mech}
+\{img /bunit:seas_mechanical_walker -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:-/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Słaby wojownik
+\\{br}• Szybki zbieracz surowców
+   \{/tooltipmedium}
+   \{tooltiplong}
+Mech jest dwunożnym robotem, z wyglądu podobnym do dinozaura. Został zaprojektowany do zbierania dużej ilości surowców. Jednostka ta powstaje w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit Ekoszkielet}
+\{img /bunit:seas_mobile_suit -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Silny robot
+\\{br}• Skuteczny w zwarciu
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ekoszkielet to dwunożny robot, zaprojektowany do walki w zwarciu. Aby móc go wyprodukować, należy wybudować \{ref H_seas_gebaeude.seml#_seas_garage}garaż. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit_flamethrower Ekoszkielet z miot. ognia}
+\{img /bunit:seas_mobile_suit_flamethrower -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot wyposażony w miotacz ognia
+\\{br}• Zadaje obrażenia zarówno wrogom, jak i jednostkom neutralnym
+   \{/tooltipmedium}
+   \{tooltiplong}
+\{ref H_general.seml#_units}Jednostka\{/ref} ta dysponuje miotaczem ognia, którego można użyć zarówno w dystansie, jak i w zwarciu. \\{br}
+Należy pamiętać, iż miotacz ognia zadaje obrażenia zarówno jednostkom wroga, jak i jednostkom neutralnym.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_eusmilus Bitewny eusmilus}
+\{img /bunit:seas_eusmilus -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Szybka jednostka zwierzęca
+\\{br}• Może być wyprodukowany, gdy Stina osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jednostki te powstają w w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref} \\{br} Bitewny eusmilus jest tani i zarazem skuteczny.\\{br}
+Jest niewiele wytrzymalszy od piechoty, ale zadaje o wiele większe obrażenia.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops CBT-500}
+\{img /bunit:seas_triceratops -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Silna jednostka zwierzęca
+   \{/tooltipmedium}
+   \{tooltiplong}
+CBT-500 powstaje w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref} \\{br}
+Jest to silna jednostka zwierzęca, która stwarza zagrożenie już samą swą masą.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops_archer CBT-1000}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Silna jednostka zwierzęca
+\\{br}• Może przewozić do 3 jednostek
+   \{/tooltipmedium}
+   \{tooltiplong}
+CBT-T1000 jest potężną jednostką zwierzęcą, której siła dodatkowo rośnie, gdy zostanie obsadzona \{ref H_seas_produkte.seml#_seas_marksman} strzelcami\{/ref} lub \{ref H_seas_produkte.seml#_saes_gunner} szturmowcami.\{/ref} Powstaje ona w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops_resource_collector CBT-1500}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Generuje surowce, krążąc pomiędzy magazynami
+\\{br}• Niezdolny do walki
+   \{/tooltipmedium}
+   \{tooltiplong}
+CBT-T1500 powstaje w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_stygimoloch Stygimoloch zwiadowca}
+\{img /bunit:seas_stygimoloch -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:--/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Mały drapieżnik
+\\{br}• Wyszukuje i atakuje wrogów
+\\{br}• Może zostać wyprodukowany, gdy Warden osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Oswojony Stygimoloch jest małą \{ref H_general.seml#_units} jednostką,\{/ref} która po wyprodukowaniu rusza w losowo wybranym kierunku i podąża w nim, póki nie spotka wroga. Gdy to nastąpi, atakuje go.
+Jednostka ta nie pojawia się w \{ref H_general.seml#_pyramid}kontrolerze armii. \{/ref} jak również umiera po pewnym okresie czasu. Stygimoloch zwiadowca jest produkowany w \{ref H_seas_gebaeude.seml#_seas_garage} Garażu. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_monkey Małpa Ninja}
+\{img /bunit:seas_monkey -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Bardzo tajemnicza i niebezpieczna!
+\\{br}• Zbratała się z podejrzaną Wiewiórką samurajem
+\\{br}• Szybka
+\\{br}• Duży zasięg widzenia
+   \{/tooltipmedium}
+   \{tooltiplong}
+Małpa Ninja jest małą \{ref H_general.seml#_units} jednostką,\{/ref} która została wytrenowana przez SEAS by szpiegować wrogów.
+Małpy Ninja są produkowane w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carnotaurus_rider Karnotaur Jeździec}
+\{img /bunit:seas_carnotaurus_rider -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nadzwyczajnie szybka jednostka
+\\{br}• Może być wyprodukowany, gdy Tarna osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Karnotaur Jeździec jest produkowany w \{ref H_seas_gebaeude.seml#_seas_garage}garażu\{/ref} \\{br}.
+Szybka i mobilna \{ref H_general.seml#_units} jednostka\{/ref}, Jego szybkość jest odpowiednia do obrony przeciwko licznym wrogom lub do szybkich ataków. Kiedy \{ref H_heros#_tarna} królowa Tarna\{/ref} uciekła z Świętego Miasta, potrzebowała szybkich i potężnych strażników, których wytrenowała z  nieuchwytnych drapieżników. Gdy Tarna osiągnie 4 poziom, każde z 4 plemion ma inny rodzaj jednostki.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wehrspinne Czarna wdowa}
+\{img /bunit:seas_wehrspinne -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Dysponuje bronią dystansową
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to duży i bardzo niebezpieczny robot. \\{br}
+Jego jedyną bronią jest wyrzutnia, dysponująca zasięgiem równym polu widzenia. Czarną wdowę można wybudować w \{ref H_seas_gebaeude.seml#_seas_garage}garażu. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack Likwidator}
+\{img /bunit:seas_lumberjack -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Silny w zwarciu
+   \{/tooltipmedium}
+   \{tooltiplong}
+Mimo swej niskiej prędkości jest on trudnym przeciwnikiem podczas walki w zwarciu. Aby móc go wyprodukować, należy wybudować \{ref H_seas_gebaeude.seml#_seas_garage}garaż. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack_minigun Likwidator MKII}
+\{img /bunit:seas_lumberjack_minigun -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Dysponuje bronią dystansową
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jednostka ta powstaje w \{ref H_seas_gebaeude.seml#_seas_garage}garażu.\{/ref} Jest to udoskonalona wersja \{ref H_seas_produkte.seml#_seas_lumberjack} likwidatora.\{/ref} Jego atutem jest skuteczna broń dystansowa w postaci minidziałka.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _scorpion Skorpion}
+\{img /bunit:scorpion -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Ogromny robot
+\\{br}• Silny w zwarciu
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to ogromny robot, stanowiący ostatnią linię obrony \{ref H_story.seml#_story_seas} SEAS.\{/ref}
+\\{br}
+Dzięki swym potężnym kleszczom i wbudowanemu miotaczowi ognia jest on skrajnie groźny w walce na krótki dystans.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_zeppelin Zeppelin}
+\{img /bunit:seas_zeppelin -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Latający wagon kupiecki
+\\{br}• Lata nad ziemią i wodą
+\\{br}• Może transportować do dziesięciu jednostek
+\\{br}• Punkt zbiorczy surowców
+\\{br}• Duży zasięg widzenia
+   \{/tooltipmedium}
+   \{tooltiplong}
+Latający kupiec to ważny element ParaŚwiata. \{p}
+Poprzez „latającego kupca” rozumieć należy sterowiec trzech bliźniaków.\\{br}
+Przez lata działalności zbudowali ogromne imperium.
+Z wyjątkiem Piratów są najważniejszym źródłem towarów, ponieważ sami docierają ze swoimi towarami prawie wszędzie.
+Jeśli będziesz ich dobrze traktował, oni będą dobrze traktowali ciebie.\\{br}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _ships Statki}
+\{helpitem -name _seas_cargo_lifter Kuter rybacki}
+\{img /bunit:seas_cargo_lifter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jest bezbronny
+\\{br}• Łowi ryby
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produkowany w \{ref H_seas_gebaeude.seml#_seas_pirate_outpost} Pirackiej placówce. \{/ref} Jego zadaniem jest łowienie \{ref H_world.seml#_fish} ryb.\{/ref} Po wyczerpaniu łowiska łódź automatycznie rusza do następnego.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hovercraft Poduszkowiec}
+\{img /bunit:seas_hovercraft -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Jednostka transportowa
+\\{br}• Przemieszcza się po lądzie lub po wodzie
+\\{br}• Niezdolny do walki
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to wysoce wszechstronny \{ref H_general.seml#_transport}transporter. \{/ref} Jego słabym punktem jest brak jakiegokolwiek uzbrojenia. Poduszkowiec powstaje w \{ref H_seas_gebaeude.seml#_seas_carrier}transporterze. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_submarine Łódź podwodna}
+\{img /bunit:seas_submarine -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:++/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Silny statek
+   \{/tooltipmedium}
+   \{tooltiplong}
+Mimo niskiej wytrzymałości, łódź podwodna jest bardzo skuteczną \{ref H_general.seml#_units} jednostką.\{/ref}\\{br}
+Wynurza się tylko podczas ataku. Powstaje w \{ref H_seas_gebaeude.seml#_seas_carrier}transporterze. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_helicopter Stinger}
+\{img /bunit:seas_helicopter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Szybka jednostka powietrzna
+   \{/tooltipmedium}
+   \{tooltiplong}
+Jest to potężny śmigłowiec, latający na bardzo niskich pułapach. Można go wyprodukować w \{ref H_seas_gebaeude.seml#_seas_carrier}transporterze. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_boss_ship Statek Miyagi}
+\{img /bunit:seas_pirate_boss_ship -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Piracki okręt flagowy
+\\{br}• Może zostać wyprodukowany tylko jeden, gdy Miyagi osiągnie poziom 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produkowany w \{ref H_seas_gebaeude.seml#_seas_pirate_outpost} Pirackiej placówce. \{/ref} Piracki okręt flagowy jest najsilniejszym statkiem w ParaŚwiecie. \\{br}
+Ten statek zadaje wielkie obrażenia. Jest tak potężny jak Tytany, z tego powodu nawet statki \{ref H_story.seml#_story_hu} Nordów \{/ref} uciekają przed nim.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_pirate_dunkleo Dunkleosteus Strażnik}
+\{img /bunit:seas_pirate_dunkleo -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:+/vsvhcl:++/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Potężna, pływająca jednostka krótkiego dystansu
+\\{br}• Dostępna tylko w Pirackiej placówce
+\\{br}• Użyteczna w ochronie Statku Miyagi
+   \{/tooltipmedium}
+   \{tooltiplong}
+Z pomocą wielkiej Rady Piratów, \{ref H_heros.seml#_miyagi}Miyagi\{/ref} schwytał dzikie i nieuchwytne stworzenia do obrony jego niebezpiecznego \{ref H_Aje_Produkte.seml#_aje_pirate_boss_ship}Pirackiego statku\{/ref} . Ten szczególny Dunkleosteus jest pływającą, walcząca w zwarciu \{ref H_general.seml#_units}jednostką\{/ref} , kosztowną, mimo to niezwykle wartościową. Ich produkcja jest opłacalna, ale ich strata stawia statek piracki w niekorzystnej sytuacji przy walce w zwarciu.
+   \{/tooltiplong}
+\{/helpitem}

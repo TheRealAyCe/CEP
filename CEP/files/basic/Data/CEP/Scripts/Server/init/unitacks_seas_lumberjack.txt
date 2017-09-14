@@ -1,0 +1,80 @@
+Root {
+	SoundPath = '07_speech_acks/'
+	voice_seas_lumberjack_selected {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_sel_1.wav'
+			volume = '100'
+		}
+		sound_1 {
+			wav = 'SEAS/Executor/seas_lumberjack_sel_2.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_gag {
+		global = '1'
+		sequential = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_gag_1.wav'
+			volume = '100'
+		}
+		sound_1 {
+			wav = 'SEAS/Executor/seas_lumberjack_gag_2.wav'
+			volume = '100'
+		}
+		sound_2 {
+			wav = 'SEAS/Executor/seas_lumberjack_gag_3.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_delivered {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_prod_1.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_task_goto {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_move_1.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_task_walk_aggro {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_move_1.wav'
+			volume = '100'
+		}
+		sound_1 {
+			wav = 'SEAS/Executor/seas_lumberjack_atk_1.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_task_attack {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_atk_1.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_task_attack_walk {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_move_1.wav'
+			volume = '100'
+		}
+		sound_1 {
+			wav = 'SEAS/Executor/seas_lumberjack_atk_1.wav'
+			volume = '100'
+		}
+	}
+	voice_seas_lumberjack_die {
+		global = '1'
+		sound_0 {
+			wav = 'SEAS/Executor/seas_lumberjack_die_1.wav'
+			volume = '100'
+		}
+	}
+}

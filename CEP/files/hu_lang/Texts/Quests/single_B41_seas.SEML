@@ -1,0 +1,65 @@
+﻿\{comment $File: //UrsRel/Work/BoosterPack1/Data/BoosterPack1/Locale/hu/Texts/Quests/single_B41.SEML $}
+\{comment $DateTime: 2006/08/21 18:18:54 $}
+\{comment $Author: benjamin.heidl $}
+\{comment $Translation: zoiddani $}
+\{comment $Revision: #5 $}
+
+\{chapter single_B41}
+
+	\{section -name LB41MQ01}
+Babbit szállítóhajója Leightonra, és egy csapat lángszóró egységre vár a sziget túloldalán. Siess, a hajónak nemsokára menie kell. Failing is not an option!
+\{p} \{p}
+Feladat:
+\{p}
+1) Mozdíts 20 Lángszóró egységet a találkozási ponthoz.
+\{p}
+2) Érj oda, mielőtt lejár az időd.
+	\{/section}
+
+	\{section -name LB41MQ02}
+Babbit szállítóhajója Leightonra, és egy csapat lángszóró egységre vár a sziget túloldalán. Siess, a hajónak nemsokára menie kell. Elhibázni nem lehet!
+\{p} \{p}
+Feladat:
+\{p}
+1) Mozdíts 20 Lángszóró egységet a találkozási ponthoz.
+\{p}
+2) Érj oda, mielőtt lejár az időd.
+	\{/section}
+
+	\{section -name LB41MQ03}
+Úgy néz ki, a dolgok bonyolultabbá válnak. Porlovagok és Északiak hevesen harcolnak ezen a szigeten, és nincs más út, hogy kikerüld őket.Egy bázis és egy nagyobb hadsereg nélkül ez csak öngyilkosság lenne.
+\{p} \{p}
+Feladat:
+\{p}
+1) Fejlődj fel a 4. korszakba.
+	\{/section}
+
+
+	\{section -name LB41SQ01}
+Mindegyik város egy kristály köré épült. Nagy befolyással vannak a törzsekre, ha elpusztítanád a kristályokat, azzal gyorsan meg bírnád állítani ellenállásukat.
+\{p} \{p}
+Feladat:
+\{p}
+1) Pusztítsd el a kristályokat.
+	\{/section}
+
+
+	\{section -name LB41SQ02}
+Mindegyik város egy kristály köré épült. Nagy befolyással vannak a törzsekre, ha elpusztítanád a kristályokat, azzal gyorsan meg bírnád állítani ellenállásukat.
+\{p} \{p}
+Feladat:
+\{p}
+1) Szintén pusztítsd el a második kirstályt.
+	\{/section}
+
+
+	\{section -name LB41SQ03}
+Leightonnak és az embereinek a találkozási ponthoz kell hogy érjenek minél előbb.
+\{p} \{p}
+Feladat:
+\{p}
+1) Teljesítsd mindkét áttörő-küldetésed, és mielőtt az óra eléri a 30 percet, érj el a találkozási ponthoz.
+	\{/section}
+
+
+\{/chapter}

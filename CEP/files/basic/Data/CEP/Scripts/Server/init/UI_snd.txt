@@ -1,0 +1,194 @@
+Root {
+	
+	UI_switch {
+		global = '1'
+		sound {
+			wav = '05_ui/ui_click_success.wav'
+			volume = '50'
+		}
+	}
+	UI_click {
+		global = '1'
+		sound {
+			wav = '05_ui/ui_click_success.wav'
+			volume = '50'
+		}	
+	}
+	UI_ping1 {
+		global = '1'
+		sound {
+			wav = '05_ui/ui_click_success.wav'
+			volume = '50'
+		}	
+	}
+	UI_ping2 {
+		global = '1'
+		sound {
+			wav = '05_ui/ui_click_success.wav'
+			volume = '50'
+		}	
+	}
+	UI_ping3 {
+		global = '1'
+		sound {
+			wav = '05_ui/ui_click_success.wav'
+			volume = '50'
+		}	
+	}
+	UI_map_ping {
+		global = '1'
+		sound {
+			wav = '05_ui/ui_map_ping.wav'
+			volume = '90'
+		}	
+	}
+	SoundOptionsTest_0 {
+	}
+	Taunt_1 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Bela/hero_Bela_jub_3.wav'
+			volume = '100'
+		}
+	}
+	Taunt_2 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Cole/hero_Cole_jub_4.wav'
+			volume = '100'
+		}
+	}
+	Taunt_3 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Taslov/hero_Tesla_move_4.wav'
+			volume = '100'
+		}
+	}
+	Taunt_4 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Ada/hero_Ada_error_6.wav'
+			volume = '100'
+		}
+	}
+	Taunt_5 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Bela/hero_Bela_error_3.wav'
+			volume = '100'
+		}
+	}
+	Taunt_6 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Darwin/hero_Darwin_error_1.wav'
+			volume = '100'
+		}
+	}
+	Taunt_7 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Kleemann/hero_Schliemann_sel_5.wav'
+			volume = '100'
+		}
+	}
+	Taunt_8 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Mayor/hero_Mayor_sel_1.wav'
+			volume = '100'
+		}
+	}
+	Taunt_9 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Babbit/hero_Babbit_sel_6.wav'
+			volume = '100'
+		}
+	}
+	Taunt_10 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Aje/Assassin/Aje_Thro_sel_4.wav'
+			volume = '100'
+		}
+	}
+	Taunt_11 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Taslov/hero_Tesla_sel_9.wav'
+			volume = '100'
+		}
+	}
+	Taunt_12 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Leighton/hero_Leighton_gag_4.wav'
+			volume = '100'
+		}
+	}
+	Taunt_13 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Larry/hero_Trader_error_1.wav'
+			volume = '100'
+		}
+	}
+	Taunt_14 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Miyagi/hero_Miyagi_sel_3.wav'
+			volume = '100'
+		}
+	}
+	Taunt_15 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Miyagi/hero_Miyagi_sel_2.wav'
+			volume = '100'
+		}
+	}
+	Taunt_16 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Hu/Unique3/Hu_Bers_spec_1.wav'
+			volume = '100'
+		}
+	}
+	Taunt_17 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Ninigi/Rider1/Ni_Cart_gag_4.wav'
+			volume = '100'
+		}
+	}
+	Taunt_18 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Cole/hero_Cole_gag_9.wav'
+			volume = '100'
+		}
+	}
+	Taunt_19 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Aje/Unique2/Aje_Warrior_atk_1.wav'
+			volume = '100'
+		}
+	}
+	Taunt_20 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Aje/DinoHandler/Aje_Velo_atk_2.wav'
+			volume = '100'
+		}
+	}
+	Taunt_21 {
+		global = '1'
+		sound {
+			wav = '07_speech_acks/Heroes/Miyagi/hero_Miyagi_atk_1.wav'
+			volume = '100'
+		}
+	}
+}

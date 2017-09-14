@@ -1,0 +1,10 @@
+Root {
+	SoundPath = '00_npc/'
+	ui_seas_warrior_selected {
+		global = '1'
+		sound_0 {
+			wav 	= 'npc_draw_saber.wav'
+			volume 	= '75'
+		}
+	}
+}

@@ -1,0 +1,160 @@
+Root {
+	SoundPath = '07_speech_acks/Aje/Archer/'
+	voice_seas_shotgunner_selected {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_Archer_sel_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_Archer_sel_4.wav'
+			volume = '70'
+		}
+		sound_2 {
+			wav = 'Aje_Spear_sel_2.wav'
+			volume = '70'
+		}
+		sound_3 {
+			wav = 'Aje_Spear_sel_4.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_gag {
+		global = '1'
+		sequential = '1'
+		sound_0 {
+			wav = 'Aje_Spear_gag_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_Spear_gag_2.wav'
+			volume = '70'
+		}
+		sound_2 {
+			wav = 'Aje_TriArc_move_3.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_delivered {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_TriArc_sel_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_TriArc_sel_3.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_task_goto {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_Spear_move_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_Spear_move_3.wav'
+			volume = '70'
+		}
+		sound_2 {
+			wav = 'Aje_Archer_move_1.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_task_walk_aggro {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_Spear_move_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_Spear_move_3.wav'
+			volume = '70'
+		}
+		sound_2 {
+			wav = 'Aje_Archer_move_4.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_task_attack {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_Archer_atk_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_Archer_atk_2.wav'
+			volume = '70'
+		}
+		sound_2 {
+			wav = 'Aje_TriArc_atk_2.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_task_attack_walk {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_Spear_atk_4.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_Spear_move_2.wav'
+			volume = '70'
+		}
+		sound_2 {
+			wav = 'Aje_Spear_spec_1.wav'
+			volume = '70'
+		}
+		sound_3 {
+			wav = 'Aje_Spear_spec_2.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_die {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_F_Archer_die_3.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_F_Archer_die_4.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_fear {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_F_Archer_fear_1.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_jub {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_F_Archer_jub_2.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_F_Archer_jub_4.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_hit {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_F_Archer_hit_1.wav'
+			volume = '70'
+		}
+		sound_1 {
+			wav = 'Aje_F_Archer_hit_4.wav'
+			volume = '70'
+		}
+	}
+	voice_seas_shotgunner_click_error {
+		global = '1'
+		sound_0 {
+			wav = 'Aje_TriArc_sel_2.wav'
+			volume = '70'
+		}
+	}
+}

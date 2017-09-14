@@ -1,0 +1,269 @@
+class CLacerate inherit CTask
+//used by CHarvester
+
+	var CObjHndl 		m_xHandle;
+	var string 			m_sState;
+	var real			m_fAnimLength;
+	var vec3			m_vPos;
+
+	export constructor()
+		SetName("Lacerate");
+	endconstructor;
+	
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xType="Lace";
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xType,1);
+		var ^CArc pxArc=^(pxWalk^.GetArc());		
+		m_xHandle.DoKArc(pxArc^);
+		(pxArc^) << m_sState;
+		(pxArc^) << m_fAnimLength;
+		(pxArc^) << m_vPos;
+		pxWalk^.Close();
+	endproc;
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="Lace")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			m_xHandle.DoKArc(pxArc^);
+			(pxArc^) << m_sState;
+			(pxArc^) << m_fAnimLength;
+			(pxArc^) << m_vPos;
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+	export proc bool Init(CObjHndl p_xHandle, CObjHndl p_xEnemy)
+
+		m_sState="start_anim";
+
+		if(!p_xHandle.IsValid() || !p_xEnemy.IsValid())then
+			m_sState="EndTask";
+			return false;
+		endif;
+
+		m_xHandle=p_xHandle;
+		m_vPos=p_xEnemy.GetObj()^.GetPos();
+		return true;
+
+	endproc;
+
+	proc void USLOnEnter(^CState p_pxFrom, ^CState p_pxTo)
+
+		if(m_sState=="EndTask")then
+			EndTask();
+		endif;
+
+	endproc;
+
+	export proc bool OnActionEnd(bool p_bBroken)
+		return false;
+	endproc;
+
+	proc void USLOnTick(int p_iTime)
+
+		//L KLog.LogSpam("JaNe","USLOnTick("+m_sState+")");
+
+		var ^CFightingObj pxHandle = cast<CFightingObj>(m_xHandle.GetObj());
+
+		if(pxHandle==null)then EndTask(); return; endif;
+
+		var real fRange		= pxHandle^.GetCollisionRadius()+4.0; // must NOT be 0.0;
+		var real fDmg		= 200.0;
+
+		if(m_sState == "start_anim")then
+			//calc
+			pxHandle^.SetSLEAnim("harvest",2,true,true,m_fAnimLength);
+			//L KLog.LogSpam("JaNe","m_fAnimLength="+m_fAnimLength.ToString());
+			pxHandle^.WaitAction(0.6);
+			var int iOwner = pxHandle^.GetOwner();
+
+			m_sState = "do_damage";
+			
+		elseif(m_sState == "do_damage")then
+			
+			var CObjList xList;
+			pxHandle^.GetPenetratedObjs(m_vPos, fRange, xList, 120.0);
+			
+			var int i,iC=xList.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CFightingObj pxObj=cast<CFightingObj>(xList[i].GetObj());
+				if(pxObj==null)then continue; endif;
+				pxObj^.TakeDirectMeleeDmg(fDmg);
+			endfor;
+
+			if(m_fAnimLength>0.6)then
+				pxHandle^.WaitAction(m_fAnimLength-0.6);
+			endif;
+			m_sState = "finished";
+		elseif(m_sState == "finished")then
+			m_sState="EndTask";
+			pxHandle^.ReturnToFight();
+		elseif(m_sState == "EndTask")then
+			EndTask();
+			return;
+
+		endif;
+
+	endproc;
+
+	proc void USLOnLeave(^CState p_pxFrom, ^CState p_pxTo)
+	endproc;
+
+	export proc bool Break()
+		return false;
+	endproc;
+
+	export proc void Skip()
+	endproc;
+
+endclass;
+
+class CJumpjet inherit CSpecialActionTask
+
+	var CObjHndl		m_xActor;
+	var string 			m_sState;
+	var vec3			m_vJumpPos;
+	const real			m_fMaxDistance			=400.0f; 			//Maximum jumping distance.
+
+	export constructor()
+		SetName("Jumpjet");
+		SetCivil(false);
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+	
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xType="JuJe";
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xType,2);
+		var ^CArc pxArc=^(pxWalk^.GetArc());		
+		m_xActor.DoKArc(pxArc^);
+		(pxArc^) << m_sState;
+		(pxArc^) << m_vJumpPos;
+		pxWalk^.Close();
+	endproc;
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="JuJe")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			m_xActor.DoKArc(pxArc^);
+			(pxArc^) << m_sState;
+			(pxArc^) << m_vJumpPos;
+			if(p_pxReaderNode^.GetVersion()==1)then
+				var string sInvalid;
+				(pxArc^) << sInvalid;
+			endif;
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+	//On Init
+	export proc void Init(CObjHndl p_xActor, vec3 p_vPos, string p_sTTPath)
+		SetSpecialActionPath(p_sTTPath);
+		SetName("Jumpjet");
+		var ^CLumberjack pxActr = cast<CLumberjack>(p_xActor.GetObj());
+		if(pxActr==null || pxActr^.GetClassName()!="babbage_mobile_suit")then return; endif;
+		m_xActor=p_xActor;
+		m_vJumpPos=p_vPos;
+		if(!m_xActor.IsValid())then	return;	endif;
+	endproc;
+
+
+	//On Enter
+	proc void USLOnEnter(^CState p_pxFrom, ^CState p_pxTo)
+		var ^CFightingObj pxFightingObj=cast<CFightingObj>(m_xActor.GetObj());
+		if(pxFightingObj==null || !pxFightingObj^.CheckSpecialActionTimer(GetSpecialActionPath()))then
+			EndTask();
+			return;
+		endif;
+		if(m_xActor.IsValid())then
+			var ^CLumberjack pxActor = cast<CLumberjack>(m_xActor.GetObj());
+			if(pxActor==null)then EndTask();return;endif;
+			var vec3 vPos;
+
+			var vec3 vWay=m_vJumpPos-pxActor^.GetPos();
+			var real fLength=vWay.Abs();
+			if(fLength>m_fMaxDistance)then
+				vWay.Normalize();
+				var real fTemp=fLength-m_fMaxDistance;
+				m_vJumpPos=GetAdoptedDest(pxActor^.GetPos(),m_vJumpPos,fTemp);
+			endif;
+		endif;
+		m_sState="rotate_to_target";
+	endproc;
+
+
+	//OnTick
+	proc void USLOnTick(int p_iTime)
+		if(!m_xActor.IsValid())then EndTask();return;endif;
+		var ^CLumberjack pxActor = cast<CLumberjack>(m_xActor.GetObj());
+		if(pxActor==null)then EndTask();return;endif;
+
+		if(m_sState=="rotate_to_target")then
+			var vec3 vWay=m_vJumpPos-pxActor^.GetPos();
+			var Quat qRot;
+			qRot.FromXYDir(vWay.GetX(), vWay.GetY());
+			pxActor^.RotateAction(qRot);
+			m_sState="prepare_to_jump_3";
+		elseif(m_sState=="prepare_to_jump_3")then
+			if(!StartSpecialActionTimer(pxActor))then EndTask();return;endif;
+			SetUnStoppable(true);
+			pxActor^.AnimAction("jumpjet",0,true,false);
+			m_sState="jump_to_target";
+		elseif(m_sState=="jump_to_target")then
+			if(!pxActor^.GetFreePos(m_vJumpPos)) then
+				EndTask();
+				return;
+			endif;
+			m_vJumpPos.SetZ(CSrvWrap.GetScapeMgr().GetHeight(m_vJumpPos.GetX(), m_vJumpPos.GetY()));
+
+			pxActor^.SetSLEAnim("jumpjet",9999,false,false);
+			pxActor^.RemoveFromWall();
+			pxActor^.JetPackAction(m_vJumpPos);
+			m_sState="land_1";
+		elseif(m_sState=="land_1")then
+			pxActor^.SetAnim("jumpjet",2);
+			m_sState="land_2";
+		elseif(m_sState=="land_2")then
+			SetUnStoppable(false);
+			m_sState="end";
+		elseif(m_sState=="end")then
+			EndTask();
+		endif;
+	endproc;
+
+
+	//called to random the landing pos
+	export proc void RandomizePos(ref vec3 po_rvPos)
+		po_rvPos.SetX(po_rvPos.GetX() + (Random.GetInt()%10+1).ToReal());
+		po_rvPos.SetY(po_rvPos.GetY() + (Random.GetInt()%10+1).ToReal());
+		po_rvPos.SetZ(CSrvWrap.GetScapeMgr().GetHeight(po_rvPos.GetX(), po_rvPos.GetY()));
+	endproc;
+
+
+	//On Leave
+	proc void USLOnLeave(^CState p_pxFrom, ^CState p_pxTo)
+	endproc;
+
+
+	//End Action
+	export proc bool Break()
+		if(GetUnStoppable())then
+			return false;
+		endif;
+		if(m_xActor.IsValid())then
+			m_xActor.GetObj()^.TerminateAction();
+		endif;
+		return true;
+	endproc;
+	
+	export proc void EndTask()
+		UpdateAggressionPos(m_xActor);
+		super.EndTask();
+	endproc;
+
+endclass;

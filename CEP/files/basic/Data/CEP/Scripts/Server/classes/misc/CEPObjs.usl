@@ -1,0 +1,33 @@
+// Universal Deco Obj
+// better than CDecoColObj :P
+class CUDObj inherit CGameObj
+
+	constructor()
+	endconstructor;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+			SetVisInFOW(false);
+			SetType("OTHR");
+			SetBlock(true);
+			SetSelectable(false);
+			SetHitable(false);
+		endif;
+	endproc;
+
+	export proc void Delete()
+		SetBlock(false);
+		super.Delete();
+	endproc;
+
+	export proc void SetBlock(bool p_bBlock)
+		if(p_bBlock)then
+			CSrvWrap.GetPathfinder().AddPFBlocker(this);
+		else
+			CSrvWrap.GetPathfinder().RemPFBlocker(this);
+		endif;
+		SetPlaceBlocker(p_bBlock);
+	endproc;
+
+endclass;

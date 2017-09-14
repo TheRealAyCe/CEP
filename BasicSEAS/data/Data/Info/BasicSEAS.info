@@ -1,0 +1,8 @@
+# Add on info file
+id BasicSEAS
+requires BoosterPack1
+type add-on
+info Para-welt.com
+version 1.0.0
+priority 19
+tryfilereplace */data/base/* data/base/ data/BasicSEAS/

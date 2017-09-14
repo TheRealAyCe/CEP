@@ -1,0 +1,573 @@
+﻿\{document helpfile seas buildings}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_SEAS_Gebaeude.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _economy_buildings Wirtschaftsgebäude}
+\{helpitem -name seas_headquarters Hauptquartier}
+\{img /bunit:seas_headquarters -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Arbeiter
+\\{br}• Läutet neue Epochen ein
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Ressourcenlager
+\\{br}• Erhöht Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dies ist das \{ref H_story.seml#_story_seas}SEAS-Grundgebäude\{/ref}. Es wird benötigt, um \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} zu produzieren und neue \{ref H_general.seml#_techtree}Epochen\{/ref} zu beginnen. \\{br}
+Wenn eine neue \{ref H_general.seml#_techtree}Epoche\{/ref} begonnen wurde, kann dies nicht rückgängig gemacht werden. In der Entwicklung befindliche Erfindungen gehen verloren, wenn das \{ref H_general.seml#_building}Gebäude\{/ref} zerstört wird.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_1 -redirect seas_headquarters -nodisplay Hauptquartier Epoche 1}
+\{img /bunit:seas_headquarters_1 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Arbeiter
+\\{br}• Läutet neue Epochen ein
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Ressourcenlager
+\\{br}• Erhöht Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dies ist das \{ref H_story.seml#_story_seas}SEAS-Grundgebäude\{/ref}. Es wird benötigt, um \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} zu produzieren und neue \{ref H_general.seml#_techtree}Epochen\{/ref} zu beginnen. \\{br}
+Wenn eine neue \{ref H_general.seml#_techtree}Epoche\{/ref} begonnen wurde, kann dies nicht rückgängig gemacht werden. In der Entwicklung befindliche Erfindungen gehen verloren, wenn das \{ref H_general.seml#_building}Gebäude\{/ref} zerstört wird.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_2 -redirect seas_headquarters -nodisplay Hauptquartier Epoche 2}
+\{img /bunit:seas_headquarters_2 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Arbeiter
+\\{br}• Läutet neue Epochen ein
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Ressourcenlager
+\\{br}• Erhöht Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dies ist das \{ref H_story.seml#_story_seas}SEAS-Grundgebäude\{/ref}. Es wird benötigt, um \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} zu produzieren und neue \{ref H_general.seml#_techtree}Epochen\{/ref} zu beginnen. \\{br}
+Wenn eine neue \{ref H_general.seml#_techtree}Epoche\{/ref} begonnen wurde, kann dies nicht rückgängig gemacht werden. In der Entwicklung befindliche Erfindungen gehen verloren, wenn das \{ref H_general.seml#_building}Gebäude\{/ref} zerstört wird.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_3 -redirect seas_headquarters -nodisplay Hauptquartier Epoche 3}
+\{img /bunit:seas_headquarters_3 -ralign}
+  \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Arbeiter
+\\{br}• Läutet neue Epochen ein
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Ressourcenlager
+\\{br}• Erhöht Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dies ist das \{ref H_story.seml#_story_seas}SEAS-Grundgebäude\{/ref}. Es wird benötigt, um \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} zu produzieren und neue \{ref H_general.seml#_techtree}Epochen\{/ref} zu beginnen. \\{br}
+Wenn eine neue \{ref H_general.seml#_techtree}Epoche\{/ref} begonnen wurde, kann dies nicht rückgängig gemacht werden. In der Entwicklung befindliche Erfindungen gehen verloren, wenn das \{ref H_general.seml#_building}Gebäude\{/ref} zerstört wird.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_4 -redirect seas_headquarters -nodisplay Hauptquartier Epoche 4}
+\{img /bunit:seas_headquarters_4 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Arbeiter
+\\{br}• Läutet neue Epochen ein
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Ressourcenlager
+\\{br}• Erhöht Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dies ist das \{ref H_story.seml#_story_seas}SEAS-Grundgebäude\{/ref}. Es wird benötigt, um \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} zu produzieren und neue \{ref H_general.seml#_techtree}Epochen\{/ref} zu beginnen. \\{br}
+Wenn eine neue \{ref H_general.seml#_techtree}Epoche\{/ref} begonnen wurde, kann dies nicht rückgängig gemacht werden. In der Entwicklung befindliche Erfindungen gehen verloren, wenn das \{ref H_general.seml#_building}Gebäude\{/ref} zerstört wird.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_headquarters_5 -redirect seas_headquarters -nodisplay Hauptquartier Epoche 5}
+\{img /bunit:seas_headquarters_5 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Arbeiter
+\\{br}• Läutet neue Epochen ein
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Ressourcenlager
+\\{br}• Erhöht Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dies ist das \{ref H_story.seml#_story_seas}SEAS-Grundgebäude\{/ref}. Es wird benötigt, um \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} zu produzieren und neue \{ref H_general.seml#_techtree}Epochen\{/ref} zu beginnen. \\{br}
+Wenn eine neue \{ref H_general.seml#_techtree}Epoche\{/ref} begonnen wurde, kann dies nicht rückgängig gemacht werden. In der Entwicklung befindliche Erfindungen gehen verloren, wenn das \{ref H_general.seml#_building}Gebäude\{/ref} zerstört wird.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_tent Kleines Zelt}
+\{img /bunit:seas_small_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Erhöht Ressourcenlager
+   \{/tooltipmedium}
+   \{tooltiplong}
+Das kleine Zelt hat zahlreiche Verwendungszwecke, es kann als Lagerstelle für Rohstoffe genutzt werden und als Unterschlupf für Infanterie, so dass es das Einheitenlimit erhöht. Wenn es jedoch zerstört wird, geht dieser Platz und einige Ressourcen verloren, also sollte es an einem geschützen Ort gebaut werden, nicht direkt an der Front.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_tent Großes Zelt}
+\{img /bunit:seas_big_tent -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Erhöht Einheitenlimit
+\{/tooltipmedium}
+   \{tooltiplong}
+Das große Zelt hat, im Gegensatz zum \{ref H_seas_gebaeude.seml#_seas_small_tent}kleinen Zelt\{/ref}, nur einen Hauptzweck, Unterkunftsplätze für alle Einheiten der SEAS zu schaffen. Es bietet weitaus mehr Platz als das kleine Zelt, und erhöht das Einheitenlimit stärker. Es mögen sich noch weitere Dinge im Zeltlager befinden, etwa eine Küche oder taktische Übersichtskarten, doch außer dem Einheitenlimit wird das Zelt nichts ändern. Wenn große Zelte zerstört werden, sinkt die Zahl der baubaren Einheiten stark, also sollten sie, wie die kleinen Zelte auch an einem gut geschützen Platz gebaut werden.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_steelwork Stahlwerk}
+\{img /bunit:seas_steelwork -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Sammelstelle für Nahrung, Holz und Stein
+\\{br}• Vergrößert die Lagerkapazität
+   \{/tooltipmedium}
+   \{tooltiplong}
+Stahlwerke fungieren als Sammelstelle für alle Ressourcen, und verkürzen, geschickt plaziert, die Laufwege der \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref}. Dies steigert auf Dauer die Geschwindigkeit der Ressourcenernte. Außerdem ist das Stahlwerk ein wenig günstiger als das Hauptquartier.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_greenhouse Treibhaus}
+\{img /bunit:seas_greenhouse -ralign}
+   \{tooltipshort}
+   %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Nahrung
+\\{br}• Bis zu 2 Einheiten können hier beschäftigt sein
+      \{/tooltipmedium}
+   \{tooltiplong}
+Die Pflanzen hier bedürfen der Pflege der \{ref H_story.seml#_story_seas}SEAS\{/ref}-Arbeiter damit \{ref H_ui.seml#_tb_food}Nahrung\{/ref} produziert werden kann. Dies ist möglich solange mindestens 1 \{ref H_seas_produkte.seml#_seas_worker}Arbeiter\{/ref} beschäftigt ist. Diese Gebäude sind äußerst effizient, auch Ressourcen benötigt der Bau recht wenig, und sie brauchen kaum Platz.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marketplace Lagerhaus}
+\{img /bunit:seas_marketplace -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Ressourcensammelstelle
+\\{br}• Erhöht die Lagerkapazität
+\\{br}• Produziert den CBT-1500
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ein SEAS-Lagerhaus, eine Weitereinwicklung des \{ref H_seas_gebaeude.seml#_seas_steelwork}Stahlwerks\{/ref}, ist eine Handelsstelle für den \{ref H_seas_produkte.seml#_seas_triceratops_resource_collector}CBT-1500\{/ref} und die Handelskarren ihrer Verbündeten. Die SEAS nutzen Triceratops mit modifzierter Rüstung, welche genügend Platz für alle Ressourcen bieten, welche von einem Lager zum anderen transportiert werden. Der Handelssaurier reist nur von einem Handelsposten zum anderen. Ist die Route einmal festgelegt, reist er solange hin und zurück, bis er andere Anweisungen erhält (oder stirbt). Je größer die zurückgelegte Distanz, desto mehr Ressourcen erhält der Spieler (auch wenn man sich dies bei Nahrung nicht vorstellen möchte). Die SEAS lieben ihre Feinde, am besten tot, und sie haben keine Probleme damit, aus ihrem Tod Profit zu schlagen. Sogar aus den Schädeln besiegter Gegner schlage sie Profit, wenn sie sie gegen Nahrung, Holz oder Stein tauschen. Dies funktioniert jedoch nur in eine Richtung, keine Ressource kann in Schädel umgewandelt werden.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_coh Der Container der Helden}
+\{img /bunit:seas_coh -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Container zur Ehrung der Entwickler:
+\\{br}• Kharg
+\\{br}• AyCe
+\\{br}• Scrat
+\\{br}• MrMorgana
+\\{br}• yclari
+\\{br}• -exo-
+\\{br}• Akkarin
+\\{br}• THEEVERGOD
+\\{br}• Tomeis
+\\{br}• Adder
+\\{br}• TheZoo
+\\{br}• Arvinder
+\\{br}• Mario
+\\{br}• Parker
+   \{/tooltipmedium}
+   \{tooltiplong}
+
+Container von Kharg, zur Ehrung derer, welche geholfen haben den SEASMOD zu dem zu machen was er ist!\\{br}\\{br}
+Dank geht an: Kharg, AyCe, Scrat, MrMorgana, yclari, -exo-, Akkarin, THEEVERGOD, Tomeis, Adder, TheZoo, Arvinder, Mario & Parker.
+\\{br}\\{br}\\{br}\\{br} - SEASMOD is magic! ;-)
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warpgate Dimensionstor}
+\{img /bunit:seas_warpgate -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Das Dimensionstor muss fertig gestellt und eine Zeit lang gehalten werden, um das Spiel zu gewinnen
+   \{/tooltipmedium}
+   \{tooltiplong}
+Wenn das Dimensionstor gebaut worden ist, dann muss es eine bestimmte Zeit gehalten werden, bis es sich öffnet. \\{br}
+Der Spieler, dessen Dimensionstor sich zuerst öffnet, gewinnt das Spiel.
+Alle Spieler werden informiert, sobald ein Dimensionstor platziert wurde und der Countdown beginnt. Dies dient den anderen Spielern als Warnung, denn sie werden verlieren, wenn sie nichts tun, um den Erbauer des Tors aufzuhalten.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{chapter -name _combat_buildings Kampfgebäude}
+\{helpitem -name _seas_barracks Kaserne}
+\{img /bunit:seas_barracks -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Infanterieeinheiten
+\\{br}• Epochen-Upgrades erlauben die Produktion fortgeschrittener Einheiten
+\\{br}• Erhöht das Einheitenlimit
+   \{/tooltipmedium}
+   \{tooltiplong}
+Die Kaserne ist der Trainingsplatz aller \{ref H_seas_produkte.seml#_infantry}SEAS-Infanterie\{/ref} . Diese hat sich, verglichen mit den primitiven Waffen anderer Völker, auf fortschrittliche und tödliche Waffen spezialisiert. Die Mehrzahl aller SEAS-Infanterieeinheiten ist nur gegen andere Infanterie-Einheiten wirklich wirkungsvoll, doch der \{ref H_seas_produkte.seml#_seas_rocketman}Raketenwerfer\{/ref} richtet auch gegen die größten Einheiten und Gebäude beachtlichen Schaden an. Im Zuge der "Zeit ist Tod"-Reform wurden die Kasernen mit Schlafplätzen ausgestattet, um das Truppenlimit zu erhöhen und ein Optimum an Vernichtung zu gewährleisten.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carrier Trägerschiff}
+\{img /bunit:seas_carrier -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Schiffe und U-Boote
+\\{br}• Kann schwimmen und fischen
+\\{br}• Epochenaufstiege erlauben die Produktion fortgeschrittener Einheiten
+\\{br}• Benötigt einen Slot im Army Controller
+   \{/tooltipmedium}
+   \{tooltiplong}
+Das Trägerschiff ist nötig um Inseln zu verlassen oder offenes Wasser zu überqueren, da nur Luftkissenboote Einheiten über die See transporiteren können. Das Trägerschiff kann schwimmen, wenn auch nur sehr langsam, und produziert alle \{ref H_seas_produkte.seml#_ships}Schiffe und Amphibieneinheiten\{/ref} der SEAS. Im Falle eines Angriffs kann es sich mit seinen mächtigen Geschützen an Deck selbst verteidigen. Im Gegensatz zu anderen Völkern besitzen die SEAS Technologie für \{ref H_seas_produkte.seml#_seas_hovercraft}Luftkissenboote\{/ref} und andere Einheiten, welche sich auf dem Wasser wie auch auf dem Land frei bewegen. Dies bietet ideale Gelegenheiten für überraschende Angriffe und erlaubt eine Flucht, bei der die Feinde den Einheiten nur hilflos beim Entkommen zusehen können. Zudem verfügt die SEAS-Armee über \{ref H_seas_produkte.seml#_seas_submarine}U-Boote\{/ref} die sich ungesehen an Gegner heranpirschen oder Erkundungsmissionen in feindlichen Gewässern vornehemen können. Obgleich diese Techniken noch sehr experimentell sind, gelingt es dem stromlosen Dampfzielsucher, verheerenden Schaden an gegnerischen Schiffen anzurichten. Das Trägerschiff kann außerdem fischen, um viele hungrige Soldatenmäuler zu stopfen. Dafür wird nur eine Fischquelle auf offener See benötigt. Vorsicht: Mit einem Rechtsklick wird kein Sammelpunkt markiert, sondern das Trägerschiff reist an den angegebenen Ort.\\{br}Ein flacher Sandstrand ist ein idealer Ort, um ein Trägerschiff zu bauen, es benötigt außerdem einen Slot im Army Controller. Beschädigte eigene Schiffe im Umkreis werden mit der Zeit kostenlos repariert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_garage Maschinenfabrik}
+\{img /bunit:seas_garage -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert berittene Einheiten und Maschinen
+\\{br}• Epochenaufstieg erlauben die Produktion fortgeschrittener EInheiten
+   \{/tooltipmedium}
+   \{tooltiplong}
+Die Maschinenfabrik produziert alle \{ref H_seas_produkte.seml#_robots}berittenen Einheiten und Maschinen\{/ref} der SEAS. Zwar haben sich die SEAS hauptsächlich auf ihre beeindruckenden Maschinenwesen spezialisiert, doch nutzen sie auch in schrecklichen Prozeduren zu Cyborgs umgeformte Triceratops, um ihren Krieg gegen die anderen Völker, mit allen Mitteln zu gewinnen. Mit steigender Epochenentwicklung steigt ebenso die Gefährlichkeit ihrer Maschinen, vom stacksenden \{ref H_seas_produkte.seml#_seas_mechanical_walker}Sentinel\{/ref} bis zum tödlichen \{ref H_seas_produkte.seml#_seas_lumberjack}Executor\{/ref}. Die Krone der morbiden Bizarerrie ist jedoch die \{ref H_seas_produkte.seml#_seas_wehrspinne}Wehrspinne\{/ref}, ein mechanisches Wunder, welches mit Raketen auf weite Distanz Gebäude zerschießt. Zu schade, dass man nicht auch noch einen Roboraptor bauen kann...
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_laboratory Forschungslabor}
+\{img /bunit:seas_laboratory -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Heilt Einheiten in mittlerem Umkreis
+\\{br}• Produziert Sanitäter
+\\{br}• Erforscht Spezialfähigkeiten von Einheiten
+   \{/tooltipmedium}
+   \{tooltiplong}
+Zum einen ist das Laboratorium bestückt mit Medikamenten, Gebräuen und Chemikalien, die, nach Angabe des zuständigen Arztes "ganz sicher ohne Nebenwirkungen" alle Einheiten im Umkreis heilen. Eine fleißiges Mechanikerteam repariert zudem in Windeseile alle Maschinen, sogar die Schwebeeinheiten des Trägerschiffs, jedoch keine Gegnereinheiten. Mittels gewisser bunter Pillen und lustiger Spritzen werden ungeahnte Spezialfähigkeiten bei SEAS-Einheiten geweckt. Auch wird so mancher unliebsamer Arzt gerne als \{ref H_seas_produkte.seml#_seas_medic}Sanitäter\{/ref} aufs Schlachtfeld geschickt, wo sie weiterhin Truppen heilen, doch da man sich ihren Tod wünscht, können sie sich nicht selbst verteidigen oder angreifen. U-Boote können im Laboratorium nicht repariert werden, (wer hätts gedacht?) hauptsächlich, weil kein Arzt gerne tonnenschwere Metallpötte kilometerweit schleppt.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_khargclub Kharg Club}
+\{img /bunit:seas_khargclub -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Heuert Helden an
+   \{/tooltipmedium}
+   \{tooltiplong}
+Im Kharg Club werden \{ref H_general.seml#_heros}Helden\{/ref} angeheuert. \\{br}
+Der Tod ist kein Hindernis für unsere \{ref H_general.seml#_heros}Helden\{/ref} – selbst wenn sie sterben, können sie im Kharg Club wiedergefunden und angeheuert werden. Alle \{ref H_general.seml#_heros}Helden\{/ref} starten auf Level 1 und werden mithilfe von \{ref H_general.seml#_skulls}Schädeln\{/ref} befördert. Die \{ref H_general.seml#_heros}Helden\{/ref} erscheinen jeweils nur für einen Stamm; jeder einzelne \{ref H_general.seml#_heros}Held\{/ref} muss erst sterben, bevor er erneut angeheuert werden kann.
+\\{br}\\{br}Es wird viel Rock gehört, und man munkelt dass sich hier die Entwickler nach getaner Arbeit treffen...
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_amazon_temple Amazonentempel}
+\{img /bunit:seas_amazon_temple -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Heilt eigene und verbündete Einheiten im Umkreis
+\\{br}• Produziert Spezialeinheiten
+\\{br}• Kann nur gebaut werden, wenn Tarna Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Tempel heilt alle eigenen und verbündeten \{ref H_general.seml#_units}Einheiten\{/ref} im direkten Umkreis, auf magische Weise sogar besser als moderne Medizin. Irgendwas mit Karma, Räucherstäbchen und Menscheopfern wahrscheinlich. Schiffe können trotzdem nicht geheilt werden.\\{br}
+Feindliche \{ref H_general.seml#_units}Einheiten\{/ref} werden nicht geheilt. Zudem werden die exotischsten und tödlichsten Kreaturen aus der ganzen Paraworld hier trainiert und für den Kampf vorbereitet.\\{br}
+Dieses monumentale Gebäude kann nicht von Menschen repariert werden, jedoch stellt die Magie des Tempels dessen Trefferpunkte mit der Zeit wieder her.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_outpost Piratenaußenposten}
+\{img /bunit:seas_pirate_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+\{tooltipmedium}
+• Produziert verbesserte Schiffseinheiten
+\\{br}• Repariert Schiffe in der Umgebung
+\\{br}• Sammelstelle für Fisch
+\\{br}• Kann nur errichtet werden, wenn der Piratenkapitän Stufe 4 erreicht
+   \{/tooltipmedium}
+   \{tooltiplong}
+Dieser Hafen ist der Ort an dem man verbesserte Einheiten ausbilden kann, aber er ist nur baubar, wenn der Piratenkapitän Stufe 4 erreicht. Hier kann man beispielsweise das \{ref H_seas_produkte.seml#_seas_pirate_boss_ship}Große Piratenschiff\{/ref} bauen, um die Meere zu beherrschen.
+Er wird an seichten Stränden platziert und gebaut. \\{br}
+Beschädigte Schiffe in der Nähe des Hafens werden automatisch repariert, ohne dafür \{ref H_general.seml#_resources}Ressourcen\{/ref} zu verbrauchen.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_outpost Außenposten}
+\{img /bunit:seas_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produziert Infanterieeinheiten
+\\{br}• Produziert einige Fahrzeuge
+\\{br}• Ressourcensammelstelle
+\\{br}• Erhöht Lager und Einheitenlimit
+\\{br}• Kann nur gebaut werden, wenn Babbit Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Außenposten ist ein Gebäude, welches viele \{ref H_seas_produkte.seml}SEAS-Einheiten\{/ref}, sowohl Infanterie als auch Maschinen produzieren kann. Die SEAS nutzen es, um ihre Grenzen zu bewachen, aber auch als Stützpunkt beim Vorstoß in feindliches Gebiet. Es dient außerdem zur Ressourcenablieferung.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _defense_buildings Verteidigungsgebäude}
+\{helpitem -name _seas_fence Zaun}
+\{img /bunit:seas_fence -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nicht begehbare Abgrenzung
+   \{/tooltipmedium}
+   \{tooltiplong}
+Zäune bilden nicht begehbare Fortifikationen. Das bedeutet, dass Einheiten sie im Kriegsfall nicht bemannen können. Eine gerade, flache Linie aus Zäunen, drei Abschnitte lang, wird benötigt, um ein Tor in sie zu bauen. Der eiserne Zaun dient als Schutzwall gegen die stärksten Feinde oder gegen Wildtiere. Türme können integriert werden, um im Falle eines Angriff besseren Widerstand leisten zu können. Die Türme und der Zaun bleiben jedoch zwei voneinander getrennte Gebäude, die unabhängig voneinander angegriffen und zerstört werden können.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl2 Steinzaun}
+\{img /bunit:seas_fence_lvl2 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nicht begehbare Abgrenzung
+   \{/tooltipmedium}
+   \{tooltiplong}
+Zäune bilden nicht begehbare Fortifikationen. Das bedeutet, dass Einheiten sie im Kriegsfall nicht bemannen können. Eine gerade, flache Linie aus Zäunen, drei Abschnitte lang, wird benötigt, um ein Tor in sie zu bauen. Der eiserne Zaun dient als Schutzwall gegen die stärksten Feinde oder gegen Wildtiere. Türme können integriert werden, um im Falle eines Angriff besseren Widerstand leisten zu können. Die Türme und der Zaun bleiben jedoch zwei voneinander getrennte Gebäude, die unabhängig voneinander angegriffen und zerstört werden können.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_fence_lvl3 Stahlzaun}
+\{img /bunit:seas_fence_lvl3 -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nicht begehbare Abgrenzung
+   \{/tooltipmedium}
+   \{tooltiplong}
+Zäune bilden nicht begehbare Fortifikationen. Das bedeutet, dass Einheiten sie im Kriegsfall nicht bemannen können. Eine gerade, flache Linie aus Zäunen, drei Abschnitte lang, wird benötigt, um ein Tor in sie zu bauen. Der eiserne Zaun dient als Schutzwall gegen die stärksten Feinde oder gegen Wildtiere. Türme können integriert werden, um im Falle eines Angriff besseren Widerstand leisten zu können. Die Türme und der Zaun bleiben jedoch zwei voneinander getrennte Gebäude, die unabhängig voneinander angegriffen und zerstört werden können.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gate Tor}
+\{img /bunit:seas_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Öffnet sich für eigene und verbündete Einheiten
+\\{br}• Kann komplett geschlossen werden
+\\{br}• Kann nur in eine Zaunreihe eingefügt werden
+   \{/tooltipmedium}
+   \{tooltiplong}
+Tore öffnen sich für eigene und verbündete Einheiten. Es muss in einer Reihe von Zäunen platziert werden.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall Mauer}
+\{img /bunit:seas_wall -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Nicht begehbare Abgrenzung
+\\{br}• Kann nur errichtet werden, wenn der Statthalter Stufe 4 erreicht
+   \{/tooltipmedium}
+   \{tooltiplong}
+Es ist die stärkste Mauer, die die \{ref H_story.seml#_story_seas}SEAS\{/ref} bauen können. \\{br}
+Infanterie-\{ref H_general.seml#_units}Einheiten\{/ref} können auf diesen Mauern stationiert werden. Weil für die Errichtung dieses Mauerwerks magische Steine verwendet wurden, repariert es sich selbstständig.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wall_gate Mauertor}
+\{img /bunit:seas_wall_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Öffnet sich für eigene und verbündete Einheiten
+\\{br}• Kann komplett geschlossen werden
+\\{br}• Kann nur in eine Zaunreihe eingefügt werden
+\\{br}• Kann nur errichtet werden, wenn der Statthalter Stufe 4 erreicht
+   \{/tooltipmedium}
+   \{tooltiplong}
+Tore öffnen sich für eigene und verbündete Einheiten. Es muss in einer Reihe von Zäunen platziert werden.\\{br}
+Infanterie-\{ref H_general.seml#_units} Einheiten\{/ref} können auf diesen Mauern stationiert werden. Weil für die Errichtung dieses Mauerwerks magische Steine verwendet wurden, repariert es sich selbstständig.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_turret_tower Turm}
+\{img /bunit:seas_turret_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Greift gegnerische Einheiten selbstständig an
+\\{br}• Kann alleine stehen oder Teil eines Mauerwerks sein
+   \{/tooltipmedium}
+   \{tooltiplong}
+Türme feuern automatisch auf Feinde und müssen nicht von Infanteristen bemannt werden. Sie werden auf dem Gitternetz der Zäune platziert, was ihnen erlaubt, in einen Zaun nach dessen Errichtung integriert zu werden. Anders als die Türme der anderen Völker behalten die der SEAS ihre fortgeschrittene Waffentechnologie bei, weswegen der Turm nicht ausbaubar ist.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_bunker Bunker}
+\{img /bunit:seas_hq_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Spawnt Einheiten der SEAS (Kampagne)
+\\{br}• Bietet Platz für 4 Einheiten
+   \{/tooltipmedium}
+   \{tooltiplong}
+Solange der Bunker steht, ist er für den Spieler eine Bedrohung, weil Einheiten von hier aus den Spieler angreifen.\\{br}
+Dort werden immer neue \{ref H_story.seml#_story_seas}SEAS\{/ref} \{ref H_general.seml#_units}Einheiten\{/ref} erscheinen, bereit anzugreifen.
+\\{br}\\{br}Zumindest ist es in der Kamapagne so...
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_bunker Geschützbunker}
+\{img /bunit:seas_bunker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Geschütz, welches jedoch bedient werden muss
+\\{br}• Bietet Platz für 4 Einheiten
+   \{/tooltipmedium}
+   \{tooltiplong}
+Der Geschützbunker ist eine Erweiterung des Bunkers, welche ein Doppelgeschütz, ähnlich dem des Trägerschiffs besitzt.\\{br}
+Um dieses jedoch zu bedienen ist es erforderlich, dass mindestens eine \{ref H_general.seml#_units}Einheit\{/ref} den Bunker besetzt.\\{br}
+Überdies können hier bis zu 4 Infanteristen einquartiert werden.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_loudspeaker Lautsprecher}
+\{img /bunit:seas_loudspeaker -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Erhöht den Angriffsschaden naher eigener und verbündeter Einheiten
+\\{br}• Kann nur gebaut werden, wenn der Erzdruide Stufe 4 erreicht hat
+   \{/tooltipmedium}
+   \{tooltiplong}
+\{ref H_heros.seml#_livingstone}Leightons\{/ref} wohltönende Stimme erschallt aus dem Lautsprecher, direkt vom Hauptquartier der \{ref H_story.seml#_story_seas}SEAS\{/ref} gesendet. Die SEAS und ihre Verbündeten würden alles geben, um ihn und \{ref H_heros.seml#_babbage}Babbit\{/ref} stolz zu machen, und kämpfen besonders verbittert.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mg_nest MG-Nest}
+\{img /bunit:seas_mg_nest -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Greift feindliche Einheiten an
+   \{/tooltipmedium}
+   \{tooltiplong}
+Maschinengewehr- oder auch MG-Nester genannt, werden automatisch von einen MG-Schützen bemannt, sobald sie gebaut werden und bleiben so, da man die Schichtwechsel kaum sieht, so schnell wie sie ablaufen. Obwohl die MG-Nester nicht die Kraft von Türmen erreicht, sind sie in großer Zahl eine große Bedrohung für gegnerische Truppen. Sie sind im frühen Spiel eine billige und gute Verteidigung. Wenn die SEAS jedoch an Epochenstufe zunehmen, ist es besser, diese Nester mit ein paar Türmen zu beschützen.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_small_cannon Kleine Kanone}
+\{img /bunit:seas_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Greift feindliche Einheiten bei Sichtung an
+\\{br}• Verursacht Flächenschaden
+\\{br}• Kann nur errichtet werden, wenn Taslow Stufe 4 erreicht
+   \{/tooltipmedium}
+   \{tooltiplong}
+Kleine Kanonen verursachen eine große Menge Schaden in dem Gebiet, in dem ihre Geschosse einschlagen. Sie sind in Massen gut zur Verteidigung geeignet, sollten aufgrund ihrer Mindestreichweite aber von Türmen oder MG-Nestern zusätzlich geschützt werden.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_hq_small_cannon Kleine Kanone}
+\{img /bunit:seas_hq_small_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Greift Gegner bei Sichtung an
+   \{/tooltipmedium}
+   \{tooltiplong}
+Kleine Kanonen greifen automatisch gegnerische \{ref H_general.seml#_units}Einheiten\{/ref} ab. \\{br}
+Nicht so effektiv wie der Turm, eine einzelne Kleine Kanone ist keine große Bedrohung, jedoch mehrere erweisen sich als gefährlich.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_big_cannon Große Kanone}
+\{img /bunit:seas_big_cannon -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Greift Feinde bei Sichtung an
+   \{/tooltipmedium}
+   \{tooltiplong}
+Die große Kanone verursacht immensen Schaden. Jedoch ist ihr Feuerrate nicht besonders hoch und sie benötigt eine Mindestreichweite, weswegen sie ungeschützt ein leichtes Ziel darstellt.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_scorpion_station Skorpion Kontrollstation}
+\{img /bunit:seas_scorpion_station -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Zerstörung der Station schwächt den Skorpion
+   \{/tooltipmedium}
+   \{tooltiplong}
+Angetrieben durch Dampf aus dem Krater, wird sie durch dicke, eiserne Schichten geschützt. \{ref H_heros.seml#_tesla}Taslow\{/ref} muss sich erst durch diese Schichten arbeiten, bevor er sich an den Konsolen zu schaffen machen kann. Jede Konsole steuert einen anderen Teil des Skorpions. Das bedeutet dass ein Teil nach dem anderen(in der korrekten Reihenfolge) abgeschaltet werden muss, um die Bewegung des Skorpions einzuschränken und ihn schließlich komplett abzuschalten.
+   \{/tooltiplong}
+\{/helpitem}

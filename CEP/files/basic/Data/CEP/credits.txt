@@ -1,0 +1,116 @@
+============================
+CEP (formerly known as SEASMOD)
+============================
+A ParaWorld Modification
+
+Original idea: Kharg
+
+
+THIS IS THE PARA-WELT.COM TEAM:
+
+Scripting & AI
+----------------
+Kharg
+Henry alias MrMorgana
+Scrat
+AyCe
+Adder
+
+Icons & Graphics
+----------------
+MrMorgana
+Arvinder
+AyCe
+
+Audio work
+----------------
+Kharg
+Scrat
+MrMorgana
+AyCe
+Arvinder
+Abi
+deadw0rker
+
+Unit sounds
+----------------
+SEAS Medic - Mario
+SEAS Sniper - Zoo
+SEAS Gunner - Spell
+SEAS Warrior - Krono
+SEAS Rocket - Abi
+SEAS Worker - deadw0rker
+SEAS Executor - Microsoft Sam
+SEAS Flamethrower - Mac Cool
+
+Translating
+----------------
+English - Arvinder, THEEVERGOD
+German - AyCe, Akkarin, TheZoo, Adder
+French - Mario, yclari
+Polish - Tomeis
+Italian - Kharg
+Spanish - Kronos
+Russian - Entoursis
+Hungarian - MrMorgana
+
+Video making
+----------------
+-exo-
+MrMorgana
+Arvinder
+
+Assembly, Optimization & Installer
+----------------
+AyCe
+
+Balancing
+----------------
+deadw0rker
+Scrat
+AyCe
+
+Mapping
+----------------
+Synkro
+deadw0rker
+Apfellord
+Jurassic Parker
+Feivelyn
+AyCe 
+
+Testing
+----------------
+lecreateurfrench
+TheZoo
+-exo-
+Mario
+TheFloeS
+deadw0rker
+maxi
+Spelllord
+Darklen
+zino1337
+THEEVERGOD
+Kronosaur0s
+Easer
+Spino
+derdadort
+Abi
+Florian
+Arvinder
+Freshi
+timopw
+Marciii
+Tomeis
+Electro/MW
+Jurassic Parker
+T-Rex
+jonnyzocker1991
+Feivelyn
+Overlord
+Tyranno
+seppel1253
+
+
+Also many thanks to the people behind AutoIt3!!

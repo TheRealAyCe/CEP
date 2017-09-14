@@ -1,0 +1,45 @@
+$ Kharg <--- Kharg is money
+* AyCe  <--- AyCe's a star
+# Henry <--- Henry is a crossword for us
+
+$ Ninja Monkey as SEAS scout ----> Let's make the sentinel be the only scout
+* Yes, I think it should be like this. We have to think of a use for Ninja Monkey then ^^
+# do we really need to use 'every' model?
+* Yes :D Well, perhaps? As an easteregg?
+
+$ Funtitans <--Remove
+* True, they are overpowered but also difficult to obtain and they don't really fit in the game.
+
+$ Pirate Harbour <---Remove
+* Pirate ships are overpowered and hovercrafts (or whatever they are) are useless?
+$ Keep pirate ship, change cargo lifter to something else...
+* Perhaps harbour trader? Isnt it a flying unit?
+
+$ Change Babbit T4 in something better 
+* Does he still have the outpost? Because that one is not completely useless. However... noone will build this anyway.
+
+$ Remove the useless units, why should Miyagi give 3 special units?
+* Yes
+
+$ Governon SEAS T4: Norsemen wall doesn't really fit, an upgrade maybe? same as Norsemen? but Electricity instead of rocks or Icing walls :D  or Defensive field against siege projectiles?
+* Now that we can modify usls, it's time to try out some objects as walls ^^
+
+#: we should do something with tarna riders to make them somehow more special/better (and not to look so bad...)
+* We could give them special abilities (like leap on an enemy, etc)
+$ I had the same idea, special moves like roar and more :)
+
+#: not so important, but maybe we should rethink water special units (miyagi and babbit t4 for dc) -> they are useless on no-watermaps
+* Hmm. Kleemann DC would be useless too...
+# true
+$ In my opinion they are fine as they are now....
+
+
+
+$ In an earlier version I added 2 new treasures, should we use them? Or maybe we should make more...
+# They are used, aren't they? :S	
+$No maps uses them at the moment...
+
+$Cargo lifter as a standard unit for every tribe? Works as naval trading? or maybe a mini zeppelin? flies only if an unit is inside andcan transport only 1 unit :P
+#Don't know... cargo lifter is kinda like amazon temple, it only fits one tribe (this case dc)
+$Then what about an upgrade to make fishing boats be the merchants? that would be cool :P
+#yes

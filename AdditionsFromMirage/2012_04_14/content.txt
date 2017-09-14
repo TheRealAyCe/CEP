@@ -1,0 +1,10 @@
+Amphibian units should always survive if a transporter is killed
+Healers (except for medic) get different staffs on each level and additional armor for higher levels
+Medic gets the same helaing boost for each new level like druid and monk
+Baryonyx riders & Miyagi can be unloaded from transport ship even its far from the shore
+The big pirate ships parts can be healed at harbours (unless they are already destroyed)
+Bug fix: Carrier couldn't heal hovercrafts and stingers: this has been fixed
+Heroes range effect has a bigger radius: from 20m to 25m, except for Warden, his level 2 bonus aura gets 40m radius
+Coles level 2 bonus aura gives infantry unit +10 damage instead of 5
+Bela's level 5 global bonus increases ranged infantry units attack strength by 20% instead of 10%
+Stina's level 5 global bonus gives animals also +20 ranged defense additionally

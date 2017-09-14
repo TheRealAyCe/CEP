@@ -1,0 +1,26 @@
+(WBD - Won't be done)
+
+Auras for: Trader, Miyagi, Tarna <--- Server-sided
+Special power for Trader, maybe insects or illusion or arvinders new idea under arvinders stuff? <--- Server-sided
+We must make the SEAS Submarine invisible <--- Server-sided
+Icons for T5 global effect for Heroes?
+Tarna T1: freezing spear <--- Server-sided, easy
+Miyagi T1: walk on water <--- Server-sided
+Leighton is invisible for 30 seconds and not 10 <--- Server-sided
+Miyagi Sacrifice bonus works for 60 seconds <--- Server-sided
+WBD - Water walls :D <--- Server-sided - no wallmap on water
+new spells for monk and medic <--- Server-sided
+fix shaman camouflage skill <--- Server-sided
+add the description for seas_marksman_defense_upgrade_2 <--- UK, US, IT & RU (btw german translation is the best :P)
+Balance Miyagi, Funtitans, Riders & Babbits Exo. <--- Important!
+Feiv says: Sentiel collects stone inefficently! <--- AKA collects 300 wood, 20 stone! <--- Client-sided (techtree)
+decide on Babbits Exo upgrade 2 <--- Possible move in Arvinders folder
+Kidnap devs to receive tools <--- LOL? no illegal action is needed <-- Server-sided Why the hell is it server-sided? oO <--- Oh right, Real-Life Sided
+Tarna still needs a story (US-UK) <--- Scrat should have it <--- But Tarna still needs story, these are easy/minor bugs to fix <--- I'll see if i can remeber it and redo it
+
+For next release:
+- Spanish Presets.txt (we need the translation for _pb_locked)
+- AyCe must fix Campaign Menu
+- Kharg/Scrat/Co. must balance Miyagi, the riders, Babbit's Exo and so on
+
+Server-sided things will be in 4.0.0 !

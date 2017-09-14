@@ -1,0 +1,43 @@
+Herny: points outcommented with '//' are done, those with 'XX' canceled
+
+Things to import from Mirage
+// - Bug fix: Nest_Anurognathus_Fruit_Bush icon was not shown: this has been fixed
+// - Wild animals and nest get a slow self regeneration ability <--- For nests ok, i thought animals regenerate with eating? perhaps make herbivores regenerate with eating grass? <--- cant tell for sure but i think that the original (SEK made) eating task recovers health (for carnivores its sure, i saw that, for herbivores i think it works too)
+ - Special actions like enchain of Seismosaurus, Bela's sniper shot, Adas head shot, Babbage's minigun can't be started by the AI against units on open transporters, which caused several bugs, like losing an arch druid from the transport basket of triceratops titan, or one unit hanging in the air because of the enchain of Seismosaurus
+// - Ranged infantry units on walls receive +10 range
+// - Bug fix: some buildings which have an animation for the moment when a unit is created, didn't play that animation (like opening a gate): this has been fixed
+// - Amphibian units should always survive if a transporter is killed
+// - The search-radius of resources for workers is increased, and the search-radius to buildup buildings as well
+// - Healers (except for medic) get different staffs on each level and additional armor for higher levels
+XX - The terrain adapts better to the new buildings in MIRAGE -> no more needed, because you made the obj brushes for new buildings
+ - Big seas buildings can be built from now on on even smaller places than before (already placed buildings still take the same place)
+XX Bugfix: Healers didn't get healing cursor when the player put the cursor on a transporter which was fully loaded: this has been fixed
+// - Heroes range effect has a bigger radius: from 20m to 25m, except for Warden, his level 2 bonus aura gets 40m radius
+// - Coles level 2 bonus aura gives infantry unit +10 damage instead of 5
+// - Bela's level 5 global bonus increases ranged infantry units attack strength by 20% instead of 10%
+// - Stina's level 5 global bonus gives animals also +20 ranged defense additionally
+ - Sumo fighter gets the special ability, which makes him have more and more hit points with each killed enemy (+50 hp/number of killed enemies)
+// - Baryonyx riders & Miyagi can be unloaded from transport ship even its far from the shore
+// - The big pirate ships parts can be healed at harbours (unless they are already destroyed)
+// - Smoke bomber effect doesn't work on zeppelin, preventing the use of invisible and undetectable attacks
+ - Shamans camouflage ability has been renewed; its a target ability, so the animal form must be selected before the shaman can use it; only wild herbivores can be chosen; the shaman doesn't need to be close to the animal, the player only need vision to the animal (since animals are now hidden in fog of war) (TO BE DISCUSSED)
+ - Shamans camouflage ability also replaces his description and icon in info panel and reduces his speed to default: 2 and max: 2; in camouflaged state he receives the standard animation of the animal model he has
+// - Bug fix: Brachiosaurus mobile camps produced in the large animal farm didn't get their Set Rally Site button in command bar, only when upgraded from another form: this has been fixed
+ - Berserker gets the special ability which makes him stronger with each killed enemy (+10 damage/number of killed enemies)
+// - From now on bunker deals damage against units fighting it in close range
+// - Bunker gets 4 additional slots for the improved bunker upgrade
+ - Bug fix: the help info of the wild boars rage ability suggested, that this cavalry unit should perform a savage attack at low hit points, but it got only more damage at deaths edge: this ability has been renewed
+// - Bug fix: Carrier couldn't heal hovercrafts and stingers: this has been fixed
+ - Fire units (flamethrower trike, Leighton's flamethrowers, Exo flamethrower, scorpion in flamethrower mode) cause fire damage to buildings (works like poison), building gets a fire effect
+ - Injured animal units of the player can eat to gain hit points: carnivores can eat the corpses of animal units and wild animals, herbivores can eat fruit bushes, forest trees and wood logs
+// - Penalty values are shown with red color in Info panel (bonus still green)
+// - Newly born wild animals have reduced attack power in info panel
+// - Units which the player can't control receives kill command, so they can be deleted (see Wardens nest animals)
+// - Units like dr kamikaze velociraptors, tracker dino or Wardens nest animals won't create spirits anymore (which could be resurrected by shamans)
+// - Losing a storage capacity increasing building won't anymore make the player lose the accumulated resources
+ - (special_baryonyx/special_miyagi) Miyagi is a baryonyx rider hero, so he can walk and swim as well
+// - Telescope tower gets its rotate animation enabled
+// - Bug fix: the camouflaged buff icon will be removed when an infantry unit quits the entrench state
+// - Mobile centers (HQ) gfx bug is fixed, which caused newly produced mobile centers wagon have the gfx of level 1 even on higher epochs
+ - Improved camera system: can be further zoomed in and out, and there are more camera angles (zoom in and out can be done with mouse scroll, or using dot and comma (',' '.')
+XX - Make the game actually use the die-speechacks

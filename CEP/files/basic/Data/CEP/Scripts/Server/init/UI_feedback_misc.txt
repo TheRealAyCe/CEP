@@ -1,0 +1,890 @@
+Root {
+	selected {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}
+	ui_task_attack_harvest {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_attack.wav'
+			volume 	= '75'
+		}
+	}	
+	ui_task_unload {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}	
+	ui_task_special {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}	
+	ui_task_attack {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_attack.wav'
+			volume 	= '75'
+		}
+	}	
+	ui_task_attack_walk {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_attack.wav'
+			volume 	= '75'
+		}
+	}	
+	ui_click_error {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_error.wav'
+			volume 	= '75'
+		}
+	}	
+	ui_aje_quicksand_trap_placed {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_aje_quicksand_trap_placed.wav'
+			volume 	= '75'
+		}
+	}	
+	
+	ui_message {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_interjection.wav'
+			volume 	= '75'
+		}
+	}	
+	
+	ui_pyramid_open {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_pyramid_open.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_click_pyramid {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_pyramid.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_task_load {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_task_healing {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_task_trade {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_pickup_treasure.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_task_attack_area_weapon {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}
+	ui_pyramid_close {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_pyramid_close.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_minimap_ping_aihelp {
+		global = '1'
+		sound_1 {
+			wav 	= 'dummy_silence.wav'
+		}
+	}
+
+	ui_minimap_ping_fixedcolor {
+		global = '1'
+		sound_1 {
+			wav 	= 'dummy_silence.wav'
+		}
+	}
+	
+	ui_minimap_ping_attack {
+		global = '1'
+		sound_1 {
+			wav 	= 'dummy_silence.wav'
+			volume 	= '75'
+		}
+	}
+
+	ui_minimap_ping_delivered {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_minimap_ping.wav'
+			volume 	= '75'
+		}
+	}
+	
+	ui_rallypoint_water_set {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_rallypoint_water_set.wav'
+			volume 	= '75'
+		}
+	} 
+	
+	ui_rallypoint_land_set {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_rallypoint_land_set.wav'
+			volume 	= '75'
+		}
+	} 
+	
+	ui_task_get_wood {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_get_wood.wav'
+			volume 	= '75'
+		}
+	}
+	ui_task_get_food {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_get_food.wav'
+			volume 	= '75'
+		}
+	}
+	ui_task_get_flesh {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_get_flesh.wav'
+			volume 	= '75'
+		}
+	}
+	ui_task_get_stone {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_get_stone.wav'
+			volume 	= '75'
+		}
+	}
+	ui_warn_under_attack {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_warn_under_attack.wav'
+			volume 	= '90'
+		}
+	}
+	ui_delivered {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_message.wav'
+			volume 	= '75'
+		}
+	}
+	ui_placed {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_building_place.wav'
+			volume 	= '75'
+		}
+	}
+	ui_building_upgrade_ready {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_building_upgrade_ready.wav'
+			volume 	= '75'
+		}
+	}
+	
+	ui_no_storage {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_no_storage.wav'
+			volume 	= '75'
+		}
+	}
+	ui_no_wood {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_no_wood.wav'
+			volume 	= '75'
+		}
+	}
+	
+	ui_no_stone {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_no_stone.wav'
+			volume 	= '75'
+		}
+	}
+	ui_no_housing {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_no_housing.wav'
+			volume 	= '75'
+		}
+	}
+	ui_task_goto {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_task_go_to.wav'
+			volume 	= '75'
+		}
+	}
+	
+	ui_task_walk_aggro {
+		global = '1'
+		sound_1 {
+			wav 	= 'dummy_silence.wav'
+		}
+	}
+	ui_received_quest {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_received_quest.wav'
+			volume 	= '75'
+		}
+	}
+	ui_enemy_selected {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	}
+	ui_neutral_selected {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_click_success.wav'
+			volume 	= '75'
+		}
+	} 
+	ui_repairs done {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_building_ready.wav'
+			volume 	= '75'
+		}
+	}
+	ui_invention {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_new_technology.wav'
+			volume 	= '75'
+		}
+	}
+	ui_nextage {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_invent_era.wav'
+			volume 	= '50'
+		}
+	}
+	ui_task_build {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_building_build.wav'
+			volume 	= '75'
+		}
+	}
+	ui_quest_new {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_received_quest.wav'
+			volume 	= '75'
+		}
+	}
+	ui_quest_accomplished {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_quest_success.wav'
+			volume 	= '75'
+		}
+	}
+	ui_quest_unaccomplishable {
+		global = '1'
+		sound_1 {
+			wav 	= '05_ui/ui_quest_unaccomplishable.wav'
+			volume 	= '75'
+		}
+	}
+	voice_Hu_no_housing {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_pop_limit.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_pop_limit_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_no_housing {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_pop_limit.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_pop_limit_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_no_housing {
+		global = '1'
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_pop_limit_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_no_housing {
+		global = '1'
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_pop_limit_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_mapping {
+		global = '1'
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_MP_ally_pings.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_mapping {
+		global = '1'
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_MP_ally_pings.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_mapping {
+		global = '1'
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_MP_ally_pings.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_mapping {
+		global = '1'
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_MP_ally_pings.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_nextage_age_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age2_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_nextage_age_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age3_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_nextage_age_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age4_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_nextage_age_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age5_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_nextage_age_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age2_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_nextage_age_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age3_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_nextage_age_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age4_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_nextage_age_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age5_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_nextage_age_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age2_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_nextage_age_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age3_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_nextage_age_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age4_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_nextage_age_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age5_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_nextage_age_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age2_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_nextage_age_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age3_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_nextage_age_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age4_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_nextage_age_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age5_reached.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached.wav'
+			volume 	= '100'
+		}
+		sound_2 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_reached_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_ageavailable {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_cando.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_ageavailable {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_age_cando.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_ageavailable {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_age_cando.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_ageavailable {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_age_cando.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_poplimit_reached {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_pop_maxed.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_poplimit_reached {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_pop_maxed.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_poplimit_reached {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_pop_maxed.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_poplimit_reached {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_pop_maxed.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_divfull_1 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class1_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class1_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_divfull_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class2_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class2_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_divfull_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class3_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class3_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_divfull_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class4_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class4_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Aje_divfull_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class5_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Aje/Global/Aje_Glo_Info_class5_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_divfull_1 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class1_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class1_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_divfull_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class2_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class2_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_divfull_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class3_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class3_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_divfull_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class4_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class4_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Hu_divfull_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class5_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class5_full_1.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class5_full_2.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_divfull_1 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_class1_full.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_divfull_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_class2_full.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_divfull_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_class3_full.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_divfull_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_class4_full.wav'
+			volume 	= '100'
+		}
+	}
+	voice_Ninigi_divfull_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Ninigi/Global/Ni_Glo_Info_class5_full.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_divfull_1 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class1_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class1_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_divfull_2 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class2_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class2_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_divfull_3 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class3_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class3_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_divfull_4 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class4_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class4_full_1.wav'
+			volume 	= '100'
+		}
+	}
+	voice_SEAS_divfull_5 {
+		global = '1'
+		sound_0 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class5_full.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class5_full_1.wav'
+			volume 	= '100'
+		}
+		sound_1 {
+			wav 	= '07_speech_acks/Hu/Global/Hu_Glo_Info_class5_full_2.wav'
+			volume 	= '100'
+		}
+	}
+}

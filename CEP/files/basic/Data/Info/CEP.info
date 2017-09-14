@@ -1,0 +1,10 @@
+# Add on info file
+id CEP
+requires BoosterPack1
+type add-on
+info CEP by the Para-welt.com Team
+version 1.2.2
+priority 19
+tryfilereplace */data/base/* data/base/ data/CEP/
+joindirscan */data/base/maps/cpn_single_001* /data/base/maps/cpn_single_001 /data/CEP/maps/cpn_single_001
+joindirscan */data/base/maps/multiplayer* /data/base/maps/multiplayer /data/CEP/maps/multiplayer

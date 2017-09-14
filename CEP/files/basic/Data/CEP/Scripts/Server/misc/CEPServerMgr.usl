@@ -1,0 +1,153 @@
+// USL Class file for CEP (formerly SEASMOD), scripted by AyCe
+// Version 1.2 - 04.03.2013
+// Helper Class for serversided CEP-related stuff
+
+class CCEPServerMgr
+
+	static var ^CCEPServerMgr ms_pxInstance;
+	var array string m_asNames;
+
+	export static proc ref CCEPServerMgr Get()
+		if(ms_pxInstance==null)then
+			ms_pxInstance=new CCEPServerMgr();
+		endif;
+		return ms_pxInstance^;
+	endproc;
+	
+	export static proc void ShutStatic()
+		delete ms_pxInstance;
+	endproc;
+	
+	constructor()
+		m_asNames = 0;
+	endconstructor;
+	
+	destructor()
+		// Nothing yet...
+	enddestructor;
+
+	export proc string GetObjBrush(string p_sClass, string p_sGfx)
+		if(p_sClass=="seas_hq_machinegun_nest")then
+			p_sClass = "seas_machinegun_nest";
+		elseif(p_sClass=="seas_hq_defense_turret")then
+			p_sClass = "seas_defense_turret";
+		endif;
+		if(p_sClass=="seas_khargclub"||p_sClass=="seas_loudspeaker"||p_sClass=="seas_coh"||p_sClass=="seas_defense_turret"||
+		   p_sClass=="seas_machinegun_nest"||p_sClass=="seas_outpost"||p_sClass=="seas_bunker"||p_sClass=="seas_warpgate")then
+			return p_sClass;
+		elseif(p_sClass=="hu_pirate_outpost"||p_sClass=="aje_pirate_outpost"||p_sClass=="ninigi_pirate_outpost"||p_sClass=="seas_pirate_outpost")then
+			return "pirate_outpost";
+		elseif(p_sClass=="hu_amazon_temple"||p_sClass=="aje_amazon_temple"||p_sClass=="ninigi_amazon_temple"||p_sClass=="seas_amazon_temple")then
+			return "amazon_temple";
+		endif;
+		return p_sGfx;
+	endproc;
+
+	export proc void HardcodeTTFilters(string p_sLevelName, int p_iPlayer, ^CTechTreeDef p_pxTTDef)
+		if(p_sLevelName=="single_seas_02") then
+			//
+		elseif(p_sLevelName=="single_00"||p_sLevelName=="single_01"||p_sLevelName=="single_02"||
+			p_sLevelName=="single_03"||p_sLevelName=="single_04"||p_sLevelName=="single_05"||
+			p_sLevelName=="single_06"||p_sLevelName=="single_07"||p_sLevelName=="single_08"||
+			p_sLevelName=="single_09"||p_sLevelName=="single_10"||p_sLevelName=="single_11"||
+			p_sLevelName=="single_12"||p_sLevelName=="single_13"||p_sLevelName=="single_14"||
+			p_sLevelName=="single_15"||p_sLevelName=="single_16"||
+			p_sLevelName=="single_b41"||p_sLevelName=="single_b42"||p_sLevelName=="single_b43") then
+			HardcodeTTFilterAAEveryone("CHTR/Larry_s0", p_pxTTDef);
+			HardcodeTTFilterAAEveryone("CHTR/Tarna_s0", p_pxTTDef);
+			HardcodeTTFilterAAEveryone("ANML/special_baryonyx", p_pxTTDef);
+			if(!(p_sLevelName=="single_b41"&&p_iPlayer==0))then
+				HardcodeTTFilterAAEveryone("CHTR/livingstone_s0", p_pxTTDef);
+			endif;
+			if(!((p_sLevelName=="single_08"||p_sLevelName=="single_b43")&&p_iPlayer==0))then
+				HardcodeTTFilterAAEveryone("CHTR/schliemann_s0", p_pxTTDef);
+			endif;
+			p_pxTTDef^.EnableFilter("/Filters/AntiActions/SEAS/Build/VHCL/babbage_mobile_suit");
+			if(p_iPlayer!=0)then
+				p_pxTTDef^.EnableFilter("/Filters/AntiActions/SEAS/Build/BLDG/seas_khargclub");
+				p_pxTTDef^.EnableFilter("/Filters/AntiActions/SEAS/Build/CHTR/seas_gunner_override_bela");
+				p_pxTTDef^.EnableFilter("/Filters/AntiActions/SEAS/Build/CHTR/seas_flamethrower_override_leighton");
+			endif;
+		endif;
+	endproc;
+
+	export proc void HardcodeTTFilterAAEveryone(string p_sKey, ^CTechTreeDef p_pxTTDef)
+		p_pxTTDef^.EnableFilter("/Filters/AntiActions/Hu/Build/"+p_sKey);
+		p_pxTTDef^.EnableFilter("/Filters/AntiActions/Aje/Build/"+p_sKey);
+		p_pxTTDef^.EnableFilter("/Filters/AntiActions/Ninigi/Build/"+p_sKey);
+		p_pxTTDef^.EnableFilter("/Filters/AntiActions/SEAS/Build/"+p_sKey);
+	endproc;
+
+	export proc void ResetAINames()
+		m_asNames = 0;
+		m_asNames.AddEntry("Joe");
+		m_asNames.AddEntry("Moe");
+		m_asNames.AddEntry("Alice");
+		m_asNames.AddEntry("Bob");
+		m_asNames.AddEntry("Sarah");
+		m_asNames.AddEntry("Hal");
+		m_asNames.AddEntry("Z1");
+		m_asNames.AddEntry("The Brain");
+		m_asNames.AddEntry("Neox");
+                m_asNames.AddEntry("Manni");
+                m_asNames.AddEntry("Lowtec");
+                m_asNames.AddEntry("Beulchen");
+                m_asNames.AddEntry("Deca");
+                m_asNames.AddEntry("TechGirl");
+		m_asNames.AddEntry("Mike");
+		m_asNames.AddEntry("Andrea");
+		m_asNames.AddEntry("Thomas");
+		m_asNames.AddEntry("Mary");
+		m_asNames.AddEntry("Peter");
+		m_asNames.AddEntry("Tommy");
+		m_asNames.AddEntry("Liz");
+		m_asNames.AddEntry("Quentin");
+                m_asNames.AddEntry("Arnold");
+                m_asNames.AddEntry("Heinz");
+                m_asNames.AddEntry("Thorsten");
+                m_asNames.AddEntry("Napoleon");
+                m_asNames.AddEntry("Steve");
+		m_asNames.AddEntry("Bill");
+		m_asNames.AddEntry("John");
+		m_asNames.AddEntry("Charlie");
+		m_asNames.AddEntry("Mario");
+		m_asNames.AddEntry("Luigi");
+		m_asNames.AddEntry("Jane");
+		m_asNames.AddEntry("Alex");
+		m_asNames.AddEntry("Jane");
+		m_asNames.AddEntry("Daisy");
+		m_asNames.AddEntry("Phil");
+		m_asNames.AddEntry("Alistair");
+		m_asNames.AddEntry("Simon");
+		m_asNames.AddEntry("Jak");
+		m_asNames.AddEntry("Sam");
+		m_asNames.AddEntry("Zack");
+		m_asNames.AddEntry("Cody");
+		m_asNames.AddEntry("Jason");
+		m_asNames.AddEntry("Ralf");
+		m_asNames.AddEntry("Mark");
+		m_asNames.AddEntry("Chris");
+		m_asNames.AddEntry("Max");
+		m_asNames.AddEntry("Lisa");
+		m_asNames.AddEntry("Aaron");
+		m_asNames.AddEntry("Susan");
+	endproc;
+
+	export proc string GetRandomAIName()
+		if(m_asNames.NumEntries() == 0)then
+			return "NoName";
+		endif;
+		var int iNr = Random.GetInt()%m_asNames.NumEntries();
+		var string sName = m_asNames[iNr];
+		m_asNames.DeleteEntryUS(iNr);
+		return sName;
+	endproc;
+
+	export proc bool UseAINames(string p_sLevel, int p_iSlot)
+		if((p_sLevel.Find("BfPW - Highland")!=-1 || p_sLevel.Find("BfPW - HL")!=-1) && (p_iSlot==6 || p_iSlot==7))then
+			return false;
+		endif;
+		return true;
+	endproc;
+
+endclass;

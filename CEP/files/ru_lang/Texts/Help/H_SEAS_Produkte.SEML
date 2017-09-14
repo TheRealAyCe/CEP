@@ -1,0 +1,475 @@
+﻿\{document helpfile seas units}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_SEAS_Produkte.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _infantry Пехота}
+\{helpitem -name _seas_worker Рабочий}
+\{img /bunit:seas_worker -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Строит здания
+\\{br}• Собирает ресурсы
+\\{br}• Плохой боец
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создаваемые в \{ref H_seas_gebaeude.seml#seas_headquarters}штабе,\{/ref} рабочие выполняют всю работу в городе. Они собирают \{ref H_general.seml#_resources}ресурсы\{/ref} и возводят \{ref H_general.seml#_building}здания.\{/ref} Они могут защищаться, если их будут атаковать, но рабочие намного слабее любого воина. Они вооружены пращами для охоты и защиты от врагов на расстоянии. 
+
+\{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warrior Воин}
+\{img /bunit:seas_warrior -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Боец с оружием ближнего боя
+   \{/tooltipmedium}
+   \{tooltiplong}
+Как и любой наземный боец, воин создается в \{ref H_seas_gebaeude.seml#_seas_barracks}казарме.\{/ref} Он является основным бойцом \{ref H_story.seml#_story_seas}ОТАН\{/ref} и специализируется на рукопашных битвах.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marksman Стрелок}
+\{img /bunit:seas_marksman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Боец с дистанционным оружием
+\\{br}• Неэффективен в ближнем бою
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создаваемые в \{ref H_seas_gebaeude.seml#_seas_barracks}казармах,\{/ref} стрелки являются основными стреляющими воинами \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Они далеко стреляют, но совсем бессильны в ближних боях.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_shotgunner Амазонка с ружьем}
+\{img /bunit:seas_shotgunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:+/vsvhcl:--/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Хороша в дальнем и ближнем бою
+\\{br}• Территориальный урон
+\\{br}• Можно создавать когда Коул достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Амазонки с ружьями - не воины, пришедшие из нашего мира, хоть они и пользуются современным оружием. Когда \{ref H_heros.seml#_mayor}Вождь\{/ref} пришел к власти, коровлева амазонок \{ref H_heros.seml#_tarna}Тарна\{/ref} и некоторые ее приближенные отправились в Священный Город, несогласные с новой властью.\\{br}Она отказывалась принимать мужчин в своем королевстве, если они не рабочие, а все несогласные с ней амазонки были заключены в темницу. Когда герои атаковали Храм Амазонок чтобы освободить Барри, многим заключенным удалось бежать.\\{br}\\{br}\{ref H_heros.seml#_lovelace}Ада Ловен\{/ref} нашла эту группу амазонок и предложила им работать с ОТАН.\\{br} Теперь амазонкам предстоит завоевать доверие ОТАН, тогда они смогут расчитывать на помощь борьбе с Тарной. Амазонки - сильные юнити дальнего и ближнего боя, создаваемые в лаборатории. Они способны наносить огромный урон пехоте и животным. Против боевых машин их шансы резко падают.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gunner Пулеметчик}
+\{img /bunit:seas_gunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Боец с дистанционным оружием
+\\{br}• Можно создавать когда Бэла достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Пулеметчики гораздо сильнее \{ref H_seas_produkte.seml#_seas_marksman}стрелков.\{/ref} Они создаются в \{ref H_seas_gebaeude.seml#_seas_barracks}казармах\{/ref} и значительно превосходят стреляющих воинов всех остальных народов. В ближнем бою они защищаются кинжалом, который наносит гораздо меньший урон, чем их основное оружие.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_rocketman Ракетчик}
+\{img /bunit:seas_rocketman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Боец с дистанционным оружием
+\\{br}• Стреляет ракетами
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ракетчики – это бойцы, которые стреляют ракетами. Они видят немного дальше, чем стреляют. В ближнем бою они защищаются кинжалом, который наносит гораздо меньший урон, чем их основное оружие.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_flamethrower Поджигатель}
+\{img /bunit:seas_flamethrower -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Территориальный урон
+\\{br}• Не может стрелять с животных-первозчиков
+\\{br}• Можно создавать, когда Лейтон достигнет четвертого уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Поджигатель создается в \{ref H_ninigi_gebaeude.seml#_ninigi_weapon_maker}Оружейной\{/ref}. Наносят урон всему на линии огня \\{br}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_medic Медик}
+\{img /bunit:seas_medic -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Лечит дружественных существ
+\\{br}• Обнаруживает ловушки и скрытых существ
+   \{/tooltipmedium}
+   \{tooltiplong}
+Как и другие наземные бойцы, они создаются в \{ref H_seas_gebaeude.seml#_seas_barracks}казармах.\{/ref} Медики не участвуют в битвах и могут лечить дружественных бойцов. Они также могут находить ловушки и невидимых существ противника.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_killer Мраморный убийца}
+\{img /bunit:seas_killer -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Наземный боец
+\\{br}• Боец ближнего боя с неплохой защитой
+\\{br}• Наносит огромный территориальный урон, пробивает защиту
+\\{br}• Можно создавать когда Ада достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создаваемые в \{ref H_seas_gebaeude.seml#_seas_barracks}Казармах\{/ref}, Мраморные убийцы созданы по образу \{ref H_hu_produkte.seml#_hu_killer}Убийц-Варваров\{/ref}, которые были обращены в мрамор для защиты Валгаллы, но поднятые на Землю, чтобы сеять хаос среди живых\{br}
+Они невероятно сильны и могут наносить огромное количество повреждений за малое время, а их защита, блогодаря каменному телу, превышает защиту убийц Северян.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_funtitan Мраморный титан}
+\{img /bunit:seas_funtitan -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Огромное существо
+\\{br}• Много здоровья
+\\{br}• Наносит тяжелый территориальный урон
+\\{br}• Можно создавать когда Тарна, Мияги и Торговец достигнут 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создается в \{ref H_seas_gebaeude.seml#_seas_amazon_temple} Храме Амазонок. \{/ref} Мрамрный титан - один из самых сильных юнитов ОТАН. \\{br}
+Несет большой запас здоровья, однако, является довольно медлительным.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _robots Роботы и животные}
+\{helpitem -name _seas_mechanical_walker Часовой}
+\{img /bunit:seas_mechanical_walker -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:-/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Робот
+\\{br}• Боец ближнего боя
+\\{br}• Может собирать камень
+   \{/tooltipmedium}
+   \{tooltiplong}
+Часовой – робот на двух ногах, разработанный для ближнего боя. Очень похож на динозавра. Этого робота производят в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit Экзоскелет}
+\{img /bunit:seas_mobile_suit -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Сильный воин
+\\{br}• Боец ближнего боя
+   \{/tooltipmedium}
+   \{tooltiplong}
+Экзоскелет – робот на двух ногах, разработанный для ближнего боя. Он атакует врагов ударами своих сильных конечностей. Этого робота производят в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit_flamethrower Экзоскелет с огнеметом}
+\{img /bunit:seas_mobile_suit_flamethrower -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Робот с огнеметом
+\\{br}• Наносит повреждения вражеским и нейтральным существам
+   \{/tooltipmedium}
+   \{tooltiplong}
+Экзоскелет с огнеметом хорош как для дальнего боя, так и для драк врукопашную. Этого робота производят в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_eusmilus Наездник на тигре}
+\{img /bunit:seas_eusmilus -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Очень быстрый
+\\{br}• Может быть создан, когда Стина достигнет четвертого уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создаваемый в \{ref H_seas_gebaeude.seml#_seas_garage}гараже,\{/ref} наездник на тигре – быстрый, недорогой и эффективный боец. Хотя его броня лишь немного лучше, чем у наземных воинов, сила удара этого наездника достаточно высока.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops CBT-500}
+\{img /bunit:seas_triceratops -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Очень сильная боевая единица 
+   \{/tooltipmedium}
+   \{tooltiplong}
+CBT-500 производится в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref} Это очень сильный тяжелый боец, представляющий опасность в ближнем бою.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops_archer CBT-T1000}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Очень сильная боевая единица
+\\{br}• Может перевозить до трех наземных бойцов
+   \{/tooltipmedium}
+   \{tooltiplong}
+Большая и мощная машина, CBT-T1000 становится еще опаснее, если на его борту находятся \{ref H_seas_produkte.seml#_seas_marksman}стрелки.\{/ref} Производится в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_triceratops_resource_collector CBT-1500}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Добывает ресурсы, путешествуя по союзным рынкам
+\\{br}• Не сражается
+   \{/tooltipmedium}
+   \{tooltiplong}
+CBT-1500 можно создавать на \{ref H_seas_gebaeude.seml#_seas_marketplace}рынке. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_stygimoloch Стигимолох}
+\{img /bunit:seas_stygimoloch -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:--/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Агрессивное травоядное
+\\{br}• Самостоятельно ищет врагов
+\\{br}• Можно создавать когда Уорден достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Прирученные Стигимолохи - небольшие агрессивные юниты, которые самостоятельно перемещаются по карте и атакуют врагов.
+Не учитывается, как юнит. Можно создавать в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_monkey Обезьяна-шпион}
+\{img /bunit:seas_monkey -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Загадочна и опасна.
+\\{br}• Быстра
+\\{br}• Хороший обзор
+   \{/tooltipmedium}
+   \{tooltiplong}
+Небольшой юнит, создаваемый в мастерской. Можно использовать для разведки.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carnotaurus_rider Наездник на карнотавре}
+\{img /bunit:seas_carnotaurus_rider -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Очень быстрое животное
+\\{br}• Можно создавать когда Тарна достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создается в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской\{/ref} \\{br}.
+Быстрое животное, способное молниеносно атаковать базы врагов, жаже если они защищены сильными юнитами. Одно из четырех животных-телохранителей Тарны.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wehrspinne Черная вдова}
+\{img /bunit:seas_wehrspinne -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Робот
+\\{br}• Дистанционное оружие
+   \{/tooltipmedium}
+   \{tooltiplong}
+Большая, сильная и опасная, как ее тезка, черная вдова – это робот с катапультой, стреляющий так же далеко, как видит. Этого робота производят в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack Каратель}
+\{img /bunit:seas_lumberjack -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Робот
+\\{br}• Мощный боец для ближнего боя
+\\{br}• Собирает дерево
+   \{/tooltipmedium}
+   \{tooltiplong}
+Медлительный и неповоротливый каратель может рубить и переносить на себе огромные деревья. Его недюжинная сила представляет серьезную опасность врагам. Этого робота производят в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack_minigun Каратель MKII}
+\{img /bunit:seas_lumberjack_minigun -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Робот
+\\{br}• Дистанционное оружие
+   \{/tooltipmedium}
+   \{tooltiplong}
+Создаваемый в \{ref H_seas_gebaeude.seml#_seas_garage}машинной мастерской,\{/ref} этот каратель вооружен и очень опасен. 
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _scorpion Скорпион}
+\{img /bunit:scorpion -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Огромный робот 
+\\{br}• Боец ближнего боя с огнеметом
+   \{/tooltipmedium}
+   \{tooltiplong}
+Этот исполинский робот используется для строительства вулканического двигателя и является последней линией защиты \{ref H_story.seml#_story_seas}ОТАН.\{/ref} Его размеры несоизмеримы с той опасностью, которую он представляет.
+Огромные клешни и встроенный огнемет превращают его в смертельно опасного противника. Несмотря на кажущуюся свободу передвижения, скорпион не может покинуть помещение, в котором находится.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_zeppelin Дирижабль}
+\{img /bunit:seas_zeppelin -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Мобильная торговая база
+\\{br}• Может пролетать над водой
+\\{br}• Перевозит до 10 юнитов
+\\{br}• Место сбора ресурсов
+\\{br}• Увеличенный обзор
+   \{/tooltipmedium}
+   \{tooltiplong}
+Дирижабль - основной транспорт торговцев.\{p}
+
+Не способный сражаться, дирижабль, тем не менее, обладает рядом полезных функций. Он не только способен перебросить войска практически в любое место на карте и существенно расширить обзор армии. Он также служит местом сбора ресурсов, что может быть полезно при их добывании вдали от лагеря.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{chapter -name _ships Корабли и авиация}
+\{helpitem -name _seas_hovercraft Амфибия}
+\{img /bunit:seas_hovercraft -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Транспортное средство
+\\{br}• Может перемещаться по суше и по воде
+   \{/tooltipmedium}
+   \{tooltiplong}
+Несмотря на многофункциональность этого судна, у него есть один недостаток, оно абсолютно беззащитно. Создается на \{ref H_seas_gebaeude.seml#_seas_carrier}плавучей базе.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_submarine Подводная лодка}
+\{img /bunit:seas_submarine -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:++/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Не очень сильна, но очень эффективна
+   \{/tooltipmedium}
+   \{tooltiplong}
+Подводная лодка не очень сильна, но очень эффективна. Враг может заметить ее, только когда она всплывает, чтобы произвести выстрел. Создается на \{ref H_seas_gebaeude.seml#_seas_carrier}плавучей базе.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_helicopter Стингер}
+\{img /bunit:seas_helicopter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Быстрый летающий объект
+   \{/tooltipmedium}
+   \{tooltiplong}
+Стингер очень силен и летает невысоко. Создается на \{ref H_seas_gebaeude.seml#_seas_carrier}плавучей базе.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_pirate_boss_ship Корабль-Титан}
+\{img /bunit:seas_pirate_boss_ship -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Главный пиратский корабль
+\\{br}• Может быть создан когда Мияги достигнет 4 уровня
+   \{/tooltipmedium}
+   \{tooltiplong}
+Производится \{ref H_seas_gebaeude.seml#_aje_pirate_outpost} Пиратском порту.\{/ref} Этот корабль является самым сильным водным юнитом для всех племен. \\{br}
+Может наносить огромный урон в дальнем бою, поэтому даже самые сильные корабли \{ref H_story.seml#_story_hu}Северян \{/ref} плывут от Корабля-Титана подальше..
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_cargo_lifter Корабль-тяжеловоз}
+\{img /bunit:seas_cargo_lifter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Не сражается
+\\{br}• Ловит рыбу в больших количествах
+   \{/tooltipmedium}
+   \{tooltiplong}
+Производится в \{ref H_seas_gebaeude.seml#_seas_pirate_outpost} Пиратском Порту.\{/ref} Корабли используются для сбора \{ref H_world.seml#_fish} рыбы\{/ref}, причем они собирают рыбу намного быстрее чем обычное рыболовное судно. \\{br}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_dunkleo Дунклеостеус}
+\{img /bunit:seas_pirate_dunkleo -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:+/vsvhcl:++/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Сильный водный боец ближнего боя
+\\{br}• МОжет быть создан в Пиратском Порте
+\\{br}• Полезен при защите Корабля-Титана
+   \{/tooltipmedium}
+   \{tooltiplong}
+Не без помощи великого Лорда Пиратов,  \{ref H_heros.seml#_miyagi}Мияги\{/ref} поймал и обучил этих диких охотников для защиты своего \{ref H_Aje_Produkte.seml#_seas_pirate_boss_ship}Пиратского судна\{/ref} . Дунклеостеус - сильный юнит ближнего боя, дорогой, но полезный. Потеря этих юнитов опасна для беззащитного в ближнем бою Корабля-Титана.
+   \{/tooltiplong}
+\{/helpitem}
+

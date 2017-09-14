@@ -1,0 +1,416 @@
+Root {
+	Quick {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '1-2' {
+				seas_warrior = ''
+			}
+		}
+	} 
+	L10_distraction_easy {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '3-3' {
+				seas_triceratops = ''
+			}
+			Units1 = '2-2' {
+				seas_mechanical_walker = ''
+			}
+		}		
+	}
+	L10_distraction_med {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '4-4' {
+				seas_triceratops = ''
+			}
+			Units1 = '3-3' {
+				seas_mechanical_walker = ''
+			}
+		}		
+	}
+	L10_distraction_hard {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '5-5' {
+				seas_triceratops = ''
+			}
+			Units1 = '4-4' {
+				seas_mechanical_walker = ''
+			}
+		}		
+	}
+	L15_quick_attack {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '6-6' {
+				seas_helicopter = ''
+			}
+		}		
+	}
+	L15_quick_attack_easy {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '4-4' {
+				seas_helicopter = ''
+			}
+		}		
+	}
+	L15_quick_attack_hard {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '8-8' {
+				seas_helicopter = ''
+			}
+		}		
+	}
+	L15_melee_attack {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '6-6' {
+				seas_flamethrower = ''
+			}
+			Units1 = '2-2' {
+				seas_medic = ''
+			}
+			Units2 = '1-1' {
+				seas_mobile_suit = ''
+			}
+		}		
+	}
+	L15_melee_attack_easy {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '4-4' {
+				seas_flamethrower = ''
+			}
+			Units1 = '1-1' {
+				seas_medic = ''
+			}
+			Units2 = '1-1' {
+				seas_mobile_suit = ''
+			}
+		}		
+	}
+	L15_melee_attack_hard {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '6-6' {
+				seas_flamethrower = ''
+			}
+			Units1 = '2-2' {
+				seas_medic = ''
+			}
+			Units2 = '2-2' {
+				seas_mobile_suit = ''
+			}
+		}		
+	}
+	L15_siege_attack {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '6-6' {
+				seas_rocketman = ''
+			}
+			Units1 = '2-2' {
+				seas_medic = ''
+			}
+			Units2 = '1-1' {
+				seas_wehrspinne = ''
+			}
+		}		
+	}
+	L15_siege_attack_hard {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '6-6' {
+				seas_rocketman = ''
+			}
+			Units1 = '2-2' {
+				seas_medic = ''
+			}
+			Units2 = '2-2' {
+				seas_wehrspinne = ''
+			}
+		}		
+	}
+	L15_siege_attack_easy {
+		Group0 {
+			Priority = '1.0'
+			Units0 = '4-4' {
+				seas_rocketman = ''
+			}
+			Units1 = '1-1' {
+				seas_medic = ''
+			}
+			Units2 = '1-1' {
+				seas_wehrspinne = ''
+			}
+		}		
+	}
+	L13_MB2_1 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '1-1' {
+				seas_mechanical_walker {
+					level = '0'
+				}
+			}
+			Units1 = '2-2' {
+				seas_warrior {
+					level = '0'
+				}
+			}
+			Units2 = '2-2' {
+				seas_marksman {
+					level = '1'
+				}
+			}
+			Units3 = '2-2' {
+				seas_flamethrower {
+					level = '1'
+				}
+			}
+			Units4 = '2-2' {
+				seas_gunner {
+					level = '1'
+				}
+			}
+		}
+	}
+	L13_MB2_2 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '1-1' {
+				seas_mechanical_walker {
+					level = '1'
+				}
+			}
+			Units1 = '1-1' {
+				seas_warrior {
+					level = '0'
+				}
+			}
+			Units2 = '1-1' {
+				seas_marksman {
+					level = '1'
+				}
+			}
+			Units3 = '2-2' {
+				seas_flamethrower {
+					level = '1'
+				}
+			}
+			Units4 = '2-2' {
+				seas_gunner {
+					level = '1'
+				}
+			}
+			Units5 = '2-2' {
+				seas_rocketman {
+					level = '2'
+				}
+			}
+			Units6 = '1-1' {
+				seas_triceratops {
+					level = '2'
+				}
+			}
+		}
+	}
+	L13_MB2_3 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '1-1' {
+				seas_mechanical_walker {
+					level = '2'
+				}
+			}
+			Units1 = '2-2' {
+				seas_flamethrower {
+					level = '2'
+				}
+			}
+			Units2 = '2-2' {
+				seas_gunner {
+					level = '2'
+				}
+			}
+			Units3 = '2-2' {
+				seas_rocketman {
+					level = '2'
+				}
+			}
+			Units4 = '2-2' {
+				seas_triceratops {
+					level = '2'
+				}
+			}
+		}
+	}
+	L13_MB3_1 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '1-1' {
+				seas_mechanical_walker {
+					level = '0'
+				}
+			}
+			Units1 = '1-1' {
+				seas_mechanical_walker {
+					level = '1'
+				}
+			}
+			Units2 = '1-1' {
+				seas_warrior {
+					level = '1'
+				}
+			}
+			Units3 = '1-1' {
+				seas_marksman {
+					level = '1'
+				}
+			}
+			Units4 = '1-1' {
+				seas_flamethrower {
+					level = '1'
+				}
+			}
+			Units5 = '1-1' {
+				seas_gunner {
+					level = '1'
+				}
+			}
+			Units6 = '1-1' {
+				seas_mobile_suit {
+					level = '1'
+				}
+			}
+		}
+	}
+	L13_MB3_2 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '1-1' {
+				seas_mechanical_walker {
+					level = '2'
+				}
+			}
+			Units1 = '1-1' {
+				seas_flamethrower {
+					level = '1'
+				}
+			}
+			Units2 = '1-1' {
+				seas_gunner {
+					level = '1'
+				}
+			}
+			Units3 = '1-1' {
+				seas_rocketman {
+					level = '1'
+				}
+			}
+			Units4 = '1-1' {
+				seas_mobile_suit {
+					level = '1'
+				}
+			}
+			Units5 = '1-1' {
+				seas_mobile_suit {
+					level = '2'
+				}
+			}
+			Units6 = '1-1' {
+				seas_wehrspinne {
+					level = '2'
+				}
+			}
+		}
+	}
+	L13_MB3_3 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '2-2' {
+				seas_warrior {
+					level = '1'
+				}
+			}
+			Units1 = '2-2' {
+				seas_flamethrower {
+					level = '1'
+				}
+			}
+			Units2 = '2-2' {
+				seas_gunner {
+					level = '1'
+				}
+			}
+			Units3 = '2-2' {
+				seas_triceratops {
+					level = '1'
+				}
+			}
+			Units4 = '2-2' {
+				seas_mobile_suit {
+					level = '1'
+				}
+			}
+			Units5 = '1-1' {
+				seas_wehrspinne {
+					level = '2'
+				}
+			}
+		}
+	}
+	L13_Main_1 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '5-5' {
+				seas_flamethrower {
+					level = '1'
+				}
+			}
+			Units1 = '3-3' {
+				seas_mobile_suit {
+					level = '1'
+				}
+			}
+			Units2 = '2-2' {
+				seas_triceratops {
+					level = '2'
+				}
+			}
+			Units3 = '4-4' {
+				seas_helicopter {
+					level = '2'
+				}
+			}
+			Units4 = '1-1' {
+				seas_wehrspinne {
+					level = '2'
+				}
+			}
+			Units5 = '4-4' {
+				seas_lumberjack {
+					level = '3'
+				}
+			}
+		}
+	}
+	L13_MB1_1 {
+		Group0 {
+			Priotrity = '1.0'
+			Units0 = '3-3' {
+				seas_warrior {
+					level = '1'
+				}
+			}
+			Units1 = '3-3' {
+				seas_marksman {
+					level = '1'
+				}
+			}
+		}
+	}
+}

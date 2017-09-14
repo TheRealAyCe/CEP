@@ -1,0 +1,999 @@
+class CVehicle inherit CTransportObj
+
+	constructor()
+	endconstructor;
+
+
+	destructor()
+	enddestructor;
+
+	export proc bool Jumpjet(vec3 p_vPos, string p_sTTPath)
+		if(!CheckSpecialActionTimer(p_sTTPath))then return false; endif;
+		if(p_vPos!={0.0,0.0,0.0})then
+			var ^CJumpjet pxTask= cast<CJumpjet>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(), "Jumpjet"));
+			pxTask^.Init(GetHandle(), p_vPos,p_sTTPath);
+			pxTask^.SetUserCommand(true);
+			AddTask(pxTask,false);
+			return(true);
+		endif;
+		return(false);
+	endproc;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+
+		if (!p_bLoad) then
+			SetType("VHCL");
+			InitAttribs();
+		endif;
+		UpdateAttribs(p_bLoad);
+
+   		AddUnit();
+
+       	//item inventory -> all levels can now have one item
+       	if(GetInventory()==null) then
+       		InitInventory(1);
+       	endif;
+
+		SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_SADDLE,true);
+		m_iSizeClass = 10; //vehicles are big
+
+        if(!p_bLoad)then
+			StartTT();
+			SetCanFightAttrib(true);
+		endif;
+
+		OnTechTreeChange();
+
+	endproc;
+	
+	export proc void Die()
+		if(!IsDead())then
+			CreateCorpse();
+		endif;
+		super.Die();
+	endproc;
+
+	export proc void CreateCorpse()
+	
+		var string sGfx = GetGfxName()+"_dest";
+		
+		if(!CSrvWrap.GetGfxMgrBase().FindGraphicSetEntry(sGfx)) then return; endif;
+	
+		var ^CVehicleCorpse pxGameObj = cast<CVehicleCorpse>(CSrvWrap.GetObjMgr()^.CreateObj("VehicleCorpse",GetOwner(),GetPos(),GetRotation()));
+		if(pxGameObj!=null)then
+			pxGameObj^.SetSource(this);
+			pxGameObj^.SetCanSwim(CanSwim());
+			pxGameObj^.Init(sGfx, GetName(), 10.0);
+		endif;
+		
+	endproc;
+	
+endclass;
+
+
+class CSteamTank inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+
+		if (!p_bLoad) then
+
+			SetBuildUp(CBuildUpBase.TYPE_WEAPON_TRANSPORTER);
+			var ^CGameObj pxO = CSrvWrap.GetObjMgr()^.CreateObj("hu_rhino_ballista_buildup_top", GetOwner());
+			GetBuildUp()^.AddObj(pxO^.GetHandle(), "we");
+			pxO = CSrvWrap.GetObjMgr()^.CreateObj("hu_rhino_ballista_buildup_bottom", GetOwner());
+			GetBuildUp()^.AddObj(pxO^.GetHandle(), "we");
+			cast<CBuildUpWeapon>(GetBuildUp())^.SetWeaponClass(GetClassName());
+			cast<CBuildUpWeapon>(GetBuildUp())^.SetCanRotate(true);
+			cast<CBuildUpWeapon>(GetBuildUp())^.SetAutoAttack(true);
+			SetTransportClass(1);
+
+//			JANE BUILDUP TRANSPORTER + BALLISTA
+//			m_axLinks = 6;
+//			var ^CGameObj pxO = CSrvWrap.GetObjMgr()^.CreateObj("hu_rhino_ballista_buildup_top", GetOwner());
+//				pxBallista^.SetCanRotate(true);
+//				var CFourCC xLink="we";
+//				pxO^.SetRndInvMaskSingleFlagInv(VIS_FLAG_VHCL_RAM_HIGH,false);
+//				pxBallista^.m_sCptAttackAnim = "hu_balista_steamtank_attack";
+//				m_axLinks[0].Set("Dri1", CObjHndl.Invalid(), pxO^.GetHandle(), "hu_balista_steamtank_sitpos");
+//			endif;
+//			pxO = CSrvWrap.GetObjMgr()^.CreateObj("hu_rhino_ballista_buildup_bottom", GetOwner());
+//			if (pxO!=null) then
+//				pxO^.SetSelectable(true);
+//				AddGroupedChildren(pxO^.GetGuid());
+//				var CFourCC xLink="we";
+//				pxO^.LinkAction(GetHandle(), xLink);
+//				pxO^.SetRndInvMaskSingleFlagInv(VIS_FLAG_VHCL_RAM_LOW,false);
+//				GetBuildUp()^.m_xLinkedObj2 = pxO^.GetHandle();
+//			endif;
+//			UpdateMaxPassengers(true);
+		endif;
+	endproc;
+
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = true;
+		SetCaptainAnim("hu_balista_steamtank_sitpos");
+		SetCaptainAttackAnim("hu_balista_steamtank_attack");
+		return true;
+	endproc;
+
+endclass;
+
+class CSteamRam inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+			SetAttackType(1);
+		endif;
+	endproc;
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = false;
+		SetCaptainAnim("hu_balista_steamtank_sitpos");
+		return true;
+	endproc;
+
+endclass;
+
+class CFlameThrower inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = false;
+		SetCaptainAnim("flamebuggy_standanim");
+		return true;
+	endproc;
+
+endclass;
+
+class CMechWalker inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Ride";
+		po_rbIsBuildUpLink = false;
+		SetCaptainAnim("balista_stand");
+		return true;
+	endproc;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		SetResInvCap(20.0f);
+	endproc;
+	
+	export proc void DoMineAnim()
+		AnimAction("work_0");
+	endproc;
+	
+	export proc void DoCutAnim()
+		AnimAction("work_0");
+	endproc;
+	
+	proc void HarvestTask(^CGameObj p_pxObject, vec3 p_vPos)
+    	var ^CHarvesterTask pxTask=cast<CHarvesterTask>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"HarvestT"));
+    	if(p_pxObject!=null)then
+    		pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+    	else
+    		pxTask^.Init(GetHandle(),p_vPos);
+    	endif;
+   		pxTask^.SetUserCommand(true);
+		m_pxTaskMgr^.SetTask(pxTask);
+	endproc;
+
+	proc void MineTask(^CGameObj p_pxObject, vec3 p_vPos)
+    	if(p_pxObject!=null)then
+	    	var ^CMineTask pxTask=cast<CMineTask>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"MineT"));
+    		pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+	   		pxTask^.SetUserCommand(true);
+			m_pxTaskMgr^.SetTask(pxTask);
+    	else
+			GoTo(p_vPos, true, GetDefaultSpeed(), true, true);
+    	endif;
+	endproc;
+	
+	proc void GetFoodTask(^CGameObj p_pxObject, vec3 p_vPos)
+    	if(p_pxObject!=null)then
+	    	var ^CGetFood pxTask=cast<CGetFood>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"GetFood"));
+    		pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+	   		pxTask^.SetUserCommand(false);
+			m_pxTaskMgr^.SetTask(pxTask);
+    	else
+			GoTo(p_vPos, true, GetDefaultSpeed(), true, true);
+    	endif;
+	endproc;
+endclass;
+
+class CFireCannon inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+			SetBuildUp(CBuildUpBase.TYPE_WEAPON);
+			var ^CGameObj pxO = CSrvWrap.GetObjMgr()^.CreateObj("ninigi_firecannon_top", GetOwner());
+			if(pxO!=null)then
+				GetBuildUp()^.AddObj(pxO^.GetHandle(), "we");
+			endif;
+			cast<CBuildUpWeapon>(GetBuildUp())^.SetCanRotate(true);
+			SetAttackType(1);
+		endif;
+	endproc;
+endclass;
+
+
+class CHoverCraft inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		SetCanSwim(true);
+		if(!p_bLoad)then
+			SetCanFightAttrib(false);
+			SetTransportClass(2);
+			SetBuildUp(CBuildUpBase.TYPE_TRANSPORTER);
+		endif;
+	endproc;
+
+	export proc bool IsAbleToFight()
+		return false;
+	endproc;
+
+	export proc void Die()
+
+		if(IsInWater())then
+			SetReleaseWhileDying();
+			
+			DismountAll();
+			if (m_xPassengers.NumEntries()>0) then
+				CFeedback.Print(GetOwner(), CFeedback.ATTACK, "_NT_TransportUnitsDiedInVehicle");
+			endif;
+			
+			while(m_xPassengers.NumEntries()>0)do
+				var ^CFightingObj pxPassenger = cast<CFightingObj>(m_xPassengers[0].GetObj());
+				m_xPassengers.DeleteEntry(0);
+				if(pxPassenger!=null)then
+					pxPassenger^.TerminateAction();
+					pxPassenger^.SetVisible(false);
+					pxPassenger^.DieFastAndSilent();
+				endif;
+			endwhile;
+
+		endif;
+		super.Die();
+
+	endproc;
+
+endclass;
+
+
+class CLumberjack inherit CVehicle
+
+	var bool m_bTecInFightPos;
+
+
+	export proc bool AttackEnemy(^CFightingObj p_pxEnemy, vec3 p_vTarget, ref bool p_rbRotated)
+		if (GetTransportObj().IsValid() && GetTransportObj().GetObj()^.GetType()=="SHIP") then
+			return false;
+		endif;
+		//wenn irgendwas schon so anfängt, kann es ja nur ein pöser hack sein....
+		var string sProj = GetProjectile();
+		var bool bProj = !sProj.IsEmpty();
+		var bool bPrimary = GetCurrentWeapon()==GetRightHandWeapon();
+		if(bPrimary)then
+			var string sFAnim = GetNextFightAnim();
+			if(HasAnim(sFAnim))then
+				var real fAngle;
+				if(p_pxEnemy!=null)then
+					fAngle = GetAngleToR(p_pxEnemy);
+				else
+					fAngle = GetAngleToR(p_vTarget);
+				endif;
+				if(fAngle>Math.Pi()/8.0) then
+					var Quat qRot;
+					if(p_pxEnemy!=null)then
+						qRot = GetAngleToQ(p_pxEnemy);
+					else
+						qRot = GetAngleToQ(p_vTarget);
+					endif;
+										
+					if(!GetTransportObj().IsValid()) then
+						m_bRotateSLEAction = true;
+						RotateActionSLE(qRot,sFAnim, 0.4, 1, !m_bTecInFightPos,false);
+						p_rbRotated = true;
+					else
+						SetSLEAnim(sFAnim, 1 , !m_bTecInFightPos, false);
+					endif;
+				else
+					SetSLEAnim(sFAnim, 1 , !m_bTecInFightPos, false);
+				endif;
+				m_bTecInFightPos = true;
+			else
+				SetSLEAnim(sFAnim, 1 ,false, false);
+			endif;
+			
+			if(bProj)then
+				CreateProjectileAndShoot(p_pxEnemy, p_vTarget);
+				return false;
+			else
+				return true;
+			endif;
+		endif;
+		return super.AttackEnemy(p_pxEnemy,p_vTarget, p_rbRotated);
+
+	endproc;
+
+	export proc void HandleGamePlayCommand(string p_sCommand,^CGameObj p_pxObject,vec3 p_vPos,string p_sMiscParams)
+		if(p_sCommand=="Action") then
+			if(p_sMiscParams.Find("jumpjet")!=(-1))then
+				if(CheckSpecialActionTimer(p_sMiscParams) && !GetTransportObj().IsValid()) then
+					Jumpjet(p_vPos,p_sMiscParams);
+				endif;
+			else
+				super.HandleGamePlayCommand(p_sCommand,p_pxObject,p_vPos,p_sMiscParams);
+			endif;
+		else
+			super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+		endif;
+	endproc;
+
+endclass;
+
+
+class CSmokeThrower inherit CVehicle
+
+	const real	SMOKE_RADIUS = 15.0;
+
+	var array CFourCC	m_axHidingTypes;
+
+	export constructor()
+		m_axHidingTypes = 3;
+		m_axHidingTypes[0] = "CHTR";
+		m_axHidingTypes[1] = "ANML";
+		m_axHidingTypes[2] = "VHCL";
+	endconstructor;
+
+	proc bool OnObjAdd(CObjHndl p_xObj)
+
+		if (GetHandle()==p_xObj) then return false; endif;
+
+		if(m_xRegionObjects.FindEntry(p_xObj)!=-1)then return false; endif;
+
+		var ^CFightingObj pxFO = cast<CFightingObj>(p_xObj.GetObj());
+		
+		if(pxFO == null)then										return false; endif;
+		if(pxFO^.GetOwner() != GetOwner())then						return false; endif;
+		if (m_axHidingTypes.FindEntry(pxFO^.GetType())==-1)then		return false; endif;
+		if (pxFO^.GetClassName() == GetClassName())then				return false; endif;
+		// Henry: to make zeppelin an exception
+		if(pxFO^.GetClassName().Find("_zeppelin")!=-1)then return false; endif;
+
+		m_xRegionObjects.Include(p_xObj);
+		
+		pxFO^.SetEffectFlag(CFightingObj.EFFECT_SMOKER_INVIS, true);
+		pxFO^.AddRangedBuff("is_invisible");
+		return true;
+		
+	endproc;
+
+	proc bool OnObjRem(CObjHndl p_xObj)
+
+		if (GetHandle()==p_xObj) then return false; endif;
+		
+		if(m_xRegionObjects.FindEntry(p_xObj)==-1)then return false; endif;
+		
+		m_xRegionObjects.RemEntry(p_xObj);
+
+		var ^CFightingObj pxFO = cast<CFightingObj>(p_xObj.GetObj());
+		if(pxFO!=null)then
+			pxFO^.SetEffectFlag(CFightingObj.EFFECT_SMOKER_INVIS, false);
+			pxFO^.RemoveRangedBuff("is_invisible");
+		endif;
+		return true;
+
+	endproc;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if (!p_bLoad) then
+			var vec3 vP; vP.SetXYZ(SMOKE_RADIUS, SMOKE_RADIUS, 0.0f);
+			CreatePersonalRegion("SmokerRegion_" + Random.GetInt().ToString(), vP, 010b);
+			AddRangedBuff("owner_invisibility_nobldg");
+		endif;
+
+		m_xSink.m_xOnObjAdd = OnObjAdd;
+		m_xSink.m_xOnObjRem = OnObjRem;
+
+		var ^CAttribs pxAttr = GetAttribs();
+		if(pxAttr != null)then
+			pxAttr^.SetValue("RangeMarker","Smoking/"+(SMOKE_RADIUS+2.5f).ToInt().ToString()+";");
+		endif;
+
+		if(!p_bLoad)then
+			SetCanFightAttrib(false);
+		endif;
+
+	endproc;
+
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = false;
+		SetCaptainAnim("balista_stand");
+		return true;
+	endproc;
+
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="STba")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			var CGuid xInvalid;
+			pxArc^ << xInvalid;
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+
+	export proc bool IsAbleToFight()
+		return false;
+	endproc;
+
+endclass;
+
+
+class CSiegeTower inherit CVehicle
+
+	var CDockInfo	m_xDockInfo;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		var ^CAttribs pxAttr = GetAttribs();
+		if(pxAttr != null)then
+			pxAttr^.SetValue("IsSiegeUnit", 1);
+		endif;
+		SetNoAutoMove(true);
+
+		if(!p_bLoad)then
+			SetBuildUp(CBuildUpBase.TYPE_TRANSPORTER);
+			SetCanFightAttrib(false);
+		endif;
+
+		SetTransportClass(1);
+
+	endproc;
+
+	
+	export proc ref CDockInfo GetDockInfo()
+		return m_xDockInfo;
+	endproc;
+
+
+	export proc void OnPostLoad()
+		super.OnPostLoad();
+		var ^CDockWall pxTaskDW=cast<CDockWall>(m_pxTaskMgr^.GetCurTask());
+		if(pxTaskDW!=null) then
+    		pxTaskDW^.SetDockInfo(^m_xDockInfo);
+    	endif;
+	endproc;
+
+
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xBase="SiTo"; //SiegeTower base
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xBase,1);
+		var ^CArc pxArc=^(pxWalk^.GetArc());
+		m_xDockInfo.DoKArc(pxArc^);
+		pxWalk^.Close();
+	endproc;
+
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="SiTo")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			m_xDockInfo.DoKArc(pxArc^);
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+
+	export proc bool IsAbleToFight()
+		return false;
+	endproc;
+
+
+	export proc void Fight(^CGameObj p_pxTarget, vec3 p_vPos, bool p_bUserCommand)
+		if(Dock2Wall(cast<CWall>(p_pxTarget),p_bUserCommand))then return; endif;
+		super.Fight(p_pxTarget,p_vPos,p_bUserCommand);
+	endproc;
+
+
+	proc void InvokeDock(bool p_bUserCommand,^CWall p_pxWall)
+		var ^CDockWall pxTask=cast<CDockWall>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"DockWall"));
+    	pxTask^.Init(GetHandle(),^m_xDockInfo,p_pxWall^.GetHandle());
+    	pxTask^.SetUserCommand(p_bUserCommand);
+	    m_pxTaskMgr^.SetTask(pxTask);
+	endproc;
+
+
+	proc bool Dock2Wall(^CWall p_pxWall,bool p_bUserCommand)
+		if(!IsAbleToWalk())then return false; endif;
+		if(p_pxWall==null)then return false; endif;
+		// TODO: check the wall is walkable
+
+		var bool bNewUserCmd = p_bUserCommand;
+		var bool bOldUserCmd = false;
+
+		var ^CTask pxCurTask = m_pxTaskMgr^.GetCurTask();
+		if(pxCurTask!=null)then
+			bOldUserCmd = pxCurTask^.IsUserCommand();
+		endif;
+
+		if(!bNewUserCmd && bOldUserCmd)then return true; endif;
+
+		m_xDockInfo.SetDocked(false,p_pxWall^.GetHandle());
+		InvokeDock(p_bUserCommand,p_pxWall);
+	    return true;
+	endproc;
+
+
+	export proc void HandleGamePlayCommand(string p_sCommand,^CGameObj p_pxObject,vec3 p_vPos,string p_sMiscParams)
+		if(IsTrapped() &&
+			!(p_sMiscParams.Find("/Kill")!=-1 || p_sCommand=="Kill") &&
+			!(p_sCommand=="setlevel" || p_sMiscParams.Find("/LevelUp")!=-1)
+		)then return; endif;
+		if(p_sCommand=="DockThatWall")then
+			if(Dock2Wall(cast<CWall>(p_pxObject),true))then
+				InvokeDock(true,cast<CWall>(p_pxObject));
+			else
+				super.HandleGamePlayCommand(p_sCommand,p_pxObject,p_vPos,p_sMiscParams);
+			endif;
+		elseif(p_sCommand=="Action") then
+			if(p_sMiscParams.Find("/DismountAll")!=-1 && m_xDockInfo.GetDocked())then
+				SiegeDismountAll();
+			elseif(p_sMiscParams.Find("/Dismount")>=0 && m_xDockInfo.GetDocked()) then
+				SiegeDismount(p_pxObject);
+			elseif(p_sMiscParams.Find("AttackSrv")>=0 && m_xDockInfo.GetDocked()) then
+				// ignore
+			else
+				super.HandleGamePlayCommand(p_sCommand,p_pxObject,p_vPos,p_sMiscParams);
+			endif;
+		else
+			super.HandleGamePlayCommand(p_sCommand,p_pxObject,p_vPos,p_sMiscParams);
+		endif;
+	endproc;
+	
+
+	proc void SiegeDismount(^CGameObj p_pxObj)
+
+		if(p_pxObj==null) then return; endif;
+		if(!OnDismount(p_pxObj^.GetHandle()))then
+			m_xPassengers.RemEntry(p_pxObj^.GetHandle());
+		endif;
+		p_pxObj^.TerminateAction();
+		cast<CCharacter>(p_pxObj)^.StartSiegeLeave(GetHandle());
+	endproc;
+		
+	proc void SiegeDismountAll()
+		var int i,iC=m_xPassengers.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			if(m_xPassengers[i].IsValid())then
+				SiegeDismount(m_xPassengers[i].GetObj());
+			endif;
+		endfor;
+	endproc;
+
+endclass;
+
+
+class CHarvester inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = false;
+		SetCaptainAnim("balista_stand");
+		return true;
+	endproc;
+
+	export proc void HandleGamePlayCommand(string p_sCommand, ^CGameObj p_pxObject, vec3 p_vPos, string p_sMiscParams)
+		if(	IsTrapped() &&
+			!(p_sMiscParams.Find("/Kill")!=-1 || p_sCommand=="Kill") &&
+			!(p_sCommand=="setlevel" || p_sMiscParams.Find("/LevelUp")!=-1)
+			)then return; endif;
+
+		if(p_sCommand=="Action") then
+			if(p_sMiscParams.Find("/lacerate") != -1)then
+				if(CheckSpecialActionTimer(p_sMiscParams))then
+		        	if(m_xCurEnemy.IsValid() && Zerfetzen())then
+						AddSpecialActionTimer(p_sMiscParams);
+		        	endif;
+		        endif;
+			else
+				super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+			endif;
+		else
+			super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+		endif;
+	endproc;
+	
+	proc bool Zerfetzen()
+
+		MemorizeCurrentFightState(CObjHndl.Invalid(),false,false);
+
+    	var ^CLacerate pxTask=cast<CLacerate>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Lacerate"));
+
+    	var bool bReturn = pxTask^.Init(GetHandle(), m_xCurEnemy);
+    	pxTask^.SetUserCommand(true);
+    	m_pxTaskMgr^.SetTask(pxTask);
+    	return bReturn;
+		
+	endproc;
+
+	proc void HarvestTask(^CGameObj p_pxObject, vec3 p_vPos)
+    	var ^CHarvesterTask pxTask=cast<CHarvesterTask>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"HarvestT"));
+    	if(p_pxObject!=null)then
+    		pxTask^.Init(GetHandle(),p_pxObject^.GetHandle());
+    	else
+    		pxTask^.Init(GetHandle(),p_vPos);
+    	endif;
+   		pxTask^.SetUserCommand(true);
+		m_pxTaskMgr^.SetTask(pxTask);
+	endproc;
+
+	export proc bool NextJob(CObjHndl p_xTarget, CObjList p_xIgnoreBuildUps)
+		if(m_pxTaskMgr==null)then return false; endif;
+		if(!p_xTarget.IsValid())then return false; endif;
+		var int i,iC=m_pxTaskMgr^.NumSubs();
+		for(i=1)cond(i<iC)iter(i++)do
+			if(m_pxTaskMgr^.GetSubState(i)^.GetName()=="BuildUp")then
+				return false;
+			endif;
+		endfor;
+		var ^CBuilding pxBuilding=cast<CBuilding>(p_xTarget.GetObj());
+		if(pxBuilding!=null && CSrvWrap.GetDiplomacyMgr().GetIsFriend(GetOwner(), pxBuilding^.GetOwner()))then
+			if(pxBuilding^.IsReady())then
+				var string sClassName=pxBuilding^.GetClassName();
+				if(sClassName=="hu_lumberjack_cottage")then
+					HarvestTask(null,GetPos());
+				elseif(sClassName=="ninigi_lumbermill")then
+					HarvestTask(null,GetPos());
+				else
+					return false;
+				endif;
+			else
+				return false;
+			endif;
+			return true;
+		endif;
+		var ^CResource pxResource=cast<CResource>(p_xTarget.GetObj());
+		if(pxResource!=null)then
+			if(pxResource^.GetType()!="WOOD")then
+				return false;
+			endif;
+			HarvestTask(pxResource,pxResource^.GetPos());
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	export proc void DoCutAnim()
+		AnimAction("harvest");
+	endproc;
+
+	export proc void DoTakeAnim()
+		AnimAction("attack_front");
+	endproc;
+	
+	export proc void LinkToStock(string p_sGFX)
+		var CFourCC xLink = "psh1";
+		SetLinkGFX(xLink, p_sGFX);
+		super.LinkToStock(p_sGFX);
+	endproc;
+
+	export proc void ClearLink()
+		var CFourCC xLink = "psh1";
+		RemLinkGFX(xLink);
+		super.ClearLink();
+	endproc;
+
+endclass;
+
+
+class CSeasHelicopter inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		SetCanWalk(true);
+		SetCanSwim(true);
+	endproc;	
+	
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = true;
+		SetCaptainAnim("balista_stand");
+		return true;
+	endproc;
+
+endclass;
+
+
+class CWehrspinne inherit CVehicle
+
+	export constructor()
+	endconstructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+
+		if(!p_bLoad)then
+			SetBuildUp(CBuildUpBase.TYPE_WEAPON);
+			var ^CGameObj pxO = CSrvWrap.GetObjMgr()^.CreateObj("seas_wehrspinne_top", GetOwner());
+			if(pxO!=null)then
+				GetBuildUp()^.AddObj(pxO^.GetHandle(), "we");
+			endif;
+			cast<CBuildUpWeapon>(GetBuildUp())^.SetCanRotate(true);
+			cast<CBuildUpWeapon>(GetBuildUp())^.SetCanSwitchAttackMode(true);
+		endif;
+
+	endproc;
+
+
+	export proc void SwitchToAttackMode()
+		TerminateAction();
+		AnimAction("attack_front",1,true,false);
+	endproc;
+
+	export proc void SwitchToWalkMode()
+		TerminateAction();
+		AnimAction("attack_front",1,false,true);
+	endproc;
+
+
+	export proc bool GetCaptainLink(ref CFourCC po_rxLink, ref bool po_rbIsBuildUpLink)
+		po_rxLink = "Dri1";
+		po_rbIsBuildUpLink = true;
+		SetCaptainAnim("balista_stand");
+		return true;
+	endproc;
+
+		
+	export proc bool SetAttackAnim()
+		SetSLEAnim("attack_front",0,false,false);
+		return(true);
+	endproc;
+	
+endclass;
+
+class CTradeCart inherit CTradeTransporter
+	export constructor()
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+
+		if(!p_bLoad) then
+    		SetType("VHCL");
+			InitAttribs();
+			SetRndInvMaskSingleFlagInv(VIS_FLAG_ANML_SADDLE,true);
+		endif;
+
+		UpdateAttribs(p_bLoad);
+   		AddUnit();
+		SetCanWalk(true);
+
+       	//item inventory -> all levels can now have one item
+       	if(GetInventory()==null) then
+       		InitInventory(1);
+       	endif;
+
+        if(!p_bLoad)then
+			StartTT();
+			SetCanFightAttrib(false);
+		endif;
+		m_iSizeClass = 10; //vehicles are big
+		OnTechTreeChange();
+	endproc;
+	
+	export proc void LinkCaptainObj()
+		var ^CGameObj pxCaptain = m_xCaptain.GetObj();
+		if(pxCaptain==null)then return; endif;
+		var CFourCC xLink="push";
+		pxCaptain^.FlexLinkAction(GetHandle(),xLink,0.0,{0.0,-2.0,0.0},"hu_cart_push_walk_2");
+		pxCaptain^.SetAnim("hu_cart_push_walk_idle",3);
+	endproc;
+	
+	export proc void OnActionStart()
+		super.OnActionStart();
+		var ^CGameObj pxCaptain = m_xCaptain.GetObj();
+		if(pxCaptain==null)then return; endif;
+		pxCaptain^.SetAnim("hu_cart_push_walk_2",0);
+	endproc;
+	
+	export proc void OnActionEnd(bool p_bBroken)
+		super.OnActionEnd(p_bBroken);
+		var ^CGameObj pxCaptain = m_xCaptain.GetObj();
+		if(pxCaptain==null)then return; endif;
+		pxCaptain^.SetAnim("hu_cart_push_walk_idle",3);
+	endproc;
+	
+	export proc void CreateCaptain()
+		//buildup==captain doesn't works well -> skip with existing captain
+		if(m_xCaptain.GetObj()!=null)then return; endif;
+		super.CreateCaptain();
+	endproc;
+
+	export proc void Die()
+		if(!IsDead())then
+			CreateCorpse();
+		endif;
+		super.Die();
+	endproc;
+
+	export proc void CreateCorpse()
+	
+		var string sGfx = GetGfxName()+"_dest";
+		
+		if(!CSrvWrap.GetGfxMgrBase().FindGraphicSetEntry(sGfx)) then return; endif;
+	
+		var ^CVehicleCorpse pxGameObj = cast<CVehicleCorpse>(CSrvWrap.GetObjMgr()^.CreateObj("VehicleCorpse",GetOwner(),GetPos(),GetRotation()));
+		if(pxGameObj!=null)then
+			pxGameObj^.SetSource(this);
+			pxGameObj^.Init(sGfx, GetName(), 10.0);
+		endif;
+		
+	endproc;
+	
+//	export proc void OnPostLoad()
+//	endproc;
+	
+endclass;
+
+class CFlyingTraderObj inherit CVehicle
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		SetHitable(false);
+		SetSelectable(false);
+		SetCanWalk(false);
+		SetCanFly(true);
+	endproc;
+
+	export proc void HandleGamePlayCommand(string p_sCommand, ^CGameObj p_pxObject, vec3 p_vPos, string p_sMiscParams)
+		if(p_sCommand.Find("Action")>=0)then
+			if(p_sMiscParams.Find("/Walk")>=0) then
+				p_sMiscParams+=" /NoPF / NoHeightAdapt";
+			endif;
+		endif;
+		super.HandleGamePlayCommand(p_sCommand,p_pxObject,p_vPos,p_sMiscParams);
+	endproc;
+	
+	export proc void GoTo(vec3 p_vPos, bool p_bUserCommand, int p_iSpeed, bool p_bUsePathfinder, bool p_bHeightAdaption, bool p_bOnWall, bool p_bQueued, bool p_bUseMaterial)
+		//super.GoTo(p_vPos, p_bUserCommand, p_iSpeed, p_bUsePathfinder, p_bHeightAdaption, p_bOnWall, p_bQueued, p_bUseMaterial);
+		var bool bAdd = true;
+		var ^CWalkToPos pxTask=cast<CWalkToPos>(CSrvWrap.GetUSLFactoryMgr().CreateState(GetFSM(),"Walk2Pos"));
+    	pxTask^.SetUserCommand(p_bUserCommand);
+    	pxTask^.SetUseMoveAction(true, "standanim");
+    	pxTask^.Init(GetHandle(),p_vPos,p_iSpeed,p_bUsePathfinder,p_bHeightAdaption,p_bOnWall, p_bUseMaterial);
+	    AddTask(pxTask, bAdd);
+	endproc;
+
+	export proc void Damage(real p_fDamage)
+	endproc;
+	
+	export proc bool DoesCountInUnitLimit()
+		return false;
+	endproc;
+
+endclass;
+
+class CVehicleCorpse inherit CUniversalCorpse
+	
+	var string	m_sDieAnim;
+	var int		m_iState;
+	
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+	endproc;
+	
+	export proc bool Init(string p_sGfxName,string p_sDieAnim, string p_sName, real p_fDuration)
+		m_sDieAnim = p_sDieAnim;
+		m_iState=1;
+		super.Init(p_sGfxName,p_sName,p_fDuration);
+		return(true);
+	endproc;
+	
+	export proc void Init(string p_sGfxName, string p_sName, real p_fDuration)
+		m_iState=1;
+		if(IsInWater() && CanSwim())then
+			m_sDieAnim = "destroy_water";
+			p_sGfxName+="_water";
+		else
+			m_sDieAnim = "destroy";
+		endif;
+		super.Init(p_sGfxName,p_sName,p_fDuration);
+	endproc;
+
+	export proc void SetGFX(string p_sString)
+		super.SetGFX(p_sString);
+	endproc;
+
+	export proc bool SetAnim(string p_sString, int p_iInt)
+		return super.SetAnim(p_sString,p_iInt);
+	endproc;
+
+	export proc void OnActionEnd(bool p_bBroken)
+		if(m_iState == 2)then
+			Delete();
+		endif;
+	endproc;
+
+	export proc void OnPostLoad()
+		if(m_iState==2 || m_iState==1)then
+			Delete();
+		endif;
+	endproc;
+
+	export proc void HandleEvent(ref CGameEvtPtr p_rxEvtPtr)
+		if (p_rxEvtPtr.GetClass() == ms_xTimerClass) then
+			var int iTimerID = p_rxEvtPtr.GetInt(0);
+			if(iTimerID == TIMER_DELETE)then
+				m_iState=2;
+				var vec3 vP = GetPos();
+				vP.SetZ(0.0f);
+				MoveAction(vP, 1.0f);
+			endif;
+		endif;
+	endproc;
+	
+	proc void PlayAnim(int p_iPlayMode)
+		SetAnim(m_sDieAnim,1);
+	endproc;
+endclass;

@@ -1,0 +1,120 @@
+﻿Root {
+	SoundPath = '07_speech_acks/'
+	voice_aje_funtitan_selected {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_sel_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_sel_2.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_gag {
+		global = '1'
+		sequential = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_gag_1.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_delivered {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_prod_1.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_task_goto {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_move_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_die_1.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_task_walk_aggro {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_move_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_1.wav'
+			volume = '80'
+		}
+		sound_2 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_2.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_task_attack {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_2.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_task_attack_walk {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_move_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_2.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_die {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_die_1.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_fear {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_sel_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_sel_2.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_jub {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_1.wav'
+			volume = '80'
+		}
+		sound_1 {
+			wav = 'Aje/Funtitan/aje_funtitan_atk_2.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_hit {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_prod_1.wav'
+			volume = '80'
+		}
+	}
+	voice_aje_funtitan_click_error {
+		global = '1'
+		sound_0 {
+			wav = 'Aje/Funtitan/aje_funtitan_die_1.wav'
+			volume = '80'
+		}
+	}
+}

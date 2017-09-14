@@ -1,0 +1,1758 @@
+
+
+// 21 x 33
+
+class CQueueIcon inherit CStaticCtrl
+	
+	export const int	WIDTH = 31;
+	export const int	HEIGHT = 30;
+	export const string	SPEC_LVL = "0";
+	
+	var ^CStaticCtrl 	m_pxText;
+	
+	var ^CProgressBar	m_pxProgress;
+	var string			m_sIcon;
+	
+	export constructor()
+		m_pxText = new CStaticCtrl();
+		m_pxText^.SetVisible(true);
+		m_pxText^.SetTextColor({{255, 155, 155, 255}});
+		m_pxText^.SetSize(WIDTH/2,HEIGHT/2);
+		m_pxText^.SetPos(WIDTH/2,HEIGHT/2);
+		AddChild(m_pxText);
+	endconstructor;
+	
+	destructor()
+		if(m_pxText!=null) then m_pxText^.Destroy(); endif;
+		if(m_pxProgress!=null) then m_pxProgress^.Destroy(); endif;
+		CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+	enddestructor;
+	
+	export proc void SetIcon(string p_sIcon, string p_sParams)
+		m_sIcon = p_sIcon;
+		m_pxText^.SetTextColor({{255, 255, 255, 255}});
+		m_pxText^.SetSize(WIDTH/2,HEIGHT/2);
+		m_pxText^.SetPos(WIDTH/2,HEIGHT/2);
+		var string sLayer = ", layer "+m_sIcon;
+		var string sBlend = ", blend "+m_sIcon+" 30";
+		if(!CGameInst.GetBitmapMgr().BlendSourceExists(m_sIcon))then
+			sLayer="";
+			sBlend="";
+		endif;
+		if(p_sIcon=="dummy") then return; endif;
+		if(m_pxProgress!=null) then
+			m_pxProgress^.SetBitmaps(CGameInst.GetBitmapMgr().GetBlendBitmap(SPEC_LVL+", layer card_background"+sLayer+", layer card_frame")^.GetBitmap(), 
+								 CGameInst.GetBitmapMgr().GetBlendBitmap(SPEC_LVL+", layer card_background"+sBlend+", layer card_frame")^.GetBitmap());
+			//m_pxProgress^.SetProgress(0.0f);
+		else
+			SetBitmap(CGameInst.GetBitmapMgr().GetBlendBitmap(SPEC_LVL+", layer card_background"+sLayer+p_sParams+", layer card_frame")^.GetBitmap());
+		endif;
+	endproc;
+	
+	export proc void EnableProgressBar(bool p_bOn)
+		if(m_pxProgress!=null)then
+			m_pxProgress^.Destroy();
+			m_pxProgress=null;
+		endif;
+		if(p_bOn) then
+			m_pxProgress=new CProgressBar();
+			m_pxProgress^.SetVertical(true);
+			AddChild(m_pxProgress);
+			m_pxProgress^.SetAlwaysOnTop(true);
+			m_pxProgress^.SetTransparent(true);
+			m_pxProgress^.SetPos(0,0);
+			m_pxProgress^.SetSize(WIDTH,HEIGHT);
+		endif;
+	endproc;
+	
+	export proc void Subscribe(^CObj p_pxObj)
+		CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+		if(p_pxObj!=null) then 
+			CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,p_pxObj^.GetHandle(),CSubscriptionMgr.CT_ObjAttribs, "ActionMenuProgress");
+		endif;
+	endproc;
+	
+	export proc void SetText(string p_sText)
+		m_pxText^.SetText(p_sText);
+	endproc;
+	
+	export proc bool HandleMessage(ref CEvtPointer p_rxEvt)
+		if(p_rxEvt.GetClass()==CSubscriptionMgr.GetEvtClass_ObjChange())then
+			var CClntHndl xObjHandle;
+			var bitset dwTypes, dwAttribGroups;
+
+			if(CSubscriptionMgr.EvtGetData_ObjChange(p_rxEvt,xObjHandle,dwTypes,dwAttribGroups))then
+				if((dwTypes & CSubscriptionMgr.CT_ObjAttribs) != 0d) then
+					if(!xObjHandle.IsValid())then return false; endif;
+					var ^CObj pxO = xObjHandle.GetObj();
+					var ^CAttribs pxAttr = pxO^.GetAttribs();
+					if(pxAttr!=null)then
+						if(!pxAttr^.GetValue("CurProcessObj").IsEmpty()) then
+							if(m_pxProgress!=null) then
+								m_pxProgress^.SetProgress(pxAttr^.GetValueInt("CurProcess").ToReal());
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+			return true;
+		endif;
+		return false;
+	endproc;
+endclass;
+
+class CProdQueue inherit CWindow
+	
+	const int MAX_QUEUE_ENTRIES = 6;
+	
+	class CQueueEntry
+		export var string		m_sName;
+		export var int			m_iCount;
+		export var ^CQueueIcon	m_pxIcon;
+	endclass;
+	
+	var array CQueueEntry 	m_axQueue;
+	
+	var CClntHndl 			m_xCurSelObj;
+	var array string		m_asCurObjActionNames;
+	var array string		m_asCurObjActionIcons;
+	var array int			m_aiCurObjActionUIDS;
+	var	array string		m_asCurObjToolTipIDS;
+	
+	export constructor()
+		var int i, iC = MAX_QUEUE_ENTRIES;
+		m_axQueue = iC;
+		
+		SetSize(MAX_QUEUE_ENTRIES*CQueueIcon.WIDTH, CQueueIcon.HEIGHT);
+		for(i=0) cond(i<iC) iter(++i) do
+			m_axQueue[i].m_sName = "";
+			m_axQueue[i].m_iCount = 0;
+			m_axQueue[i].m_pxIcon = new CQueueIcon();
+			m_axQueue[i].m_pxIcon^.SetSize(CQueueIcon.WIDTH, CQueueIcon.HEIGHT);
+			m_axQueue[i].m_pxIcon^.SetPos(i*(CQueueIcon.WIDTH+3), 0);
+			AddChild(m_axQueue[i].m_pxIcon);
+		endfor;
+	endconstructor;
+	
+	export destructor()
+	enddestructor;
+	
+	export proc int GetActiveQueueEntries()
+		var int i,iC = m_axQueue.NumEntries();
+		var int iCount = 0;
+		for(i=0)cond(i<iC)iter(i++)do
+			if(m_axQueue[i].m_pxIcon^.GetVisible())then
+				iCount++;
+			endif;
+		endfor;
+		return iCount;
+	endproc;
+		
+	export proc void InitQueueInfo(^CObj p_pxObj)
+		if(p_pxObj==null) then return; endif;
+		var ^CAttribs pxA = p_pxObj^.GetAttribs();
+		if(pxA==null) then return; endif;
+		
+		
+		var string sProdQueue = pxA^.GetValue("ProdQueue");
+		var array string asToks;
+		sProdQueue.Split(asToks, ":", true);
+		
+		var CTechTree xTT = p_pxObj^.GetTechTree();
+		if(p_pxObj^.GetHandle()!=m_xCurSelObj) then
+			// get available Actions from selected obj
+			var array ^CTechTree.CNode apxTTNodes;
+			var string sTribe = pxA^.GetValue("tribe");
+			
+			m_asCurObjActionNames=0;
+			m_asCurObjActionIcons=0;
+			m_aiCurObjActionUIDS=0;
+			m_asCurObjToolTipIDS=0;
+			
+			apxTTNodes.AddEntry(xTT.FindNode("/Actions/"+sTribe+"/Build"));
+			apxTTNodes.AddEntry(xTT.FindNode("/Actions/"+sTribe+"/Upgrades"));
+			
+			var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+											
+			var array string asLocations;
+			asLocations.AddEntry(p_pxObj^.GetClassName());
+			asLocations.AddEntry(p_pxObj^.GetType().AsString());
+			
+			var int i, iC = asLocations.NumEntries();
+			for(i=0) cond(i<iC) iter(++i) do
+				var ^CTTHelper.CLocation pxLoc = CTTHelper.Get()[asLocations[i]];
+				if(pxLoc==null) then continue; endif;
+				
+				var string sPath;
+				var int iLocIdx;
+				
+				var int j, iJC = pxLoc^.NumActions();
+				for(j=0) cond(j<iJC) iter(++j) do
+					if(pxLoc^.GetActionInfo(j, ^sPath, null, ^iLocIdx))then
+						if(pxPlayer!=null) then
+							var ^CTechTree.CNode pxTmpNode = pxPlayer^.GetPlayerTechTree().FindNode(sPath);
+							if(pxTmpNode!=null) then
+								
+								var ^CTechTree.CNode pxLocSubNode = pxTmpNode^.GetSub("locations");
+								if(pxLocSubNode!=null) then
+									var int j, iJC = pxLocSubNode^.NumSubs();
+									for(j=0) cond(j<iJC) iter(++j) do
+										var ^CTechTree.CNode pxLoc = pxLocSubNode^.GetSub(j);
+										var string sLoc = pxLoc^.GetValue();		
+										if(sLoc.Right(4)==p_pxObj^.GetType().AsString() || sLoc.Find(p_pxObj^.GetClassName())>=0) then 
+											m_aiCurObjActionUIDS.AddEntry(pxTmpNode^.GetHashValue());
+											m_asCurObjActionIcons.AddEntry(pxLoc^.GetSubValue("iconpath",""));
+											m_asCurObjActionNames.AddEntry(sPath);
+											m_asCurObjToolTipIDS.AddEntry(pxLoc^.GetSubValue("description",""));
+										endif;
+									endfor;
+								endif;
+							endif;
+						endif;
+					endif;					
+				endfor;
+			endfor;
+			m_xCurSelObj = p_pxObj^.GetHandle();
+		endif;
+		
+		var string sCurProd = pxA^.GetValue("CurProcessObj");
+		var int iCurHashValue=-1;
+		var int i, iC = MAX_QUEUE_ENTRIES;
+		for(i=0) cond(i<iC) iter(++i) do
+			if(i==0 && !sCurProd.IsEmpty()) then
+				var ^CTechTree.CNode pxNode = xTT.FindNode(sCurProd);
+				if(pxNode!=null) then
+					iCurHashValue=pxNode^.GetHashValue();
+					var ^CTechTree.CNode pxLocNode = pxNode^.GetSub("locations");
+					if(pxLocNode!=null) then
+						var int j, iJC = pxLocNode^.NumSubs();
+						for(j=0) cond(j<iJC) iter(++j) do
+							var ^CTechTree.CNode pxLoc = pxLocNode^.GetSub(j);
+							var string sLoc = pxLoc^.GetValue();							
+							if(sLoc.Right(4)==p_pxObj^.GetType().AsString() || sLoc.Find(p_pxObj^.GetClassName())>=0) then
+								var	string	sTTText, sTTTitle;								
+								sTTText = CClientWrap.GetUIMgr().GetToopTipText( pxLoc^.GetSubValue( "description" ), sTTTitle );
+								m_axQueue[i].m_pxIcon^.EnableProgressBar(true);
+								m_axQueue[i].m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+								m_axQueue[i].m_pxIcon^.SetIcon(pxLoc^.GetSubValue("iconpath", ""),"");
+								m_axQueue[i].m_pxIcon^.SetVisible(true);
+								m_axQueue[i].m_pxIcon^.Subscribe(p_pxObj);
+								SetVisible(true);
+							endif;
+						endfor;
+					endif;
+				endif;
+			else
+				m_axQueue[i].m_sName="";
+				m_axQueue[i].m_pxIcon^.SetVisible(false);
+				m_axQueue[i].m_pxIcon^.EnableProgressBar(false);
+			endif;
+		endfor;
+		
+		iC = asToks.NumEntries();
+		for(i=0) cond(i<iC) iter(i++) do
+			if(i==0 && asToks[i].ToInt()==iCurHashValue)then
+				continue;
+			endif;
+
+			var int iPos=i;
+			if(iCurHashValue==-1)then
+				iPos++;
+			endif;
+
+			if(iPos+1>=MAX_QUEUE_ENTRIES) then break; endif;
+			
+			var int iUID = asToks[i].ToInt();
+			
+			var int iIdx = m_aiCurObjActionUIDS.FindEntry(iUID);
+			if(iIdx>=0) then
+				var	string	sTTText, sTTTitle;
+				
+				sTTText = CClientWrap.GetUIMgr().GetToopTipText( m_asCurObjToolTipIDS[iIdx], sTTTitle );
+				
+				m_axQueue[iPos].m_sName = m_asCurObjActionNames[iIdx];
+				m_axQueue[iPos].m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+				m_axQueue[iPos].m_iCount = 1;
+				
+				while(true) do
+					if(i+1>=iC) then break; endif;
+					if(asToks[i]==asToks[i+1]) then
+						++m_axQueue[iPos].m_iCount;
+						asToks.DeleteEntry(i+1);
+						--iC;
+					else
+						break;
+					endif;
+				endwhile;
+			
+				if(i>=iC) then break; endif;
+				
+				m_axQueue[iPos].m_pxIcon^.SetIcon(m_asCurObjActionIcons[iIdx], "");
+				if(m_axQueue[iPos].m_iCount>1)then
+					m_axQueue[iPos].m_pxIcon^.SetText(m_axQueue[iPos].m_iCount.ToString());
+				else
+					m_axQueue[iPos].m_pxIcon^.SetText("");
+				endif;
+				m_axQueue[iPos].m_pxIcon^.SetVisible(true);
+				m_axQueue[iPos].m_pxIcon^.EnableProgressBar(false);
+				SetVisible(true);
+			endif;
+		endfor;
+	endproc;
+endclass;
+
+class SafeDestroy
+	export static proc void Window(^CWindow p_pxWnd)
+		if(p_pxWnd!=null) then
+			p_pxWnd^.Destroy();
+			p_pxWnd=null;
+		endif;
+	endproc;
+endclass;
+
+class CBuffInfo
+
+	export var int m_iOrder;
+	export var string m_sType;
+	export var string m_sTooltipID;
+	export var string m_sIcon;
+	export var string m_sNodeName;
+	export var int m_iVisibility;
+	
+	static var array CBuffInfo ms_axBuffInfos;
+	
+	export proc void Init(int p_iOrder, string p_sType, string p_sTooltipID, string p_sIcon, string p_sNodeName, int p_iVisibility)
+		m_iOrder = p_iOrder;
+		m_sType = p_sType;
+		m_sTooltipID = p_sTooltipID;
+		m_sIcon = p_sIcon;
+		m_sNodeName = p_sNodeName;
+		m_iVisibility = p_iVisibility;
+	endproc;
+	
+	export proc string ToString()
+		return "BuffInfo("+m_iOrder.ToString()+","+m_sType+","+m_sIcon+","+m_sTooltipID+","+m_iVisibility.ToString()+")";
+	endproc;
+	
+	export proc bool op_Equal(ref CBuffInfo p_rxOther)
+		return (m_iOrder==p_rxOther.m_iOrder && m_sType==p_rxOther.m_sType && m_sTooltipID==p_rxOther.m_sTooltipID && m_sIcon==p_rxOther.m_sIcon);
+	endproc;
+	
+	export proc bool op_Greater(ref CBuffInfo p_rxOther)
+		return (m_iOrder>p_rxOther.m_iOrder);
+	endproc;
+	
+	export static proc void Init()
+		CreateBuffInfos(ms_axBuffInfos);
+	endproc;
+
+	static proc void CreateBuffInfos(ref array CBuffInfo po_raxBuffInfos)
+		var CPropDB xDB;
+		if(xDB.Load(CClientWrap.GetUrsRelPath() + "/Data/Base/Scripts/Server/init/buffdecals.txt") == false)then
+			KLog.LogError("UI.Info","Failed to load buffdefinitions: ../Data/Base/Scripts/Server/init/buffdecals.txt");
+			return;
+		endif;
+
+		var ^CPropDB.CNode pxRoot = ^(xDB.GetRoot());
+		var int i,iC = pxRoot^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var int iOrder = i;
+			var string sType, sTooltip, sIcon, sNodeName;
+			var int iVisibility = 0;
+			
+			var ^CPropDB.CNode pxBuff = ^(pxRoot^.Get(i));
+			
+			sNodeName = pxBuff^.Name();
+			
+			if(!pxBuff^.GetValue("attrib",sType))then continue; endif;
+			pxBuff^.GetValue("icon",sIcon);
+			pxBuff^.GetValue("tooltip",sTooltip);
+			pxBuff^.GetValue("visibility",iVisibility);
+			
+			var ^CBuffInfo pxBuffInfo = ^(po_raxBuffInfos.NewEntryRef());
+			pxBuffInfo^.Init(iOrder, sType, sTooltip, sIcon, sNodeName,iVisibility);
+		endfor;
+		
+		return;
+	endproc;
+	
+	export static proc ^CBuffInfo GetBuffInfo(string p_sType)
+		var int i,iC=ms_axBuffInfos.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CBuffInfo pxBuffInfo = ^(ms_axBuffInfos[i]);
+			if(pxBuffInfo^.m_sType == p_sType)then
+				return pxBuffInfo;
+			endif;
+		endfor;
+		return null;
+	endproc;
+
+endclass;
+
+class CBuffIcon
+
+	const int ICON_WIDTH 	= 16;
+	const int ICON_HEIGHT 	= 16;
+
+	var bool			m_bGivesBuff;
+	var bool			m_bReceivesBuff;
+	
+	var ^CStaticCtrl m_pxIcon;
+	
+	export proc void Init(^CWindow p_pxParent, string p_sBuffType, int p_iX, int p_iY)
+		
+		m_pxIcon  = new CStaticCtrl();
+		m_pxIcon^.SetPos(p_iX,p_iY);
+		m_pxIcon^.SetSize(ICON_WIDTH,ICON_HEIGHT);
+		m_pxIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap("-1, layer bufficon_attack_down")^.GetBitmap());
+		m_pxIcon^.SetVisible(true);
+
+		p_pxParent^.AddChild(m_pxIcon);
+	endproc;
+
+	export proc void SetVisible(bool p_bVis)
+		m_pxIcon^.SetVisible(p_bVis);
+	endproc;
+
+	export proc void Update(string p_sBuff, string p_sTooltipID, bool p_bShow)
+		if(!p_bShow || p_sBuff.IsEmpty())then
+			SetVisible(false);
+			return;
+		endif;
+		
+		if(CGameInst.GetBitmapMgr().BlendSourceExists(p_sBuff))then
+			var ^CCardBitmap pxBitmap = CGameInst.GetBitmapMgr().GetBlendBitmap("-1, layer "+p_sBuff);
+			m_pxIcon^.SetBitmap(pxBitmap^.GetBitmap());
+		else
+			KLog.LogError("UI.Info","blend source does not exist: "+p_sBuff);
+		endif;
+		
+		var string sTTText, sTTTitle;
+		sTTText = CClientWrap.GetUIMgr().GetToopTipText(p_sTooltipID, sTTTitle);
+		
+		m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+		SetVisible(p_bShow);
+	endproc;
+endclass;
+
+class CUpgradeInfo
+
+	export var int m_iOrder;
+	export var string m_sNodeName;
+	export var string m_sTooltipID;
+	export var string m_sIcon;
+	export var string m_sReplaceNode;
+	export var bool   m_bMarkedForDeletion;
+	export var bool   m_bVisited;
+	
+	export proc void Init(int p_iOrder, string p_sNodeName, string p_sTooltipID, string p_sIcon, string p_sReplaceNode)
+		m_iOrder = p_iOrder;
+		m_sNodeName = p_sNodeName;
+		m_sTooltipID = p_sTooltipID;
+		m_sIcon = p_sIcon;
+		m_sReplaceNode = p_sReplaceNode;
+		m_bMarkedForDeletion = false;
+		m_bVisited = false;
+	endproc;
+	
+	export proc string ToString()
+		return "UpgradeInfo("+m_iOrder.ToString()+","+m_sNodeName+","+m_sIcon+","+m_sTooltipID+","+m_sReplaceNode+","+m_bMarkedForDeletion.ToString()+")";
+	endproc;
+	
+	export proc bool op_Equal(ref CUpgradeInfo p_rxOther)
+		return (m_iOrder==p_rxOther.m_iOrder && m_sNodeName==p_rxOther.m_sNodeName && m_sTooltipID==p_rxOther.m_sTooltipID && m_sIcon==p_rxOther.m_sIcon && m_sReplaceNode==p_rxOther.m_sReplaceNode);
+	endproc;
+	
+	export proc bool op_Greater(ref CUpgradeInfo p_rxOther)
+		if(m_iOrder==p_rxOther.m_iOrder)then
+			return (m_sNodeName>p_rxOther.m_sNodeName);
+		endif;
+		return (m_iOrder>p_rxOther.m_iOrder);
+	endproc;
+	
+endclass;
+
+class CUpgradeIcon
+
+	const int ICON_WIDTH 	= 31;
+	const int ICON_HEIGHT 	= 30;
+
+	var bool			m_bGivesBuff;
+	var bool			m_bReceivesBuff;
+	
+	var ^CStaticCtrl m_pxIcon;
+	
+	export proc void Init(^CWindow p_pxParent, string p_sBuffType, int p_iX, int p_iY)
+		
+		m_pxIcon  = new CStaticCtrl();
+		m_pxIcon^.SetPos(p_iX,p_iY);
+		m_pxIcon^.SetSize(ICON_WIDTH,ICON_HEIGHT);
+		m_pxIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer warcry")^.GetBitmap());
+		m_pxIcon^.SetFrame(true);
+		m_pxIcon^.SetVisible(true);
+
+		p_pxParent^.AddChild(m_pxIcon);
+	endproc;
+
+	export proc void SetVisible(bool p_bVis)
+		m_pxIcon^.SetVisible(p_bVis);
+	endproc;
+
+	export proc void Update(string p_sIcon, string p_sTooltipID, bool p_bShow)
+		if(!p_bShow || p_sIcon.IsEmpty())then
+			SetVisible(false);
+			return;
+		endif;
+		
+		if(CGameInst.GetBitmapMgr().BlendSourceExists(p_sIcon))then
+			var ^CCardBitmap pxBitmap = CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer "+p_sIcon+", layer card_frame");
+			m_pxIcon^.SetBitmap(pxBitmap^.GetBitmap());
+		else
+			KLog.LogError("UI.Info","blend source does not exist: "+p_sIcon);
+		endif;
+		
+		var string sTTText, sTTTitle;
+		sTTText = CClientWrap.GetUIMgr().GetToopTipText(p_sTooltipID, sTTTitle);
+		
+		m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+		SetVisible(p_bShow);
+	endproc;
+endclass;
+
+class CAttribIcon
+	
+	const int ICON_OFFSET 	= 0;
+	const int TEXT_OFFSET 	= 24;
+	const int BONUS_OFFSET 	= 48;
+	
+	const int ICON_WIDTH 	= 20;
+	const int ICON_HEIGHT 	= 20;
+	
+	const color TEXT_COLOR 	= {{205,205,150,255}};
+	const color BONUS_COLOR = {{0,255,0,255}};
+	//Henry: use red for malus values
+	const color MALUS_COLOR = {{255,30,30,255}};
+
+	//flag weapon damage type
+	// synchronize with flags in CFightingObj (Server)
+	const bitset dwMELEE_PIERCE	= 0000001b;
+	const bitset dwMELEE_POISON	= 0000010b;
+	const bitset dwMELEE_AREA	= 0000100b;
+	const bitset dwRANGE_PIERCE	= 0001000b;
+	const bitset dwRANGE_POISON	= 0010000b;
+	const bitset dwRANGE_AREA	= 0100000b;
+	
+	var ^CStaticCtrl m_pxIcon;
+	var ^CStaticCtrl m_pxText;
+	var ^CStaticCtrl m_pxBonus;
+	
+	var int m_iBaseX;
+	var int m_iBaseY;
+	
+	var bool m_bValid;
+	var string m_sAttrib;
+	
+	export constructor()
+		m_bValid = false;
+	endconstructor;
+	
+	export destructor()
+		SafeDestroy.Window(m_pxIcon);		
+		SafeDestroy.Window(m_pxText);
+		SafeDestroy.Window(m_pxBonus);
+	enddestructor;
+	
+	static proc void Generate_AttribBitmapSource_And_Tooltip(string p_sAttribType, bitset p_dwDamageFlags, ref string po_rsBitmap, ref string po_rsTTTitle, ref string po_rsTTText)
+		var	string	sTTID		= "";
+		var	string	sTTText		= "";
+		var	string	sTTTitle	= "";
+		var string	sBitmap		= "9, layer info_";
+		
+		if ( p_sAttribType == "attack" ) then
+			sTTID = "_iw_attack";
+			sBitmap += "attack";
+		elseif ( p_sAttribType == "rangeattack" ) then
+			sTTID = "_iw_rangeattack";
+			sBitmap += "rangeattack";
+		elseif ( p_sAttribType == "shield" ) then
+			sTTID = "_iw_defense_arrow";
+			sBitmap += "shield";
+		elseif ( p_sAttribType == "armor" ) then
+			sTTID = "_iw_defense_melee";
+			sBitmap += "armor";
+		elseif ( p_sAttribType == "range" ) then
+			sTTID = "_iw_range";
+			sBitmap += "range";
+		elseif ( p_sAttribType == "skulls" ) then
+			sTTID = "_iw_skulls";
+			sBitmap += "skulls";
+		endif;
+		
+		if( 
+			(p_sAttribType == "attack" && (p_dwDamageFlags&dwMELEE_PIERCE)!=0b) ||
+			(p_sAttribType == "rangeattack" &&(p_dwDamageFlags&dwRANGE_PIERCE)!=0b)
+		)then
+			sTTID += "_pierce";
+			sBitmap += "_pierce";
+		endif;
+		
+		if( 
+			(p_sAttribType == "attack" && (p_dwDamageFlags&dwMELEE_POISON)!=0b) ||
+			(p_sAttribType == "rangeattack" && (p_dwDamageFlags&dwRANGE_POISON)!=0b)
+		)then
+			sTTID += "_poison";
+			sBitmap += "_poison";
+		endif;
+		
+		if( 
+			(p_sAttribType == "attack" && (p_dwDamageFlags&dwMELEE_AREA)!=0b) ||
+			(p_sAttribType == "rangeattack" && (p_dwDamageFlags&dwRANGE_AREA)!=0b)
+		)then
+			sTTID += "_area";
+			sBitmap += "_area";
+		endif;
+		
+		sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+		po_rsBitmap = sBitmap;
+		po_rsTTTitle = sTTTitle;
+		po_rsTTText = sTTText;
+	endproc;
+	
+	// valid attribtypes = "attack", "rangeattack", "shield", "armor", "range", "skulls"
+	export proc void Init(^CWindow p_pxParent, string p_sAttribType, int p_iX, int p_iY)
+		var	string	sTTText, sTTTitle, sBitmap;
+		Generate_AttribBitmapSource_And_Tooltip(p_sAttribType, 0b, sBitmap, sTTTitle, sTTText);
+
+		m_iBaseX = p_iX;
+		m_iBaseY = p_iY;
+				
+		m_pxIcon  = new CStaticCtrl();
+		m_pxText  = new CStaticCtrl();
+		m_pxBonus = new CStaticCtrl();
+		
+		m_pxIcon^.SetPos(m_iBaseX+ICON_OFFSET,m_iBaseY);
+		m_pxIcon^.SetSize(ICON_WIDTH,ICON_HEIGHT);
+		m_pxIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap(sBitmap)^.GetBitmap());
+		m_pxIcon^.SetVisible(true);
+		m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+		
+		m_pxText^.SetPos(m_iBaseX+TEXT_OFFSET,m_iBaseY);
+		m_pxText^.SetSize(ICON_WIDTH,ICON_HEIGHT);
+		m_pxText^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap("9, layer info_"+p_sAttribType)^.GetBitmap());
+		m_pxText^.SetSuitAlpha(true);
+		m_pxText^.SetTextAlign(0);
+		m_pxText^.SetText("");
+		m_pxText^.SetTextColor(TEXT_COLOR);
+		m_pxText^.SetBackground(false);
+		m_pxText^.SetVisible(true);
+		m_pxText^.SetToolTipText( sTTTitle, sTTText );
+		
+		m_pxBonus^.SetPos(m_iBaseX+BONUS_OFFSET,m_iBaseY);
+		m_pxBonus^.SetSuitAlpha(true);
+		m_pxBonus^.SetTextAlign(0);
+		m_pxBonus^.SetText("");
+		m_pxBonus^.SetTextColor(BONUS_COLOR);
+		m_pxBonus^.SetBackground(false);
+		m_pxBonus^.SetVisible(true);
+		
+		p_pxParent^.AddChild(m_pxIcon);
+		p_pxParent^.AddChild(m_pxText);
+		p_pxParent^.AddChild(m_pxBonus);
+		
+		m_sAttrib = p_sAttribType;
+		m_bValid = true;
+	endproc;
+	
+	export proc void SetPos(int p_iX, int p_iY)
+		if(!m_bValid) then return; endif;
+		
+		m_iBaseX = p_iX;
+		m_iBaseY = p_iY;
+		
+		m_pxIcon^.SetPos(m_iBaseX+ICON_OFFSET,m_iBaseY);
+		m_pxText^.SetPos(m_iBaseX+TEXT_OFFSET,m_iBaseY);
+		m_pxBonus^.SetPos(m_iBaseX+BONUS_OFFSET,m_iBaseY);
+	endproc;
+	
+	export proc void SetVisible(bool p_bVis)
+		m_pxIcon^.SetVisible(p_bVis);
+		m_pxText^.SetVisible(p_bVis);
+		m_pxBonus^.SetVisible(p_bVis);
+	endproc;
+	
+	export proc void Update(^CObj p_pxObj, bool p_bShow)
+		SetVisible(p_bShow);
+		if(!p_bShow) then return; endif;
+		
+		if(p_pxObj==null) then return; endif;
+		
+		var CFourCC xType = p_pxObj^.GetType();
+		if(xType!="CHTR"&&xType!="ANML"&&xType!="BLDG"&&xType!="VHCL"&&xType!="SHIP"&&xType!="NEST"&&xType!="FGHT" )then
+			return;
+		endif;
+		
+		var ^CAttribs pxA = p_pxObj^.GetAttribs();
+		if(pxA==null) then return; endif;
+		
+		var int iVal = 0;
+		var int iVal2 = 0;
+		var real fBonus = 0.0f;
+		var string sVal = "";
+		var string sVal2 = "";
+		var string sBonus = "";
+		
+		if		(m_sAttrib=="attack")		then	sVal="meleedamage";		sBonus="TmpMeleeAttackBoni";
+		elseif	(m_sAttrib=="rangeattack")	then	sVal="rangedamage";		sBonus="TmpRangeAttackBoni";
+		elseif	(m_sAttrib=="shield")		then	sVal="rangeddefense"; 	sBonus="TmpRangedDefenseBoni";
+		elseif	(m_sAttrib=="armor")		then	sVal="defense";			sBonus="TmpDefenseBoni";
+		elseif	(m_sAttrib=="range")		then	sVal="max_attackrange";	sBonus="TmpRangeBoni";
+													sVal2="min_attackrange";
+		elseif	(m_sAttrib=="skulls")		then	sVal="skulls";			sBonus="TmpSkullsBoni";
+		endif;
+		
+		iVal = pxA^.GetValueInt(sVal);
+		if(!sBonus.IsEmpty()) then
+			fBonus = pxA^.GetValueInt(sBonus).ToReal();
+		endif;
+		
+		if(!sVal2.IsEmpty())then
+			iVal2 = pxA^.GetValueInt(sVal2);
+		endif;
+		
+		if(iVal2>0)then
+			m_pxText^.SetText(iVal2.ToString()+" - "+iVal.ToString());
+		else
+			if(iVal==0)then
+				m_pxText^.SetText("-");
+			else
+				m_pxText^.SetText(iVal.ToString());
+			endif;
+		endif;
+		
+		if(fBonus==0.0f) then 
+			m_pxBonus^.SetText("");
+		else
+			m_pxBonus^.SetText(fBonus.ToString("+3.0"));
+			// Henry: if the bonus value is negative, its a malus, and should be red
+			if(fBonus.ToInt()>0)then
+				m_pxBonus^.SetTextColor(BONUS_COLOR);
+			else
+				m_pxBonus^.SetTextColor(MALUS_COLOR);
+			endif;
+		endif;
+		
+		//update icon
+		var string sBitmap, sTTTitle, sTTText;
+		var bitset dwDamageFlags = pxA^.GetValueInt("damagetype").ToBitset();
+		Generate_AttribBitmapSource_And_Tooltip(m_sAttrib, dwDamageFlags, sBitmap, sTTTitle, sTTText);
+		m_pxIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap(sBitmap)^.GetBitmap());
+		m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+	endproc;
+endclass;
+
+class CUnitIcon
+	const int ICON_OFFSET	= 0;
+	const int HPTEXT_OFFSET	= 63;
+	
+	const int ICON_WIDTH 	= 64;
+	const int ICON_HEIGHT 	= 61;
+	
+	const color TEXT_COLOR 	= {{205,205,150,255}};
+		
+	var ^CStaticCtrl 	m_pxHitpoints;
+	var ^CButton		m_pxUnitIcon;
+	
+	var int m_iBaseX;
+	var int m_iBaseY;
+	
+	var bool m_bValid;
+	var CClntHndl m_xCurObj;
+	
+	export constructor()
+		m_bValid = false;
+	endconstructor;
+	
+	export destructor()
+		SafeDestroy.Window(m_pxHitpoints);		
+		SafeDestroy.Window(m_pxUnitIcon);
+	enddestructor;
+	
+	// valid attribtypes = "attack", "shield", "armor", "range"
+	export proc void Init(^CWindow p_pxParent, int p_iX, int p_iY)
+		m_iBaseX = p_iX;
+		m_iBaseY = p_iY;
+		
+		m_pxUnitIcon = new CButton();
+		m_pxUnitIcon^.SetFrame(false);
+		m_pxHitpoints = new CStaticCtrl();
+		
+		m_pxUnitIcon^.SetPos(m_iBaseX,m_iBaseY);
+		m_pxUnitIcon^.SetSize(ICON_WIDTH,ICON_HEIGHT);
+		m_pxUnitIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap( "4, layer info_crdbg_std, layer info_crdframe_small" )^.GetBitmap());
+		m_pxUnitIcon^.SetVisible(true);
+		m_pxUnitIcon^.m_xOnDoubleClick = OnDblClick;
+		m_pxUnitIcon^.m_xOnClick = BackToDesktop;
+		m_pxUnitIcon^.m_xOnRightClick = BackToDesktop;
+		m_pxUnitIcon^.m_xOnButtonDown = BackToDesktop;
+				
+		m_pxHitpoints^.SetPos(m_iBaseX,m_iBaseY+HPTEXT_OFFSET);
+		m_pxHitpoints^.SetSize(ICON_WIDTH,4);
+		m_pxHitpoints^.SetSuitAlpha(true);
+		m_pxHitpoints^.SetText(CLocalizer.Get().Translate("_UI_Info_Label_CurMax"));
+		m_pxHitpoints^.SetTextAlign(0);
+		m_pxHitpoints^.SetTextColor(TEXT_COLOR);
+		m_pxHitpoints^.SetBackground(false);
+		
+		p_pxParent^.AddChild(m_pxUnitIcon);
+		p_pxParent^.AddChild(m_pxHitpoints);
+		m_bValid = true;
+	endproc;
+	
+	export proc void SetPos(int p_iX, int p_iY)
+		if(!m_bValid) then return; endif;
+		m_iBaseX = p_iX;
+		m_iBaseY = p_iY;
+		m_pxUnitIcon^.SetPos(m_iBaseX,m_iBaseY);
+		m_pxHitpoints^.SetPos(m_iBaseX,m_iBaseY+HPTEXT_OFFSET);
+	endproc;
+	
+	export proc void SetVisible(bool p_bV)
+		if(!m_bValid) then return; endif;
+		m_pxHitpoints^.SetVisible(p_bV);
+		m_pxUnitIcon^.SetVisible(p_bV);
+	endproc;
+	
+	proc bool BackToDesktop()
+		ReturnFocusToDesktop();
+		return true;
+	endproc;
+	
+	proc bool OnDblClick()
+		if(m_xCurObj.IsValid()) then
+			var ^CObj pxObj = m_xCurObj.GetObj();
+			if(pxObj!=null)then
+				CMultiCameraController.Get().SetCameraTarget(pxObj^.GetPos());
+				CMultiCameraController.Get().SnapOnGround();
+			endif;
+		endif;
+		
+		ReturnFocusToDesktop();
+		
+		return true;
+	endproc;
+	
+	proc void ReturnFocusToDesktop()
+		// put focus back on the desktop, otherwise we can't scroll anymore after clicking
+		var ^CDesktop pxDesktop=CClientWrap.GetDesktop();
+		CWindowMgr.Get().BringWindowToTop(pxDesktop,true);
+	endproc;
+	
+	export proc void Update(^CObj p_pxObj,bool p_bSelChg)				
+		if(!m_bValid) then return; endif;
+		if(p_pxObj==null) then return; endif;
+		var ^CAttribs pxAttribs=p_pxObj^.GetAttribs();
+		var CFourCC xObjType=p_pxObj^.GetType();
+		var string sUnitClass=CHelpMenu.GetObjHelpitemKey(p_pxObj);
+		sUnitClass.MakeLower();
+		if(sUnitClass.GetAt(0)=='_')then
+			sUnitClass.Delete(0);
+		endif;
+				
+		if(p_bSelChg) then
+			m_xCurObj = p_pxObj^.GetHandle();
+		endif;
+		
+		if (sUnitClass!="") then			
+			//if(sUnitClass.Find("tree")>=0 && sUnitClass.Find("timber")>=0)then
+			if(p_pxObj^.GetType()=="WOOD") then
+				sUnitClass="tree_timber";
+			elseif(sUnitClass.Find("tree")>=0 && sUnitClass.Find("stump")>=0)then
+				sUnitClass="tree_stump";
+			elseif(sUnitClass.Find("resource_stone")>=0)then
+				sUnitClass="resource_stone";
+			elseif(sUnitClass.Find("valhalla_laerad_well")>=0)then
+				sUnitClass="laerad_well";
+			elseif(sUnitClass.Find("bloodfountain_part_01") >= 0 ) then
+				sUnitClass="bloodfountain_a";
+			elseif(sUnitClass.Find("bloodfountain_part_02") >= 0 ) then
+				sUnitClass="bloodfountain_b";
+			elseif(sUnitClass.Find("bloodfountain_part_03") >= 0 ) then
+				sUnitClass="bloodfountain_b";
+			endif;
+			
+			var string sBlend = "4";
+			//var string sBlend = "4, layer info_crdbg_std, layer info_crdframe_clear";
+			
+			if(p_pxObj^.GetType()=="FOOD" && sUnitClass.Right(5)=="_food")then
+				sUnitClass.Replace("_food","");				
+				sBlend += ", layer card_task_food";
+			endif;
+						
+			sBlend += ", layer "+sUnitClass+", layer info_crdframe_clear";
+			var int iHP;
+			var int iMaxHP;
+			if(pxAttribs!=null)then
+				iHP = pxAttribs^.GetValueInt("hitpoints");
+				iMaxHP = pxAttribs^.GetValueInt("maxhitpoints");
+			endif;
+			// AyCe: Fix for Sandbag MG?
+			if(iMaxHP>0 && xObjType!="ITEM" && sUnitClass.Find("seas_sandbag_mg")==-1)then
+				var int iHPSlice = ((iHP*100)/iMaxHP);
+
+				var bool bRenderAlternativeHitpointBars = false;
+				begin CheckSettings;
+					var string sTemp;
+					CSettings.Get("Game/GraphicOptions/AlternativeColoringACHP",sTemp);
+					if(sTemp=="true")then
+						bRenderAlternativeHitpointBars=true;
+						//Enable
+					else
+						bRenderAlternativeHitpointBars=false;
+						//Disable
+					endif;
+				end CheckSettings;
+				
+				if(!bRenderAlternativeHitpointBars)then
+					var int iColorID = CClientWrap.GetClient().GetLevelInfo().GetPlayerColorID(/*p_pxObj^ <-- AyCe: Well... -->*/p_pxObj^.GetGroupedRootParentObj()^.GetOwner());
+					if(iColorID >= 0 && iColorID < 8)then
+					elseif(xObjType=="WOOD" || xObjType=="FOOD" || xObjType=="FRUI" || xObjType=="STON")then
+						iColorID = 11; // resources
+					elseif(pxAttribs^.GetValueInt("anml_aggressive_type")==0)then
+						iColorID = 9; // animal neutral
+					elseif(pxAttribs^.GetValueInt("anml_aggressive_type")==1)then
+						iColorID = 10; // animal hostile
+					else
+						iColorID = 8; // animal friendly and rest
+					endif;
+					var int iR = (iColorID*3), iG = (iColorID*3)+1, iB = (iColorID*3)+2;
+					sBlend += ",layer ovl_hpbar_bg";
+					//sBlend += ", hslicebar ovl_hpbar 100 "+CUIStateMgr.Get().GetHPCounterColorValue(iR).ToString()+" "+CUIStateMgr.Get().GetHPCounterColorValue(iG).ToString()+" "+CUIStateMgr.Get().GetHPCounterColorValue(iB).ToString()+" 256";
+					sBlend += ", hslicebar ovl_hpbar 100 0 0 0 256";
+					sBlend += ", hslicebar ovl_hpbar "+iHPSlice.ToString()+" "+CUIStateMgr.Get().GetHPColorValue(iR).ToString()+" "+CUIStateMgr.Get().GetHPColorValue(iG).ToString()+" "+CUIStateMgr.Get().GetHPColorValue(iB).ToString()+" 256";
+				else
+					sBlend += ",layer ovl_hpbar_bg, hslicehp ovl_hpbar "+iHPSlice.ToString();
+				endif;
+
+				m_pxHitpoints^.SetText(iHP.ToString()+"/"+iMaxHP.ToString());
+			else
+				m_pxHitpoints^.SetText("");
+			endif;
+			
+			if ( CGameInst.GetBitmapMgr().BlendSourceExists(sUnitClass)==true ) then
+				var ^CCardBitmap pxCardBitmap = CGameInst.GetBitmapMgr().GetBlendBitmap( sBlend );
+				if (pxCardBitmap != null) then
+					m_pxUnitIcon^.SetBitmap( pxCardBitmap^.GetBitmap());
+				else
+					sBlend = "4, layer info_crdbg_std, layer info_crdframe_small ";
+					m_pxUnitIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap( sBlend )^.GetBitmap());
+				endif;
+			else
+				sBlend = "4, layer info_crdbg_std, layer info_crdframe_small ";
+				m_pxUnitIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap( sBlend )^.GetBitmap());
+			endif;
+		endif;
+		
+		var	string	sTTID		= "";
+		var	string	sTTText		= "";
+		var	string	sTTTitle	= "";
+		
+		if(xObjType=="WOOD" || xObjType=="FOOD" || xObjType=="FRUI" || xObjType=="STON")then
+			var string 	sText;
+			var int 	iValue;
+			
+			if(pxAttribs!=null)then
+				iValue=pxAttribs^.GetValueInt("value");
+			endif;
+			
+			m_pxHitpoints^.SetText(iValue.ToString());
+			
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText( "_iw_resourceamount", sTTTitle);
+			m_pxHitpoints^.SetToolTipText( sTTTitle, sTTText );
+			
+			if( xObjType == "FRUI" ) then
+				//	Wir unterscheiden hier zwischen Fischen und Fruchtbüschen, denn laut Jan sind Fische Meeresfrüchte :)
+				if ( p_pxObj^.GetClassName().Find( "Fish" ) != -1 ) then
+					sTTID = "_fish";
+				else
+					sTTID="_fruit";
+				endif;
+			elseif( xObjType == "STON" ) then
+				sTTID="_stone";
+			elseif( xObjType == "WOOD" ) then
+				sTTID="_wood";
+			elseif( xObjType == "TREE" ) then
+				sTTID="_wood";						
+			elseif( xObjType == "FOOD" ) then
+				sTTID="_food";
+			endif;
+			
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText( sTTID, sTTTitle);
+			m_pxUnitIcon^.SetToolTipText( sTTTitle, sTTText );	
+		elseif(xObjType=="QMRK")then
+			sTTID=pxAttribs^.GetValue("QuestionMarkToolTip");
+			if(!sTTID.IsEmpty())then
+				sTTText=CLocalizer.Get().Translate(sTTID);
+			endif;
+			m_pxHitpoints^.SetText("");
+			m_pxUnitIcon^.SetToolTipText( sTTTitle, sTTText );	
+		elseif(	xObjType=="ITEM") then
+			m_pxHitpoints^.SetText("");
+			sTTID	= CHelpMenu.GetObjHelpitemKey(p_pxObj);		
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+			m_pxUnitIcon^.SetToolTipText(sTTTitle, sTTText);
+		elseif( xObjType=="FNTN" ) then
+			var	^CObj	pxParentObj	= p_pxObj^.GetGroupedRootParentObj();
+			if ( pxParentObj^.GetClassName() == "valhalla_laerad_well" ) then
+				sTTID = "_laerad_well";
+			elseif( pxParentObj^.GetClassName().Find( "bloodfountain_part_01" ) != -1 ) then
+				sTTID = "_healing_well_01";
+			elseif( pxParentObj^.GetClassName().Find( "bloodfountain_part_02" ) != -1 ) then
+				sTTID = "_healing_well_01";
+			elseif( pxParentObj^.GetClassName().Find( "bloodfountain_part_03" ) != -1 ) then
+				sTTID = "_healing_well_01";
+			elseif( pxParentObj^.GetClassName().Find( "seas_healspring" ) >= 0 ) then
+				sTTID = "_healing_well_01";
+			elseif( pxParentObj^.GetClassName().Find( "healing_well_01" ) >= 0 ) then
+				sTTID = "_healing_well_01";
+			endif;
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText( sTTID, sTTTitle);
+			m_pxUnitIcon^.SetToolTipText( sTTTitle, sTTText );
+		else
+			var	^CObj	pxParentObj	= p_pxObj^.GetGroupedRootParentObj();
+			sTTID	= CHelpMenu.GetObjHelpitemKey(pxParentObj);		
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText(sTTID, sTTTitle);
+			m_pxUnitIcon^.SetToolTipText( sTTTitle, sTTText );
+			sTTText = CClientWrap.GetUIMgr().GetToopTipText( "_iw_hitpoints", sTTTitle);
+			m_pxHitpoints^.SetToolTipText( sTTTitle, sTTText );
+		endif;
+	endproc;
+endclass;
+
+class CWorkerIcon
+
+	const int ICON_WIDTH 	= 31;
+	const int ICON_HEIGHT 	= 30;
+
+	var CClntHndl m_xHdnl;
+	
+	//var ^CStaticCtrl m_pxIcon;
+	var ^CButton m_pxIcon;
+	
+	export proc void Init(^CWindow p_pxParent, string p_sType, int p_iX, int p_iY)
+		
+		//m_pxIcon  = new CStaticCtrl();
+		m_pxIcon  = new CButton();
+		m_pxIcon^.SetPos(p_iX,p_iY);
+		m_pxIcon^.SetSize(ICON_WIDTH,ICON_HEIGHT);
+		m_pxIcon^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer warcry")^.GetBitmap());
+		m_pxIcon^.SetFrame(false);
+		m_pxIcon^.SetVisible(true);
+		m_pxIcon^.m_xOnDoubleClick=OnDoubleClick;
+		m_pxIcon^.m_xOnRightClick=OnDoubleClick;
+		m_pxIcon^.m_xOnClick=OnClick;
+		m_pxIcon^.m_xOnMouseEnter=OnMouseEnter;
+		m_pxIcon^.m_xOnMouseLeave=OnMouseLeave;
+		
+		p_pxParent^.AddChild(m_pxIcon);
+	endproc;
+
+	export proc void SetVisible(bool p_bVis)
+		m_pxIcon^.SetVisible(p_bVis);
+	endproc;
+
+	export proc void Update(string p_sIcon, string p_sTooltipID, CClntHndl p_xHandle, bool p_bShow)
+		if(!p_bShow || p_sIcon.IsEmpty())then
+			SetVisible(false);
+			return;
+		endif;
+
+		m_xHdnl = p_xHandle;
+		
+		if(!p_xHandle.IsValid())then
+			var ^CCardBitmap pxBitmap = CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer info_crdbg_std, layer card_frame");
+			m_pxIcon^.SetBitmap(pxBitmap^.GetBitmap(),pxBitmap^.GetBitmap(),pxBitmap^.GetBitmap(),pxBitmap^.GetBitmap());
+		elseif(CGameInst.GetBitmapMgr().BlendSourceExists(p_sIcon))then
+			var ^CCardBitmap pxBitmap = CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer "+p_sIcon+", layer card_frame");
+			var ^CCardBitmap pxBitmap2 = CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer "+p_sIcon+", layer card_frame_hover");
+			var ^CCardBitmap pxBitmap3 = CGameInst.GetBitmapMgr().GetBlendBitmap("0, layer "+p_sIcon+", layer card_frame_down_hover");
+			m_pxIcon^.SetBitmap(pxBitmap^.GetBitmap(),pxBitmap3^.GetBitmap(),pxBitmap2^.GetBitmap(),pxBitmap^.GetBitmap());
+		else
+			KLog.LogError("UI.Info","blend source does not exist: "+p_sIcon);
+		endif;
+		
+		var string sTTText, sTTTitle;
+		sTTText = CClientWrap.GetUIMgr().GetToopTipText(p_sTooltipID, sTTTitle);
+		
+		m_pxIcon^.SetToolTipText( sTTTitle, sTTText );
+		
+		SetVisible(p_bShow);
+	endproc;
+	
+	export proc bool OnDoubleClick()
+		if(!m_xHdnl.IsValid())then return true; endif;
+		var vec3 vPos = m_xHdnl.GetObj()^.GetPos();
+		if(vPos!={0.0,0.0,0.0})then
+			CMultiCameraController.Get().SetCameraTarget(vPos);
+		endif;
+		return true;
+	endproc;
+
+	export proc bool OnClick()
+		if(!m_xHdnl.IsValid())then return true; endif;
+		var ^CObj pxClickObj = m_xHdnl.GetObj();
+		if(pxClickObj!=null && !pxClickObj^.IsSelectable())then return false; endif;
+		var ^CObjSelection pxSel=^(CClientWrap.GetSelection());
+		var string sEventName="ui_click_pyramid";
+		CGameInputController.ms_xUISoundMgr.PlayFeedbackSoundEvent(sEventName,"",CSoundMgrCln.SOUND_VOLTRACK_GLOBAL);
+		pxSel^.Clear();
+		pxSel^.Select(m_xHdnl);
+		return true;
+	endproc;
+
+	export proc bool OnMouseEnter()	
+		if(!m_xHdnl.IsValid())then return true; endif;
+		CClientWrap.GetObjMgr().IncludeHoveredObj(m_xHdnl);		
+		return true;
+	endproc;
+
+	export proc bool OnMouseLeave()	
+		if(!m_xHdnl.IsValid())then return true; endif;
+		CClientWrap.GetObjMgr().ExcludeHoveredObj(m_xHdnl);
+		return true;
+	endproc;
+
+endclass;
+
+class CInfo inherit CAlphaMaskedStaticCtrl
+
+	const int UNIT_BASE_X = 33;
+	const int UNIT_BASE_Y = 38;
+	
+	const int ATTR_BASE_X = 117;
+	const int ATTR_BASE_Y = 34;
+	const int ATTR_OFFSET = 17;
+
+	const int BUFF_BASE_X = 31;
+	const int BUFF_BASE_Y = 121;
+	const int BUFF_OFFSET = 17;
+	
+	const int UPGR_BASE_X = 33;
+	const int UPGR_BASE_Y = 144;
+	const int UPGR_OFFSET = 34;
+
+	var ^CStaticCtrl	m_pxOpen; 		// main window, if infofenster is open then this becomes visible
+	
+	var ^CStaticCtrl	m_pxUnitName;	 // name of the unit or building
+	var ^CStaticCtrl	m_pxUnitTypeIcon;
+	var ^CStaticCtrl	m_pxPlayerName;
+	var array CAttribIcon m_axAttribIcons;
+	var CUnitIcon		m_xUnit;
+	var array CBuffIcon	m_axBuffIcons;
+	var array CBuffInfo	m_axBuffInfos;
+	var array CWorkerIcon m_axWorkerIcons;
+	
+	var array CUpgradeIcon	m_axUpgradeIcons;
+	
+	var ^CStaticCtrl	m_pxItemslot;
+	var ^CProdQueue		m_pxProdQueue;
+	var ^CObjSelection	m_pxObjSelection;
+
+	export static var ^CInfo ms_pxMe;
+
+
+	export constructor()
+		ms_pxMe = this;
+
+		var int iBaseX;
+		var int iBaseY;
+		var int iOffsetY;
+		var int iOffsetX;
+
+		iBaseX = 130;
+		iBaseY = 40;
+
+		iOffsetX = 24;
+		iOffsetY = 20;
+
+		var ^CDesktop pxDesktop = CClientWrap.GetDesktop();
+
+		m_pxOpen = new CStaticCtrl();
+		m_pxUnitName = new CStaticCtrl();
+		m_pxUnitTypeIcon = new CStaticCtrl();
+		m_pxPlayerName = new CStaticCtrl();
+		m_pxItemslot = new CStaticCtrl();
+		m_pxProdQueue = new CProdQueue();
+				
+		AddChild(m_pxOpen);
+		AddChild(m_pxUnitName);
+		AddChild(m_pxUnitTypeIcon);
+		AddChild(m_pxPlayerName);
+		AddChild(m_pxItemslot);
+		AddChild(m_pxProdQueue);
+		
+		m_pxOpen^.SetText("");
+		m_pxOpen^.SetVisible(true);
+		m_pxOpen^.EnableMsgHitTest(true);
+		EnableMsgHitTest(true);
+
+		var ^CAttribIcon pxIcon = ^(m_axAttribIcons.NewEntryRef());
+		pxIcon^.Init(this, "attack", ATTR_BASE_X, ATTR_BASE_Y);
+
+		pxIcon = ^(m_axAttribIcons.NewEntryRef());
+		pxIcon^.Init(this, "rangeattack", ATTR_BASE_X, ATTR_BASE_Y + ATTR_OFFSET);
+
+		pxIcon = ^(m_axAttribIcons.NewEntryRef());
+		pxIcon^.Init(this, "shield", ATTR_BASE_X, ATTR_BASE_Y + ATTR_OFFSET*2);
+		
+		pxIcon = ^(m_axAttribIcons.NewEntryRef());
+		pxIcon^.Init(this, "armor", ATTR_BASE_X, ATTR_BASE_Y + ATTR_OFFSET*3);
+		
+		pxIcon = ^(m_axAttribIcons.NewEntryRef());
+		pxIcon^.Init(this, "range", ATTR_BASE_X, ATTR_BASE_Y + ATTR_OFFSET*4);
+
+		pxIcon = ^(m_axAttribIcons.NewEntryRef());
+		pxIcon^.Init(this, "skulls", ATTR_BASE_X, ATTR_BASE_Y + ATTR_OFFSET*5);
+		
+		m_xUnit.Init(this, UNIT_BASE_X,UNIT_BASE_Y);
+		
+		m_pxItemslot^.SetPos(167,1);
+		m_pxItemslot^.SetSize(20,20);
+		m_pxItemslot^.SetVisible(true);
+
+		m_pxUnitName^.SetPos(UNIT_BASE_X+18,7);
+		m_pxUnitName^.SetText(CLocalizer.Get().Translate("_UI_Info_Label_UnitName"));
+		m_pxUnitName^.SetBackground(false);
+		m_pxUnitName^.SetSuitAlpha(true);
+		m_pxUnitName^.SetTextAlign(0);
+		m_pxUnitName^.SetTextColor({{255,255,200,255}});
+		m_pxUnitName^.SetVisible(true);
+		
+		var string sTTTitle, sTTText;
+		sTTText=CClientWrap.GetUIMgr().GetToopTipText("_iw_ut_other", sTTTitle);
+		m_pxUnitTypeIcon^.SetPos(UNIT_BASE_X,7);
+		m_pxUnitTypeIcon^.SetSize(16,19);
+		m_pxUnitTypeIcon^.SetSuitAlpha(true);
+		m_pxUnitTypeIcon^.SetBitmap(CGameInst.GetBitmapMgr().GetBlendBitmap( "-1, layer tt_class_other")^.GetBitmap());
+		m_pxUnitTypeIcon^.SetToolTipText(sTTTitle,sTTText);
+		m_pxUnitTypeIcon^.SetTextAlign(0);
+		m_pxUnitTypeIcon^.SetTextColor({{205,205,150,255}});
+		m_pxUnitTypeIcon^.SetBackground(false);
+		m_pxUnitTypeIcon^.SetVisible(true);
+
+		m_pxPlayerName^.SetPos(UNIT_BASE_X,19);
+		m_pxPlayerName^.SetSuitAlpha(true);
+		m_pxPlayerName^.SetText(CLocalizer.Get().Translate("_UI_Info_Label_Playername"));
+		m_pxPlayerName^.SetTextAlign(0);
+		m_pxPlayerName^.SetTextColor({{205,205,150,255}});
+		m_pxPlayerName^.SetBackground(false);
+		m_pxPlayerName^.SetVisible(true);
+
+		m_pxObjSelection=^(CClientWrap.GetSelection());
+
+		m_pxProdQueue^.SetPos(UNIT_BASE_X, 144);
+
+		var ^CBuffIcon pxBIcon = ^(m_axBuffIcons.NewEntryRef());
+		pxBIcon^.Init(this, "", BUFF_BASE_X, BUFF_BASE_Y);
+
+		pxBIcon = ^(m_axBuffIcons.NewEntryRef());
+		pxBIcon^.Init(this, "", BUFF_BASE_X + BUFF_OFFSET, BUFF_BASE_Y);
+
+		pxBIcon = ^(m_axBuffIcons.NewEntryRef());
+		pxBIcon^.Init(this, "", BUFF_BASE_X + BUFF_OFFSET*2, BUFF_BASE_Y);
+		
+		pxBIcon = ^(m_axBuffIcons.NewEntryRef());
+		pxBIcon^.Init(this, "", BUFF_BASE_X + BUFF_OFFSET*3, BUFF_BASE_Y);
+		
+		pxBIcon = ^(m_axBuffIcons.NewEntryRef());
+		pxBIcon^.Init(this, "", BUFF_BASE_X + BUFF_OFFSET*4, BUFF_BASE_Y);
+		
+		// init BuffInfo cache
+		CBuffInfo.Init();
+		
+		var ^CUpgradeIcon pxUIcon = ^(m_axUpgradeIcons.NewEntryRef());
+		pxUIcon^.Init(this, "", UPGR_BASE_X, UPGR_BASE_Y);
+
+		pxUIcon = ^(m_axUpgradeIcons.NewEntryRef());
+		pxUIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET, UPGR_BASE_Y);
+
+		pxUIcon = ^(m_axUpgradeIcons.NewEntryRef());
+		pxUIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET*2, UPGR_BASE_Y);
+
+		pxUIcon = ^(m_axUpgradeIcons.NewEntryRef());
+		pxUIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET*3, UPGR_BASE_Y);
+
+		pxUIcon = ^(m_axUpgradeIcons.NewEntryRef());
+		pxUIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET*4, UPGR_BASE_Y);
+
+		var ^CWorkerIcon pxWIcon = ^(m_axWorkerIcons.NewEntryRef());
+		pxWIcon^.Init(this, "", UPGR_BASE_X, UPGR_BASE_Y);
+
+		pxWIcon = ^(m_axWorkerIcons.NewEntryRef());
+		pxWIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET, UPGR_BASE_Y);
+
+		pxWIcon = ^(m_axWorkerIcons.NewEntryRef());
+		pxWIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET*2, UPGR_BASE_Y);
+
+		pxWIcon = ^(m_axWorkerIcons.NewEntryRef());
+		pxWIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET*3, UPGR_BASE_Y);
+
+		pxWIcon = ^(m_axWorkerIcons.NewEntryRef());
+		pxWIcon^.Init(this, "", UPGR_BASE_X + UPGR_OFFSET*4, UPGR_BASE_Y);
+
+	endconstructor;
+
+	export destructor()
+		CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+		m_pxOpen^.Destroy();
+		m_pxUnitName^.Destroy();
+		m_pxUnitTypeIcon^.Destroy();
+		m_pxPlayerName^.Destroy();
+		m_pxItemslot^.Destroy();
+		m_pxProdQueue^.Destroy();
+	enddestructor;
+
+	proc bool HandleMessage(ref CEvtPointer p_rxEvt)
+		if(p_rxEvt.GetClass()==CSubscriptionMgr.GetEvtClass_ObjChange())then
+			var CClntHndl xObjHandle;
+			var bitset dwTypes, dwAttribGroups;
+			if(CSubscriptionMgr.EvtGetData_ObjChange(p_rxEvt,xObjHandle,dwTypes,dwAttribGroups))then
+				Update(false);
+			endif;
+			return true;
+		endif;
+		return false;
+	endproc;
+
+	export proc void Update(bool p_bSelChange)
+		if(true)then
+			Reset();
+			CGameWrap.GetSubscriptionMgr().UnsubscribeObjChanges(this);
+			var int iObjSelectionCnt = m_pxObjSelection^.NumEntries();
+			if(iObjSelectionCnt<1)then
+				if (p_bSelChange)then
+					SetSize(104,197);
+					SetBitmap(CClientWrap.GetUrsRelPath()+"/data/base/ui/hud/infowin_bg_closed.tga");
+				endif;
+				m_pxOpen^.SetVisible(false);
+			elseif(m_pxObjSelection^.NumEntries()>=1)then
+				m_pxOpen^.SetVisible(true);
+				m_pxPlayerName^.SetVisible(true);
+
+				if(p_bSelChange)then
+					SetSize(209,197);
+					SetBitmap(CClientWrap.GetUrsRelPath()+"/data/base/ui/hud/infowin_bg_open.tga");
+				endif;
+
+				// determine first highest lvl char or building in selection, store it in iSelectedObj
+				var int iSelectedObj=0;
+
+				var int i, iSelectCnt;
+				var int iBestValue=0;
+				iSelectCnt = m_pxObjSelection^.NumEntries();
+				for (i=0) cond (i<iSelectCnt) iter (i++) do
+					var ^CObj pxObj = m_pxObjSelection^[i].GetObj();
+					if (pxObj != null) then
+						var ^CAttribs pxAttr = pxObj^.GetAttribs();
+						if (pxAttr!=null)  then
+							if ( (pxAttr^.GetValueInt("level")) > iBestValue ) then
+								iSelectedObj=i;
+								iBestValue = pxAttr^.GetValueInt("level");
+								if (iBestValue==5) then
+									break;
+								endif;
+							endif;
+						endif;
+					endif;
+				endfor;
+
+				// show data of highest lvl char or building
+				var ^CObj pxObj = m_pxObjSelection^[iSelectedObj].GetObj();
+				if(pxObj!=null)then
+					var string sUnitClass = pxObj^.GetClassName();
+					
+					m_pxProdQueue^.InitQueueInfo(pxObj);
+					if(m_pxProdQueue^.GetActiveQueueEntries()>0)then
+						m_pxProdQueue^.SetVisible(true);
+					else
+						m_pxProdQueue^.SetVisible(false);
+					endif;
+					
+					CGameWrap.GetSubscriptionMgr().SubscribeObjChanges(this,m_pxObjSelection^[iSelectedObj],CSubscriptionMgr.CT_ObjAttribs, "Info");
+					var ^CAttribs pxAttr = pxObj^.GetAttribs();
+					if ((pxAttr==null) && (sUnitClass.Find("Stina")!=-1)) then
+						// get pxAttr from her animal
+					endif;
+					
+					var ^CObj pxInvObj = pxObj;
+					if(pxInvObj!=null) then
+						var ^CClientInventory pxInv = pxInvObj^.GetInventory();
+						if(pxInv!=null) then
+							if(pxInv^.Count()>=1)then
+								m_pxItemslot^.SetVisible(true);
+								var CClntHndl xItem = pxInv^.GetItem(0);
+								var string sItemClass = xItem.GetObj()^.GetClassName();
+								if(xItem.IsValid() && CGameInst.GetBitmapMgr().BlendSourceExists( sItemClass )) then
+									m_pxItemslot^.SetBitmap( CGameInst.GetBitmapMgr().GetBlendBitmap( "2, layer "+sItemClass)^.GetBitmap());
+									var string sTTDes=CHelpMenu.GetObjHelpitemKey(xItem.GetObj());
+									var string sTTTitle, sTTText;
+									sTTText=CClientWrap.GetUIMgr().GetToopTipText(sTTDes, sTTTitle);
+									m_pxItemslot^.SetToolTipText(sTTTitle,sTTText);
+								else
+									//KLog.LogSpam("MaZi", "Invalid BlendSource: "+sItemClass);
+								endif;
+							else
+								m_pxItemslot^.SetVisible(false);
+							endif;
+						endif;
+					endif;
+					
+					if(pxAttr!=null)then
+						var string sTTTitle,sTTText;
+						CClientWrap.GetUIMgr().GetToopTipText(CHelpMenu.GetObjHelpitemKey(pxObj),sTTTitle);
+												
+						if ( sTTTitle.IsEmpty() ) then
+							var	^CObj	pxParentObj = pxObj^.GetGroupedRootParentObj();
+							var	string	sTTID		= "";
+							if ( pxParentObj != null ) then
+								if ( pxParentObj^.GetType() == "FOOD" ) then
+									sTTID = "_food";
+								elseif( pxParentObj^.GetType() == "FRUI" ) then
+									//	Wir unterscheiden hier zwischen Fischen und Fruchtbüschen, denn laut Jan sind Fische Meeresfrüchte :)
+									if ( pxParentObj^.GetClassName().Find( "Fish" ) != -1 ) then
+										sTTID = "_fish";
+									else
+										sTTID="_fruit";
+									endif;
+								elseif( pxParentObj^.GetType() == "STON" ) then
+									sTTID="_stone";
+								elseif( pxParentObj^.GetType() == "WOOD" ) then
+									sTTID="_wood";
+								elseif( pxParentObj^.GetType() == "TREE" ) then
+									sTTID="_wood";
+								elseif( pxParentObj^.GetType() == "FNTN" ) then
+									if ( pxParentObj^.GetClassName() == "valhalla_laerad_well" ) then
+										sTTID = "_laerad_well";
+									elseif( pxParentObj^.GetClassName().Find( "bloodfountain_part_01" ) != -1 ) then
+										sTTID = "_healing_well_01";
+									elseif( pxParentObj^.GetClassName().Find( "bloodfountain_part_02" ) != -1 ) then
+										sTTID = "_healing_well_01";
+									elseif( pxParentObj^.GetClassName().Find( "bloodfountain_part_03" ) != -1 ) then
+										sTTID = "_healing_well_01";
+									elseif( pxParentObj^.GetClassName().Find( "seas_healspring" ) >= 0 ) then
+										sTTID = "_healing_well_01";
+									elseif( pxParentObj^.GetClassName().Find( "healing_well_01" ) >= 0 ) then
+										sTTID = "_healing_well_01";
+									endif;
+								endif;
+							endif;
+							CClientWrap.GetUIMgr().GetToopTipText( sTTID, sTTTitle );
+						endif;
+						m_pxUnitName^.SetText(sTTTitle);
+						m_pxUnitName^.SetVisible(true);
+
+						var string sUnitTypeBitmap = "-1, layer tt_class_other";
+						sTTText=CClientWrap.GetUIMgr().GetToopTipText("_iw_ut_other", sTTTitle);
+						if( pxObj^.GetType() == "CHTR" ) then
+							sUnitTypeBitmap = "-1, layer tt_class_chtr";
+							sTTText=CClientWrap.GetUIMgr().GetToopTipText("_iw_ut_chtr", sTTTitle);
+						elseif( pxObj^.GetType() == "ANML" ) then
+							sUnitTypeBitmap = "-1, layer tt_class_anml";
+							sTTText=CClientWrap.GetUIMgr().GetToopTipText("_iw_ut_anml", sTTTitle);
+						elseif( pxObj^.GetType() == "BLDG" ) then
+							sUnitTypeBitmap = "-1, layer tt_class_bldg";
+							sTTText=CClientWrap.GetUIMgr().GetToopTipText("_iw_ut_bldg", sTTTitle);
+						elseif( pxObj^.GetType() == "VHCL" ) then
+							sUnitTypeBitmap = "-1, layer tt_class_vhcl";
+							sTTText=CClientWrap.GetUIMgr().GetToopTipText("_iw_ut_vhcl", sTTTitle);
+						elseif(pxObj^.GetType() == "QMRK" ) then
+							m_pxUnitName^.SetText(CLocalizer.Get().Translate("_UI_IngaScre_Button_Quest"));
+							sTTTitle=CLocalizer.Get().Translate("_UI_IngaScre_Button_Quest");
+						endif;
+						m_pxUnitTypeIcon^.SetBitmap(CGameInst.GetBitmapMgr().GetBlendBitmap(sUnitTypeBitmap)^.GetBitmap());
+						m_pxUnitTypeIcon^.SetToolTipText(sTTTitle,sTTText);
+						m_pxUnitTypeIcon^.SetVisible(true);
+						
+						var bool bShow = true;
+						if(
+							pxAttr^.GetValueInt("meleedamage")==0 &&
+							pxAttr^.GetValueInt("rangedamage")==0 &&
+							pxAttr^.GetValueInt("defense")==0 &&
+							pxAttr^.GetValueInt("rangeddefense")==0 &&
+							pxAttr^.GetValueInt("range")==0 &&
+							pxAttr^.GetValueInt("skulls")==0
+						) then 
+							bShow=false;
+						endif;
+
+						var int i, iC = m_axAttribIcons.NumEntries();
+						for(i=0) cond(i<iC) iter(++i) do
+							m_axAttribIcons[i].Update(pxObj, bShow);
+						endfor;
+						m_xUnit.SetVisible(true);
+						
+						m_xUnit.Update(pxObj,p_bSelChange);
+						
+						// player name (owner) ???
+						if(pxObj^.GetOwner()!=(-1)/*&&(pxObj^.GetOwner()!=CGameWrap.GetClient().GetPlayerID())*/)then
+							m_pxPlayerName^.SetVisible(true);
+							var ^CLevelInfo.CPlayerSlot pxSlot = ^(CGameWrap.GetClient().GetLevelInfo().GetOwnerPlayerSlot(pxObj^.GetOwner()));
+							if(pxSlot!=null)then
+								var string sPlayerName=pxSlot^.GetName();
+								if(sPlayerName.Find("_")==0)then
+									sPlayerName = CLocalizer.Get().Translate(sPlayerName);
+								endif;
+								m_pxPlayerName^.SetText(sPlayerName);
+							else
+								m_pxPlayerName^.SetText("???");
+							endif;
+						else
+							m_pxPlayerName^.SetText("");
+						endif;
+						
+						// update buff icons
+						var string sBuffDecals = pxAttr^.GetValue("BuffDecals");
+						var array string asDecals;
+						sBuffDecals.Split(asDecals,";",true);
+						var array CBuffInfo axBuffs;
+						for(i=0)cond(i<asDecals.NumEntries())iter(i++)do
+							var ^CBuffInfo pxBuff = CBuffInfo.GetBuffInfo(asDecals[i]);
+							if(pxBuff!=null)then
+								var int iOpinion = CGameWrap.GetDiplomacyMgr().GetTheirOpinion(pxObj^.GetOwner());
+								var bool bOwnUnit = CGameWrap.GetClient().GetPlayerID()==pxObj^.GetOwner();
+								if(
+									(bOwnUnit) ||
+									(pxBuff^.m_iVisibility==1) || //Buff_All
+									(pxBuff^.m_iVisibility==2 && iOpinion==0) || //Buff_Enemies
+									(pxBuff^.m_iVisibility==3 && iOpinion==2) //Buff_Allies
+								)
+								then
+									axBuffs.AddEntry(pxBuff^);
+								endif;
+							endif;
+						endfor;
+						
+						axBuffs.QSort();
+
+//for(i=0)cond(i<axBuffs.NumEntries())iter(i++)do
+//	KLog.LogSpam("UI.Info",i.ToString()+": "+axBuffs[i].ToString());
+//endfor;
+						
+						for(i=0)cond(i<5)iter(i++)do
+							if(i<axBuffs.NumEntries())then
+								m_axBuffIcons[i].Update(axBuffs[i].m_sIcon, axBuffs[i].m_sTooltipID, true);
+							else
+								m_axBuffIcons[i].Update("","empty",false);
+							endif;
+						endfor;
+						// update buff icons
+						
+						// display workers
+						var CObjList xWorkerList;
+						var int iNumWorkerSlots = 0;
+						begin fill_list;
+							var string sWorkerList = pxAttr^.GetValue("worker_list");
+							iNumWorkerSlots = pxAttr^.GetValueInt("free_worker_slots");
+							var array string asWorkerList;
+							sWorkerList.Split(asWorkerList,";",false);
+							var int i,iC=asWorkerList.NumEntries();
+							for(i=0)cond(i<iC)iter(i++)do
+								var CGuid xGuid;
+								xGuid.FromString(asWorkerList[i]);
+								var ^CObj pxObj = CClientWrap.GetObjMgr().GetObj(xGuid);
+								if(pxObj!=null)then
+									xWorkerList.Include(pxObj^.GetHandle());
+								endif;
+							endfor;
+							iNumWorkerSlots+=xWorkerList.NumEntries();
+						end fill_list;
+						
+						if(m_pxProdQueue^.GetActiveQueueEntries()<=0)then
+							var int i;
+							for(i=0)cond(i<5)iter(i++)do
+								if(i<xWorkerList.NumEntries() && xWorkerList[i].IsValid())then
+									var ^CObj pxObj = xWorkerList[i].GetObj();
+									var string sIcon, sTooltip;
+									sIcon=CHelpMenu.GetObjHelpitemKey(pxObj);
+									sTooltip=sIcon;
+									sIcon.MakeLower();
+									if(sIcon.GetAt(0)=='_')then
+										sIcon.Delete(0);
+									endif;
+									m_axWorkerIcons[i].Update(sIcon, sTooltip, xWorkerList[i], true);
+								elseif(i<iNumWorkerSlots)then
+									var CClntHndl xInvalid;
+									m_axWorkerIcons[i].Update("info_crdbg_std", "", xInvalid, true);
+								else
+									var CClntHndl xInvalid;
+									m_axWorkerIcons[i].Update("","empty",xInvalid,false);
+								endif;
+							endfor;
+						else
+							var int i,iC = m_axUpgradeIcons.NumEntries();
+							for(i=0) cond(i<iC) iter(++i) do
+								m_axUpgradeIcons[i].SetVisible(false);
+							endfor;
+						endif;
+						// display workers
+						
+						// display upgrades
+						var array CUpgradeInfo axUpgrades;
+						
+						var CTechTree xTT;
+						var ^CPlayer pxPlayer = ^(CGameWrap.GetClient().GetPlayer());
+						var string sTribe,sInventObjPath;
+						if(pxPlayer!=null) then
+							xTT = pxPlayer^.GetPlayerTechTree();
+							sTribe = pxPlayer^.GetPlayerSlot()^.GetTribe();
+							sInventObjPath="/Objects/"+sTribe+"/InventObjects/";
+						endif;
+						var ^CTechTree.CNode pxInventPath=xTT.FindNode(sInventObjPath);
+						if(pxInventPath!=null)then
+							var int i,iC=pxInventPath^.NumSubs();
+							for(i=0)cond(i<iC)iter(i++)do
+								var ^CTechTree.CNode pxInvention = pxInventPath^.GetSub(i);
+								if(pxInvention!=null)then
+									var string sName = pxInvention^.GetName();
+									var ^CTechTree.CNode pxInvented = pxInvention^.GetSub("invented");
+										if(pxInvented!=null && pxInvented^.GetValueI()==1)then
+										var ^CTechTree.CNode pxInfluencedObjects = pxInvented^.GetSub("objects");
+										var ^CTechTree.CNode pxIconPath = pxInvented^.GetSub("iconpath");
+										var ^CTechTree.CNode pxDescription = pxInvented^.GetSub("description");
+										if(pxInfluencedObjects!=null && pxIconPath!=null && pxDescription!=null && pxInfluencedObjects^.NumSubs()>0)then
+											var int ij,ijC=pxInfluencedObjects^.NumSubs();
+											for(ij=0)cond(ij<ijC)iter(ij++)do
+												var string sInfluencedObjPath = pxInfluencedObjects^.GetSubValue(ij);
+												if(sInfluencedObjPath.GetAt(0)=='/')then
+													sInfluencedObjPath.Delete(0);
+												endif;
+												var string sObjPath = pxAttr^.GetValue("ObjPath");
+												var string sObjFlag = pxAttr^.GetValue("ObjFlag");
+												var string sTmpPath = sInfluencedObjPath;
+												
+												if(!sObjPath.IsEmpty() && (sInfluencedObjPath.Find(sObjPath)!=-1))then
+
+													sTmpPath.Replace(sObjPath+"/","");
+												
+													var bool bFlag=true;
+													if(!sObjFlag.IsEmpty())then
+														bFlag=sTmpPath==sObjFlag;
+													endif;
+													if(bFlag)then
+														var string sTooltipID = pxDescription^.GetValue();
+														var string sIcon = pxIconPath^.GetValue();
+														var string sReplace = pxInvented^.GetSubValue("replace","");
+														var int iOrder = pxInvented^.GetSubValueI("order",-1);
+														var CUpgradeInfo xUpgradeInfo;
+														xUpgradeInfo.Init(iOrder, sName, sTooltipID, sIcon, sReplace);
+														axUpgrades.AddEntry(xUpgradeInfo);
+													endif;
+												endif;
+											endfor;
+										endif;
+									endif;
+								endif;
+							endfor;
+						endif;
+						
+						RemoveOutdatedUpgrades(axUpgrades);
+						axUpgrades.QSort();
+						
+						if(m_pxProdQueue^.GetActiveQueueEntries()<=0 && xWorkerList.NumEntries()<=0)then
+							var int i;
+							for(i=0)cond(i<5)iter(i++)do
+								if(i<axUpgrades.NumEntries())then
+									m_axUpgradeIcons[i].Update(axUpgrades[i].m_sIcon, axUpgrades[i].m_sTooltipID, true);
+								else
+									m_axUpgradeIcons[i].Update("","empty",false);
+								endif;
+							endfor;
+						else
+							var int i,iC = m_axUpgradeIcons.NumEntries();
+							for(i=0) cond(i<iC) iter(++i) do
+								m_axUpgradeIcons[i].SetVisible(false);
+							endfor;
+						endif;
+						// display upgrades
+					endif;
+				endif;
+			endif
+		endif;
+	endproc;
+	
+	static proc void RemoveOutdatedUpgrades(ref array CUpgradeInfo p_raxUpgrades)
+		MarkOutdatedUpgradesForDeletion(p_raxUpgrades);
+		var int i;
+		for(i=0)cond(i<p_raxUpgrades.NumEntries())iter(i++)do
+			if(p_raxUpgrades[i].m_bMarkedForDeletion)then
+				p_raxUpgrades.DeleteEntryUS(i);i--;
+			endif;
+		endfor;
+	endproc;
+
+	static proc void MarkOutdatedUpgradesForDeletion(ref array CUpgradeInfo p_raxUpgrades)
+		var int i;
+		for(i=0)cond(i<p_raxUpgrades.NumEntries())iter(i++)do
+			if(p_raxUpgrades[i].m_sReplaceNode.IsEmpty())then continue; endif;
+			MarkOutdatedUpgradesForDeletionRecursive(p_raxUpgrades,p_raxUpgrades[i].m_sReplaceNode);
+		endfor;
+	endproc;
+	
+	static proc void MarkOutdatedUpgradesForDeletionRecursive(ref array CUpgradeInfo p_raxUpgrades, string p_sNodeName)
+		var int i;
+		for(i=0)cond(i<p_raxUpgrades.NumEntries())iter(i++)do
+			if(!p_raxUpgrades[i].m_bMarkedForDeletion && p_raxUpgrades[i].m_sNodeName==p_sNodeName)then
+				if(p_raxUpgrades[i].m_bVisited && !p_raxUpgrades[i].m_sReplaceNode.IsEmpty())then
+					KLog.LogError("UI.Info","cycle within upgrade replace configuration detected. affected upgrades won't be displayed. node in cycle: "+p_raxUpgrades[i].ToString());
+				endif;
+				var bool bProceed = !p_raxUpgrades[i].m_bVisited;
+				p_raxUpgrades[i].m_bVisited = true;
+				if(bProceed && !p_raxUpgrades[i].m_sReplaceNode.IsEmpty())then
+					MarkOutdatedUpgradesForDeletionRecursive(p_raxUpgrades,p_raxUpgrades[i].m_sReplaceNode);
+				endif;
+				p_raxUpgrades[i].m_bMarkedForDeletion=true;
+			endif;
+		endfor;
+	endproc;
+
+	export proc bool OnToolTip(string p_sMsg)
+		return false;
+	endproc;
+
+	proc bool OnTimer(int p_iID)
+		return true;
+	endproc;
+
+	proc void Reset()
+		m_pxUnitName^.SetVisible(false);
+		m_pxPlayerName^.SetVisible(false);
+		m_pxItemslot^.SetVisible(false);
+		m_pxProdQueue^.SetVisible(false);
+		m_pxUnitTypeIcon^.SetVisible(false);
+		
+		m_xUnit.SetVisible(false);
+		var int i, iC = m_axAttribIcons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			m_axAttribIcons[i].SetVisible(false);
+		endfor;
+
+		iC = m_axBuffIcons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			m_axBuffIcons[i].SetVisible(false);
+		endfor;
+		
+		iC = m_axWorkerIcons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			m_axWorkerIcons[i].SetVisible(false);
+		endfor;
+
+		iC = m_axUpgradeIcons.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			m_axUpgradeIcons[i].SetVisible(false);
+		endfor;
+
+		m_pxOpen^.EnableMsgHitTest(true);
+		EnableMsgHitTest(true);
+	endproc;
+
+endclass;
+ 

@@ -1,0 +1,47 @@
+// USL Class file for CEP (formerly SEASMOD), scripted by AyCe
+// Version x1.0 - Modified for BasicSEAS mod
+
+class CCEPMgr
+
+	static var ^CCEPMgr ms_pxInstance;
+
+	export static proc ref CCEPMgr Get()
+		if(ms_pxInstance==null)then
+			ms_pxInstance=new CCEPMgr();
+		endif;
+		return ms_pxInstance^;
+	endproc;
+	
+	constructor()
+		//
+	endconstructor;
+	
+	destructor()
+		//
+	enddestructor;
+
+	export static proc void Kill()
+		if(ms_pxInstance!=null)then
+			delete ms_pxInstance;
+			ms_pxInstance=null;
+		endif;
+	endproc;
+	
+	export proc bool IsSEKMap(^CLevelInfo p_pxLevelInfo, int p_iPlayer)
+		var string sName = "";
+		var ^CPropDB.CNode pxBaseNode=^((p_pxLevelInfo^.GetGenericData())["Base"]);
+		if(pxBaseNode!=null)then
+			sName=pxBaseNode^.GetValueS("LevelName");
+		endif;
+		if(sName == "_MN_MP_2_BOOMERANG"||sName == "_MN_MP_2_PIRATES"||sName == "_MN_MP_2_THE_ROCK"||sName == "_MN_MP_4_MALICE"||sName == "_MN_MP_4_SHAMROCK"||sName == "_MN_MP_4_TREASURE"||sName == "_MN_MP_4_RESERVOIR"
+		||sName == "_MN_MP_6_FROZEN"||sName == "_MN_MP_6_GREAT"||sName == "_MN_MP_6_TANGLED"||sName == "_MN_MP_6_MARAUDER"||sName == "_MN_MP_6_PINORECK"||sName == "_MN_MP_2_MONKEY"||sName == "_MN_MP_4_FALLEN"
+		||sName == "_MN_MP_8_AJUBA"||sName == "_MN_MP_8_ELEMENT"||sName == "_MN_MP_8_ELEMENTS"||sName == "_MN_MP_X_SACRED"||sName == "_MN_MP_2_AUTUMN"||sName == "_MN_MP_2_CATACLYSM"||sName == "_MN_MP_2_SUNNY"
+		||sName == "_MN_MP_2_SANDSTORM"||sName == "_MN_MP_3_MELTDOWN"||sName == "_MN_MP_4_ASHES"||sName == "_MN_MP_4_COLDBLOOD"||sName == "_MN_MP_4_SHAMROCK_T"||sName == "_MN_MP_2_ARENA"||sName == "_MN_MP_2_CRYSTALLAKE"
+		||sName == "_MN_MP_2_GAUNTLET"||sName == "_MN_MP_4_CAMPBLOOD"||sName == "_MN_MP_4_CARCASS"||sName == "_MN_MP_3_SNAKEHEADS")then
+			return true;
+		elseif(p_iPlayer != 0 && (sName == "_MN_MP_3_PINCER"||sName == "_MN_MP_3_SAVANNAH"||sName == "_MN_MP_3_TRIPLE"||sName == "_MN_MP_4_ANCIENT"||sName == "_MN_MP_5_BLOOD"))then
+			return true;
+		endif;
+		return false;
+	endproc;
+endclass;

@@ -1,0 +1,395 @@
+﻿\{document helpfile aje buildings}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_Aje_Gebaeude.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _economy_buildings Edificios económicos}
+
+\{helpitem -name _aje_tent Tienda}
+\{img /bunit:aje_tent -ralign}
+   \{tooltipshort}
+ %/class:bldg/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Incrementa el límite de unidad
+\\{br}• Mejora: Tienda grande
+   \{/tooltipmedium}
+   \{tooltiplong}
+Las tiendas son las maneras más fáciles y rápidas de incrementar el \{ref H_general.seml#_units}límite \{/ref} de unidad.\\{br}
+Cada tienda lo incrementa 5 unidades màs. Mejorando la tienda a \{ref H_aje_gebaeude.seml#_aje_big_tent} tienda grande\{/ref} incrementando el límite por otros 5. Cada tienda debe ser mejorada separadamente. Si el \{ref H_general.seml#_units}límite \{/ref} de unidad se para debido a la destrucción de las tiendas, las unidades \{ref H_general.seml#_units} sobrantes\{/ref} se quedarán, pero no podrán ser reemplazadas cuando mueran.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_slaughterhouse Matadero}
+\{img /bunit:aje_slaughterhouse -ralign}
+   \{tooltipshort}
+ %/class:bldg/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produce comida
+\\{br}• Pueden trabajar en èl 4 trabajadores
+   \{/tooltipmedium}
+   \{tooltiplong}
+Los mataderos no requieren manutención y seguirán produciendo \{ref H_ui.seml#_tb_food}comida \{/ref} aunque sólo un \{ref H_aje_produkte.seml#_aje_worker}trabajador\{/ref} trabaje en ellos.
+Son los edificios que mayor producen \{ref H_ui.seml#_tb_food}comida. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_big_tent Tienda grande}
+\{img /bunit:aje_big_tent -ralign}
+   \{tooltipshort}
+ %/class:bldg/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Incrementa el límite de unidad
+   \{/tooltipmedium}
+   \{tooltiplong}
+La tienda grande incrementa el \{ref H_general.seml#_units}límite \{/ref} de unidad por 10. \\{br}
+Es el edificio que más fácilmente y rápidamente incrementa el límite. Si el \{ref H_general.seml#_units}límite \{/ref} de unidad se para debido a la destrucciòn de la tienda, las unidades \{ref H_general.seml#_units} sobrantes\{/ref} se quedarán, pero no podrán ser reemplazadas cuando mueran.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_bazaar Bazaar}
+\{img /bunit:aje_bazaar -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Punto de recolección de recursos
+\\{br}• Produce dinosaurios comerciantes
+   \{/tooltipmedium}
+   \{tooltiplong}
+Los baazares sirven como \{ref H_general.seml#_resources}punto \{/ref} de recolección de recursos y producen \{ref H_aje_produkte.seml#_trade_dino} dinosaurios comerciantes.\{/ref} \\{br}
+Éstos te permiten \{ref H_general.seml#_trading}comerciar recursos \{/ref} con otros jugadores. Aparte de negociar bienes, ésta es la única manera de conseguir recursos \{ref H_general.seml#_resources}inagotables. \{/ref} Cuanto más lejos estén los Baazares de cada uno, más recursos conseguirás. Si el dinosaurio comerciante muere, los \{ref H_general.seml#_resources}recursos \{/ref} que llevase anteriormente desaparecerán. \{p}
+También puedes comerciar \{ref H_general.seml#_skulls} calaveras \{/ref} por otros materiales: 100 \{ref H_general.seml#_skulls} calaveras \{/ref} pueden comprar 100 \{ref H_ui.seml#_tb_food}comida, \{/ref} \{ref H_world.seml#_wood} madera \{/ref} o \{ref H_world.seml#_stone} piedra.\{/ref} Esto solo puede funcionar de una manera - los jugadores no pueden comerciar materiales por \{ref H_general.seml#_skulls} calaveras.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_warpgate Puerta oscura}
+\{img /bunit:aje_warpgate -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Gana el juego completando y defendiendo la puerta hasta que se abra
+   \{/tooltipmedium}
+   \{tooltiplong}
+Una vez que la puerta oscura se ha construido, debe ser protegida durante algún tiempo antes de que se abra. \\{br}
+El jugador que construya una puerta oscura primero, gana.
+Todos los jugadores serán notificados cuando algún jugador haya empezado a contruir una puerta y la cuenta atrás para la victoria comenzará. Esto sirve de advertencia, ya que los otros jugadores perderán si no hacen nada para parar al otro jugador con la puerta.
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{chapter -name combat_buildings Edificios militares}
+\{helpitem -name _aje_barracks Quarteles}
+\{img /bunit:aje_barracks -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produce infanteria
+\\{br}• Cada época te permite producir nuevas unidades
+   \{/tooltipmedium}
+   \{tooltiplong}
+Los quarteles son los edificios \{ref H_general.seml#_building} básicos\{/ref} para producir unidades \{ref H_general.seml#_units}militares. \{/ref} \\{br}
+Producen baratas pero débiles \{ref H_general.seml#_units}unidades. \{/ref} La infanteria se puede usar para subirlas a las murallas (si el \{ref H_heros.seml#_mayor} Governador\{/ref} está en el nivel 4) o para ser montadas en algunos \{ref H_general.seml#_units}animales.\{/ref} Las unidades \{ref H_general.seml#_units}a distancia \{/ref} como las \{ref H_aje_produkte.seml#_aje_archer} arqueras\{/ref} y \{ref H_aje_produkte.seml#_aje_spearman} lanceras\{/ref} pueden disparar desde las murallas o desde los \{ref H_general.seml#_units}animales \{/ref}cuando están montados en ellos.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_small_farm Granja de dinosaurios pequeña}
+\{img /bunit:aje_small_farm -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Produce dinosaurios pequeños
+\\{br}• Puede ser convertida en granja mediana o grande de dinosaurios
+   \{/tooltipmedium}
+   \{tooltiplong}
+La granja de dinosaurios pequeña produce rápidos \{ref H_general.seml#_units} dinosarios. \{/ref} \\{br}
+Estos animales son mas caros que la \{ref H_general.seml#_units}infanteria \{/ref} pero son más rápidos y fuertes. Las granjas pueden ser convertidas en otros tipos de granjas cuando tengas suficientes \{ref H_general.seml#_resources}recursos. \{/ref} Cuando la conversión ha sido completada, la granja produce otros tipos de \{ref H_general.seml#_units}dinosaurios, \{/ref} pero no puede producir los otros tipos de la granja antigua.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_floating_harbour Puerto móvil}
+\{img /bunit:aje_floating_harbour -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+   • Produce unidades marítimas
+\\{br}• Repara unidades marítimas cuando están cerca de él
+\\{br}• Puede moverse y pescar
+\\{br}• Cada época te permite crear unidades avanzadas
+\\{br}• Ocupa un espacio en El controlador de Población
+   \{/tooltipmedium}
+   \{tooltiplong}
+El puerto móvil es esencial si quieres irte de una isla, o cruzar un mar porque solo los \{ref H_general.seml#_transport} barcos de transporte\{/ref} pueden transportar \{ref H_general.seml#_units}unidades \{/ref} sobre agua profunda.
+Es necesario una playa para contruir el puerto antes de que zarpe. \\{br}
+Un click-derecho del ratón mueve el puerto móvil a otra parte. Se mueve lento, pero puede producir unidades en el mar abierto. Debes hacer que el puerto vaya hasta un banco de peces antes de que pueda\{ref H_world.seml#_fish} pescar\{/ref} . El puerto móvil ocupa en espacio en \{ref H_general.seml#_pyramid}El controlador de Población.\{/ref} Los barcos dañados cerca del puerto serán reparados automaticamente sin costar ningún \{ref H_general.seml#_resources}recurso. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_tavern Taverna}
+\{img /bunit:aje_tavern -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Contrata héroes
+   \{/tooltipmedium}
+   \{tooltiplong}
+La taverna es donde se contratan los \{ref H_general.seml#_heros} héroes.\{/ref} \\{br}
+Si un \{ref H_general.seml#_heros} héroe\{/ref} ha muerto, puede ser revivido en la taverna. todos los \{ref H_general.seml#_heros} héroes\{/ref} contratados empiezan en el nivel 1 y tienen que ser revividos usando 25 \{ref H_general.seml#_skulls} calaveras. \{/ref} \{ref H_general.seml#_heros} Los héroes\{/ref} no pueden ser contratados 2 veces al mismo tiempo.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_weapons_builder Constructor de Armas}
+\{img /bunit:aje_weapons_builder -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+   • Produce unidades especiales
+\\{br}• Inventa mejoras para las unidades
+   \{/tooltipmedium}
+   \{tooltiplong}
+El constructor de armas inventa todas las mejoras relacionadas con la defensa y el ataque. \\{br}
+Las \{ref H_general.seml#_units}unidades \{/ref} creadas aquí son unidades de infanteria especializadas \{ref H_general.seml#_units}y \{/ref} solo pueden ser creadas cuando algunos \{ref H_general.seml#_heros} héroes\{/ref} han conseguido el nivel 4. Una vez que una mejora ha sido completada, no puede perderse, pero los mejoras en progreso desaparecerán si el \{ref H_general.seml#_building} edificio\{/ref} es destruído.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_temple Templo}
+\{img /bunit:aje_temple -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+   • Cura unidades que estén cerca de él
+\\{br}• Produce Chamanes
+\\{br}• Produce mejoras especiales
+   \{/tooltipmedium}
+   \{tooltiplong}
+El templo puede curar todas las \{ref H_general.seml#_units}unidades \{/ref} que estén cerca de él. \\{br}
+Unidades \{ref H_general.seml#_units}enemigas \{/ref} no se pueden curar en uno de tus templos. El templo es también donde mejoras místicas son creadas para algunas \{ref H_general.seml#_units}unidades \{/ref}. Aquí es donde se entrenan los \{ref H_aje_produkte.seml#_aje_shaman} Chamanes\{/ref} . El templo no puede curar barcos.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_amazon_temple Templo amazónico}
+\{img /bunit:aje_amazon_temple -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Cura las unidades que estén cerca de él
+\\{br}• Produce unidades militares especiales
+\\{br}• Sólo puede ser construido cuando Tarna haya conseguido el nivel 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+El templo cura las unidades aliadas y las \{ref H_general.seml#_units} propias\{/ref} .Cura mejor que un templo normal. \\{br}
+Las unidades \{ref H_general.seml#_units} enemigas\{/ref} no se curarán en uno de tus templos amazónicos. El templo es también donde las criaturas más poderosas son creadas para la batalla. El templo no puede curar barcos. \\{br}
+Este monumento no puede ser reparado por trabajadores humanos. Sus espíritus sagrados lo repararán lentamente(Se reparará solo)
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_medium_farm Granja de dinosaurios mediana}
+\{img /bunit:aje_medium_farm -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+   • Produce dinosaurios medianos
+\\{br}• Cada época te permite construir nuevas unidades
+\\{br}• Puede ser convertida a pequeña o grande granja de dinosaurios
+   \{/tooltipmedium}
+   \{tooltiplong}
+
+The Medium dino farm produces dinosaurs of both medium size and strength which start out at level 2 in the \{ref H_general.seml#_pyramid} Army controller.\{/ref}
+Farms can be converted into other types of farms at the cost of the necessary \{ref H_general.seml#_resources}resources. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_huge_farm Granja de dinosaurios grande}
+\{img /bunit:aje_huge_farm -ralign}
+   \{tooltipshort}
+ %/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+   • Produce dinosaurios enormes
+\\{br}• Cada época te permite crear nuevas unidades
+\\{br}• Puede ser convertida a pequeña o mediana granja de dinosaurios
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Large dino farm produces the largest animal \{ref H_general.seml#_units}units \{/ref}, which start out at level 3 in the \{ref H_general.seml#_pyramid} Army controller.\{/ref}  \\{br}
+These mounted \{ref H_general.seml#_units}units \{/ref} are as expensive as they are strong. Farms can be converted into other types of farms at the cost of the necessary \{ref H_general.seml#_resources}resources. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_pirate_outpost Quartel pirata}
+\{img /bunit:aje_pirate_outpost -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+\{tooltipmedium}
+• Produce barcos avanzados
+\\{br}• Repara barcos que estén cerca de él
+\\{br}• Sirve como punto de recolección de pescado
+\\{br}• Solo puede ser construido si Miyagi haya conseguido el nivel 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+This Harbor is the place, where you can produce advanced units, but it is only buildable, when Miyagi reaches level 4. For example you can produce here \{ref H_aje_produkte.seml#_aje_pirate_boss_ship}Miyagi's Ship\{/ref} to rule the Sea.
+It may only be built on flat, sandy beaches. \\{br}
+Damaged ships close to the Harbor will be repaired automatically, without using  \{ref H_general.seml#_resources} resources.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _defense_buildings Edificios  defensivos}
+\{helpitem -name _aje_small_tower Torre pequeña}
+\{img /bunit:aje_small_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+   • Ataca enemigos
+\\{br}• Puede construirse sola o en una muralla
+\\{br}• Sirve como escalera a las murallas en las que se puede montar la infanteria
+   \{/tooltipmedium}
+   \{tooltiplong}
+Towers fire automatically and do not need to be manned by infantrymen. \\{br}
+They can be placed on the wall grid, allowing them to be integrated into a wall at a later point in time. Towers and gates allow defending infantry \{ref H_general.seml#_units}units \{/ref} to mount walls, but allow both attackers and defenders to descend.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_bone_palisade Empalizada de hueso}
+\{img /bunit:aje_bone_palisade -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Muralla en la que la infanteria no se puede montar
+\\{br}• Las torres pueden ser construidas en esta muralla
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Palisade is a non-mountable fortification. \\{br}
+This means \{ref H_general.seml#_units}units \{/ref} cannot man palisades during an attack. A straight, even stretch of wall three wall sections long is needed to insert a gate. Palisades keep enemies and wild \{ref H_animals.seml} animals\{/ref} out.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_bone_palisade_gate Puerta}
+\{img /bunit:aje_bone_palisade_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Se abrira para unidades aliadas o propias
+\\{br}• Se puede cerrar completamente
+\\{br}• Se debe construir en una muralla
+   \{/tooltipmedium}
+   \{tooltiplong}
+Gates open for both the player's own and allied \{ref H_general.seml#_units}units \{/ref} automatically while remaining closed to all others. \\{br}
+Gates can only be placed in an existing straight, even section of wall three fields in width. An icon will indicate possible gate locations during wall construction and whenever the "Gate" icon has been selected. If a wall is upgraded any gates in it will also be upgraded. Gates also function as stairways to the top of a wall.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_big_tower Torre grande}
+\{img /bunit:aje_big_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Ataca a enemigos
+\\{br}• Puede construirse sola o en una muralla
+\\{br}• Sirve como escalera a las murallas en las que se puede montar la infanteria
+   \{/tooltipmedium}
+   \{tooltiplong}
+This is the largest of the \{ref H_story.seml#_story_aje}Dustrider's \{/ref} towers. \\{br}
+Towers fire automatically and do not need to be manned by infantrymen. They are placed on the wall grid, allowing them to be integrated into a wall at a later point in time. Towers and gates allow defending infantry \{ref H_general.seml#_units}units \{/ref} to mount walls, but allow both attackers and defenders to descend.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_tesla_tower Torre TasloW}
+\{img /bunit:aje_tesla_tower -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Hace un daño increíble
+\\{br}• Tiene gran rango de visión
+\\{br}• Solo puede ser construida si TasloW ha conseguido el nivel 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+\{ref H_heros.seml#_tesla} Taslow\{/ref} towers offer improved visibility and the longest range of any of the \{ref H_story.seml#_story_aje}Dustrider's \{/ref} towers. \\{br}
+They also do the most damage, although they do less damage to \{ref H_general.seml#_building} buildings\{/ref} than to other enemy \{ref H_general.seml#_units}units. \{/ref}
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_clay_wall Muralla}
+\{img /bunit:aje_clay_wall -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Fuerte muralla
+\\{br}• Se pueden construir torres en esta muralla
+\\{br}• Muralla en la que la infanteria se puede subir
+\\{br}• Solo puede ser construida si el Gorvernador ha conseguido el nivel 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The strongest wall the \{ref H_story.seml#_story_aje}Dustriders \{/ref} can build. \\{br}
+It is the only \{ref H_story.seml#_story_aje}Dustrider \{/ref} wall capable of being manned. \{ref H_general.seml#_units}Units \{/ref} manning walls receive a defense bonus. Towers and gates provide access to the walls.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_clay_wall_gate Puerta}
+\{img /bunit:aje_clay_wall_gate -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Se abrirá para unidades aliadas o propias
+\\{br}• Se puede cerrar completamente
+\\{br}• Debe ser construida en una muralla
+   \{/tooltipmedium}
+   \{tooltiplong}
+Gates open for both the player's own and allied \{ref H_general.seml#_units}units \{/ref} automatically while remaining closed to all others. \\{br}
+Gates can only be placed in an existing straight, even section of wall three fields in width. An icon will indicate possible gate locations during wall construction and whenever the "Gate" icon has been selected. If a wall is upgraded any gates in it will also be upgraded. Gates also function as stairways to the top of a wall.
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_scarecrow Espantapájaros}
+\{img /bunit:aje_scarecrow -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Los animales enemigos causan menos daño dentro del rango de visión
+\\{br}• Solo puede ser construida si el Gran Druida ha conseguido el nivel 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Enemy animals coming close to the Scarecrow will cause less damage than usual. \{p}
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _aje_skull_protector Calavera protectora}
+\{img /bunit:aje_skull_protector -ralign}
+   \{tooltipshort}
+%/class:bldg%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• La calavera protectora hace que tus enemigos no consigan calaveras cuando maten tus unidades o edificios
+\\{br}• Solo puede ser construida si Kleemann ha conseguido el nivel 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The enemy doesn't get skulls for destroying your units/buildings if they are in range of a Skull protector.\{p}
+
+   \{/tooltiplong}
+\{/helpitem}

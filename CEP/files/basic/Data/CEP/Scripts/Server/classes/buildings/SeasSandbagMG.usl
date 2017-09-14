@@ -1,0 +1,377 @@
+/*
+* Coded by AyCe with help from Henry
+*
+* SEAS MG Sandbag:
+* - Campaign/Map obj
+* - Cannot be destroyed
+* - Can be occupied by any player/faction
+* - One infantry unit required as gunner
+* - Limited attack area
+* - Unit inside can be killed
+*/
+
+class CSeasSandbagMG inherit CBunker
+
+	var CObjHndl	m_xSandbag;
+	var CObjHndl	m_xChair;
+	var CObjHndl	m_xGun;
+	var CObjHndl	m_xGunner;
+	var real	m_fCenterDir;
+
+	// open for tuning. 90 deg might be too high?
+	const real	ANGLE_IN_DEGREES = 90.0f;
+
+
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+
+			var ^CAttribs pxAttr = GetAttribs();
+			if(pxAttr!=null)then
+				pxAttr^.SetValue("max_passengers",1);
+			endif;
+
+			//SetVisible(false);
+			SetSelectable(true);
+			SetHitable(true);
+
+			var vec3 vR = GetRotation();
+			vR.SetZ(0.0);
+			SetRotation(vR);
+
+			ReaddComponents();
+			UpdateCompletely();
+		endif;
+	endproc;
+
+	proc void RelativeToAbsoluteCoords(ref vec3 p_rvP)
+		Rotate(p_rvP, GetRotation().GetZ());
+		var vec3 vPos = GetPos();
+		p_rvP+=vPos;
+		//p_rvP.SetX(vPos.GetX()+p_rvP.GetX());
+		//p_rvP.SetY(vPos.GetY()+p_rvP.GetY());
+		//p_rvP.SetZ(vPos.GetZ()+p_rvP.GetZ());
+	endproc;
+
+	proc void Rotate(ref vec3 p_rvP, real p_fAngle)
+		var real fX = p_rvP.GetX();
+		var real fY = p_rvP.GetY();
+		var real fRot = -p_fAngle;
+		p_rvP.SetX(fX*Math.Cos(fRot)-fY*Math.Sin(fRot));
+		p_rvP.SetY(fY*Math.Cos(fRot)+fX*Math.Sin(fRot));
+	endproc;
+
+	/*
+	* This has to be accessed by cheats/console, since we cannot
+	* tell the rotation when the OnInit method is called (Yeah,
+	* that's stupid...). Just rotate the gunner-gfx facing the
+	* center of the shootable field and call this method.
+	* 
+	* TL;DR: Place obj, rotate, call this
+	*/
+	export proc void UpdateCompletely()
+		m_fCenterDir = GetRotation().GetZ();
+
+		var vec3 vPSandbag = {0.0f, 2.8f, 0.0f};
+		var vec3 vPChair = {0.25f, -0.3f, 0.0f};
+		var vec3 vPGun = {0.175f, 1.569f, 1.849f};
+		var vec3 vPGunner = {0.0f, 0.0f, -0.3f};
+		var vec3 vRSandbag = GetRotation();
+		var vec3 vRChair = GetRotation();
+		vRChair.SetZ(vRChair.GetZ()-1.57f);
+		var vec3 vRGunner = GetRotation();
+
+		// Setting the "exact" rotation of the gun for Z-rot 0...
+		var Quat qRGun;
+		qRGun.SetX(0.5022);
+		qRGun.SetY(-0.4513);
+		qRGun.SetZ(0.5778);
+		qRGun.SetW(-0.458);
+		// Rotate it so it fits with current ssmg rot...
+		qRGun.RotateZ(GetRotation().GetZ());
+		qRGun.Normalize();
+
+		RelativeToAbsoluteCoords(vPSandbag);
+		RelativeToAbsoluteCoords(vPChair);
+		RelativeToAbsoluteCoords(vPGun);
+		RelativeToAbsoluteCoords(vPGunner);
+
+		var ^CGameObj pxSandbag = m_xSandbag.GetObj();
+		var ^CGameObj pxChair = m_xChair.GetObj();
+		var ^CGameObj pxGun = m_xGun.GetObj();
+		var ^CGameObj pxGunner = m_xGunner.GetObj();
+		if(pxSandbag!=null)then
+			pxSandbag^.SetPos(vPSandbag);
+			pxSandbag^.SetRotation(vRSandbag);
+		endif;
+		if(pxChair!=null)then
+			pxChair^.SetPos(vPChair);
+			pxChair^.SetRotation(vRChair);
+		endif;
+		if(pxGun!=null)then
+			pxGun^.SetPos(vPGun);
+			pxGun^.SetRot(qRGun);
+			pxGun^.SetNoParticles(true);
+		endif;
+		if(pxGunner!=null)then
+			pxGunner^.SetPos(vPGunner);
+			pxGunner^.SetRotation(vRGunner);
+			pxGunner^.AnimAction("sitting_chair",10000000,false,false);
+			SetOwner(pxGunner^.GetOwner());
+		else
+			SetOwner(-1);
+		endif;
+	endproc;
+
+	export proc void TestAngle()
+		var real fAngleSideRad = (ANGLE_IN_DEGREES/360.0f)*Math.Pi();
+		var real fAngle1 = -fAngleSideRad;
+		var real fAngle2 = fAngleSideRad;
+		var vec3 vPos = {0.0f, 10.0f, 0.0f};
+		Rotate(vPos, fAngle1);
+		RelativeToAbsoluteCoords(vPos);
+		CSrvWrap.GetObjMgr()^.CreateObj("CameraTarget", -1, vPos, GetRotation());
+		vPos = {0.0f, 10.0f, 0.0f};
+		Rotate(vPos, fAngle2);
+		RelativeToAbsoluteCoords(vPos);
+		CSrvWrap.GetObjMgr()^.CreateObj("CameraTarget", -1, vPos, GetRotation());
+	endproc;
+
+	/*
+	* The sandbag and the chair can be deleted. If you do this by
+	* accident and want to recreate them without creating a new object,
+	* just call this method. It won't readd existing components.
+	* You should call UpdateCompletely afterwards.
+	*/
+	export proc void ReaddComponents()
+		if(!m_xSandbag.IsValid())then
+			var ^CGameObj pxSandbag = CSrvWrap.GetObjMgr()^.CreateObj("seas_hq_sandsack_barrier", -1, GetPos(), GetRotation());
+			pxSandbag^.SetSelectable(true);
+			pxSandbag^.SetHitable(true);
+			m_xSandbag = pxSandbag^.GetHandle();
+			AddGroupedChildren(pxSandbag^.GetGuid());
+		endif;
+		if(!m_xChair.IsValid())then
+			var ^CUDObj pxChair = cast<CUDObj>(CSrvWrap.GetObjMgr()^.CreateObj("UDObj", -1, GetPos(), GetRotation()));
+			pxChair^.SetBlock(false);
+			pxChair^.SetSelectable(true);
+			pxChair^.SetHitable(true);
+			pxChair^.SetGFX("hc_chair");
+			m_xChair = pxChair^.GetHandle();
+			AddGroupedChildren(pxChair^.GetGuid());
+		endif;
+		if(!m_xGun.IsValid())then
+			var ^CUDObj pxGun = cast<CUDObj>(CSrvWrap.GetObjMgr()^.CreateObj("UDObj", -1, GetPos(), GetRotation()));
+			pxGun^.SetBlock(false);
+			pxGun^.SetSelectable(true);
+			pxGun^.SetHitable(true);
+			pxGun^.SetGFX("ninigi_gatling_e_l");
+			m_xGun = pxGun^.GetHandle();
+			AddGroupedChildren(pxGun^.GetGuid());
+		endif;
+	endproc;
+
+	export proc real GetCenterDir()
+		return m_fCenterDir;
+	endproc;
+
+	export proc void SetCenterDir(real p_fCenterDir)
+		m_fCenterDir = p_fCenterDir;
+	endproc;
+
+	export proc void HandleGamePlayCommand(string p_sCommand, ^CGameObj p_pxObject, vec3 p_vPos, string p_sMiscParams)
+		if(p_sMiscParams.Find("/DismountAll") != -1)then
+			DismountAll();
+			return;
+		elseif(p_sMiscParams.Find("/Dismount")>=0) then
+			if(p_pxObject!=null) then
+				RemChar(p_pxObject^.GetHandle());
+			endif;
+		endif;
+		super.HandleGamePlayCommand(p_sCommand, p_pxObject, p_vPos, p_sMiscParams);
+	endproc;
+
+	export proc void AddChar(CObjHndl p_xO)
+		if (p_xO.IsValid() && !m_xGunner.IsValid()) then
+			var ^CCharacter pxC = cast<CCharacter>(p_xO.GetObj());
+			// Owner may not be neutral (little hack?^^)
+			if (pxC!=null && pxC^.GetOwner()!=-1) then
+				// Screw it, everyone may be the gunner ^^
+				m_xGunner = pxC^.GetHandle();
+				var CFourCC xL = "NOPE";
+				pxC^.LinkAction(GetHandle(), xL);
+				var vec3 vPGunner = {0.0f, 0.0f, -0.3f};
+				RelativeToAbsoluteCoords(vPGunner);
+				pxC^.SetPos(vPGunner);
+				pxC^.SetRotation(GetRotation());
+				pxC^.SetTransportObj(GetHandle());
+				pxC^.AnimAction("sitting_chair",10000000,false,false);
+				//pxC^.AddGroupedChildren(GetGuid());
+				SetOwner(pxC^.GetOwner());
+			endif;
+			UpdateCharsAttr();
+		endif;
+	endproc;
+
+	export proc void RemChar(CObjHndl p_xO)
+		if (p_xO == m_xGunner) then
+			var ^CCharacter pxC = cast<CCharacter>(m_xGunner.GetObj());
+			if(pxC!=null) then
+				pxC^.SetTransportObj(CObjHndl.Invalid());
+				pxC^.SetPos(GetPos());
+				//pxC^.RemGroupedChildren(GetGuid());
+				var vec3 vP;
+				CSrvWrap.GetObjMgr()^.GetFreePos(vP,this,GetPos(),null,true,false,false);
+				pxC^.GoTo(vP,true,pxC^.GetDefaultSpeed(),true,true);
+			endif;
+			m_xGunner = CObjHndl.Invalid();
+			SetOwner(-1);
+			UpdateCharsAttr();
+		endif;
+	endproc;
+
+	export proc void DismountAll()
+		if(m_xGunner.IsValid())then
+			RemChar(m_xGunner);
+		endif;
+	endproc;
+
+	proc void UpdateCharsAttr()
+		var string sM = "";
+
+		if(m_xGunner.IsValid())then
+			var ^CGameObj pxO = m_xGunner.GetObj();
+			sM += pxO^.GetGuid().ToString() + "\n";
+		endif;
+
+		var ^CAttribs pxA = GetAttribs();
+		if(pxA!=null) then
+			pxA^.SetValue("passenger_guids", sM);
+		endif;
+	endproc;
+
+	export proc void SetReady()
+		super.SetReady();
+	endproc;
+
+	export proc bool CanDie()
+		return false;
+	endproc;
+
+	// TODO: Apply ranged def when hit from the front
+	// Direct all damage to the gunner
+	export proc void Damage(real p_fDamage)
+		if(m_xGunner.IsValid() && GetLastDamage()!=GetOwner())then
+			var ^CFightingObj pxGunner = cast<CFightingObj>(m_xGunner.GetObj());
+			if(pxGunner!=null)then
+				pxGunner^.Damage(p_fDamage);
+			endif;
+			if(!m_xGunner.IsValid() || pxGunner^.IsDead())then
+				RemChar(m_xGunner);
+			endif;
+		endif;
+	endproc;
+
+	export proc void DiePerHarakiri()
+		// Lol. Sure.
+		return;
+	endproc;
+
+	// Can't die normally, but well...
+	export proc void Die()
+		CFeedback.Print(CFeedback.ALL, "SSMG dies");
+		DismountAll();
+		if(m_xSandbag.IsValid())then
+			var ^CGameObj pxSandbag = m_xSandbag.GetObj();
+			pxSandbag^.SetSelectable(false);
+		endif;
+		if(m_xChair.IsValid())then
+			var ^CGameObj pxChair = m_xChair.GetObj();
+			pxChair^.SetSelectable(false);
+		endif;
+		if(m_xGun.IsValid())then
+			var ^CGameObj pxGun = m_xGun.GetObj();
+			pxGun^.Delete();
+		endif;
+		super.Die();
+	endproc;
+
+	export proc bool CreateBuildingCorpse()
+		return true;
+	endproc;
+
+	export proc bool AttackEnemy(^CFightingObj p_pxEnemy, vec3 p_vTarget, ref bool p_rbRotated)
+		// todo!
+		// different units are differently effective?
+		// f.e.: SEAS have marksman training, aje suck etc ^^
+		return false;
+		/*if(IsBuildMode())then return false; endif;
+		if(m_xChars.NumEntries() <= 0)then return false; endif;
+		if(GetProjectile()!="" && p_pxEnemy!=null) then
+
+			var int i, iC = m_xChars.NumEntries();
+			for(i=0) cond(i<iC) iter(++i) do
+				var ^CArrow pxArrow=cast<CArrow>(CSrvWrap.GetObjMgr()^.CreateObj(GetProjectile(),GetOwner(),GetProjectileStartPos()));
+				if(pxArrow!=null)then
+					pxArrow^.SetXtraDelay(this, p_pxEnemy, 1.0f +0.1f * i.ToReal());
+					pxArrow^.LinkAction(GetHandle(),GetProjectileLink());
+				endif;
+			endfor;
+
+		endif;
+		return false;*/
+	endproc;
+
+	export proc void Load(^CUOFReaderNode p_pxReaderNode)
+		if(p_pxReaderNode^.GetType()=="SSMG")then
+			var ^CArc pxArc=^(p_pxReaderNode^.GetArc());
+			(pxArc^) << m_fCenterDir;
+			m_xSandbag.DoKArc(pxArc^);
+			m_xChair.DoKArc(pxArc^);
+			m_xGun.DoKArc(pxArc^);
+			m_xGunner.DoKArc(pxArc^);
+		else
+			super.Load(p_pxReaderNode);
+		endif;
+	endproc;
+
+	export proc void Save(^CUOFWriterNode p_pxWriterNode)
+		super.Save(p_pxWriterNode);
+		var CFourCC xBase="SSMG";
+		var ^CUOFWriterNode pxWalk=p_pxWriterNode^.AddSubChunk(xBase,1);
+		var ^CArc pxArc=^(pxWalk^.GetArc());
+		(pxArc^) << m_fCenterDir;
+		m_xSandbag.DoKArc(pxArc^);
+		m_xChair.DoKArc(pxArc^);
+		m_xGun.DoKArc(pxArc^);
+		m_xGunner.DoKArc(pxArc^);
+		pxWalk^.Close();
+	endproc;
+
+	export proc void Debug()
+		var Filesystem.CFile xFile;
+		if(xFile.OpenAppend("xpwdebug.txt"))then
+			xFile.PrintLn("---");
+			xFile.PrintLn("Apply the following:");
+			var ^CGameObj pxGun = m_xGun.GetObj();
+			xFile.PrintLn(pxGun^.GetName());
+			xFile.PrintLn("Pos: "+(pxGun^.GetPos()-GetPos()).ToString());
+			xFile.PrintLn("Rot: "+(pxGun^.GetRot()-GetRot()).ToString());
+			xFile.PrintLn("Rotation: "+(pxGun^.GetRotation()-GetRotation()).ToString());
+			xFile.Close();
+		else
+			Windows.MessageBox("Debug",GetName(),0h);
+		endif;
+	endproc;
+
+endclass;
+
+class CAyCeTest inherit CUDObj
+	export proc void OnInit(bool p_bLoad)
+		super.OnInit(p_bLoad);
+		if(!p_bLoad)then
+			SetSelectable(true);
+			SetHitable(true);
+		endif;
+	endproc;
+endclass;

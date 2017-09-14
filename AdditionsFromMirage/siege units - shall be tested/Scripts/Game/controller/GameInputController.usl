@@ -1,0 +1,2302 @@
+class CGameInputController inherit CInputController
+
+	const int VIS_FLAG_ANML_SADDLE		=6;
+	const int VIS_FLAG_ANML_ARMORSADDLE	=10;
+
+	export static var CUISoundMgr ms_xUISoundMgr;
+
+	var string 					m_sTaskByMouseCursor;
+
+	var ^CObjMgr				m_pxObjMgr;
+
+	var bool					m_bLMB, m_bRMB;
+
+	var point					m_xDragBoxBegin;
+
+	var point					m_xMousePos;
+
+	var ^CObjSelection			m_pxSelection;
+
+	//Hack? (Lowtec says its not)
+	var bool					m_bDblClicked;
+
+	var int						m_iNumKeyDown;
+	var int						m_iTime;
+
+	var ^CDesktop				m_pxDesktop;
+	var int 					m_iPreviousCursor;
+	var bool 					m_bChangeCursor;
+
+	var bool 					m_bCtrl;
+	var bool					m_bShift;
+	var bool 					m_bAlt;
+
+	var bool 					m_bRightDrag, m_bLeftDrag;
+	var vec3					m_vDragRot;
+
+	var vec3					m_vRightHitPos;
+	var CClntHndl				m_xRightHitObj;
+
+	var CClntHndl 				m_xLastHitObj;
+
+
+	const int INVALID_MAP_EDGE_BLOCK_COUNT	=4;
+
+	//--------------------------------------------------------
+	// GetMousePos(..)
+	// Returns the current MousePos
+	// The mouse position is only updated when an
+	// Item is being dragged.
+	//--------------------------------------------------------
+	export proc point GetMousePos()
+		return m_xMousePos;
+	endproc;
+
+	export constructor()
+		m_iNumKeyDown = -1;
+		m_pxObjMgr=^(CClientWrap.GetObjMgr());
+
+		CClientWrap.GetFormPreview().SetSubjectCount(0);
+
+		var ^CDesktop pxDesktop = CClientWrap.GetDesktop();
+		m_pxDesktop = pxDesktop;
+		m_iPreviousCursor = -1;
+
+		var CConfig xConf;
+		var int iChangeCursor;
+		iChangeCursor = xConf.GetSetI("Game/Mouse/ChangeCursor", 1);
+		if (iChangeCursor==1) then
+			m_bChangeCursor = true;
+		else
+			m_bChangeCursor = false;
+		endif;
+
+		pxDesktop^.SetCmd("SetGroup1", SetGroup1 );
+		pxDesktop^.SetCmd("SetGroup2", SetGroup2 );
+		pxDesktop^.SetCmd("SetGroup3", SetGroup3 );
+		pxDesktop^.SetCmd("SetGroup4", SetGroup4 );
+		pxDesktop^.SetCmd("SetGroup5", SetGroup5 );
+		pxDesktop^.SetCmd("SetGroup6", SetGroup6 );
+		pxDesktop^.SetCmd("SetGroup7", SetGroup7 );
+		pxDesktop^.SetCmd("SetGroup8", SetGroup8 );
+		pxDesktop^.SetCmd("SetGroup9", SetGroup9 );
+		pxDesktop^.SetCmd("SetGroup0", SetGroup0 );
+
+		pxDesktop^.SetCmd("Group1", Group1 );
+		pxDesktop^.SetCmd("Group2", Group2 );
+		pxDesktop^.SetCmd("Group3", Group3 );
+		pxDesktop^.SetCmd("Group4", Group4 );
+		pxDesktop^.SetCmd("Group5", Group5 );
+		pxDesktop^.SetCmd("Group6", Group6 );
+		pxDesktop^.SetCmd("Group7", Group7 );
+		pxDesktop^.SetCmd("Group8", Group8 );
+		pxDesktop^.SetCmd("Group9", Group9 );
+		pxDesktop^.SetCmd("Group0", Group0 );
+
+		pxDesktop^.SetCmd("Spectator1", Spectator1 );
+		pxDesktop^.SetCmd("Spectator2", Spectator2 );
+		pxDesktop^.SetCmd("Spectator3", Spectator3 );
+		pxDesktop^.SetCmd("Spectator4", Spectator4 );
+		pxDesktop^.SetCmd("Spectator5", Spectator5 );
+		pxDesktop^.SetCmd("Spectator6", Spectator6 );
+		pxDesktop^.SetCmd("Spectator7", Spectator7 );
+		pxDesktop^.SetCmd("Spectator8", Spectator8 );
+		pxDesktop^.SetCmd("Spectator0", Spectator0 );
+
+		m_iTime = Windows.GetTickCount();
+
+		m_bCtrl=false;
+		m_bShift=false;
+		m_bAlt=false;
+		m_bRightDrag=false;
+		m_bLMB=false;
+		m_bRMB=false;
+
+	endconstructor;
+
+	export destructor()
+	enddestructor;
+
+	proc	void	AbortKeyboardShortcuts()
+		var	^CInGameScreen	pxInGameScreen	= CUIStateMgr.Get().GetInGameScreen();
+
+		if ( pxInGameScreen == null ) then
+			return;
+		endif;
+
+		var	^CCommandBar	pxCommandBar	= pxInGameScreen^.GetCmdBar();
+
+		if ( pxCommandBar == null ) then
+			return;
+		endif;
+
+		pxCommandBar^.EnableCommandShortCuts( false );
+	endproc;
+	
+	export proc void OnSequenceStart()
+		var ^CDragBox pxDragBox=^(CClientWrap.GetDragBox());
+		if(pxDragBox^.IsActive()) then //DragBox beenden
+			var point xPos;
+			pxDragBox^.DragEnd(xPos);
+		endif;
+		m_bRightDrag=false;
+		m_bLeftDrag=false;		
+	endproc;
+
+	export proc void FullReset()
+		m_iNumKeyDown = -1;
+		m_pxObjMgr=^(CClientWrap.GetObjMgr());
+
+		CClientWrap.GetFormPreview().SetSubjectCount(0);
+
+		var ^CDesktop pxDesktop = CClientWrap.GetDesktop();
+		m_pxDesktop = pxDesktop;
+		m_iPreviousCursor = -1;
+
+		var CConfig xConf;
+		var int iChangeCursor;
+		iChangeCursor = xConf.GetSetI("Game/Mouse/ChangeCursor", 1);
+		if (iChangeCursor==1) then
+			m_bChangeCursor = true;
+		else
+			m_bChangeCursor = false;
+		endif;
+
+		pxDesktop^.SetCmd("SetGroup1", SetGroup1 );
+		pxDesktop^.SetCmd("SetGroup2", SetGroup2 );
+		pxDesktop^.SetCmd("SetGroup3", SetGroup3 );
+		pxDesktop^.SetCmd("SetGroup4", SetGroup4 );
+		pxDesktop^.SetCmd("SetGroup5", SetGroup5 );
+		pxDesktop^.SetCmd("SetGroup6", SetGroup6 );
+		pxDesktop^.SetCmd("SetGroup7", SetGroup7 );
+		pxDesktop^.SetCmd("SetGroup8", SetGroup8 );
+		pxDesktop^.SetCmd("SetGroup9", SetGroup9 );
+		pxDesktop^.SetCmd("SetGroup0", SetGroup0 );
+
+		pxDesktop^.SetCmd("Group1", Group1 );
+		pxDesktop^.SetCmd("Group2", Group2 );
+		pxDesktop^.SetCmd("Group3", Group3 );
+		pxDesktop^.SetCmd("Group4", Group4 );
+		pxDesktop^.SetCmd("Group5", Group5 );
+		pxDesktop^.SetCmd("Group6", Group6 );
+		pxDesktop^.SetCmd("Group7", Group7 );
+		pxDesktop^.SetCmd("Group8", Group8 );
+		pxDesktop^.SetCmd("Group9", Group9 );
+		pxDesktop^.SetCmd("Group0", Group0 );
+
+		m_iTime = Windows.GetTickCount();
+
+		m_bCtrl=false;
+		m_bShift=false;
+		m_bAlt=false;
+		m_bLeftDrag=false;
+		m_bRightDrag=false;
+
+		Reset();
+	endproc;
+
+	export proc void HandleNone(vec3 p_vPickPoint, bool p_bAutoHarvest, bool p_bAggressive, bool p_bShift, bool p_bCtrl, bool p_bAlt)
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var real		fShifting=Math.Sqrt(m_pxSelection^.NumEntries().ToReal());
+		var bool bIsDragging = false;
+		var CObjList xLActionWalkList,xLHarvestList,xLActionSailList;
+		var bool bPlaceRallyPoint;
+		var vec3 vRallyPointPos;
+		var int iMaxLevel = -1;
+
+		if(CClientWrap.GetForestMgr().HitTree(p_vPickPoint) && CGameWrap.IsPosFOWVisible(p_vPickPoint) && p_bAutoHarvest)then
+
+			//Harvest Forest
+			for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+				xSubject=m_pxSelection^[i];
+				if(xSubject.IsValid())then
+					pxSubject=xSubject.GetObj();
+					var vec3 vShift;
+					vShift.SetX(Random.MTRandF(-fShifting,fShifting));
+					vShift.SetY(Random.MTRandF(-fShifting,fShifting));
+					if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="VHCL")then
+						xLHarvestList.Include(xSubject);
+					elseif(pxSubject^.GetType()=="FGHT")then
+						xLActionWalkList.Include(xSubject);
+					elseif(pxSubject^.GetType()=="BLDG")then
+						CEvt_GamePlayCommand.Send(m_pxSelection^[i], "SetRallyPoint", xInvalid, p_vPickPoint, p_vPickPoint.ToString());
+					endif;
+				endif;
+			endfor;
+		else
+			//walk
+			var bool bAlreadyCorrectedPickPoint = false;
+			for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+				xSubject=m_pxSelection^[i];
+				if(xSubject.IsValid())then
+					pxSubject=xSubject.GetObj();
+
+
+					var ^CAttribs pxObjAttr = pxSubject^.GetAttribs();
+					if(pxObjAttr==null)then continue; endif;
+
+					var string sCaste = pxObjAttr^.GetValue("caste");
+					//pxSubject^.SetAnim("walk_feedback",1,0);
+					//pxSubject^.SetAnim("walk_feedback",2,0);
+
+					var bitset dwA=pxSubject^.GetCurrentAnimFlags();
+					//current anim flags 	01h -> idle
+					//						02h -> walk
+					//						04h -> fight ...
+
+					//KLog.LogWarn("CHP",pxSubject^.GetCurrentAnimName()+" "+dwA.ToString());
+
+					/* doesn't work anymore
+					var bool bIdleAnim=((dwA&01b)!=0b);
+					var bool bFightAnim=((dwA&0100b)!=0b);
+
+					if(bIdleAnim) then
+						if(bFightAnim) then
+							pxSubject^.SetAnim(sCaste+"_take",1,0);
+						else
+							if(sCaste=="tec") then
+								pxSubject^.SetAnim(sCaste+"_take",1,0);
+							else
+								pxSubject^.SetAnim(sCaste+"_stand_to_fight",1,0);
+							endif;
+						endif;
+					endif;*/
+					var vec3 vShift;
+					vShift.SetX(Random.MTRandF(-fShifting,fShifting));
+					vShift.SetY(Random.MTRandF(-fShifting,fShifting));
+
+					var real fScapeHeight = CClientWrap.GetScapeMgr().GetHeight(p_vPickPoint.GetX(), p_vPickPoint.GetY());
+					var real fWaterHeight = CClientWrap.GetScapeMgr().GetSeaLevel();
+
+					if((pxObjAttr^.GetValueInt("IsRallySite")!=0 && p_bShift) || (pxSubject^.GetType()=="BLDG" && !((pxObjAttr^.GetValueInt("MovingBuilding")!=0) && !p_bShift)))then
+
+						var bool bHarbour = pxObjAttr^.GetValueBool("fishDelivery");
+						var bool bWaterPoint = fScapeHeight<(fWaterHeight);
+
+						if(bWaterPoint && !bHarbour)then
+							// MARKUSO_ADDSOUND ClickError
+							//L KLog.LogInfo("UISound","Rallypoint water, but no harbour");
+							ms_xUISoundMgr.PlayFeedbackSoundEvent("ui_click_error","",CSoundMgrCln.SOUND_VOLTRACK_GLOBAL);
+							ms_xUISoundMgr.PlayFeedbackSoundEvent("voice_click_error","",CSoundMgrCln.SOUND_VOLTRACK_SPEECH_ACK);
+							continue;
+						elseif(!bWaterPoint && bHarbour)then
+							// MARKUSO_ADDSOUND ClickError
+							//L KLog.LogInfo("UISound","Rallypoint land, but harbour");
+							ms_xUISoundMgr.PlayFeedbackSoundEvent("ui_click_error","",CSoundMgrCln.SOUND_VOLTRACK_GLOBAL);
+							ms_xUISoundMgr.PlayFeedbackSoundEvent("voice_click_error","",CSoundMgrCln.SOUND_VOLTRACK_SPEECH_ACK);
+							continue;
+						endif;
+
+						var CClntHndl xInvalid;
+						CEvt_GamePlayCommand.Send(m_pxSelection^[i], "SetRallyPoint", xInvalid, p_vPickPoint, p_vPickPoint.ToString());
+						bPlaceRallyPoint=true;
+						vRallyPointPos=p_vPickPoint;
+						//L KLog.LogSpam("Pickpoint","PickPoint Client: "+p_vPickPoint.ToString());
+						CMainController.Get().RallyUpdate();
+
+    					//CMainController.Get().GetPersonalCtrl().SetLookAt(p_vPickPoint+vShift);
+					else/*if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="FGHT" || pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="VHCL" || pxSubject^.GetType()=="SHIP")then*/
+		   				if (!bAlreadyCorrectedPickPoint && pxSubject^.CanSwim() && fScapeHeight<fWaterHeight) then
+
+							bAlreadyCorrectedPickPoint = true;
+							// Calculate Pickpoint at SeaLevel
+							var vec3 vEyePos = CMultiCameraController.Get().GetEye();
+							var vec3 vDir= vEyePos - p_vPickPoint;
+							var real fLength = vDir.Abs();
+							vDir.Normalize();
+
+							var real fI;
+							for (fI=1.0f) cond (fI < fLength) iter (fI += 1.0f) do
+								var vec3 vCur =  p_vPickPoint + ( vDir * fI );
+								if (vCur.GetZ() > fWaterHeight-1.0f && vCur.GetZ() < fWaterHeight+1.0f) then
+									p_vPickPoint = vCur;
+									break;
+								endif;
+							endfor;
+
+		   				endif;
+
+						xLActionWalkList.Include(xSubject);
+
+		   			endif;
+				endif;
+			endfor;
+
+			if (bPlaceRallyPoint) then
+				ms_xUISoundMgr.PlayRallypointFeedbackSound(vRallyPointPos);
+			endif;
+		endif;
+
+		if(xLActionWalkList.NumEntries()>0)then
+			var string sParams = "/Walk ";
+			if(p_bAggressive==true)then
+				sParams = "/AggressiveTarget ";
+			endif;
+			// formation cmd
+
+			if(p_bCtrl)then
+				sParams+=" /Patrol";
+			endif;
+
+			if(p_bShift)then
+				sParams+=" /Queued";
+			endif;
+
+			var ^CFormPreview pxFP=^(CClientWrap.GetFormPreview());
+			if(pxFP^.GetSubjectCount()>0) then
+				//sParams += "/PosJitter /Formation="+CFormationMgr.Get().GetFormation();
+				//sParams += " /FormCount="+CClientWrap.GetFormPreview().GetSubjectCount().ToString();
+				var vec3 vDir=pxFP^.GetDirection();
+				var real fDir=Math.ATan2(vDir.GetX(),vDir.GetY());
+				sParams += " /FrmDir="+fDir.ToString();
+				sParams += " /FrmSpc="+pxFP^.GetSpacing().ToString();
+			endif;
+
+			CEvt_GamePlayCommand.Send(xLActionWalkList, "Action", xInvalid, p_vPickPoint, sParams);//"/Walk /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+			CClientWrap.GetFormPreview().SetSubjectCount(0);
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+			CMainController.Get().WalkTargetUpdate();
+		endif;
+/*		if(xLActionSailList.NumEntries()>0)then
+			CEvt_GamePlayCommand.Send(xLActionSailList, "Action", xInvalid, p_vPickPoint, "/Walk /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+			//CEvt_GamePlayCommand.Send(xLActionSailList, "Action", xInvalid, p_vPickPoint, "/Walk");
+		endif;
+*/
+		if(xLHarvestList.NumEntries()>0)then
+			CEvt_GamePlayCommand.Send(xLHarvestList, "Harvest", xInvalid, p_vPickPoint, "");
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+//		var CObjList xLActionWalkList,xLHarvestList;
+// actionwalklist:
+//    					CEvt_GamePlayCommand.Send(xSubject, "Harvest", xInvalid, p_vPickPoint+vShift, "");
+// harvest:
+//    					CEvt_GamePlayCommand.Send(xSubject, "Action", xInvalid, p_vPickPoint+vShift, "/Walk");
+
+
+	endproc;
+
+
+	proc void HandleVegetation(^CObj p_pxObj)
+		var string sClass = p_pxObj^.GetClassName();
+		sClass.Delete(sClass.GetLength()-1);
+
+		//HACK muss noch universell für alle bäume
+		//if(sClass!="Northland_Tree_")then return; endif;
+
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var bool bPlaySound=false;
+
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="VHCL" || pxSubject^.GetType()=="ANML")then
+   					CEvt_GamePlayCommand.Send(xSubject, "Harvest", xInvalid, p_pxObj^.GetPos(), "");
+   					bPlaySound=true;
+   					//CMainController.Get().GetPersonalCtrl().SetLookAt(p_pxObj^.GetPos());
+				elseif(pxSubject^.GetType()=="FGHT")then
+   					CEvt_GamePlayCommand.Send(xSubject, "Action",  xInvalid, p_pxObj^.GetPos(), "/Harvest");
+   					bPlaySound=true;
+				elseif(pxSubject^.GetType()=="BLDG")then
+					var CClntHndl xInvalid;
+					var vec3 vPos;
+					vPos=p_pxObj^.GetPos();
+					CEvt_GamePlayCommand.Send(m_pxSelection^[i], "SetRallyPoint", xInvalid, vPos, vPos.ToString());
+   					bPlaySound=true;
+				endif;
+			endif;
+		endfor;
+
+		if(bPlaySound) then
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+	endproc;
+
+	// handle calls from pyramidcards
+	export proc void HandlePyramidAction(^CObj p_pxObj, bool p_bCtrl,bool p_bShift)
+		if(p_pxObj!=null)then
+			var ^CAttribs pxAttribs = p_pxObj^.GetAttribs();
+			if(pxAttribs!=null && pxAttribs^.GetValueInt("max_passengers")>0)then
+  				HandleOwnTransporter(p_pxObj,p_bCtrl,p_bShift);
+  			elseif(p_pxObj^.GetType()=="CHTR" || p_pxObj^.GetType()=="ANML" || p_pxObj^.GetType()=="VHCL")then
+  				HandleOwnCharacter(p_pxObj,true);
+  			elseif(p_pxObj^.GetType()=="BLDG")then
+  				HandleOwnBuilding(p_pxObj);
+  			elseif(p_pxObj^.GetType()=="SHIP")then
+  				HandlePyramidActionWalk(p_pxObj);
+			endif;
+		endif;
+	endproc;
+
+	//Henry: to send the command to start siege climbing
+	proc void HandleSiegeUnit(^CObj p_pxObj)
+		var string sOrder="Use";
+		if(p_pxObj!=null)then
+			var ^CAttribs pxAttr = p_pxObj^.GetAttribs();
+			if(p_pxObj^.GetClassName()=="aje_brachiosaurus")then
+				sOrder="ClimbBrachio";
+			elseif(p_pxObj^.GetClassName()=="ninigi_siegetower")then
+				sOrder="ClimbSiegTower";
+			endif;
+		endif;
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xOrder, xDock, xRallyPoint, xTrade;
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				if(pxSubject^.GetType()=="CHTR")then
+					xOrder.Include(xSubject);
+				endif;
+			endif;
+		endfor;
+		if(xOrder.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xOrder, sOrder, p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+		endif;
+	endproc;
+/*
+	proc void HandleAnimal(^CObj p_pxObj)
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xAttack;
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				if (pxSubject == null) then return; endif;
+				var ^CAttribs pxAttr = pxSubject^.GetAttribs();
+				if (pxAttr == null) then return; endif;
+				var bool bIsRidden=false;
+
+				if (pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="SHIP" || pxSubject^.GetType()=="VHCL") then
+					bIsRidden = pxAttr^.GetValueInt("captain")!=-1;
+				endif;
+
+				if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="FGHT" || (pxSubject^.GetType()=="ANML" && bIsRidden) ||
+				(pxSubject^.GetType()=="SHIP" && bIsRidden) || (pxSubject^.GetType()=="VHCL" && bIsRidden) )then
+   					xAttack.Include(xSubject);
+				elseif (pxSubject^.GetType()=="ANML" && !bIsRidden ) then
+   					CFeedback.Print(CLocalizer.Get().Translate("_GameInputController_NoRiderAttack"));
+				endif;
+			endif;
+		endfor;
+		if(xAttack.NumEntries()!=0)then
+			var ^CObj pxO = p_pxObj^.GetGroupedParentObj();
+			if(pxO!=null) then
+				CEvt_GamePlayCommand.Send(xAttack, "Action", pxO^.GetHandle(), pxO^.GetPos(), "/Attack /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+				ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+			endif;
+		endif;
+	endproc;
+*/
+	proc void HandleOwnTransporter(^CObj p_pxObj, bool p_bCtrl,bool p_bShift)
+		var ^CAttribs pxAttr = p_pxObj^.GetAttribs();
+		if(pxAttr==null)then return; endif;
+		var CObjList xRide,xHeal;
+		var int i, iC = m_pxSelection^.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CObj pxObj=m_pxSelection^[i].GetObj();
+			if(pxObj==null)then continue; endif;
+			var ^CAttribs pxObjAttr=pxObj^.GetAttribs();
+			if(pxObjAttr==null)then continue; endif;
+			if((p_bShift||pxAttr^.GetValueInt("transportclass")<1) && pxObjAttr^.GetValueBool("healer") && (pxAttr^.GetValueInt("hitpoints")<pxAttr^.GetValueInt("maxhitpoints")))then
+				xHeal.Include(m_pxSelection^[i]);
+			else
+				xRide.Include(m_pxSelection^[i]);
+			endif;
+		endfor;
+
+		var string sQueued = "";
+		var string sFrontQueued = "";
+		if(p_bCtrl)then
+			sQueued = " /Queued";
+			sFrontQueued="Q_";
+		endif;
+
+		var bool bSound=false;
+
+		if(xRide.NumEntries()>0)then
+			
+			var vec3 vPos=CClientWrap.GetScapeMgr().GetPickPoint();
+			var CClntHndl xTarget;
+			begin Passengers;
+				var int iTransportClass = pxAttr^.GetValueInt("transportclass");
+				var int iPassengers;
+				if(pxAttr^.ContainsKey("registered_passengers"))then
+					iPassengers=pxAttr^.GetValueInt("registered_passengers");
+				else
+					var string sPassengers=pxAttr^.GetValue("passenger_guids");
+					var array string asTok;
+					sPassengers.Split(asTok,"\n",true);
+					iPassengers=asTok.NumEntries();
+				endif;
+				var int iSlots=pxAttr^.GetValueInt("max_passengers");
+				if(iPassengers<iSlots)then
+					vPos=p_pxObj^.GetPos();
+					xTarget=p_pxObj^.GetHandle();
+				endif;
+			end Passengers;
+			
+			if(xTarget.IsValid())then
+				CEvt_GamePlayCommand.Send(xRide, "Action", xTarget, vPos, "/BoardTransporter"+sQueued);
+			else
+				CEvt_GamePlayCommand.Send(xRide, sFrontQueued+"Action", xTarget,vPos, "/Walk"+sQueued);
+				CMainController.Get().WalkTargetUpdate();
+			endif;
+			bSound=true;
+		endif;
+
+		if(xHeal.NumEntries()>0)then
+			CEvt_GamePlayCommand.Send(xHeal, sFrontQueued+"Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/GoHeal");
+			bSound=true;
+		endif;
+
+		if(bSound)then
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+	endproc;
+
+	proc void HandlePyramidActionWalk(^CObj p_pxObj)
+		var CObjList xWalk;
+		var int i, iC = m_pxSelection^.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var CClntHndl xHandle=m_pxSelection^[i];
+			if(!xHandle.IsValid())then continue; endif;
+			xWalk.Include(xHandle);
+		endfor;
+
+		var bool bSound=false;
+
+		if(xWalk.NumEntries()>0)then
+			var CClntHndl xInvalid;
+			CEvt_GamePlayCommand.Send(xWalk, "Action", xInvalid, p_pxObj^.GetPos(), "/Walk");
+			CMainController.Get().WalkTargetUpdate();
+			bSound=true;
+		endif;
+
+		if(bSound)then
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+	endproc;
+
+	proc void HandleOwnCharacter(^CObj p_pxObj, bool p_bPyramidAction)
+		var CObjList xHeal;
+		var CObjList xWalk;
+		
+		var bool bFoundInSelection=false;
+
+		var int i, iC = m_pxSelection^.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+			var CClntHndl xHandle=m_pxSelection^[i];
+			if(!xHandle.IsValid())then continue; endif;
+			var ^CAttribs pxAttr=xHandle.GetObj()^.GetAttribs();
+			if(pxAttr==null)then continue; endif;
+			if(pxAttr^.GetValueBool("healer"))then
+				xHeal.Include(xHandle);
+			else
+				xWalk.Include(xHandle);
+			endif;
+			if(xHandle==p_pxObj^.GetHandle()&&!p_bPyramidAction)then
+				bFoundInSelection=true;
+			endif;
+		endfor;
+
+		var string sQueued = "";
+		if(m_bCtrl)then
+			sQueued = "Q_";
+		endif;
+
+		var bool bSound=false;
+
+		if(xWalk.NumEntries()>0)then
+			var string sParams = "/Walk ";
+			if(m_bShift)then
+				sParams+=" /Queued";
+			endif;
+			var CClntHndl xInvalid;
+			var vec3 vPos;
+			if(bFoundInSelection)then
+				vPos=CClientWrap.GetScapeMgr().GetPickPoint();
+			else
+				vPos=p_pxObj^.GetPos();
+			endif;
+			CEvt_GamePlayCommand.Send(xWalk, sQueued+"Action", xInvalid,vPos, sParams);
+			CMainController.Get().WalkTargetUpdate();
+			bSound=true;
+		endif;
+
+		if(xHeal.NumEntries()>0)then
+			var string sParams = "/Walk ";
+			CEvt_GamePlayCommand.Send(xHeal, sQueued+"Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/GoHeal");
+			bSound=true;
+		endif;
+
+		if(bSound)then
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+	endproc;
+
+
+	proc void HandleResource(^CObj p_pxObj)
+		var string sOrder;
+		var bool bFish = false;
+		var string sTaskName;
+		var bool bPlayTaskSound=false;
+		if(p_pxObj^.GetType()=="WOOD")then
+			sOrder = "Harvest";
+			sTaskName = "task_get_wood";
+		elseif(p_pxObj^.GetType()=="FOOD")then
+			sOrder = "GetFood";
+			sTaskName = "task_get_food";
+		elseif(p_pxObj^.GetType()=="FRUI")then
+			sOrder = "GetFood";
+			sTaskName = "task_get_food";
+		elseif(p_pxObj^.GetType()=="STON")then
+			sOrder = "Mine";
+			sTaskName = "task_get_stone";
+		else
+			return;
+		endif;
+
+		var ^CAttribs pxAttr = p_pxObj^.GetAttribs();
+		if (pxAttr!=null) then
+			bFish = pxAttr^.GetValueInt("fish") == 1;
+		endif
+
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				if(pxSubject^.GetType()=="CHTR" && !bFish ) then
+   					CEvt_GamePlayCommand.Send(xSubject, sOrder, p_pxObj^.GetHandle(), p_pxObj^.GetPos(), sOrder);
+   					bPlayTaskSound=true;
+   					//CMainController.Get().GetPersonalCtrl().SetLookAt(p_pxObj^.GetPos());
+   				elseif((pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="VHCL") && sOrder=="Harvest") then
+   					CEvt_GamePlayCommand.Send(xSubject, "Harvest",  p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+   					bPlayTaskSound=true;
+   				elseif((pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="VHCL") && sOrder=="Mine") then
+   					CEvt_GamePlayCommand.Send(xSubject, "Mine",  p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+   					bPlayTaskSound=true;
+				elseif(pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="FGHT" || pxSubject^.GetType()=="VHCL")then
+   					CEvt_GamePlayCommand.Send(xSubject, "Action",  p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/Walk");
+					CMainController.Get().WalkTargetUpdate();
+   					bPlayTaskSound=true;
+				elseif((pxSubject^.GetType()=="SHIP" || pxSubject^.GetClassName()=="aje_floating_harbour" || pxSubject^.GetClassName()=="seas_carrier") && bFish)then
+					var ^CAttribs pxAttribs = pxSubject^.GetAttribs();
+					if (pxAttribs==null) then
+						continue;
+					endif;
+					if (pxAttribs^.GetValueInt("fishingBoat")==0 && pxSubject^.GetType()!="BLDG") then
+						continue;
+					endif;
+   					CEvt_GamePlayCommand.Send(xSubject, "Fishing", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+   					bPlayTaskSound=true;
+  				elseif(pxSubject^.GetType()=="BLDG")then
+					var CClntHndl xInvalid;
+					var vec3 vPos;
+					vPos=p_pxObj^.GetPos();
+					CEvt_GamePlayCommand.Send(m_pxSelection^[i], "SetRallyPoint", p_pxObj^.GetHandle(), vPos, vPos.ToString());
+				endif;
+			endif;
+		endfor;
+		if (bPlayTaskSound) then
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+	endproc;
+
+	//Henry: modified to allow siege units to interact with enemy walls
+	proc void HandleEnemy(^CObj p_pxObj,bool p_bShift)
+
+		var string sOrder="Use";
+		var int i, iC = m_pxSelection^.NumEntries();
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xAttack,xUse,xWalk;
+
+		for(i=0)cond(i<iC)iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+
+				var ^CAttribs pxAttr = pxSubject^.GetAttribs();
+				if (pxAttr == null) then return; endif;
+
+				var bool bBuilding=false;
+
+				var bool bCanAttack=true;
+				//Henry: check siege units attribs, if it can dock wall (see siege brachio), and if it is not already in sieging state (set in the dockwall task)
+				var bool bCanDockWall=false;
+				if(pxAttr^.GetValueInt("IsSiegeUnit")==1 && pxAttr^.GetValueInt("IsDockingWall")==0)then
+					bCanDockWall = true;
+					sOrder="DockThatWall";
+				else
+					bCanDockWall = false;
+				endif;
+				if(pxSubject^.GetType()=="BLDG")then
+					bCanAttack = pxAttr^.GetValueBool("AttackBuilding");
+					bBuilding=true;
+				elseif(pxAttr^.GetValueInt("can_attack")==0 || pxAttr^.GetValueInt("damage")<=0)then
+					bCanAttack=false;
+				endif;
+
+				if(bCanDockWall)then
+					xUse.Include(xSubject);
+				endif;
+				if(bCanAttack)then
+					xAttack.Include(xSubject);
+				elseif(!bBuilding)then
+					xAttack.Include(xSubject);
+				endif;
+			endif;
+		endfor;
+
+		if(xAttack.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xAttack, "Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/Attack /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+		if(xUse.NumEntries()!=0)then
+			//Henry: add different command to dock wall...
+			CEvt_GamePlayCommand.Send(xUse, sOrder, p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+		if(xWalk.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xWalk, "Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/Walk");
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+	endproc;
+
+
+	proc void HandleEnemyTransporter(^CObj p_pxObj)
+
+		if(p_pxObj^.GetOwner()==-1 && p_pxObj^.GetType()=="ANML" && m_bShift)then
+			if(m_pxSelection^.NumEntries()>0)then
+				var CClntHndl xSel = m_pxSelection^[0];
+				CEvt_GamePlayCommand.Send(xSel, "CatchAnml", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+				ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+				return;
+			endif;
+		endif;
+		HandleEnemy(p_pxObj,false);
+
+	endproc;
+
+/*
+	proc void HandleEnemyCharacter(^CObj p_pxObj)
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xAttack,xFight;
+		var CClntHndl xFeedbackSoundObj;
+		var string sFeedbackSound=CSelectionMgr.Get().GetFeedbackSound("attack",xFeedbackSoundObj);
+
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+
+				var ^CAttribs pxAttr = pxSubject^.GetAttribs();
+				if (pxAttr == null) then return; endif;
+				var bool bIsRidden = false;
+
+				if (pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="SHIP" || pxSubject^.GetType()=="VHCL") then
+					bIsRidden = pxAttr^.GetValueInt("captain")!=-1;
+				endif;
+
+				var bool bAttackBuilding = false;
+				if (pxSubject^.GetType()=="BLDG") then
+					bAttackBuilding = pxAttr^.GetValueBool("AttackBuilding");
+				endif;
+
+				if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="FGHT")then
+					xAttack.Include(xSubject);
+				elseif(pxSubject^.GetType()=="ANML" && bIsRidden) then
+					xAttack.Include(xSubject);
+				elseif(pxSubject^.GetType()=="SHIP" && bIsRidden) then
+					xAttack.Include(xSubject);
+				elseif(pxSubject^.GetType()=="VHCL" && bIsRidden) then
+					xAttack.Include(xSubject);
+				elseif(pxSubject^.GetType()=="BLDG" && bAttackBuilding)then
+					xAttack.Include(xSubject);
+				else
+   					CFeedback.Print(CLocalizer.Get().Translate("_GameInputController_Unknown_Subject"));
+				endif;
+			endif;
+		endfor;
+
+		if(xAttack.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xAttack, "Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/Attack /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+			InvokeFeedbackSoundEvent(sFeedbackSound,xFeedbackSoundObj);
+		endif;
+		if(xFight.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xFight, "Fight", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+		endif;
+
+
+	endproc;
+*/
+/*	proc void HandleOwnShip(^CObj p_pxShip)
+		var int i;
+		for (i=0) cond (i < m_pxSelection^.NumEntries()) iter (++i) do
+			var CClntHndl xSel = m_pxSelection^[i];
+			if (xSel.IsValid()) then
+				if (xSel.GetObj()^.GetType()=="CHTR") then
+					CEvt_GamePlayCommand.Send(xSel, "BoardShip", p_pxShip^.GetHandle(), p_pxShip^.GetPos(), "");
+				endif;
+			endif;
+		endfor;
+	endproc;
+*/
+
+	export static proc bool IsUsableBuilding(^CObj p_pxObj)
+		var ^CAttribs pxA=p_pxObj^.GetAttribs();
+		if(pxA==null) then return false; endif;
+		var string sClass=p_pxObj^.GetClassName();
+		var bool bUsableBldg= sClass=="hu_bunker"||sClass=="hu_small_wall"||sClass=="hu_re_enforced_wall"||
+								sClass=="aje_clay_wall"||sClass=="ninigi_palisade"||sClass=="seas_wall"||
+								sClass=="ninigi_bamboofarm"||sClass=="ninigi_paddy"||sClass=="hu_corn_field"||
+								sClass=="seas_greenhouse"||sClass=="aje_slaughterhouse";
+		bUsableBldg=bUsableBldg||pxA^.GetValueInt("UnlimitedBuilding")==1;
+		return bUsableBldg;
+	endproc;
+
+	proc void HandleOwnBuilding(^CObj p_pxObj)
+//		KLog.LogSpam("uisound","HandleOwnBuilding ");
+
+		var string sOrder="Use";
+		if(p_pxObj!=null)then
+			var ^CAttribs pxAttr=p_pxObj^.GetAttribs();
+			if(pxAttr!=null)then
+				if(p_pxObj^.GetConstructLevel()<4)then
+					sOrder="Build";
+				elseif((m_bShift||!IsUsableBuilding(p_pxObj)) && pxAttr^.GetValueInt("hitpoints")<pxAttr^.GetValueInt("maxhitpoints"))then
+					sOrder="Repair";
+				else
+					if(pxAttr^.GetValueInt("max_passengers")!=0)then
+						sOrder="EnterBunker";
+					elseif(p_pxObj^.GetClassName()=="hu_ladder")then
+						sOrder = "ClimbLadder";
+					endif;
+				endif;
+			endif;
+		endif;
+
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xOrder, xDock, xRallyPoint, xTrade;
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				if(pxSubject^.GetType()=="CHTR")then
+					xOrder.Include(xSubject);
+				elseif(pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="VHCL")then
+					// this dock is for walls
+					xDock.Include(xSubject);
+				elseif (pxSubject^.GetType()=="SHIP") then
+					xDock.Include(xSubject);
+				elseif (pxSubject^.GetType()=="BLDG") then
+					xRallyPoint.Include(xSubject);
+				endif;
+			endif;
+		endfor;
+
+		var string sQueued = "";
+		if(m_bCtrl)then
+			sQueued = "Q_";
+		endif;
+
+//		KLog.LogSpam("uisound","HandleOwnBuilding "+xOrder.NumEntries().ToString());
+
+		if(xOrder.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xOrder, sQueued+sOrder, p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+		if(xDock.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xDock, "Dock", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+			ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+		endif;
+
+		if(xRallyPoint.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xRallyPoint, "SetRallyPoint", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "");
+			CMainController.Get().RallyUpdate();
+			ms_xUISoundMgr.PlayRallypointFeedbackSound(p_pxObj^.GetPos());
+		endif;
+
+	endproc;
+
+/*	proc void HandleEnemyBuilding(^CObj p_pxObj)
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xAttack;
+		var CClntHndl xFeedbackSoundObj;
+		var string sFeedbackSound=CSelectionMgr.Get().GetFeedbackSound("attack",xFeedbackSoundObj);
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				var ^CAttribs pxAttr = pxSubject^.GetAttribs();
+				if (pxAttr == null) then return; endif;
+				var bool bIsRidden = false;
+
+				if (pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="SHIP" || pxSubject^.GetType()=="VHCL") then
+					bIsRidden = pxAttr^.GetValueInt("captain")!=-1;
+				endif;
+
+				if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="FGHT" || (pxSubject^.GetType()=="VHCL" && bIsRidden) || (pxSubject^.GetType()=="SHIP" && bIsRidden) || (pxSubject^.GetType()=="ANML" && bIsRidden))then
+					xAttack.Include(xSubject);
+				elseif(!bIsRidden)then
+					CFeedback.Print(CLocalizer.Get().Translate("_GameInputController_NoRiderAgain"));
+				endif;
+			endif;
+		endfor;
+		if(xAttack.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xAttack, "Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/Attack /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+			InvokeFeedbackSoundEvent(sFeedbackSound,xFeedbackSoundObj);
+		endif;
+	endproc;
+*/
+
+/*	proc void HandleEnemyShip(^CObj p_pxObj)
+		var int i;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList xAttack;
+		var CClntHndl xFeedbackSoundObj;
+		var string sFeedbackSound=CSelectionMgr.Get().GetFeedbackSound("attack",xFeedbackSoundObj);
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+
+				var ^CAttribs pxAttr = pxSubject^.GetAttribs();
+				if (pxAttr == null) then return; endif;
+				var bool bIsRidden = false;
+
+				if (pxSubject^.GetType()=="ANML" || pxSubject^.GetType()=="SHIP" || pxSubject^.GetType()=="VHCL") then
+					bIsRidden = pxAttr^.GetValueInt("captain")!=-1;
+				endif;
+
+				if(pxSubject^.GetType()=="CHTR" || pxSubject^.GetType()=="FGHT")then
+					xAttack.Include(xSubject);
+   				elseif (pxSubject^.GetType()=="ANML" && bIsRidden) then
+					xAttack.Include(xSubject);
+   				elseif (pxSubject^.GetType()=="VHCL" && bIsRidden) then
+					xAttack.Include(xSubject);
+				elseif(pxSubject^.GetType()=="SHIP" && bIsRidden)then
+					xAttack.Include(xSubject);
+				endif;
+			endif;
+		endfor;
+		if(xAttack.NumEntries()!=0)then
+			CEvt_GamePlayCommand.Send(xAttack, "Action", p_pxObj^.GetHandle(), p_pxObj^.GetPos(), "/Attack /PosJitter /Formation="+CFormationMgr.Get().GetFormation());
+			InvokeFeedbackSoundEvent(sFeedbackSound,xFeedbackSoundObj);
+		endif;
+	endproc;
+*/
+	proc bool ValidateOwnSelection()
+		m_pxSelection = ^(CClientWrap.GetSelection());
+
+		var bool bChanged=false;
+		var int i;
+		var bool bOwn=false;
+		var ^CObj		pxSubject;
+		var CClntHndl	xSubject, xInvalid;
+		var CObjList	xOwner, xOther;
+		for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+			xSubject=m_pxSelection^[i];
+			if(xSubject.IsValid())then
+				pxSubject=xSubject.GetObj();
+				if(pxSubject^.GetOwner()==CGameWrap.GetClient().GetPlayer().GetID())then
+					xOwner.AddEntry(xSubject);
+					bOwn=true;
+				else
+					xOther.AddEntry(xSubject);
+				endif;
+
+				var ^CAttribs pxA = xSubject.GetObj()^.GetAttribs();
+				if (pxA!=null) then
+					var string sTransGuid = pxA^.GetValue("transporter_guid");
+					if(sTransGuid!="") then
+						var CGuid xG;
+						xG.FromString(sTransGuid);
+						var ^CObj pxO = CClientWrap.GetObjMgr().GetObj(xG);
+						if (pxO!=null) then
+							if(m_pxSelection^.FindEntry(pxO^.GetHandle())>=0) then
+								m_pxSelection^.DeleteEntry(i--);
+							else
+								m_pxSelection^[i] = pxO^.GetHandle();
+							endif;
+							bChanged=true;
+						endif;
+					endif;
+				endif;
+			else
+				m_pxSelection^.RemEntry(xSubject);
+				i--;
+				bChanged=true;
+			endif;
+		endfor;
+		if(xOwner.NumEntries()>0 && xOther.NumEntries()>0)then
+			m_pxSelection^.Clear();
+			m_pxSelection^.Include(xOwner);
+			bChanged=true;
+		endif;
+		if(bChanged) then
+			var ^CInGameScreen pxIGS=CUIStateMgr.Get().GetInGameScreen();
+			if(pxIGS!=null)then
+				pxIGS^.OnChangeSelection();
+			endif;
+		endif;
+		return bOwn;
+	endproc;
+
+	proc void SetMouseCursor(string p_sCursor)
+		var int iCursor;
+		iCursor = CCursorMgr.Get().GetSpecialCursor(p_sCursor,m_sTaskByMouseCursor);
+
+		if (iCursor!=m_iPreviousCursor) then
+			m_pxDesktop^.SetCursor(iCursor);
+			m_iPreviousCursor=iCursor;
+		endif;
+	endproc;
+
+	export proc void UpdateMouseCursorCheck(bool p_bShift)
+		var CClntHndl xHitObj = CClientWrap.GetObjMgr().GetHitObj();
+		if (xHitObj==m_xLastHitObj) then return; endif;
+		m_xLastHitObj=xHitObj;
+
+		UpdateMouseCursor(p_bShift);
+	endproc;
+
+
+	proc string GetAction(ref CSelectionInfo p_rxSel, CClntHndl p_xHitObj, vec3 p_vPickPoint)
+		//Henry: addition to enable herbivores to eat woodlogs
+		var CClntHndl xAttacker;
+		var int i,iC=m_pxSelection^.NumEntries();
+		for(i=0)cond(i<iC)iter(i++)do
+		var CClntHndl xHndl = m_pxSelection^[i];
+			if (xHndl.IsValid()) then
+				var ^CObj pxAttacker= xHndl.GetObj();
+				xAttacker = pxAttacker^.GetHandle();
+			endif;
+		endfor;
+		var ^CAttribs pxAtAttribs;
+		if(xAttacker.IsValid())then
+			pxAtAttribs = xAttacker.GetObj()^.GetAttribs();
+		endif;
+		if(!p_xHitObj.IsValid()) then
+			// no gameobj hovered
+			if(CClientWrap.GetForestMgr().HitTree(p_vPickPoint) && CGameWrap.IsPosFOWVisible(p_vPickPoint))then
+				if(p_rxSel.Has(CSelectionInfo.CAN_HARVEST) && p_rxSel.Has(CSelectionInfo.CAN_HARVEST_WOOD))then
+			   		return "harvest_wood";
+			   	else
+			   		return "";
+			   	endif;
+			endif;
+		else
+			// gameobj hovered
+			var ^CObj pxHitObj = p_xHitObj.GetObj();
+			pxHitObj = pxHitObj^.GetGroupedParentObj();
+
+			var CFourCC xT = pxHitObj^.GetType();
+			var ^CAttribs pxA = pxHitObj^.GetAttribs();
+
+			if(pxA==null)then
+				return "";
+			endif;
+			if(xT=="QMRK")then
+				return "";
+			endif;
+			//Henry: to give selected infantry a different cursor, if the hovered object is a sieging unit in siege task
+			if(pxA^.GetValueInt("IsSiegeUnit")==1 && pxA^.GetValueInt("IsDockingWall")==1)then
+				if(p_rxSel.Has(CSelectionInfo.CHTR))then
+					return "special";
+				else
+					return "";
+				endif;
+			endif;
+			if(xT=="FNTN")then
+				if(p_rxSel.Has(CSelectionInfo.CHTR) || p_rxSel.Has(CSelectionInfo.ANML) || p_rxSel.Has(CSelectionInfo.VHCL) || p_rxSel.Has(CSelectionInfo.SHIP))then
+					return "healing";
+				else
+					return "";
+				endif;
+			endif;
+			if(xT=="FOOD"||xT=="WOOD"||xT=="FRUI"||xT=="STON"||xT=="TREE") then
+				var bool bFish;
+				if(pxA!=null && pxA^.GetValueInt("fish")==1) then
+					bFish = true;
+				endif;
+				if(!bFish && p_rxSel.Has(CSelectionInfo.CAN_HARVEST) && !p_rxSel.Has(CSelectionInfo.CAN_FISH)) then
+					if((xT=="WOOD"||xT=="TREE") && p_rxSel.Has(CSelectionInfo.CAN_HARVEST_WOOD))then
+						return "harvest_wood";
+					elseif(xT=="STON" && p_rxSel.Has(CSelectionInfo.CAN_HARVEST_STONE))then
+						return "harvest_stone";
+					elseif((xT=="FOOD" || xT=="FRUI") && p_rxSel.Has(CSelectionInfo.CAN_HARVEST_FOOD))then
+						return "harvest_food";
+					endif;
+				elseif(p_rxSel.Has(CSelectionInfo.CAN_FISH)) then
+					if(bFish)then
+						return "harvest_food";
+					endif;
+				endif;
+				return "";
+			endif;
+
+			if(xT=="ITEM")then
+				if(p_rxSel.Has(CSelectionInfo.CHTR) || p_rxSel.Has(CSelectionInfo.ANML) || p_rxSel.Has(CSelectionInfo.VHCL))then
+					return "trade";
+				else
+					return "";
+				endif;
+			endif;
+
+			if(pxHitObj^.IsEnemy()) then
+				//Henry: gives siege unit the special cursor iwhen hovering over an enemy wall
+				var ^CObj pxAttacker = xAttacker.GetObj();
+				if(pxA^.GetValueInt("IsDockable")==1)then
+					var ^CAttribs pxAttribs = pxAttacker^.GetAttribs();
+					if(pxAttribs!=null)then
+						if(pxAttribs^.GetValueInt("IsSiegeUnit")==1 && pxAttribs^.GetValueInt("IsDockingWall")==0)then
+							return "special";
+						endif;
+					endif;
+				endif;
+				if(pxHitObj^.GetType()=="OTHR")then
+					return "";
+				endif;
+				// gameobj is enemy
+				if(pxHitObj^.GetOwner()==-1 && pxHitObj^.GetType()=="ANML" && p_rxSel.Has(CSelectionInfo.WORKER))then
+					return "attack_harvest";
+				endif;
+				var string sAttackReturn = "attack";
+				if(!p_rxSel.Has(CSelectionInfo.CAN_ATTACK))then
+					return "";
+				endif;
+				if(p_rxSel.m_xMaxRangeObj.IsValid())then
+					var ^CObj pxMaxRangeObj = p_rxSel.m_xMaxRangeObj.GetObj();
+					var vec3 vObjSize = pxMaxRangeObj^.GetSize();
+					vObjSize.SetZ(0.0);
+					vObjSize *= 0.5;
+					var real fObjSize=vObjSize.Abs();
+					var vec3 vHitSize = pxHitObj^.GetSize();
+					vHitSize.SetZ(0.0);
+					vHitSize *= 0.5;
+					var real fRange = (fObjSize+vHitSize.Abs())+p_rxSel.m_fMaxRange;
+					var real fMinRange = p_rxSel.m_fMinRange+fObjSize;
+					var real fDistance = (pxHitObj^.GetPos()-pxMaxRangeObj^.GetPos()).Abs();
+					if(fDistance > fRange)then
+						return "attack_walk";
+					endif;
+					if( p_rxSel.Has(CSelectionInfo.AREA_WEAPON) && (fDistance<fMinRange) )then
+						return "attack_area_weapon_invalid";
+					endif;
+				endif;
+				return "attack";
+			else
+				if(p_rxSel.Has(CSelectionInfo.CAN_HEAL))then
+					if(xT!="BLDG" && (m_bShift||pxA^.GetValueInt("transportclass")<1) && pxA^.GetValueInt("hitpoints")<pxA^.GetValueInt("maxhitpoints"))then
+						if(p_rxSel.m_xHealerList.NumEntries()>1)then
+							return "healing";
+						elseif(p_rxSel.m_xHealerList.FindEntry(p_xHitObj)==-1)then
+							return "healing";
+						endif;
+					endif;
+				endif;
+				var int iTransportClass = pxA^.GetValueInt("transportclass");
+				if(p_rxSel.m_iMinTransportClass<iTransportClass)then
+					if(xT=="BLDG")then
+						if(p_rxSel.Has(CSelectionInfo.CAN_BUILD))then
+							if(pxHitObj^.GetConstructLevel()<4)then
+								return "build";
+							else
+								var ^CAttribs pxA = pxHitObj^.GetAttribs();
+								if(pxA!=null) then
+									if((m_bShift||!IsUsableBuilding(pxHitObj)) && pxA^.GetValueInt("hitpoints")<pxA^.GetValueInt("maxhitpoints")) then
+										return "build";
+									endif;
+								endif;
+							endif;
+						endif;
+					endif;
+					var int iPassengers;
+					if(pxA^.ContainsKey("registered_passengers"))then
+						iPassengers=pxA^.GetValueInt("registered_passengers");
+					else
+						var string sPassengers=pxA^.GetValue("passenger_guids");
+						var array string asTok;
+						sPassengers.Split(asTok,"\n",true);
+						iPassengers=asTok.NumEntries();
+					endif;
+					var int iSlots=pxA^.GetValueInt("max_passengers");
+					if(iPassengers>=iSlots)then
+						return "";
+					endif;
+					//Henry: gives different cursor when hovering over the siege tower depending if its docking wall or not
+					if(iTransportClass==2 && pxA^.GetValueInt("IsDockingWall")==0)then
+						if(!p_rxSel.Has(CSelectionInfo.CHTR) && !p_rxSel.Has(CSelectionInfo.ANML) && !p_rxSel.Has(CSelectionInfo.VHCL))then
+							return "";
+						endif;
+						return "load";
+					elseif(p_rxSel.Has(CSelectionInfo.CHTR) && pxA^.GetValueInt("IsDockingWall")==0)then
+						return "load";
+					endif;
+					return "";
+				endif;
+				if(xT=="BLDG")then
+					if(p_rxSel.Has(CSelectionInfo.CAN_BUILD))then
+						if(pxHitObj^.GetConstructLevel()<4)then
+							return "build";
+						endif;
+						var ^CAttribs pxA = pxHitObj^.GetAttribs();
+						if(pxA!=null) then
+							if((m_bShift||!IsUsableBuilding(pxHitObj)) && pxA^.GetValueInt("hitpoints")<pxA^.GetValueInt("maxhitpoints")) then
+								return "build";
+							endif;
+							if(pxA^.GetValueInt("free_worker_slots")!=0)then
+								if(pxHitObj^.GetClassName()=="ninigi_bamboofarm" && p_rxSel.Has(CSelectionInfo.CAN_HARVEST_WOOD))then
+									return "harvest_wood";
+								elseif(p_rxSel.Has(CSelectionInfo.CAN_HARVEST_FOOD))then
+									return "harvest_food";
+								endif;
+							endif;
+						endif;
+					endif;
+					if(p_rxSel.Has(CSelectionInfo.TRADE))then
+						if(pxA^.GetValueInt("TradeBuilding")==1)then
+							// show trade cursor only when hovered obj is not the home marketplace of all selected carts
+							var int i,iC=p_rxSel.m_xTraderList.NumEntries();
+							var int iHomeCount=0, iNotHomeCount=0;
+							for(i=0)cond(i<iC)iter(i++)do
+								var ^CObj pxObj = p_rxSel.m_xTraderList[i].GetObj();
+								if(pxObj==null)then continue; endif;
+								var ^CAttribs pxAttribs = pxObj^.GetAttribs();
+								if(pxAttribs==null)then continue; endif;
+								var string sGuid = pxAttribs^.GetValue("trade_home");
+								if(sGuid.IsEmpty())then iNotHomeCount++; continue; endif;
+								var CGuid xG; xG.FromString(sGuid);
+								var ^CObj pxTraderHome = CClientWrap.GetObjMgr().GetObj(xG);
+								if(pxTraderHome==null)then iNotHomeCount++; continue; endif;
+								if(pxTraderHome==pxHitObj)then
+									iHomeCount++;
+								else
+									iNotHomeCount++;
+								endif;
+							endfor;
+							if(iNotHomeCount>0)then
+								return "trade";
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+		endif;
+		return "";
+	endproc;
+
+	proc void UpdateMouseCursor(bool p_bShift)
+		if(CMainController.Get().GetSecondaryInputController())then
+			return;
+		endif;
+		if (!m_bChangeCursor) then return; endif;
+
+		var vec3 vPickPoint=CClientWrap.GetScapeMgr().GetPickPoint();
+		begin HandleMapEdges;
+			var int iBX,iBY;
+			CScapeMgrCln.GetBlockCoords(vPickPoint,iBX,iBY);
+			if(	(iBX<INVALID_MAP_EDGE_BLOCK_COUNT)||(iBX>=(CClientWrap.GetScapeMgr().GetWidthInBlocks()-INVALID_MAP_EDGE_BLOCK_COUNT))||
+				(iBY<INVALID_MAP_EDGE_BLOCK_COUNT)||(iBY>=(CClientWrap.GetScapeMgr().GetHeightInBlocks()-INVALID_MAP_EDGE_BLOCK_COUNT)))then
+				if(CWindowMgr.Get().GetHoveredWindow()==CUIStateMgr.Get().GetInGameScreen())then
+					SetMouseCursor("no");
+				else
+					SetMouseCursor("");
+				endif;
+				return;
+			endif;
+		end HandleMapEdges;
+
+		if(ValidateOwnSelection())then
+			if(m_pxSelection^.NumEntries()>0)then
+				//var CSelectionInfo xSelInfo;
+				//xSelInfo.Init(m_pxSelection);
+
+				var CClntHndl	xHitObj = CClientWrap.GetObjMgr().GetHitObj();
+				var string		sAction = GetAction(CGameInst.ms_xSelectionInfo, xHitObj, vPickPoint);
+
+				begin clear_mousecursor_outside_ingamescreen;
+					if(CWindowMgr.Get().GetHoveredWindow()!=CUIStateMgr.Get().GetInGameScreen())then
+						 var ^CNewPyramid pxPyramid = cast<CNewPyramid>(CWindowMgr.Get().GetHoveredWindow());
+						 var ^CNewsTicker pxNewsticker = null;
+						 if(CUIStateMgr.Get().GetInGameScreen()!=null)then
+						 	pxNewsticker = CUIStateMgr.Get().GetInGameScreen()^.GetNewsTickerWindow();
+						endif;
+
+						if(
+							!(
+								(
+									pxPyramid!=null &&
+									pxPyramid==CWindowMgr.Get().GetHoveredWindow() &&
+									pxPyramid^.GetPyramidMode()==CNewPyramid.MODE_COLLAPSE
+								) ||
+								pxNewsticker==CWindowMgr.Get().GetHoveredWindow()
+							)
+						)then
+							sAction="";
+						endif;
+					endif;
+				end clear_mousecursor_outside_ingamescreen;
+
+				SetMouseCursor(sAction);
+				return;
+			endif;
+		endif;
+		SetMouseCursor("");
+	endproc;
+
+	export proc bool HandleCatchedMsg(bitset p_dwType, bitset p_dwFlags, int p_iKey, int p_iX, int p_iY)
+
+		if (p_dwType==CInputController.MT_Tick) then
+			return false;
+		endif;
+
+		if (p_dwType==CInputController.MT_MouseMove) then
+			HandleMsg(p_dwType, p_dwFlags, p_iKey, p_iX, p_iY);
+		endif;
+
+		if (p_dwType==CInputController.MT_MouseRBtnUp && m_bRightDrag) then
+
+			if(CClientWrap.GetFormPreview().IsActive())then
+				CClientWrap.GetFormPreview().SetActive(false);
+			endif;
+
+			m_bRightDrag = false;
+		endif;
+
+		if (p_dwType==CInputController.MT_MouseLBtnUp && m_bLeftDrag) then
+			HandleMsg(p_dwType, p_dwFlags, p_iKey, p_iX, p_iY);
+		endif;
+
+		return false;
+	endproc;
+
+	export proc bool HandleMsg(bitset p_dwType, bitset p_dwFlags, int p_iKey, int p_iX, int p_iY)
+
+		if(p_dwType==CInputController.MT_Tick)then
+			UpdateMouseCursor(m_bShift);
+			return false;
+		endif;
+
+		m_pxSelection = ^(CClientWrap.GetSelection());
+
+		m_bCtrl=false;
+		m_bShift=false;
+		m_bAlt=false;
+
+		if( (p_dwFlags&0010b) == 00010b )then
+			m_bCtrl=true;
+		endif;
+
+		if( (p_dwFlags&0001b) == 00001b )then
+			m_bShift=true;
+		endif;
+
+		if( (p_dwFlags&0100b) == 00100b )then
+			m_bAlt=true;
+		endif;
+
+		if(p_dwType==CInputController.MT_MouseLBtnDoubleClick)then
+
+			m_bLeftDrag = false;
+			m_bDblClicked = true;
+
+			var bool bValidHitObj		= true;
+
+			var CClntHndl xHitObj		= CClientWrap.GetObjMgr().GetHitObj();
+			var CObjList xScreenList	= m_pxObjMgr^.GetScreenObjs();
+
+			var CObjList xInclude;
+
+			var bool	bChar;
+			var string	sCaste;
+			var string	sHitClassName;
+			var int		iHitOwner;
+			var string	sObjFlag;
+			var bool	bCatain;
+			var CFourCC	xHitType;
+			var bool	bTransport;
+			var bool	bHitIsSpecial;		// is Hero
+
+			var ^CObj pxHitObj		= xHitObj.GetObj();
+			if(pxHitObj!=null)then
+
+				var CGuid xGuid;
+
+				if (pxHitObj^.GetGroupedParent(xGuid)) then
+					var ^CObj pxParent = CGameWrap.GetObjMgr().GetObj(xGuid);
+					if (pxParent!=null) then
+						pxHitObj = pxParent;
+					endif;
+				endif;
+
+
+				sHitClassName			= pxHitObj^.GetClassName();
+				iHitOwner				= pxHitObj^.GetOwner();
+				xHitType				= pxHitObj^.GetType();
+				var ^CAttribs pxHitAttr	= pxHitObj^.GetAttribs();
+
+				if(pxHitAttr!=null)then
+
+					bChar					= pxHitObj^.GetType()=="CHTR";
+					sCaste					= pxHitAttr^.GetValue("caste");
+					sObjFlag				= pxHitAttr^.GetValue("ObjFlag");
+					bCatain					= pxHitAttr^.GetValueInt("captain")!=-1;
+					bTransport				= pxHitAttr^.GetValue("transporter_guid")!="";
+					bHitIsSpecial			= pxHitAttr^.GetValue("ObjPath").Find("Objects/Special/")==0;
+
+				else
+					bValidHitObj = false;
+				endif;
+
+			else
+				bValidHitObj = false;
+			endif;
+
+			if(bValidHitObj)then
+				var int i, iC = xScreenList.NumEntries();
+				for(i=0)cond(i<iC)iter(i++)do
+
+					var ^CObj pxScreenObj	= xScreenList[i].GetObj();
+					if(pxScreenObj==null)then continue; endif;
+					if(!pxScreenObj^.IsSelectable())then continue; endif;
+					if(!pxScreenObj^.IsVisible())then continue; endif;
+
+					var ^CAttribs pxScreenAttr = pxScreenObj^.GetAttribs();
+					if(pxScreenAttr==null)then continue; endif;
+
+					if(pxScreenObj^.GetOwner()!=iHitOwner)then continue; endif;
+
+					if(m_bShift)then xInclude.Include(xScreenList[i]); continue; endif;
+
+					var CGuid xGuid;
+					if (pxScreenObj^.GetGroupedParent(xGuid)) then
+						var ^CObj pxParent = CGameWrap.GetObjMgr().GetObj(xGuid);
+						if (pxParent!=null) then
+							pxScreenObj = pxParent;
+						endif;
+					endif;
+
+					// Hack for Heroes
+					if (bHitIsSpecial && pxScreenAttr^.GetValue("ObjPath").Find("Objects/Special/")==0)then
+						xInclude.Include(pxScreenObj^.GetHandle());
+						continue;
+					endif;
+
+					if(bChar)then
+						if(!m_bCtrl)then
+							//Check for unit type
+							if(pxScreenObj^.GetClassName()!=sHitClassName)then continue; endif;
+							//if(pxScreenAttr^.GetValue("caste")!=sCaste)then continue; endif;
+							if((pxScreenAttr^.GetValue("transporter_guid")!="")!=bTransport)then continue; endif;
+						else
+							if(pxScreenObj^.GetType()!=xHitType)then continue; endif;
+						endif;
+					else
+						if(!m_bCtrl && xHitType!="WOOD")then
+							if(pxScreenObj^.GetClassName()!=sHitClassName)then continue; endif;
+							if(pxScreenAttr^.GetValue("ObjFlag")!=sObjFlag)then continue; endif;
+							if((pxScreenAttr^.GetValueInt("captain")!=-1)!=bCatain)then continue; endif;
+						else
+							if(pxScreenObj^.GetType()!=xHitType)then continue; endif;
+						endif;
+					endif;
+
+					xInclude.Include(pxScreenObj^.GetHandle());
+				endfor;
+			endif;
+
+			if(xInclude.NumEntries()>0)then
+				m_pxSelection^.Clear();
+				m_pxSelection^.Include(xInclude);
+			endif;
+
+			return true;
+
+			//m_bDblClicked=true;
+		endif;
+
+		//right button and not repeat flag set.
+		if (((p_dwType==CInputController.MT_MouseRBtnDown)||(p_dwType==CInputController.MT_MouseRBtnDoubleClick)) && !m_bRightDrag) then
+
+			var ^CDragBox pxDragBox=^(CClientWrap.GetDragBox());
+			if(pxDragBox^.IsActive()) then //DragBox beenden
+				var point xPos;
+				xPos.SetX(p_iX);
+				xPos.SetY(p_iY);
+				pxDragBox^.DragEnd(xPos);
+			endif;
+
+
+			m_xRightHitObj = CClientWrap.GetObjMgr().GetHitObj();
+			m_vRightHitPos = CClientWrap.GetScapeMgr().GetPickPoint();
+
+			//GetHitObj, GetHitVector
+
+			m_bRightDrag = true;
+
+			return true;
+		endif;
+
+		if (p_dwType==CInputController.MT_MouseMove && m_bRightDrag) then
+
+			var vec3 vCurPickPoint = CClientWrap.GetScapeMgr().GetPickPoint();
+
+			if(!CClientWrap.GetFormPreview().IsActive() && (vCurPickPoint-m_vRightHitPos).AbsSquare()>4.0)then
+				CClientWrap.GetFormPreview().SetActive(true);
+				CClientWrap.GetFormPreview().SetOrigin(m_vRightHitPos);
+				CClientWrap.GetFormPreview().SetTarget(m_vRightHitPos);
+				CClientWrap.GetFormPreview().SetSubjectCount(m_pxSelection^.NumEntries());
+			endif;
+
+			if(CClientWrap.GetFormPreview().IsActive())then
+				CClientWrap.GetFormPreview().SetTarget(vCurPickPoint);
+			endif;
+
+			return true;
+		endif;
+
+		if (p_dwType==CInputController.MT_MouseRBtnUp && m_bRightDrag) then
+
+			m_bRightDrag = false;
+
+			if(CClientWrap.GetFormPreview().IsActive())then
+				CClientWrap.GetFormPreview().SetActive(false);
+			endif;
+
+			if(ValidateOwnSelection())then
+				if(m_pxSelection^.NumEntries()>0)then
+					var vec3 vPickpoint=m_vRightHitPos;	//CClientWrap.GetScapeMgr().GetPickPoint();
+					var ^CObj pxSelObj=m_pxSelection^[0].GetObj();
+					var int iOwner;
+					if(pxSelObj!=null)then
+						iOwner=pxSelObj^.GetOwner();
+					else
+						iOwner=CGameWrap.GetClient().GetPlayer().GetID();
+					endif;
+					CClientWrap.GetScapeMgr().AddScapeFeedbackPing(vPickpoint);
+					var CClntHndl xHitObj = m_xRightHitObj;	//CClientWrap.GetObjMgr().GetHitObj();
+
+					var ^CObj pxHitObj;
+
+					AbortKeyboardShortcuts();
+
+					if(m_pxSelection^.NumEntries()==1)then
+						pxHitObj = xHitObj.GetObj();
+						if(pxHitObj!=null)then
+							pxHitObj=pxHitObj^.GetGroupedParentObj();
+						endif;
+						if(pxHitObj!=null && m_pxSelection^[0]==pxHitObj^.GetHandle())then
+							var CClntHndl xInvalid;
+							pxHitObj=null;
+							xHitObj=xInvalid;
+						endif;
+					endif;
+
+					if(!xHitObj.IsValid())then
+						HandleNone(vPickpoint,true,false, m_bShift, m_bCtrl, m_bAlt);
+					else
+						pxHitObj = xHitObj.GetObj();
+
+						if (pxHitObj == null) then return false; endif;
+						pxHitObj = pxHitObj^.GetGroupedParentObj();
+						if (pxHitObj == null) then return false; endif;
+
+						// Handle Item
+						if (pxHitObj^.GetType() == "ITEM") then
+							var int i;
+							var ^CObj		pxSubject;
+							var CClntHndl	xSubject, xInvalid;
+							for(i=0)cond(i<m_pxSelection^.NumEntries())iter(i++)do
+								xSubject=m_pxSelection^[i];
+								if(xSubject.IsValid())then
+									pxSubject=xSubject.GetObj();
+									if (pxSubject != null) then
+										if(pxSubject^.GetType()=="BLDG" || pxSubject^.GetType()=="SHIP")then
+											continue;
+										endif;
+										// skip if inventory is full except there is no unit left within selection (we need user feedback)
+										if (i!=m_pxSelection^.NumEntries()-1 && pxSubject^.GetInventory()!=null && pxSubject^.GetInventory()^.Count()>0) then
+											continue;
+										endif;
+										var vec3 vDummy;
+										CEvt_GamePlayCommand.Send(xSubject, "PickUp", xHitObj, vDummy, "");
+										ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+										return true;
+									endif;
+								endif;
+							endfor;
+						endif;
+
+						if(pxHitObj^.GetType()=="TREE")then
+							HandleVegetation(pxHitObj);
+							return true;
+						elseif( pxHitObj^.GetType()=="WOOD" ||
+								pxHitObj^.GetType()=="FOOD" ||
+								pxHitObj^.GetType()=="FRUI" ||
+								pxHitObj^.GetType()=="STON")then
+							HandleResource(pxHitObj);
+							return true;
+						endif;
+
+						if(pxHitObj^.GetType()=="FNTN") then
+							CEvt_GamePlayCommand.Send(m_pxSelection^, "Action", pxHitObj^.GetHandle(), pxHitObj^.GetPos(), "/FountainHeal");
+							ms_xUISoundMgr.PlayFeedbackSound(m_sTaskByMouseCursor);
+							return true;
+						endif;
+
+						// Handle Own
+						if(!pxHitObj^.IsEnemy())then
+							var ^CAttribs pxAttr = pxHitObj^.GetAttribs();
+							if(pxHitObj^.GetType()=="BLDG")then
+								HandleOwnBuilding(pxHitObj);
+							// SB#16539 start (Stina was attacked if she was the hit object)
+							// elseif(pxHitObj^.GetType()=="ANML" && m_bShift)then
+							//	HandleAnimal(pxHitObj);
+							// SB#16539 end
+							//Henry: call the procedure, which handles what to do if clicking on a siege units which is sieging
+							elseif(pxAttr^.GetValueInt("IsSiegeUnit")==1 && pxAttr^.GetValueInt("IsDockingWall")==1)then
+								if(pxHitObj^.GetOwner()==iOwner)then
+									HandleSiegeUnit(pxHitObj);
+								else
+									HandleNone(vPickpoint,true,false,m_bShift,m_bCtrl,m_bAlt);
+								endif;
+							elseif(pxHitObj^.GetType()=="SHIP" || pxHitObj^.GetType()=="VHCL" || pxHitObj^.GetType()=="ANML")then
+								if(pxHitObj^.GetOwner()==iOwner)then
+									HandleOwnTransporter(pxHitObj, m_bCtrl,m_bShift);
+								else
+									HandleNone(vPickpoint,true,false,m_bShift,m_bCtrl,m_bAlt);
+								endif;
+							elseif(pxHitObj^.GetType()=="CHTR")then
+								HandleOwnCharacter(pxHitObj,false);
+							else
+								HandleNone(vPickpoint,true,false,m_bShift,m_bCtrl,m_bAlt);
+							endif;
+						else
+							// Handle Enemy
+							if(	pxHitObj^.GetType()=="VHCL" || pxHitObj^.GetType()=="ANML")then
+								HandleEnemyTransporter(pxHitObj);
+							else
+								HandleEnemy(pxHitObj,m_bShift);
+							endif;
+						endif;
+					endif;
+				endif;
+			endif;
+
+		endif;
+
+		if (p_dwType==CInputController.MT_MouseRBtnUp) then
+			m_bRightDrag = false;
+		endif;
+
+		var bool bFirstClick=false;
+		if(p_dwType==CInputController.MT_MouseLBtnDown && !m_bLeftDrag)then
+			bFirstClick=true;
+			m_xDragBoxBegin.SetX(p_iX);
+			m_xDragBoxBegin.SetY(p_iY);
+			m_bLeftDrag = true;
+		endif;
+
+		if(p_dwType==CInputController.MT_MouseMove)then
+			var ^CDragBox pxDragBox=^(CClientWrap.GetDragBox());
+			if(pxDragBox^.IsActive() && m_bLeftDrag)then
+				m_xMousePos.SetX(p_iX);
+				m_xMousePos.SetY(p_iY);
+				pxDragBox^.DragUpdate(m_xMousePos);
+			elseif((m_bLeftDrag) && (!pxDragBox^.IsActive())) then
+				var vec2 vWuff;
+				vWuff.SetX((p_iX-m_xDragBoxBegin.GetX()).ToReal());
+				vWuff.SetY((p_iY-m_xDragBoxBegin.GetY()).ToReal());
+ 				if(vWuff.AbsSquare()>16.0f)then
+					m_xMousePos.SetX(p_iX);
+					m_xMousePos.SetY(p_iY);
+					pxDragBox^.DragBegin(m_xDragBoxBegin);
+					pxDragBox^.DragUpdate(m_xMousePos);
+				endif;
+			endif;
+
+			UpdateMouseCursor(m_bShift);
+		endif;
+
+
+		if(p_dwType==CInputController.MT_MouseLBtnUp) then
+			var bool bWasDbl=m_bDblClicked;
+			if(m_bDblClicked && !m_bLeftDrag)then
+				m_bDblClicked=false;
+				return(false);
+			endif;
+			var bool bUsedDragBox=false;
+			var ^CDragBox pxDragBox=^(CClientWrap.GetDragBox());
+			if(m_bLeftDrag && pxDragBox!=null && pxDragBox^.IsActive()) then
+				pxDragBox^.DragEnd(m_xMousePos);
+				bUsedDragBox=true;
+			endif;
+
+			if(!bWasDbl)then
+				
+				var int i,iC;
+				
+				var CObjList xSelection = CClientWrap.GetSelection();
+				var CObjList xHoveredObjs = CClientWrap.GetObjMgr().GetHoveredObjs();
+				var CClntHndl xHitObj = CClientWrap.GetObjMgr().GetHitObj();
+				var CObjList xResultList;
+				
+				if(m_bShift || m_bCtrl)then
+					
+					var CObjList xTmpList;
+					
+					if(xHoveredObjs.NumEntries()==1)then
+
+						xTmpList=xSelection;
+						if(xTmpList.FindEntry(xHoveredObjs[0])>=0)then
+							if(!m_bShift)then
+								xTmpList.RemEntry(xHoveredObjs[0]);
+							endif;
+						else
+							xTmpList.Include(xHoveredObjs[0]);
+						endif;
+						
+					else
+						if(m_bShift)then
+							xTmpList=xHoveredObjs;
+							xTmpList.Include(xSelection);
+						elseif(m_bCtrl)then
+							xTmpList=xSelection;
+							var int i,iC=xHoveredObjs.NumEntries();
+							for(i=0)cond(i<iC)iter(i++)do
+								if(xSelection.FindEntry(xHoveredObjs[i])==-1)then
+									xTmpList.Include(xHoveredObjs[i]);
+								else
+									xTmpList.Exclude(xHoveredObjs[i]);
+								endif;
+							endfor;
+						endif;
+					endif;
+	
+					var bool bHasUnits=false;
+					var bool bHasBuildings=false;
+					
+					var bool bHasOwnOwner=false;
+			
+					var int iOwnOwner=CGameWrap.GetClient().GetPlayer().GetID();
+			
+					// sort hovered objs by owner, own -> other
+					iC=xTmpList.NumEntries();
+					for(i=0)cond(i<iC)iter(i++)do
+						var ^CObj pxObj=xTmpList[i].GetObj();
+						if(pxObj==null)then continue; endif;
+						if(pxObj^.GetOwner()==iOwnOwner)then
+							bHasOwnOwner=true;
+						endif;
+						var CFourCC xType=pxObj^.GetType();
+						if(xType=="CHTR" || xType=="ANML" || xType=="VHCL" || xType=="SHIP" || pxObj^.GetClassName()=="aje_floating_harbour" || pxObj^.GetClassName()=="seas_carrier")then
+							bHasUnits=true;
+						elseif(xType=="BLDG")then
+							bHasBuildings=true;
+						endif;
+					endfor;
+		
+					//sort objs by type, units -> bldgs -> other
+					iC=xTmpList.NumEntries();
+					for(i=0)cond(i<iC)iter(i++)do
+			
+						var ^CObj pxObj=xTmpList[i].GetObj();
+						if(pxObj==null)then continue; endif;
+			
+						if(bHasOwnOwner && pxObj^.GetOwner()!=iOwnOwner)then continue; endif;
+			
+						if(bHasUnits)then
+							if(pxObj^.GetType()=="CHTR" || pxObj^.GetType()=="ANML" || pxObj^.GetType()=="VHCL" || pxObj^.GetType()=="SHIP" || pxObj^.GetClassName()=="aje_floating_harbour" || pxObj^.GetClassName()=="seas_carrier")then
+								xResultList.Include(xTmpList[i]);
+							endif;
+						elseif(bHasBuildings)then
+							if(pxObj^.GetType()=="BLDG")then
+								xResultList.Include(xTmpList[i]);
+							endif;
+						else
+							xResultList.Include(xTmpList[i]);
+						endif;
+						
+					endfor;
+				
+				else
+					
+					xResultList=xHoveredObjs;
+					
+				endif;
+
+				(m_pxSelection^) = xResultList;
+
+//	OLD IMPLEMENTATION
+/*				var CObjList xNewSelection;
+				
+				if(m_bShift || m_bCtrl)then
+
+					var int i,iC=xHoveredObjs.NumEntries();
+					for(i=0) cond(i<iC) iter(++i) do
+						var CClntHndl xTmpHndl = xHoveredObjs[i];
+						if(xTmpHndl.IsValid())then
+							var ^CObj pxTmpObj = xTmpHndl.GetObj()^.GetGroupedRootParentObj();
+							xTmpHndl = pxTmpObj^.GetHandle();
+						endif;
+
+						if(xSelection.FindEntry(xTmpHndl) > -1 && m_bCtrl)then
+							xSelection.RemEntry(xTmpHndl);
+						elseif(xNewSelection.FindEntry(xTmpHndl)==-1)then
+							xNewSelection.Include(xTmpHndl);
+						endif;
+						
+					endfor;
+					xNewSelection.Include(xSelection);
+				else
+					xNewSelection = xHoveredObjs;
+				endif;
+
+				(m_pxSelection^) = xNewSelection;
+*/
+
+				iC=m_pxSelection^.NumEntries();
+
+				var ^CUTCmdSender pxUTCmdSender=CClientWrap.GetUTCmdSender();
+				if(pxUTCmdSender!=null)then
+					pxUTCmdSender^.SelectionChanged(m_pxSelection^,bUsedDragBox,false,m_bCtrl,m_bShift,m_bAlt);
+				endif;
+
+				for(i=0) cond(i<iC) iter(++i) do
+					var ^CObj pxO = m_pxSelection^[i].GetObj();
+					if (pxO!=null) then
+						var CGuid xGuid;
+						if (pxO^.GetGroupedParent(xGuid)) then
+							var ^CObj pxParent = CGameWrap.GetObjMgr().GetObj(xGuid);
+							if (pxParent!=null) then
+								m_pxSelection^[i] = pxParent^.GetHandle();
+							endif;
+						endif;
+
+					endif;
+				endfor;
+
+				CGameInst.ms_iIdleWorkerIndex=-1;
+
+				ms_xUISoundMgr.PlayFeedbackSound("selected");
+			endif;
+
+			UpdateMouseCursor(m_bShift);
+			m_bLeftDrag = false;
+
+		endif;
+
+		if(p_dwType==CInputController.MT_MouseLBtnDown)then m_bLMB=true;
+			elseif(p_dwType==CInputController.MT_MouseLBtnUp)then m_bLMB=false;
+			elseif(((p_dwType==CInputController.MT_MouseRBtnDown)||(p_dwType==CInputController.MT_MouseRBtnDoubleClick)))then m_bRMB=true;
+			elseif(p_dwType==CInputController.MT_MouseRBtnUp)then m_bRMB=false;
+		endif;
+		
+		return false;
+	endproc;
+
+	proc bool CompareKey(int p_iKey, string p_sCat)
+		if(p_sCat=="Nums")then
+			if(	p_iKey==48
+				|| p_iKey==49
+				|| p_iKey==50
+				|| p_iKey==51
+				|| p_iKey==52
+				|| p_iKey==53
+				|| p_iKey==54
+				|| p_iKey==55
+				|| p_iKey==56
+				|| p_iKey==57
+			)then
+				return(true);
+			endif;
+		endif;
+
+		if (p_sCat == "Return") then
+			if (p_iKey == 13) then return true; endif;
+		endif;
+		return(false);
+	endproc;
+/*
+	export proc void Harvest(vec3 p_vPos)
+		var int iNum=m_pxSelection^.NumEntries();
+		var int i;
+		if(iNum>0)then
+			for(i=0)cond(i<iNum)iter(i++)do
+				var CClntHndl xSubject=(m_pxSelection^)[i];
+				var ^CObj pxSubject=xSubject.GetObj();
+				if(pxSubject!=null)then
+					if(pxSubject^.GetType()=="CHTR")then
+						CEvt_GamePlayCommand.Send(xSubject,"Harvest",xSubject,p_vPos,"");
+					endif;
+				endif;
+			endfor;
+		endif;
+	endproc;
+*/
+	export proc void Reset()
+		var ^CDragBox pxDragBox=^(CClientWrap.GetDragBox());
+		if(pxDragBox!=null) then
+			if(pxDragBox^.IsActive()) then
+				pxDragBox^.DragEnd({0,0});
+			endif;
+		endif;
+		m_bLMB=false;
+		m_bRMB=false;
+	endproc;
+
+	export proc bool AccTime()
+		if(m_pxSelection^.NumEntries()>0)then
+			var CClntHndl xSubject = (m_pxSelection^)[0];
+			CEvt_GamePlayCommand.Send(xSubject, "AccTime", xSubject , {0.0,0.0,0.0}, "");
+		endif;
+		return(true);
+	endproc;
+
+	export proc bool SlowTime()
+		if(m_pxSelection^.NumEntries()>0)then
+			var CClntHndl xSubject = (m_pxSelection^)[0];
+			CEvt_GamePlayCommand.Send(xSubject, "SlowTime", xSubject , {0.0,0.0,0.0}, "");
+		endif;
+		return(true);
+	endproc;
+
+	export proc bool StopTime()
+		if(m_pxSelection^.NumEntries()>0)then
+			var CClntHndl xSubject = (m_pxSelection^)[0];
+			CEvt_GamePlayCommand.Send(xSubject, "StopTime", xSubject , {0.0,0.0,0.0}, "");
+		endif;
+		return(true);
+	endproc;
+
+	export proc bool SetGroup1()	SetGroup(1);	return true;	endproc;
+	export proc bool SetGroup2()	SetGroup(2);	return true;	endproc;
+	export proc bool SetGroup3()	SetGroup(3);	return true;	endproc;
+	export proc bool SetGroup4()	SetGroup(4);	return true;	endproc;
+	export proc bool SetGroup5()	SetGroup(5);	return true;	endproc;
+	export proc bool SetGroup6()	SetGroup(6);	return true;	endproc;
+	export proc bool SetGroup7()	SetGroup(7);	return true;	endproc;
+	export proc bool SetGroup8()	SetGroup(8);	return true;	endproc;
+	export proc bool SetGroup9()	SetGroup(9);	return true;	endproc;
+	export proc bool SetGroup0()	SetGroup(0);	return true;	endproc;
+//	export proc bool SetGroup0()	SaveGroupConfig();	return true;	endproc;
+
+	export proc bool Group1()		GetGroup(1);	return true;	endproc;
+	export proc bool Group2()		GetGroup(2);	return true;	endproc;
+	export proc bool Group3()		GetGroup(3);	return true;	endproc;
+	export proc bool Group4()		GetGroup(4);	return true;	endproc;
+	export proc bool Group5()		GetGroup(5);	return true;	endproc;
+	export proc bool Group6()		GetGroup(6);	return true;	endproc;
+	export proc bool Group7()		GetGroup(7);	return true;	endproc;
+	export proc bool Group8()		GetGroup(8);	return true;	endproc;
+	export proc bool Group9()		GetGroup(9);	return true;	endproc;
+	export proc bool Group0()		GetGroup(0);	return true;	endproc;
+//	export proc bool Group0()		LoadGroupConfig();	return true;	endproc;
+
+	export proc bool Spectator1()	Spectator(1);	return true;	endproc;
+	export proc bool Spectator2()	Spectator(2);	return true;	endproc;
+	export proc bool Spectator3()	Spectator(3);	return true;	endproc;
+	export proc bool Spectator4()	Spectator(4);	return true;	endproc;
+	export proc bool Spectator5()	Spectator(5);	return true;	endproc;
+	export proc bool Spectator6()	Spectator(6);	return true;	endproc;
+	export proc bool Spectator7()	Spectator(7);	return true;	endproc;
+	export proc bool Spectator8()	Spectator(8);	return true;	endproc;
+	export proc bool Spectator0()	Spectator(0);	return true;	endproc;
+
+	export proc bool SaveGroupConfig()
+		CGroupMgr.Get().SaveLevelConfig();
+		return true;
+	endproc;
+
+	export proc bool LoadGroupConfig()
+		CGroupMgr.Get().LoadLevelConfig();
+		return true;
+	endproc;
+	
+	export proc void Spectator(int p_iNum)
+		if(CClientWrap.SwitchSpectator(p_iNum-1)) then
+			CTTHelper.Get().InitFromTT();
+			CNewPyramid.Get().RebuildFull();
+			if(CUIStateMgr.Get().GetInGameScreen()!=null)then
+				CUIStateMgr.Get().GetInGameScreen()^.OnChangeValues();
+				CUIStateMgr.Get().GetInGameScreen()^.OnChangeSelection();
+			endif;
+		endif;
+	endproc;
+
+	export proc bool GetGroup( int p_iIndex )
+		var int iTime = Windows.GetTickCount();
+
+		if(m_iNumKeyDown!=p_iIndex)then
+			m_iNumKeyDown=p_iIndex;
+			m_iTime = iTime;
+			(m_pxSelection)^ = CGroupMgr.Get().GetGroupList(p_iIndex);
+		else
+			(m_pxSelection)^ = CGroupMgr.Get().GetGroupList(p_iIndex);
+			if(iTime-m_iTime > 300 )then
+				m_iTime = iTime;
+			else
+				if(m_pxSelection^.NumEntries()>0)then
+					CMultiCameraController.Get().SetCameraTarget(m_pxSelection^.GetGroupCenter(),true);
+					CMultiCameraController.Get().SnapOnGround();
+				else
+					var vec3 vEye=CGroupMgr.Get().GetViewMarkerEye(p_iIndex);
+					var vec3 vLookAt=CGroupMgr.Get().GetViewMarkerLookat(p_iIndex);
+					if(vEye!={0.0,0.0,0.0} && vLookAt!={0.0,0.0,0.0})then
+						CMultiCameraController.Get().SetEyeAndLookat(vEye,vLookAt,true);
+					endif;
+				endif;
+			endif;
+		endif;
+
+		return true;
+	endproc;
+
+	export proc bool SetGroup( int p_iIndex )
+		ValidateOwnSelection();
+		CGroupMgr.Get().UpdateGroup(p_iIndex,m_pxSelection);
+		return true;
+	endproc;
+
+	export proc void Render()
+	endproc;
+
+endclass;
+
+class CKeyTimer inherit CFrameWindow
+
+	var int		m_iTimerID;
+	static var int	ms_iKey;
+
+	export constructor(int p_iKey)
+		m_iTimerID=CWindowMgr.Get().SetTimer(this, 300, true);
+		ms_iKey = p_iKey;
+	endconstructor;
+
+	export destructor()
+		ms_iKey=-1;
+	enddestructor;
+
+	proc bool OnTimer(int p_iID)
+		if(m_iTimerID==p_iID)then
+			delete this;
+		endif;
+		return(true);
+	endproc;
+
+	export static proc int GetKey()
+		return(ms_iKey);
+	endproc;
+
+endclass;
+
+class CSelectionInfo
+
+	export const bitset WORKER 		= 001h;
+	export const bitset ANML		= 002h;
+	export const bitset VHCL		= 004h;
+	export const bitset SHIP		= 008h;
+	export const bitset BLDG		= 010h;
+	export const bitset CHTR		= 020h;
+	export const bitset CAN_HARVEST = 040h;
+	export const bitset CAN_FISH	= 080h;
+	export const bitset CAN_HARVEST_FOOD = 0100h;
+	export const bitset CAN_HARVEST_WOOD = 0200h;
+	export const bitset CAN_HARVEST_STONE = 0400h;
+	export const bitset AREA_WEAPON = 0800h;
+	export const bitset TRADE		= 01000h;
+	export const bitset CAN_ATTACK	= 02000h;
+	export const bitset CAN_HEAL	= 04000h;
+	export const bitset CAN_MOVE	= 08000h;
+	export const bitset CAN_BUILD	= 010000h;
+
+	var bitset	m_dwFlags;
+
+	export var array string	m_asClasses;
+	export var real			m_fAreaRange;
+	export var real			m_fMinRange;
+	export var real			m_fMaxRange;
+	export var CClntHndl	m_xMaxRangeObj;
+	export var int			m_iMinTransportClass;
+	export var CObjList		m_xTraderList;
+	export var CObjList		m_xHealerList;
+	
+
+	export constructor()
+		m_dwFlags=0b;
+	endconstructor;
+
+	export constructor(^CObjSelection p_pxSel)
+		Init(p_pxSel);
+	endconstructor;
+
+	export constructor(ref CSelectionInfo p_rxSel)
+		m_dwFlags = p_rxSel.m_dwFlags;
+	endconstructor;
+
+	export proc ref CSelectionInfo op_Assign(ref CSelectionInfo p_rxSel)
+		m_dwFlags = p_rxSel.m_dwFlags;
+		return this^;
+	endproc;
+
+	export proc bool HasSomething()
+		return m_dwFlags!=0b;
+	endproc;
+
+	export proc bool Has(bitset p_dwFlag)
+		return (m_dwFlags&p_dwFlag)!=0b;
+	endproc;
+
+	export proc void Init(^CObjSelection p_pxSel)
+		m_dwFlags = 0b;
+		m_asClasses = 0;
+		m_fAreaRange = 0.0;
+		m_fMinRange = 99999.0;
+		m_fMaxRange = 0.0;
+		m_iMinTransportClass = 999;
+		m_xTraderList = 0;
+		m_xHealerList = 0;
+		var CFourCC xT;
+
+		var int i, iC = p_pxSel^.NumEntries();
+		for(i=0) cond(i<iC) iter(++i) do
+			var CClntHndl xHndl = p_pxSel^[i];
+			if(xHndl.IsValid()) then
+				var ^CObj pxO = xHndl.GetObj();
+				if(pxO^.GetOwner()!=CGameWrap.GetClient().GetPlayerID())then
+					continue;
+				endif;
+
+				m_asClasses.AddEntry(pxO^.GetClassName());
+
+				xT = pxO^.GetType();
+				if(xT=="CHTR") then
+					m_dwFlags |= CHTR;
+					if((m_dwFlags&WORKER)==0b) then
+						if(pxO^.GetClassName().Find("worker")>=0||pxO^.GetClassName().Find("tesla_s0")!=-1) then
+							m_dwFlags|=WORKER;
+						endif;
+					endif;
+					m_dwFlags |= CAN_MOVE;
+				elseif(xT=="ANML") then
+					m_dwFlags |= ANML;
+					m_dwFlags |= CAN_MOVE;
+				elseif(xT=="VHCL") then
+					m_dwFlags |= VHCL;
+					m_dwFlags |= CAN_MOVE;
+				elseif(xT=="SHIP") then
+					m_dwFlags |= SHIP;
+					m_dwFlags |= CAN_MOVE;
+					if((m_dwFlags&CAN_FISH)==0b) then
+						var ^CAttribs pxA = pxO^.GetAttribs();
+						if(pxA!=null) then
+							if(pxA^.GetValueInt("fishingBoat")==1) then
+								m_dwFlags|=CAN_FISH;
+							endif;
+						endif;
+					endif;
+				elseif(xT=="BLDG") then
+					m_dwFlags |= BLDG;
+					if((m_dwFlags&CAN_FISH)==0b) then
+						var ^CAttribs pxA = pxO^.GetAttribs();
+						if(pxA!=null) then
+							if(pxO^.GetClassName().Find("floating_harbour")>=0||pxO^.GetClassName().Find("seas_carrier")!=-1) then
+								m_dwFlags |= CAN_FISH;
+								m_dwFlags |= CAN_MOVE;
+							endif;
+						endif;
+					endif;
+				endif;
+
+				var CTechTree xTT=pxO^.GetTechTree();
+				var ^CAttribs pxA=pxO^.GetAttribs();
+				if(pxA!=null)then
+					var string sObjPath=pxA^.GetValue("ObjPath");
+
+					if(pxA^.GetValueInt("trade")==1)then
+						m_dwFlags |= TRADE;
+						m_xTraderList.Include(xHndl);
+					endif;
+
+					if(pxA^.GetValueInt("can_attack")==1 && pxA^.GetValueInt("damage")>0)then
+						m_dwFlags |= CAN_ATTACK;
+					endif;
+
+					if(pxA^.GetValueBool("healer"))then
+						m_dwFlags |= CAN_HEAL;
+						m_xHealerList.Include(xHndl);
+					endif;
+
+					m_iMinTransportClass = Math.Min(m_iMinTransportClass, pxA^.GetValueInt("transportclass"));
+
+					if(xTT.GetValueI(sObjPath+"/can_harvest",0)!=0) then
+						m_dwFlags |= CAN_HARVEST;
+					endif;
+					var string sWeapon = pxA^.GetValue("Equip_Slot_0");
+					var ^CTechTree.CNode pxWeapon=xTT.FindNode(sWeapon);
+					if(pxWeapon!=null)then
+						if(m_fAreaRange<pxWeapon^.GetSubValueF("hitrange"))then
+							m_fAreaRange = pxWeapon^.GetSubValueF("hitrange");
+						endif;
+						if(m_fMinRange>pxWeapon^.GetSubValueF("minattackrange"))then
+							m_fMinRange = pxWeapon^.GetSubValueF("minattackrange");
+						endif;
+						if(m_fMaxRange<pxWeapon^.GetSubValueF("range"))then
+							m_fMaxRange = pxWeapon^.GetSubValueF("range");
+							m_xMaxRangeObj = pxO^.GetHandle();
+						endif;
+					endif;
+					var ^CTechTree.CNode pxResInv = xTT.FindNode(sObjPath+"/ResInvCaps");
+					if(pxResInv!=null) then
+						if(pxResInv^.GetSubValueI("food")>0) then
+							m_dwFlags |= CAN_HARVEST_FOOD;
+						endif;
+						if(pxResInv^.GetSubValueI("wood")>0) then
+							m_dwFlags |= CAN_HARVEST_WOOD;
+						endif;
+						if(pxResInv^.GetSubValueI("stone")>0) then
+							m_dwFlags |= CAN_HARVEST_STONE;
+						endif;
+					endif;
+					if(xTT.GetValueB(sObjPath+"/can_build",false))then
+						m_dwFlags |= CAN_BUILD;
+					endif;
+				endif;
+			endif;
+		endfor;
+
+		if(m_fAreaRange>0.0)then
+			m_dwFlags |= AREA_WEAPON;
+		endif;
+
+	endproc;
+endclass;

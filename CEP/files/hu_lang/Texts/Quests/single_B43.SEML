@@ -1,0 +1,58 @@
+﻿\{comment $File: //UrsRel/Work/BoosterPack1/Data/BoosterPack1/Locale/hu/Texts/Quests/single_B43.SEML $}
+\{comment $DateTime: 2008/04/23 17:01:54 $}
+\{comment $Author: benjamin.heidl $}
+\{comment $Translation: zoiddani $}
+\{comment $Revision: #5 $}
+
+\{chapter single_B43}
+
+	\{section -name LB43MQ01}
+Az öböl szemben egy kitűnő hely, hogy építsünk egy hídfőt. Sajnos egy Porlovag tábor védi. Mielőtt Kleemann és a kalózok végrehajthatnák terveiket, hogy megszállják a Szent Várost, ezt a tábor el kell pusztítani.
+\{p} \{p}
+Feladat:
+\{p}
+1) Pusztítsd el a Porlovag bázist az öböl mellett.
+	\{/section}
+
+	\{section -name LB43MQ02}
+Az öböl területe kitisztítva. Most következzék a művelet második része, átjutás a kikötő kapuján. Szerencsére két választásunk van. Az Északi törzsnek van egy kürtje mellyel a város védőnek jelet ad, ha egy kereskedő hajó kíván bejönni. De hasznát vehetjük a Sárkány Klán Rakétaállomásának, hogy darabokra robbantsuk a kaput.
+\{p} \{p}
+Feladat:
+\{p}
+1) Mozdíts egy egységet a kürthöz, vagy Kleemann-t a rakéta irányitó műszerfalhoz.
+	\{/section}
+
+	\{section -name LB43SQ01}
+Aggresszív dinoszauruszok veszélyeztetik bázisunk biztonságát. Oldd meg ezt a problémát.
+\{p} \{p}
+Feladat:
+\{p}
+1) Tedd támadásképtelenné a dinoszauruszokat és a fészküket.
+	\{/section}
+
+
+	\{section -name LB43SQ02}
+Az Északi flotta állandó fenyegetés alatt tartja a műveletet. Szerencsére az összes kikötő el van választva a főbázistól. Semmisíts meg minél többet!
+\{p} \{p}
+Feladat:
+\{p}
+1) Semmisítsd meg az Északi előőrs összes hajóját és kikötőjét.
+	\{/section}
+
+
+	\{section -name LB43SQ03}
+Rossz hír, úgy néz ki a közeli Sárkány Klán törzs Titánok kiképzésére képes. A jó hír, hogy ellophatjuk ezt a technológiát és ellenfeleinkkel szemben használhatnánk. 
+\{p} \{p}
+Feladat:
+\{p}
+1) Lopd el a Titán-technológiát a Sárkány Klán előőrstől.
+	\{/section}
+
+
+\{/chapter}
+
+
+
+
+
+

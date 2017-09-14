@@ -1,0 +1,10 @@
+M:SpawnMG:var ^CSeasSandbagMG pxO = cast<CSeasSandbagMG>(CSrvWrap.GetObjMgr()^.CreateObj("seas_sandbag_mg",%PLAYERID%,%MOUSE%));pxO^.SetReady();
+K:Update MG:var ^CSeasSandbagMG pxObj=cast<CSeasSandbagMG>(CSrvWrap.GetObjMgr()^.GetObjByName("%SELNAME%")); if(pxObj!=null)then pxObj^.UpdateCompletely(); endif;
+V:Debug MG:var ^CSeasSandbagMG pxObj=cast<CSeasSandbagMG>(CSrvWrap.GetObjMgr()^.GetObjByName("%SELNAME%")); if(pxObj!=null)then pxObj^.TestAngle(); endif;
+
+Delete old cheats first
+
+K: After you rotated the seas_sandbag_mg (!) use this on the object to
+   have everything related to it rotate as well
+V: For the leveled. Creates 2 tiny camtargets as angle-points, so you can construct
+   the effective area for combat out of these two points and the obj itself

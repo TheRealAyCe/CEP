@@ -1,0 +1,487 @@
+﻿\{document helpfile seas units}
+\{comment $File: //UrsRel/Main/Data/Locale/uk/Texts/Help/H_SEAS_Produkte.SEML $}
+\{comment $DateTime: 2006/01/03 14:41:14 $}
+\{comment $Author: claudia.krueger $}
+\{comment $Revision: #4 $}
+
+\{chapter -name _infantry Infantry}
+\{helpitem -name _seas_worker Worker}
+\{img /bunit:seas_worker -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Constructs buildings
+\\{br}• Harvests resources
+\\{br}• Poor fighter
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_headquarters} Headquarters,\{/ref} Workers perform all of the civilian work. \\{br}
+They harvest \{ref H_general.seml#_resources} resources\{/ref} and erect \{ref H_general.seml#_building} buildings.\{/ref} They can defend themselves when attacked but are no match for regular combat \{ref H_general.seml#_units} units.\{/ref} They are equipped with a sling for \{ref H_world.seml#_food}hunting \{/ref} and ranged defense.
+\{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_warrior Guard}
+\{img /bunit:seas_warrior -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:-/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Melee fighter
+   \{/tooltipmedium}
+   \{tooltiplong}
+Like all infantry \{ref H_general.seml#_units} units,\{/ref} Guards are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks \{/ref}and are specialized in melee battle. They are the \{ref H_story.seml#_story_seas} SEAS'\{/ref} basic combat \{ref H_general.seml#_units} unit.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_marksman Marksman}
+\{img /bunit:seas_marksman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Ranged unit
+\\{br}• Ineffective in melee
+   \{/tooltipmedium}
+   \{tooltiplong}
+Like all infantry \{ref H_general.seml#_units} units,\{/ref} Marksmen are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks  \{/ref} and are the \{ref H_story.seml#_story_seas} SEAS'\{/ref} basic ranged fighter. While effective over a distance they are poorly suited to close combat.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_shotgunner Amazon Shotgunner}
+\{img /bunit:seas_shotgunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:+/vsvhcl:--/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Good in close and ranged combat
+\\{br}• Area damage
+\\{br}• Can only be built if Cole reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Amazon Shotgunner is not a modern day creation dispite them having shotguns, once the \{ref H_heros.seml#_mayor}Governor\{/ref} took over the high council, queen \{ref H_heros.seml#_tarna}Tarna\{/ref} and a few other female citizens fled the holy city, unsettled with the new law, order and king.\\{br}She refused to allow men in her kingdom besides workers, those females who did not folow the ways of Tarna were taken prisoner to her fortress on the Amazon island. When the Heros attacked the Amazon temple to rescue Barry (one of the 3 \{ref H_heros.seml#_larry}Trader\{/ref} tiplets), a large group of prisoners escaped.\\{br}\\{br}\{ref H_heros.seml#_lovelace}Ada Loven\{/ref} found this group and offered to help with the SEAS but \{ref H_heros.seml#_babbage}Jarvis Babbit\{/ref} on the other hand refused to help them in there revenge against Tarna.\\{br}If these Amazons help the SEAS take over then Jarvis would be delighted to help them. Forced and blackmailed into becoming a member of the SEAS, The Amazon Shotgunner became a substantial, useful unit and a dangerous opponent.\\{br}\\{br}The Amazon Shotgunner is produced in the \{ref H_seas_gebaeude.seml#_seas_laboratory}Laboratory\{/ref} .\\{br}They are trained well and have great affect against other infantry and animals with there powerful firearm but versus vehicles they hardly stand a chance.\\{br}However, if they come face to face against a Building, there skills are average.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_gunner Gunner}
+\{img /bunit:seas_gunner -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Ranged unit
+\\{br}• Can only be built if Béla reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Ranged fighters like the \{ref H_seas_produkte.seml#_seas_marksmen} Marksmen,\{/ref} Gunners are much more powerful. \\{br}
+They are produced in the \{ref H_seas_gebaeude.seml#_seas_laboratory}Laboratory  \{/ref} and greatly outstrip the other tribes' Archers performance. When embroiled in close combat they defend themselves with a dagger, which does far less damage.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_rocketman Rocket launcher}
+\{img /bunit:seas_rocketman -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:-/vsanml:-/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Ranged unit
+\\{br}• Fires rockets
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks, \{/ref} Rocket Launchers are ranged troops armed with rockets.\\{br}
+They can see slightly farther than their rockets are capable of travelling. When embroiled in close combat they defend themselves with a dagger, which does far less damage.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_flamethrower Flamethrower}
+\{img /bunit:seas_flamethrower -ralign}
+   \{tooltipshort}
+ %/class:chtr/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry unit
+\\{br}• Damages enemy and neutral units
+\\{br}• Can only be built if Leighton reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Flamethrower is most effective when used against infantry. \\{br}
+Flamethrowers can see slightly farther than they can fire, but still have a long range. All enemy and neutral \{ref H_general.seml#_units} units\{/ref} in the line of fire are damaged. As they are infantry \{ref H_general.seml#_units} units,\{/ref} Flamethrowers are produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_medic Medic}
+\{img /bunit:seas_medic -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Healer
+\\{br}• Detects traps and hidden units
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks  \{/ref} like any other infantry \{ref H_general.seml#_units} unit,\{/ref} Medics do not fight at all but rather heal their comrades. They are also capable of detecting traps and hidden enemy \{ref H_general.seml#_units} units.\{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_killer Stone Killer}
+\{img /bunit:seas_killer -ralign}
+   \{tooltipshort}
+%/class:chtr/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Infantry
+\\{br}• Melee fighter with tough body
+\\{br}• Deals area damage that pierces armor
+\\{br}• Can only be produced if Ada reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Trained in the \{ref H_seas_gebaeude.seml#_seas_barracks}Barracks\{/ref}, Stone Killers are accursed statues of disgraceful \{ref H_hu_produkte.seml#_hu_killer}Barbarian Killers\{/ref}, who were turned into stone by a Gorgon, but brought back from the underworld, to bring destruction to the living creatures.\{br}
+They are extremely strong and can kill almost every other being quickly. The fact that they are stones makes them a bigger threat, because they good withstand the most attacks, so it is though, to sent them back to the depths of Hades.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_funtitan Stone Golem}
+\{img /bunit:seas_funtitan -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Large golem
+\\{br}• Many HP
+\\{br}• Deals area damage that pierces armor
+\\{br}• Can only be produced if Tarna reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_amazon_temple} Amazon Temple, \{/ref} the Stone Golem is one of the largest and most powerful \{ref H_general.seml#_units} units\{/ref}the \{ref H_story.seml#_story_seas} SEAS\{/ref} have. \\{br}
+Incredibly tough and strong, these Stone Golems have a lot of \{ref H_ui.seml#_iw_hitpoints}hit points. \{/ref} \\{br}
+They were originally created and enchanted by the \{ref H_story.seml#_story_hu} Norsemen \{/ref} to protect their sacred \{ref H_special_location.seml#_walhalla} Valhalla.\{/ref} Eternal guards consecrated to the old gods. As is to be expected of stones they tend to be somewhat slow.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _robots Robots}
+\{helpitem -name _seas_mechanical_walker Sentinel}
+\{img /bunit:seas_mechanical_walker -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:-/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Poor fighter
+\\{br}• Fast resource harvester
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Sentinel is a two-legged robot resembling a dinosaur. It is designed for harvesting large amounts of resources and produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage\{/ref} .
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit Exo enforcer}
+\{img /bunit:seas_mobile_suit -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Powerful robot
+\\{br}• Close combat fighter
+   \{/tooltipmedium}
+   \{tooltiplong}
+Designed for close combat, the Exo enforcer is a two-legged robot produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref} It attacks enemies using punches and kicks.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_mobile_suit_flamethrower Exo flamethrower}
+\{img /bunit:seas_mobile_suit_flamethrower -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot armed with flamethrower
+\\{br}• Damages enemy and neutral units
+   \{/tooltipmedium}
+   \{tooltiplong}
+This \{ref H_general.seml#_units} unit\{/ref} is armed with a medium-range flamethrower used for both close and ranged combat. \\{br}
+It damages all neutral and enemy \{ref H_general.seml#_units} units\{/ref} in the line of fire. The Exo flamethrower is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_eusmilus Eusmilus rider}
+\{img /bunit:seas_eusmilus -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Fast cavalry unit
+\\{br}• Can only be produced if Stina has reached level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced on \{ref H_seas_gebaeude.seml#_seas_garage}Garages\{/ref} , the Eusmilus rider is fast, cheap and effective. \\{br}
+Although defensively only marginally better than infantrymen, they pack a much more powerful punch.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops CBT-500}
+\{img /bunit:seas_triceratops -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Strong cavalry unit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The CBT-500 is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref} \\{br}
+A very strong cavalry \{ref H_general.seml#_units} unit,\{/ref} it presents a huge threat in close combat by its sheer mass alone.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_triceratops_archer CBT-1000}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:++/vsanml:+/vsvhcl:+/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Strong cavalry unit
+\\{br}• May transport up to 3 infantry units
+   \{/tooltipmedium}
+   \{tooltiplong}
+Large and powerful, the CBT-T1000 is even more dangerous when carrying \{ref H_seas_produkte.seml#_seas_marksman} Marksmen\{/ref} or \{ref H_seas_produkte.seml#_saes_gunner} Gunners.\{/ref} It is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+
+\{helpitem -name _seas_triceratops_resource_collector CBT-1500}
+\{img /bunit:seas_triceratops_archer -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Gains resources by traveling between allied and own Marketplaces
+\\{br}• Unable to fight
+   \{/tooltipmedium}
+   \{tooltiplong}
+The CBT-1500is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_stygimoloch Stygimoloch scout}
+\{img /bunit:seas_stygimoloch -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:--/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Small carnivore
+\\{br}• Independently seeks out and attacks enemies
+\\{br}• Can only be produced if Warden reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The domesticated Stygimoloch is a smaller \{ref H_general.seml#_units} unit\{/ref} which, once produced, takes off in a random direction until it encounters an enemy, which it then attacks.
+It does not appear in the \{ref H_general.seml#_pyramid}Army controller  \{/ref} as it dies after a certain period of time. Stygimoloch scouts are produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Seas Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_monkey Ninja Monkey}
+\{img /bunit:seas_monkey -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:-/vsbldg:--%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Very mysterious and dangerous!
+\\{br}• Fraternized with the shady Samurai-Squirrel
+\\{br}• Fast
+\\{br}• High viewing range
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Ninja monkey is a smaller \{ref H_general.seml#_units} unit\{/ref} which was trained by the Seas to spy on enemies.
+Ninja Monkeys are produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Seas Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_carnotaurus_rider Carnotaurus rider}
+\{img /bunit:seas_carnotaurus_rider -ralign}
+   \{tooltipshort}
+%/class:anml/vschtr:+/vsanml:+/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Exremely fast mounted unit
+\\{br}• Can only be produced if Tarna reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Carnotaurus rider is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage\{/ref} \\{br}.
+A fast cavalry \{ref H_general.seml#_units} unit\{/ref}, it is quickly available and suitable for defending against masses of enemies or quick attacks. When \{ref H_heros#_tarna}Queen Tarna\{/ref} fled from the holy city she needed fast and powerful bodyguards from whom she trained this elusive predator. When Tarna reaches level 4 she allows the 4 different types of data to be used one for each tribe.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_wehrspinne Black widow}
+\{img /bunit:seas_wehrspinne -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:-/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Siege robot
+\\{br}• Ranged weapon
+   \{/tooltipmedium}
+   \{tooltiplong}
+Large, powerful and as dangerous as its namesake: the Black widow. \\{br}
+It is the only heavy catapult with a vision equal to its range. The Black widow is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack Executioner}
+\{img /bunit:seas_lumberjack -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Powerful in close combat
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Executioner is capable of harvesting entire trees and bringing them back to the collection point in a single trip. \\{br}
+Its sheer power makes the rather slow and ponderous robot a formidable opponent in close combat. It is produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_lumberjack_minigun Executioner MKII}
+\{img /bunit:seas_lumberjack_minigun -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:+/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Robot
+\\{br}• Ranged weapon
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_garage}Garage,\{/ref} this version of the \{ref H_seas_produkte.seml#_seas_lumberjack} Executioner,\{/ref} the Executioner MKII, is armed with a minigun, a deadly ranged weapon.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _scorpion Scorpion}
+\{img /bunit:scorpion -ralign}
+   \{tooltipshort}
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Huge robot
+\\{br}• Close combat and flamethrower attacks
+   \{/tooltipmedium}
+   \{tooltiplong}
+This huge robot is both a construction machine used to build the huge jet and the \{ref H_story.seml#_story_seas} SEAS'\{/ref} last line of defense.
+Its sheer size makes it a dangerous opponent. \\{br}
+Its powerful claws and built-in flamethrower turn it from a dangerous opponent into a deadly one. As mobile as it may seem it cannot leave the room in which it is found.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_zeppelin Zeppelin}
+\{img /bunit:seas_zeppelin -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Mobile trading base
+\\{br}• Flies ashore and above water
+\\{br}• Can transport up to 10 units
+\\{br}• Resource collection point
+\\{br}• High viewing range
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Flying Traders' zeppelin is their main transport vehicle.\{p}
+
+The Flying Trader isn't really THE flying trader, but rather a set of practically indistinguishable triplets.\\{br}
+Their main means of transportation is by zeppelin. Over the years they have managed to build up an impressive trade empire.
+With the possible exception of the Pirate stronghold they are the most important source of trade goods on the planet.
+There's almost no way to get around them. Treat them right and they'll treat you right.\\{br}
+All three brothers are short in stature - which is to say they are really short - and seem more than a bit shady when first met. Their zeppelin is of the utmost importance!
+
+   \{/tooltiplong}
+\{/helpitem}
+
+\{chapter -name _ships Ships and hovercrafts}
+\{helpitem -name _seas_hovercraft Hovercraft}
+\{img /bunit:seas_hovercraft -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Unable to fight
+\\{br}• May transport up to 10 units
+\\{br}• Travels over land or water
+   \{/tooltipmedium}
+   \{tooltiplong}
+As versatile as the Hovercraft is when it comes to \{ref H_general.seml#_transport}transport, \{/ref} it has one major weakness - it is completely defenseless. This mechanized \{ref H_general.seml#_units} unit\{/ref} is produced on the \{ref H_seas_gebaeude.seml#_seas_carrier}Carrier. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_submarine Submarine}
+\{img /bunit:seas_submarine -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:-/vsanml:-/vsvhcl:++/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Strong ship
+   \{/tooltipmedium}
+   \{tooltiplong}
+While not particularly powerful, the Submarine is still a very effective \{ref H_general.seml#_units} unit.\{/ref}\\{br}
+It only surfaces to attack. This mechanized \{ref H_general.seml#_units} unit\{/ref} is produced on the \{ref H_seas_gebaeude.seml#_seas_carrier}Carrier. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_helicopter Stinger}
+\{img /bunit:seas_helicopter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:+/vsvhcl:-/vsbldg:-%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Fast airborne unit
+   \{/tooltipmedium}
+   \{tooltiplong}
+The Stinger is a powerful airborne \{ref H_general.seml#_units} unit.\{/ref}\\{br}
+It flies at extremely low altitudes. This helicopter is produced on the \{ref H_seas_gebaeude.seml#_seas_carrier}Carrier. \{/ref}
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_boss_ship Miyagi's Ship}
+\{img /bunit:seas_pirate_boss_ship -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:++/vsanml:++/vsvhcl:++/vsbldg:++%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Pirate main ship
+\\{br}• Can only be produced if Miyagi reaches level 4
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_pirate_outpost} Pirate Outpost,\{/ref} the Pirate Main ship is is the strongest ship in the Paraworld. \\{br}
+This ship does a great deal of damage, it is quite as powerful as the Titans, because of that even the \{ref H_story.seml#_story_hu}Norsemen \{/ref} ships run away from it.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_cargo_lifter Cargo Lifter}
+\{img /bunit:seas_cargo_lifter -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:/vsanml:/vsvhcl:/vsbldg:%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Unable to fight
+\\{br}• Harvests lots of fish
+   \{/tooltipmedium}
+   \{tooltiplong}
+Produced in the \{ref H_seas_gebaeude.seml#_seas_pirate_outpost} Pirate Outpost,\{/ref} Cargo Lifters are used to harvest \{ref H_world.seml#_fish} fish\{/ref} as a food source. \\{br}
+Once a particular fishing ground has been exhausted the boat will automatically move to another fishing ground within sight.
+   \{/tooltiplong}
+\{/helpitem}
+
+\{helpitem -name _seas_pirate_dunkleo Dunkleosteus Guard}
+\{img /bunit:seas_pirate_dunkleo -ralign}
+   \{tooltipshort}
+%/class:vhcl/vschtr:+/vsanml:+/vsvhcl:++/vsbldg:+%
+   \{/tooltipshort}
+   \{tooltipmedium}
+• Powerful melee marine unit
+\\{br}• Only avalible from the pirate outpost
+\\{br}• Useful in protecting Miyagi's Ship
+   \{/tooltipmedium}
+   \{tooltiplong}
+With the help of the great Pirate Lords Council, \{ref H_heros.seml#_miyagi} Miyagi\{/ref} captured these wild and elusive creatures to protect his dangerous \{ref H_SEAS_Produkte.seml#_seas_pirate_boss_ship} Pirate Ship\{/ref} . This particular Dunkleosteus type is a close-combat marine \{ref H_general.seml#_units} unit\{/ref}, expensive yet advantageous and valuable. Creating these ships are benefical but losing these put your pirate ship at a huge dissadvantage in melee.
+   \{/tooltiplong}
+\{/helpitem}

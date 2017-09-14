@@ -1,0 +1,821 @@
+Root {
+	Cole_Machete {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Cole_Machete'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Cole_Machete_Lefthand {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Cole_Machete_Lefthand'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Cole_Shotgun {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Cole_Shotgun'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_r {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_r'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_l {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_l'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Hubcap_Buckler {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Hubcap_Buckler'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Bela_Knickknackbow {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Bela_Knickknackbow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_knickknackbow_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'bela_knickknackbow_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_special_arrow {
+		classattribs {
+			classname = 'CSniperArrow'
+			gfx = 'fx_bela_snipershot'
+		}
+		objectattribs {
+			tribe = 'Hu'
+		}
+	}
+	bela_combatknife {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'bela_combatknife'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_penknife {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'bela_penknife'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Lance {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Lance'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Whip {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Whip'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	babbage_pistol {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'babbage_pistol'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	babbage_pistol_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'babbage_pistol_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	babbage_minigun {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'babbage_minigun'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cowboy_whip {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cowboy_whip'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	darwin_crook_m {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'darwin_crook_m'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	druid_staff_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'druid_staff_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	druid_staff_l {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'druid_staff_l'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	livingstone_saber {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'livingstone_saber'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_dagger {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'lovelace_dagger'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_musket {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'lovelace_musket'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_musket_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'lovelace_musket_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	ada_special_arrow {
+		classattribs {
+			classname = 'CAdaArrow'
+			gfx = 'fx_bela_snipershot'
+		}
+		objectattribs {
+			tribe = 'Hu'
+		}
+	}
+	lovelace_poison_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'lovelace_poison_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	mayor_lance {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'mayor_lance'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	miyagi_katana {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'miyagi_katana'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	miyagi_samurai_sword {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'miyagi_samurai_sword'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	queen_lance_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'queen_lance_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	queen_lance_l {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'queen_lance_l'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	queen_lance_m {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'queen_lance_m'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	queen_lance_s {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'queen_lance_s'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_flintlock'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'schliemann_flintlock_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_saber {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_saber'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_revolvercrossbow {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'tesla_revolvercrossbow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_revolvercrossbow_arrow {
+		classattribs {
+			classname = 'CArrow'
+			gfx = 'tesla_revolvercrossbow_arrow'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_screwdriver {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'tesla_screwdriver'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	trader_battleaxe {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'trader_battleaxe'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_left_s1_a {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_left_s1_a'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_left_s2_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_left_s2_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_left_s3_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_left_s3_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_left_s4_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_left_s4_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_left_s5_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_left_s5_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_right_s1_a {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_right_s1_a'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_right_s2_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_right_s2_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_right_s3_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_right_s3_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_right_s4_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_right_s4_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	cole_sword_right_s5_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'cole_sword_right_s5_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_knickknackbow_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'bela_knickknackbow_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_knickknackbow_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'bela_knickknackbow_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_knickknackbow_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'bela_knickknackbow_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	bela_knickknackbow_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'bela_knickknackbow_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	darwin_crook_m_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'darwin_crook_m_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	darwin_crook_m_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'darwin_crook_m_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	darwin_crook_m_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'darwin_crook_m_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	darwin_crook_m_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'darwin_crook_m_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	druid_staff_l_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'druid_staff_l_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	druid_staff_l_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'druid_staff_l_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	druid_staff_l_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'druid_staff_l_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	druid_staff_l_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'druid_staff_l_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	livingstone_saber_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'livingstone_saber_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	livingstone_saber_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'livingstone_saber_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	livingstone_saber_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'livingstone_saber_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	livingstone_saber_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'livingstone_saber_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_musket_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'lovelace_musket_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_musket_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'lovelace_musket_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_musket_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'lovelace_musket_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	lovelace_musket_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'lovelace_musket_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	mayor_lance_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'mayor_lance_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	mayor_lance_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'mayor_lance_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	mayor_lance_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'mayor_lance_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	mayor_lance_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'mayor_lance_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_flintlock_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock_b_2 {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_flintlock_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_flintlock_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_flintlock_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	schliemann_flintlock_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'schliemann_flintlock_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Lance_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Lance_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Lance_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Lance_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Lance_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Lance_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Lance_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Lance_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Whip_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Whip_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Whip_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Whip_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Whip_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Whip_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	Stina_Whip_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'Stina_Whip_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_revolvercrossbow_b {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'tesla_revolvercrossbow_b'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_revolvercrossbow_c {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'tesla_revolvercrossbow_c'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_revolvercrossbow_d {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'tesla_revolvercrossbow_d'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+	tesla_revolvercrossbow_e {
+		classattribs {
+			classname = 'CGameObj'
+			gfx = 'tesla_revolvercrossbow_e'
+		}
+		objectattribs {
+			tribe = 'Special'
+		}
+	}
+}

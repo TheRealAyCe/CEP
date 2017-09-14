@@ -1,0 +1,624 @@
+class CRequirementsMgr
+
+	static var ^CRequirementsMgr 	ms_pxInst;
+
+	var array CObjList				m_axNPCs;
+	var array string				m_asValidNPCs;
+	var ^CPlayer					m_pxPlayer;
+	var ^CAttribs					m_pxAttribs;
+	var ^CLevel						m_pxLevel;
+	var CTechTree					m_xTechTree;
+
+	constructor()
+	endconstructor;
+
+	destructor()
+	enddestructor;
+
+	export static proc ref CRequirementsMgr Get()
+		if (ms_pxInst==null)then
+			ms_pxInst=new CRequirementsMgr;
+		endif;
+		return(ms_pxInst^);
+	endproc;
+
+
+	export static proc void Kill()
+		if (ms_pxInst!=null)then
+			delete ms_pxInst;
+			ms_pxInst=null;
+		endif;
+	endproc;
+
+	proc bool Update(int p_iOwner)
+		if(p_iOwner<0)then return false; endif;
+		m_pxLevel=CSrvWrap.GetCurLevel();
+		if(m_pxLevel==null)then return false; endif;
+		m_pxPlayer=m_pxLevel^.GetPlayer(p_iOwner);
+		if(m_pxPlayer==null)then return false; endif;
+		m_pxAttribs = m_pxPlayer^.GetAttribs();
+		if(m_pxAttribs==null)then return false; endif;
+		m_xTechTree = m_pxPlayer^.GetPlayerTechTree();
+		return true;
+	endproc;
+
+	export proc bool CheckAction(string p_sTTPath, ^CGameObj p_pxObj)
+		var CTechTree xTechTree;
+
+		var string sObjPath;
+
+		if(p_pxObj==null) then
+			xTechTree = m_xTechTree;
+		else
+			var ^CVirtualProduceUnit pxUnit = cast<CVirtualProduceUnit>(p_pxObj);
+			if(pxUnit!=null) then
+				var CObjHndl xObjHandle = pxUnit^.GetParent();
+				if (!xObjHandle.IsValid()) then return true; endif;
+				var ^CGameObj pxParentObj = xObjHandle.GetObj();
+				if(pxParentObj==null) then return true; endif;
+				xTechTree = pxParentObj^.GetTechTree();
+				var ^CFightingObj pxFight=cast<CFightingObj>(pxParentObj);
+				if(pxFight!=null)then
+					sObjPath=pxFight^.GetObjPath();
+				endif;
+			else
+				xTechTree = p_pxObj^.GetTechTree();
+				var ^CFightingObj pxFight=cast<CFightingObj>(p_pxObj);
+				if(pxFight!=null)then
+					sObjPath=pxFight^.GetObjPath();
+				endif;
+			endif;
+		endif;
+
+		var bool bCheckLocation=false;
+		var bool bCheckVisibility=false;
+		if(p_pxObj==null)then
+			bCheckLocation=true;
+		else
+			var ^CAttribs pxAttr=p_pxObj^.GetAttribs();
+			if(pxAttr==null)then return false; endif;
+			var ^CTechTree.CNode pxBase=xTechTree.FindNode(p_sTTPath);
+			if(pxBase==null)then return false; endif;
+			var ^CTechTree.CNode pxVisibility=pxBase^.GetSub("visibility");
+			if(pxVisibility==null)then return false; endif;
+			if(pxVisibility^.GetValueI()>0)then
+				bCheckVisibility=true;
+			endif;
+
+			if(bCheckVisibility) then
+				var ^CTechTree.CNode pxLocations=pxBase^.GetSub("locations");
+				if(pxLocations==null)then return false; endif;
+				if(!sObjPath.IsEmpty())then
+					var int i,iC=pxLocations^.NumSubs();
+					for(i=0)cond(i<iC)iter(i++)do
+						var ^CTechTree.CNode pxLoc=pxLocations^.GetSub(i);
+						var string sLoc=pxLoc^.GetValue();
+						if(sLoc.Find(sObjPath)!=-1 || sObjPath.Find(sLoc)!=-1)then
+							var ^CTechTree.CNode pxLocalFlags=pxLoc^.GetSub("localflags");
+							if(pxLocalFlags!=null)then
+								var string sObjFlag=pxAttr^.GetValue("ObjFlag");
+								var int j,iJC=pxLocalFlags^.NumSubs();
+								for(j=0)cond(j<iJC)iter(j++)do
+									if(pxLocalFlags^.GetSub(j)^.GetName()==sObjFlag)then
+										bCheckLocation=true;
+										break;
+									endif;
+								endfor;
+							else
+								bCheckLocation=true;
+							endif;
+							if(bCheckLocation)then
+								break;
+							endif;
+						endif;
+					endfor;
+				endif;
+			endif;
+		endif;
+		var bool bCheckAction = xTechTree.GetValueB(p_sTTPath+"/disabled", false);
+		return !bCheckAction && bCheckLocation;
+	endproc;
+
+	export proc bool CheckResources(int p_iOwner, string p_sTTPath)
+		if(!Update(p_iOwner))then return false; endif;
+		var ^CTechTree.CNode pxAction = m_xTechTree.FindNode(p_sTTPath);
+		if(pxAction==null)then return false; endif;
+		var ^CTechTree.CNode pxConditions = pxAction^.GetSub("conditions");
+		if(pxConditions==null)then return false; endif;
+		var ^CTechTree.CNode pxResCosts = pxConditions^.GetSub("rescosts");
+		if(pxResCosts==null)then return false; endif;
+
+		var bool bCheckResources = true;
+		var int i, iC = pxResCosts^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var string sName	= pxResCosts^.GetSub(i)^.GetName();
+			var int iValue		= pxResCosts^.GetSubValueI(sName);
+			if(m_pxAttribs^.GetValueInt(sName) < iValue)then
+				sName.MakeUpper();
+				if(sName=="STONE")then
+					sName="STON";
+				endif;
+				sName="_NT_AI_RESSOURCE_"+sName;
+				CFeedback.Print(p_iOwner, CFeedback.ECONOMY, "_NT_ActionFailRsc\t"+sName);
+				bCheckResources = false;
+			endif;
+		endfor;
+
+		return bCheckResources;
+	endproc;
+
+	export proc bool CheckInvention(^CGameObj p_pxObj, int p_iOwner, string p_sInvention, string p_sTribe)
+		if(!Update(p_iOwner))then return false; endif;
+		var ^CTechTree.CNode pxInventionsNode;
+		var string sPath = "/Objects/"+p_sTribe+"/InventObjects/"+p_sInvention+"/invented";
+
+		if(p_pxObj!=null)then
+			pxInventionsNode = p_pxObj^.GetTechTree().FindNode(sPath);
+		else
+			pxInventionsNode = m_xTechTree.FindNode(sPath);
+		endif;
+		if(pxInventionsNode==null)then
+			return false;
+		endif;
+		 if(pxInventionsNode^.GetValue()!="1")then
+		 	return false;
+		 endif;
+		return true;
+	endproc;
+
+	export proc bool CheckUnits(int p_iOwner, int p_iLevel)
+		return CheckUnits(p_iOwner,p_iLevel, true);
+	endproc;
+
+	export proc bool CheckUnits(int p_iOwner, int p_iLevel, bool p_bCountVirtuals)
+
+		if(!Update(p_iOwner))then return false; endif;
+
+		var int iVirtualUnitsAll	=	m_pxAttribs^.GetValueInt("virtual_units_0");
+		iVirtualUnitsAll			+=	m_pxAttribs^.GetValueInt("virtual_units_1");
+		iVirtualUnitsAll			+=	m_pxAttribs^.GetValueInt("virtual_units_2");
+		iVirtualUnitsAll			+=	m_pxAttribs^.GetValueInt("virtual_units_3");
+		iVirtualUnitsAll			+=	m_pxAttribs^.GetValueInt("virtual_units_4");
+
+
+		var ^CLevelInfoHost pxLevelInfo=^(CSrvWrap.GetCurLevel()^.GetLevelInfo());
+		var ^CPropDB pxGenericDB=^(pxLevelInfo^.GetGenericData());
+		var ^CPropDB.CNode pxCharsNode = ^((pxGenericDB^)["PlayerSettings/Player_"+p_iOwner.ToString()+"/Restrictions/Chars"]);
+
+		var array int aiMaxUnits;
+		aiMaxUnits.AddEntry(25);
+		aiMaxUnits.AddEntry(15);
+		aiMaxUnits.AddEntry(8);
+		aiMaxUnits.AddEntry(3);
+		aiMaxUnits.AddEntry(1);
+
+		var int iRealMaxUnits = 52;
+		if(pxCharsNode!=null)then
+			var ^CPropDB.CNode pxPopNode = pxCharsNode^.Get("Population");
+			if(pxPopNode!=null)then
+				iRealMaxUnits = pxPopNode^.GetValueI("Max",52);
+			endif;
+
+			var int j;
+			for(j=0)cond(j<5)iter(j++)do
+				var ^CPropDB.CNode pxLevelNode = pxCharsNode^.Get("Level"+(j+1).ToString());
+				if(pxLevelNode!=null)then
+					aiMaxUnits[j] = pxLevelNode^.GetValueI("Max",aiMaxUnits[j]);
+				endif;
+			endfor;
+		endif;
+		
+		var int iMaxUnits = Math.Min(m_pxAttribs^.GetValueInt("max_units"),iRealMaxUnits);
+		
+		var ^CAiPlayer pxAiPlayer=cast<CAiPlayer>(m_pxPlayer);
+		
+		if(pxAiPlayer!=null)then
+			var ^CLevelInfo.CPlayerSlot pxPlayerSlot=m_pxPlayer^.GetPlayerSlot();
+			if(pxPlayerSlot!=null)then
+				var int iDff=pxPlayerSlot^.GetValueInt("Difficulty");
+				if(iDff==7)then
+					aiMaxUnits[0]+=2;
+					aiMaxUnits[1]+=1;
+					aiMaxUnits[2]+=1;
+					aiMaxUnits[3]+=0;
+					aiMaxUnits[4]+=0;
+					iMaxUnits+=4;
+				elseif(iDff==8)then
+					aiMaxUnits[0]+=5;
+					aiMaxUnits[1]+=3;
+					aiMaxUnits[2]+=2;
+					aiMaxUnits[3]+=0;
+					aiMaxUnits[4]+=0;
+					iMaxUnits+=10;
+				elseif(iDff==9)then
+					aiMaxUnits[0]+=10;
+					aiMaxUnits[1]+=10;
+					aiMaxUnits[2]+=7;
+					aiMaxUnits[3]+=1;
+					aiMaxUnits[4]+=0;
+					iMaxUnits+=28;
+				endif;
+			endif;
+		endif;
+
+		var int iVirtualUnits = m_pxAttribs^.GetValueInt("virtual_units_"+p_iLevel.ToString());
+
+		var int iUnits = 0;
+		var int iUnitsAll = 0;
+
+		var CObjList xList;
+		var CObjList xNewList;
+		var CObjQuery xQuery;
+		xQuery.SetOwner(p_iOwner);
+
+		if(xQuery.Execute(xList))then
+			var int i, iC = xList.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CFightingObj pxObj = cast<CFightingObj>(xList[i].GetObj());
+				if(pxObj==null)then continue; endif;
+				if(!pxObj^.DoesCountInUnitLimit())then
+					continue;
+				endif;
+				xNewList.Include(xList[i]);
+			endfor;
+
+			iUnitsAll = xNewList.NumEntries();
+		endif;
+
+		xQuery.SetAttribsPos("level",p_iLevel);
+
+		if(xQuery.Execute(xNewList, xList))then
+			iUnits = xList.NumEntries();
+
+			var int i, iC = xList.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CFightingObj pxObj = cast<CFightingObj>(xList[i].GetObj());
+				if(pxObj==null)then continue; endif;
+			endfor;
+
+			iC = xNewList.NumEntries();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CFightingObj pxObj = cast<CFightingObj>(xNewList[i].GetObj());
+				if(pxObj==null)then continue; endif;
+			endfor;
+		endif;
+
+		if(p_bCountVirtuals)then
+			iUnitsAll += iVirtualUnitsAll;
+			iUnits += iVirtualUnits;
+		endif;
+
+		if(iMaxUnits <= iUnitsAll)then
+			if(p_bCountVirtuals)then
+				CFeedback.Print(p_iOwner, CFeedback.ECONOMY, "_NT_ActionFailUnitLimit");
+				// Henry: ""More Fireplaces" only when maxcap-limit isn't reached yet"
+				if(iMaxUnits>=iRealMaxUnits)then
+					CSrvWrap.SendGenericEvtToPlayer(p_iOwner, "PopLimitReached");
+				else
+					CSrvWrap.SendGenericEvtToPlayer(p_iOwner, "NoHousing");
+				endif;
+			endif;
+			return false;
+		endif;
+
+		if(p_iLevel>=0)then
+		else
+			CSrvWrap.SendGenericEvtToPlayer(p_iOwner, "NoHousing");
+			return false;
+		endif;
+
+		if(aiMaxUnits[p_iLevel] <= iUnits)then
+			if(p_bCountVirtuals)then
+				CFeedback.Print(p_iOwner, CFeedback.ECONOMY, "_NT_ActionFailLevelUnitLimit");
+				// Henry: so that the division sounds are used if only the actual ac level can't have more units ("Divison two is already full!")
+				CSrvWrap.SendGenericEvtToPlayer(p_iOwner, "DivisionFull\t"+(p_iLevel+1).ToString());
+				//CSrvWrap.SendGenericEvtToPlayer(p_iOwner, "NoHousing");
+			endif;
+			return false;
+		endif;
+		return true;
+
+	endproc;
+
+
+	export proc bool CheckConditionsAndPay(int p_iOwner, ref string p_rsPath)
+		if(!Update(p_iOwner))then return false; endif;
+		var ^CBasePlayer pxBasePlayer = cast<CBasePlayer>(m_pxPlayer);
+		if(pxBasePlayer==null)then return false; endif;
+		return CheckConditionsAndPay(null, p_iOwner, p_rsPath, pxBasePlayer^.m_sTribe);
+	endproc;
+
+
+	export proc bool CheckConditionsAndPay(int p_iOwner, ref string p_rsPath, bool p_bIncVirtualUnits)
+		if(!Update(p_iOwner))then return false; endif;
+		var ^CBasePlayer pxBasePlayer = cast<CBasePlayer>(m_pxPlayer);
+		if(pxBasePlayer==null)then return false; endif;
+		var CObjHndl xPyCO;
+		return CheckConditionsAndPay(null, p_iOwner, p_rsPath, pxBasePlayer^.m_sTribe, p_bIncVirtualUnits, xPyCO);
+	endproc;
+
+
+	export proc bool CheckConditionsAndPay(^CGameObj p_pxObj, ref string p_rsPath)
+		var string sTribe = "Hu";
+		var ^CFightingObj pxFight = cast<CFightingObj>(p_pxObj);
+		if(pxFight!=null)then
+			sTribe = pxFight^.GetTribeName();
+		endif;
+		return CheckConditionsAndPay(p_pxObj, p_pxObj^.GetOwner(), p_rsPath, sTribe);
+	endproc;
+
+	export proc bool CheckConditionsAndPay(^CGameObj p_pxObj, ref string p_rsPath, ref CObjHndl p_rxPyCO)
+		var string sTribe = "Hu";
+		var ^CFightingObj pxFight = cast<CFightingObj>(p_pxObj);
+		if(pxFight!=null)then
+			sTribe = pxFight^.GetTribeName();
+		endif;
+		return CheckConditionsAndPay(p_pxObj, p_pxObj^.GetOwner(), p_rsPath, sTribe, true, p_rxPyCO);
+	endproc;
+
+	export proc bool CheckConditionsAndPay(^CGameObj p_pxObj, ref string p_rsPath, ref CObjHndl p_rxPyCO, ref CAction.CResourceCosts p_rxCosts)
+		var string sTribe = "Hu";
+		var ^CFightingObj pxFight = cast<CFightingObj>(p_pxObj);
+		if(pxFight!=null)then
+			sTribe = pxFight^.GetTribeName();
+		endif;
+		return CheckConditionsAndPay(p_pxObj, p_pxObj^.GetOwner(), p_rsPath, sTribe, true, p_rxPyCO, p_rxCosts);
+	endproc;
+
+	export proc bool CheckConditionsAndPay(^CGameObj p_pxObj, int p_iOwner, ref string p_rsPath, string p_sTribe)
+		var CObjHndl xPyCO;
+		return CheckConditionsAndPay(p_pxObj, p_pxObj^.GetOwner(), p_rsPath, p_sTribe, true, xPyCO);
+	endproc;
+
+	export proc bool CheckConditionsAndPay(^CGameObj p_pxObj, int p_iOwner, ref string p_rsPath, string p_sTribe, bool p_bIncVirtualUnits, ref CObjHndl p_rxPyCO)
+	 var CAction.CResourceCosts xCosts;
+	 return CheckConditionsAndPay(p_pxObj, p_iOwner, p_rsPath, p_sTribe, p_bIncVirtualUnits, p_rxPyCO, xCosts);
+	endproc;
+
+	export proc bool CheckConditionsAndPay(^CGameObj p_pxObj, int p_iOwner, ref string p_rsPath, string p_sTribe, bool p_bIncVirtualUnits, ref CObjHndl p_rxPyCO, ref CAction.CResourceCosts p_rxCosts)
+		if(!Update(p_iOwner))then return false; endif;
+		if(p_rsPath.Right(9)==" /AI_Help")then
+			p_rsPath.Replace(" /AI_Help","");
+			var ^CAiPlayer pxAiPlayer=cast<CAiPlayer>(m_pxPlayer);
+			if(pxAiPlayer!=null)then return true; endif;
+		endif;
+
+		if(!CheckAction(p_rsPath,p_pxObj)) then return false; endif;
+
+		if(p_pxObj!=null)then
+			m_xTechTree = p_pxObj^.GetTechTree();
+			var ^CAttribs pxAttribs=p_pxObj^.GetAttribs();
+			if(pxAttribs!=null) then
+				var string sQueue = pxAttribs^.GetValue("ProdQueue");
+				var array string asQueue;
+				sQueue.Split(asQueue, ":", false);
+				if(asQueue.NumEntries()>=50) then
+					while(asQueue.FindEntry("-1")!=-1)do
+						asQueue.RemEntry("-1");
+					endwhile;
+					if(asQueue.NumEntries()>=50)then
+						return false;
+					endif;
+				endif;
+			endif;
+		endif;
+
+		var string sConditionPath = p_rsPath+"/conditions";
+		var bool bCheckTribe = false;
+		var bool bCheckChars = false;
+		var bool bCheckResources = false;
+
+		var int i, iC;
+
+		var ^CTechTree.CNode pxTribes = m_xTechTree.FindNode(sConditionPath+"/tribe");
+		if(pxTribes==null)then
+			bCheckTribe = true;
+		else
+			iC = pxTribes^.NumSubs();
+			for(i=0)cond(i<iC)iter(i++)do
+				var ^CTechTree.CNode pxNode = pxTribes^.GetSub(i);
+				if(p_sTribe == pxNode^.GetValue())then
+					bCheckTribe=true;
+					break;
+				endif;
+			endfor;
+		endif;
+
+		var int iLevel = GetBuildActionLevel(p_rsPath);
+		iLevel--;
+
+		var ^CTechTree.CNode pxResCosts = m_xTechTree.FindNode(sConditionPath+"/rescosts");
+
+		bCheckResources	= (pxResCosts==null) || CheckResources(p_iOwner, p_rsPath);
+
+		bCheckChars		= (iLevel<0) || CheckUnits(p_iOwner, iLevel, true);
+
+		if(bCheckTribe && bCheckChars && bCheckResources)then
+
+			var ^CTechTree.CNode pxResults = m_xTechTree.FindNode(p_rsPath+"/results");
+			var string sClass = "";
+			if(pxResults!=null && pxResults^.NumSubs()>0)then
+				var ^CTechTree.CNode pxSubNode = pxResults^.GetSub(0);
+				if(pxSubNode!=null)then
+					sClass = pxSubNode^.GetValue();
+				endif;
+			endif;
+			if(p_bIncVirtualUnits)then
+				if(iLevel>=0)then
+					var string sNode = "virtual_units_"+iLevel.ToString();
+					m_pxAttribs^.SetValue(sNode, m_pxAttribs^.GetValueInt(sNode)+1);
+
+					if(p_pxObj!=null)then
+
+						var ^CPyramidCardObject pxTmp = cast<CPyramidCardObject>(CSrvWrap.GetObjMgr()^.CreateObj("pyramid_card_object",-1,p_pxObj^.GetPos()));
+						if(pxTmp!=null)then
+							var ^CAttribs pxAttr = pxTmp^.GetAttribs();
+							if(pxAttr!=null)then
+								pxAttr^.SetValue("level", iLevel);
+								pxAttr^.SetValue("hitpoints", 666);
+								pxAttr^.SetValue("maxhitpoints", 666);
+								pxAttr^.SetValue("CurTask", "");
+								pxAttr^.SetValue("clientpyramid_slotid", -1);
+								pxAttr^.SetValue("ObjPath", sClass);
+								pxAttr^.SetValue("dead", true);
+								pxAttr^.SetValue("TaskDescription", "");
+								pxAttr^.SetValue("unit_count", true);
+							endif;
+
+							begin apply_filters;
+								pxTmp^.InitTechTreeDef();
+								var ^CTechTreeDef pxTechTreeDef = pxTmp^.GetTechTreeDef();
+								var CTechTree xTechTree = pxTmp^.GetTechTree();
+								if(pxTechTreeDef!=null)then
+									var ^CTechTree.CNode pxResultsNode = xTechTree.FindNode(p_rsPath+"/results");
+									if(pxResultsNode!=null)then
+										var int i,j,k,iC,jC,kC;
+										iC = pxResultsNode^.NumSubs();
+										for(i=0)cond(i<iC)iter(i++)do
+											var ^CTechTree.CNode pxResultNode = pxResultsNode^.GetSub(i);
+											if(pxResultNode!=null)then
+												var ^CTechTree.CNode pxResultActionsNode = pxResultNode^.GetSub("resultactions");
+												if(pxResultActionsNode!=null)then
+													jC = pxResultActionsNode^.NumSubs();
+													for(j=0)cond(j<jC)iter(j++)do
+														var string sResultActionPath = pxResultActionsNode^.GetSubValue(j);
+														var ^CTechTree.CNode pxResultActionNode = xTechTree.FindNode(sResultActionPath);
+														if(pxResultActionNode!=null)then
+															var ^CTechTree.CNode pxResultFiltersNode = pxResultActionNode^.GetSub("results");
+															if(pxResultFiltersNode!=null)then
+																kC = pxResultFiltersNode^.NumSubs();
+																for(k=0)cond(k<kC)iter(k++)do
+																	var ^CTechTree.CNode pxFilterNode = pxResultFiltersNode^.GetSub(k);
+																	if(pxFilterNode!=null)then
+																		var string sFilterPath = pxFilterNode^.GetValue();
+																		var string sFilterClass = pxFilterNode^.GetSubValue("class","");
+																		var string sFilterType = pxFilterNode^.GetSubValue("type","");
+																		if(sFilterClass=="local")then
+																			if(sFilterType!="activate")then
+																				pxTechTreeDef^.EnableFilter(sFilterPath+"_RemoveMe");
+																			else
+																				pxTechTreeDef^.EnableFilter(sFilterPath);
+																			endif;
+																		endif;
+																	endif;
+																endfor;
+															endif;
+														endif;
+													endfor;
+												endif;
+											endif;
+										endfor;
+									endif;
+								endif;
+							end apply_filters;
+
+							pxTmp^.SetOwner(p_pxObj^.GetOwner());
+							p_rxPyCO = pxTmp^.GetHandle();
+						endif;
+
+					endif;
+
+				endif;
+			endif;
+
+			var ^CTechTree.CNode pxRes = m_xTechTree.FindNode("/Resources/"+p_sTribe);
+			if(pxRes==null)then return false; endif;
+			if(pxResCosts==null)then return true; endif;
+
+			iC = pxRes^.NumSubs();
+			for(i=0)cond(i<iC)iter(i++)do
+				var string sRes = pxRes^.GetSub(i)^.GetValue();
+				var int iResCost=pxResCosts^.GetSubValueI(sRes);
+				if(iResCost>0)then
+					if(sRes=="wood")then
+						m_pxPlayer^.AddWood(-iResCost);
+						p_rxCosts.m_iWood=iResCost;
+					elseif(sRes=="stone")then
+						m_pxPlayer^.AddStone(-iResCost);
+						p_rxCosts.m_iStone=iResCost;
+					elseif(sRes=="food")then
+						m_pxPlayer^.AddFood(-iResCost);
+						p_rxCosts.m_iFood=iResCost;
+					elseif(sRes=="iron")then
+						m_pxPlayer^.AddSkulls(-iResCost);
+						p_rxCosts.m_iSkulls=iResCost;
+					endif;
+				endif;
+			endfor;
+		else
+			return false;
+		endif;
+
+		return true;
+
+	endproc;
+
+
+	export proc bool CheckFreeSlotNonVirtual(int p_iOwner, string p_sTTPath)
+		if(p_sTTPath.IsEmpty())then return true; endif;
+
+		var ^CTechTree.CNode pxResults = m_xTechTree.FindNode(p_sTTPath+"/results");
+		if(pxResults==null)then return true; endif;
+
+		var int i, iC = pxResults^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var int iLevel = -1;
+			var ^CTechTree.CNode pxNode = pxResults^.GetSub(i);
+			if(pxNode==null)then continue; endif;
+
+			var string sObjPath = pxNode^.GetValue();
+			if(sObjPath.IsEmpty())then continue; endif;
+
+			var ^CTechTree.CNode pxFlags, pxLevel;
+			pxFlags = pxNode^.GetSub("flags");
+			if(pxFlags!=null)then
+				pxLevel = pxFlags^.GetSub("level");
+			endif;
+
+			if(pxFlags!=null && pxLevel!=null)then
+				iLevel = pxFlags^.GetSubValueI("level")-1;
+			endif;
+
+			var ^CTechTree.CNode pxObjNode = m_xTechTree.FindNode(sObjPath);
+			if(pxObjNode==null) then continue; endif;
+
+			var string sCaptainClass = pxObjNode^.GetSubValue("captainclass", "");
+			if(iLevel<0) then
+				iLevel = pxObjNode^.GetSubValueI("captainlevel", 1)-1;
+			endif;
+			var string sCaste = pxObjNode^.GetSubValue("caste", "");
+
+			if(iLevel<0) then continue; endif;
+			if(!sCaptainClass.IsEmpty() || !sCaste.IsEmpty()) then
+				if(!CheckUnits(p_iOwner, iLevel, false))then
+					return false;
+				endif;
+			endif;
+		endfor;
+		return true;
+	endproc;
+
+	proc int GetBuildActionLevel(string p_sTTPath)
+
+		if(p_sTTPath.Find("/Build/")==-1)then return -1; endif;
+
+		var ^CTechTree.CNode pxResults = m_xTechTree.FindNode(p_sTTPath+"/results");
+		if(pxResults==null)then return -1; endif;
+
+		var int iLevel = -1;
+
+		var int i, iC = pxResults^.NumSubs();
+		for(i=0)cond(i<iC)iter(i++)do
+			var ^CTechTree.CNode pxResult = pxResults^.GetSub(i);
+			var ^CTechTree.CNode pxFlags = pxResult^.GetSub("flags");
+			if(pxFlags==null)then continue; endif;
+			var ^CTechTree.CNode pxLevel = pxFlags^.GetSub("level");
+			if(pxLevel==null)then continue; endif;
+			iLevel = Math.Max(iLevel, pxLevel^.GetValue().ToInt());
+		endfor;
+
+		return iLevel;
+
+	endproc;
+
+endclass;

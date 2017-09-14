@@ -1,0 +1,246 @@
+class CToolTipWindow inherit CStaticCtrlEx
+
+	var ^CStaticCtrl	m_pxToolTip;
+	var ^CUIFloatBox	m_pxToolTipText;
+	
+	var int				m_iCheckTimer;
+	var string			m_sTitle;
+	var CGameTime		m_xTimer;
+	var bool			m_bIsToolTip;
+	var int				m_iBottom;
+	var int				m_iLeft;
+	var int				m_iTicksStable;
+	var int				m_iTimeout;
+	var string			m_sLastText;
+
+	export constructor()
+		m_iTicksStable=0;
+		m_iTimeout=0;
+		m_pxToolTip = new CStaticCtrl();
+		
+		if(!m_pxToolTip^.InitFromResource("UI/ToolTipWindow","ToolTipWindow")) then
+			CGameWrap.LogError("UI.ToolTipWindow","InitFromResource failed");
+			return;
+		endif;
+		AddChild(m_pxToolTip);
+
+		m_pxToolTip^.SetText("");
+		m_pxToolTip^.SetAlwaysOnTop(true);
+		m_pxToolTip^.SetVisible(false);
+		m_pxToolTip^.EnableMsgHitTest(false);
+
+//		m_pxToolTipText	= cast<CStaticCtrlEx>(m_pxToolTip^.GetControl("Info"));
+		m_pxToolTipText	= cast<CUIFloatBox>(m_pxToolTip^.GetControl("Info"));
+//		m_pxToolTipText^.SetTextOutline(false);
+		m_pxToolTipText^.EnableMsgHitTest(false);
+
+		CWindowMgr.Get().m_xOnToolTip = OnToolTip;
+		m_iCheckTimer = SetTimer(50, true);
+	endconstructor;
+	
+	export destructor()
+		CWindowMgr.Get().m_xOnToolTip.Clear();
+	enddestructor;
+
+	export proc void FixBottomLeft(int p_iBottom, int p_iLeft)
+		m_iBottom = p_iBottom;
+		m_iLeft = p_iLeft;
+	endproc;
+
+	static proc string FilterAttrib(string p_sText,string p_sAttrib)
+		var string sSearch="/"+p_sAttrib+":";
+		var int iPos=p_sText.Find(sSearch);
+		if(iPos==-1)then
+			return "";
+		endif;
+		iPos+=sSearch.GetLength();
+		var int iEnd=iPos;
+		while((iEnd<p_sText.GetLength())&&((p_sText.GetAt(iEnd)!='%')||(p_sText.GetAt(iEnd+1)=='%'))&&(p_sText.GetAt(iEnd)!='/'))do
+			iEnd++;
+		endwhile
+		var string sRes=p_sText.Mid(iPos,iEnd-iPos);
+		if(sRes.Find(":NA")!=-1)then
+			sRes.Replace(":NA","");
+			sRes="\\{colightred}"+sRes+"\\{cp}";
+		endif;
+		return sRes;
+	endproc;
+	
+	static proc string InfoText2Img(string p_sText)
+		if(p_sText=="--")then return "\\{ii-1;layer tt_quality_minusminus}";endif;
+		if(p_sText=="-")then return "\\{ii-1;layer tt_quality_minus}";endif;
+		if(p_sText=="+")then return "\\{ii-1;layer tt_quality_plus}";endif;
+		if(p_sText=="++")then return "\\{ii-1;layer tt_quality_plusplus}";endif;
+		if(p_sText=="chtr")then return "\\{ii-1;layer tt_class_chtr}";endif;
+		if(p_sText=="anml")then return "\\{ii-1;layer tt_class_anml}";endif;
+		if(p_sText=="vhcl")then return "\\{ii-1;layer tt_class_vhcl}";endif;
+		if(p_sText=="bldg")then return "\\{ii-1;layer tt_class_bldg}";endif;
+		if(p_sText=="othr")then return "\\{ii-1;layer tt_class_other}";endif;
+		return "";
+	endproc;
+	
+	export static proc string GenerateMsgScript(string p_sTitle, string p_sMsg)
+		var string sText;
+		var string sDuration=FilterAttrib(p_sMsg,"tmdrtn");
+		var string sRscWood=FilterAttrib(p_sMsg,"wood");
+		var string sRscFood=FilterAttrib(p_sMsg,"food");
+		var string sRscStone=FilterAttrib(p_sMsg,"stone");
+		var string sRscSkulls=FilterAttrib(p_sMsg,"skulls");
+		var string sClass=FilterAttrib(p_sMsg,"class");
+		var string sVsAnml=FilterAttrib(p_sMsg,"vsanml");
+		var string sVsChtr=FilterAttrib(p_sMsg,"vschtr");
+		var string sVsBldg=FilterAttrib(p_sMsg,"vsbldg");
+		var string sVsVhcl=FilterAttrib(p_sMsg,"vsvhcl");
+		var string sLvl1=FilterAttrib(p_sMsg,"lvl1");
+		var string sLvl2=FilterAttrib(p_sMsg,"lvl2");
+		var string sLvl3=FilterAttrib(p_sMsg,"lvl3");
+		var string sLvl4=FilterAttrib(p_sMsg,"lvl4");
+		var string sLvl5=FilterAttrib(p_sMsg,"lvl5");
+
+		if(sClass=="")then sClass="othr";endif;
+
+		begin alttitle;
+			if(p_sTitle=="")then
+				var int iP=p_sMsg.Find("\n");
+				if(iP!=-1)then
+					p_sTitle=p_sMsg.Left(iP);
+					p_sMsg=p_sMsg.Mid(iP+1);
+				endif;
+			endif;
+		end alttitle;
+
+		begin strip;
+			var int iP=p_sMsg.Find("%/");
+			if(iP!=-1)then
+				p_sMsg=p_sMsg.Left(iP);
+			endif;
+		end strip;
+		
+		sText="\\{ml1}\\{mr1}\\{al}";
+		if(p_sTitle.GetLength()>0)then
+			sText+="\\{p}\\{ns1}\\{il-1;layer tt_bgimage_title}\\{bo1}"+InfoText2Img(sClass)+"\\{ta20}\\{bo5}"+p_sTitle+"\\{bo0}\\{br}";
+//			sText+="\\{ns1}\\{ii-1;layer tt_class_bldg} "+p_sTitle+"\\{p}";
+		endif;
+		
+		var bool bLvlInfo=false;
+		if(sLvl5.GetLength()>0)then
+			sText+="\\{il-1;layer tt_level_4}\\{in19}\\{ta20}"+sLvl5+"\\{in0}\\{br}";bLvlInfo=true;
+		endif;
+		if(sLvl4.GetLength()>0)then
+			sText+="\\{il-1;layer tt_level_3}\\{in19}\\{ta20}"+sLvl4+"\\{in0}\\{br}";bLvlInfo=true;
+		endif;
+		if(sLvl3.GetLength()>0)then
+			sText+="\\{il-1;layer tt_level_2}\\{in19}\\{ta20}"+sLvl3+"\\{in0}\\{br}";bLvlInfo=true;
+		endif;
+		if(sLvl2.GetLength()>0)then
+			sText+="\\{il-1;layer tt_level_1}\\{in19}\\{ta20}"+sLvl2+"\\{in0}\\{br}";bLvlInfo=true;
+		endif;
+		if(sLvl1.GetLength()>0)then
+			sText+="\\{il-1;layer tt_level_0}\\{in19}\\{ta20}"+sLvl1+"\\{in0}\\{br}";bLvlInfo=true;
+		endif;
+		p_sMsg.TrimLeft();
+		p_sMsg.TrimRight();
+		if(p_sMsg=="%%")then
+			p_sMsg="";
+		endif;
+		if(p_sMsg.GetLength()>0)then
+			sText+=p_sMsg+"\\{p}";
+		endif;
+
+		if((sVsAnml+sVsChtr+sVsBldg+sVsVhcl).GetLength()>0)then
+			sVsAnml=InfoText2Img(sVsAnml);
+			sVsChtr=InfoText2Img(sVsChtr);
+			sVsBldg=InfoText2Img(sVsBldg);
+			sVsVhcl=InfoText2Img(sVsVhcl);
+			sText+="\\{ns1}\\{il-1;layer tt_bgimage_value}"+"\\{ta23}"+sVsChtr+"\\{ta72}"+sVsAnml+"\\{ta121}"+sVsVhcl+"\\{ta169}"+sVsBldg+"\\{br}";
+		endif;
+		
+		if((sRscWood+sRscFood+sRscStone+sRscSkulls).GetLength()>0)then
+			sText+="\\{ns1}\\{il-1;layer tt_bgimage_stats}"+"\\{ta19}"+sRscSkulls+"\\{ta68}"+sRscFood+"\\{ta117}"+sRscWood+"\\{ta165}"+sRscStone+"\\{br}";
+		endif;
+		if(sDuration.GetLength()>0)then
+			sText+="\\{ns1}\\{il-1;layer tt_bgimage_time}"+"\\{ta19}"+sDuration+"\\{br}";
+		endif;
+		return sText;
+	endproc;
+
+	export proc bool OnToolTip(string p_sTitle, string p_sMsg)
+		CUIStateMgr.Get().OnShowToolTip(p_sTitle,p_sMsg);
+		if(CClientWrap.GetDragBox().IsActive()) then //DragBox beenden
+//			m_sLastText="";
+//			m_bIsToolTip=false;
+			ClearToolTip();
+//			m_xTimer = CTimeMgr.Get().GetTime();
+			return false;
+		endif;
+		m_iTimeout=0;
+		
+//		m_pxReqs^.ForceUpdate();
+		if((p_sMsg== "")&&(p_sTitle== ""))then
+			ClearToolTip();
+//			m_bIsToolTip=false;
+	//		m_pxToolTip^.SetVisible(false);
+			return false;
+		endif;
+		if(m_sLastText!=p_sTitle+p_sMsg)then
+			m_sLastText=p_sTitle+p_sMsg;
+			m_iTicksStable=0;
+			return false;
+		endif;
+		if(m_iTicksStable<5)then
+			m_iTicksStable++;
+		endif;
+
+		m_bIsToolTip=true;
+		var string sText=GenerateMsgScript(p_sTitle,p_sMsg);
+		
+//		m_pxToolTipText^.SetText("\\{al}\\{in10}\\{is0}\\{ii-1;layer testnosize3}\\{ns1}\\{ii-1;layer testnosize1} Anthony Cole ABCDEFG HIJKLMNOP QRSTUVW\\{br}BLAH\\{p}");
+		m_pxToolTipText^.SetText(sText);
+		m_pxToolTipText^.SetHeight(m_pxToolTipText^.GetTrueClientSize().GetY());
+		/*
+//		m_pxToolTipText^.SetText("ABC\\{p}Blahfasel\\{ii-1;layer tt_quality_plusplus}XYZ\\{p}");
+		m_pxToolTipText^.SetWidth(235 - 35);
+		//m_pxToolTipText^.RecalcAutoSize();
+		//m_pxToolTipText^.SetHeight(m_pxToolTipText^.GetAutoSizeHeight()+5);
+		m_pxToolTip^.SetVisible(true);
+		*/
+		var int iTextHeight = m_pxToolTipText^.GetSize().GetY() + 5;
+
+		var int iNewPosX = m_iLeft;//CWindowMgr.Get().GetDesktop(0)^.GetWidth() - 235;
+		var int iNewPosY = m_iBottom - (iTextHeight + 18);
+		SetPos(iNewPosX, iNewPosY);
+		SetSize(235, iTextHeight + 18);
+		m_pxToolTip^.SetSize(235, iTextHeight + 28);
+		m_pxToolTipText^.OnUpdateContent();
+		m_pxToolTipText^.SetWidth(235 - 35);
+		m_pxToolTipText^.SetPos(13,7);
+		if(m_iTicksStable<3)then
+			ClearToolTip();
+			return false;
+		endif;
+		m_pxToolTip^.SetVisible(true);
+		m_pxToolTipText^.SetVisible(true);
+		return false;
+	endproc;
+	
+	export proc void ClearToolTip()
+//		var int iNewPosX = m_iLeft + GetWidth() - 38;//CWindowMgr.Get().GetDesktop(0)^.GetWidth() - 38;
+		var int iNewPosX = m_iLeft + 197;//CWindowMgr.Get().GetDesktop(0)^.GetWidth() - 38;
+		var int iNewPosY = m_iBottom - 28;
+		SetPos(iNewPosX, iNewPosY);
+		SetSize(38, 28);
+		m_pxToolTip^.SetVisible(false);
+		m_bIsToolTip = false;
+	endproc;
+
+	proc bool OnTimer(int p_iID)		
+		if (p_iID == m_iCheckTimer) then			
+			m_iTimeout++;
+			if(m_iTimeout>2)then
+				ClearToolTip();
+			endif;
+		endif;
+		return true;
+	endproc;
+
+endclass;
