@@ -37,6 +37,8 @@ A full list of the credits can be found in credits.txt.
 Changelog:
 ---
 CEP 1.2.3 - 11th July 2017
+- Bugfixes:
+	- Some localization texts
 - New:
 	- ACDO support for GetFood
 - Changes:

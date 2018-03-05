@@ -188,5 +188,5 @@
 "_CEP_UI_IngaScre_ClockBar_TT";"Pokazuje ile czasu upłynęło od rozpoczęcia gry (g:m:s)"
 "_CEP_UI_GameInfo_Label_Author";"Autor"
 "_CEP_UI_GameInfo_Label_Version";"Wersja"
-"_UI_MainMenu_Label_Cheats";"Cheats!"
-"_UI_MainMenu_Cheats";"Cheats are ENABLED!"
+"_UI_MainMenu_Label_Cheats";"KODY!"
+"_UI_MainMenu_Cheats";"Kody są WŁĄCZONE"
