@@ -1,5 +1,5 @@
 =====================================================
-CEP 1.2.3 (8th June 2017)
+CEP 1.2.3 (2020-02-15)
 formerly known as SEASMOD
 =====================================================
 by the Para-Welt.com Team
@@ -36,13 +36,15 @@ A full list of the credits can be found in credits.txt.
 
 Changelog:
 ---
-CEP 1.2.3 - 11th July 2017
+CEP 1.2.3 (2020-02-15)
 - Bugfixes:
 	- Some localization texts
+	- Mission 4-3: Fixed hovercrafts not despawning, can now build Garage instead of Animal Farm for the seismo secret
 - New:
 	- ACDO support for GetFood
 - Changes:
 	- New loading screen for Finding-Ada-Mission by DryFun
+	- Changed ReadMe.txt date format to ISO-8601
 
 
 CEP 1.2.2 - 8th June 2014
